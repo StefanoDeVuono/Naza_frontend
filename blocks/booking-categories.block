@@ -1,0 +1,55 @@
+<script type="text/x-template" id="categories-template">
+  <div>
+    <style>
+      [v-cloak] {
+        display: none;
+      }
+    </style>
+    
+    <div v-cloak id="categories">
+      <div v-for="category in categories">
+        <h3>{{ category.name }}</h3>
+        <router-link :to="{ name: 'styles', params: { categoryId: category.id } }">
+          <img v-bind:src="'http://localhost:3000' + category.imageUrl">
+        </router-link>
+        <hr>
+      </div>
+    </div>
+  </div>
+</script>
+
+<script>
+  var Categories = {
+    data: function() {
+      return {
+        categories: []
+      }
+    },
+    created: function() {
+      console.log('created')
+      fetch(window.SPREE_SERVER + '/taxons?include=image&roots=true').then(
+        function(response) {
+          console.log('resp', response)
+          return response.json()
+        }
+      ).then(
+        function(json) {
+          console.log('json', json)
+          this.categories = R.compose(
+            R.map(function(x) {
+              return R.assoc(
+                'imageUrl', 
+                R.path(['image', 'styles', 2, 'url'], x),
+                x
+              )
+            }),
+            R.sortBy(R.prop('name')),
+            R.prop('data'),
+            jsonapi.parse
+          )(json)
+        }.bind(this)
+      )
+    },
+    template: '#categories-template'
+  }
+</script>

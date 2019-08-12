@@ -1,0 +1,77 @@
+<script type="text/x-template" id="styles-template">
+  <div>
+    <style>
+      [v-cloak] {
+        display: none;
+      }
+    </style>
+
+    <div v-cloak id="styles">
+      <p><router-link to="/categories">Back</router-link></p>
+      <div v-for="(styles, subcategory) in stylesBySubcategory">
+        <h2>{{ subcategory }}</h2>
+        <div v-for="style in styles">
+          <h3>{{ style.name }}</h3>
+          <router-link :to="{ name: 'details', params: { productId: style.id } }">
+            <img v-bind:src="'http://localhost:3000' + getImageUrl(style) ">
+          </router-link>
+        </div>
+        <hr>
+      </div>
+    </div>
+  </div>
+</script>
+
+<script>
+  var Styles = {
+    data: function() {
+      return {
+        stylesBySubcategory: {}
+      }
+    },
+    methods: {
+      fetchData: function() {
+        var categoryId = this.$route.params.categoryId
+        if (!categoryId) {
+          return
+        }
+
+        var path = window.SPREE_SERVER + '/products?include=images,taxons&q[taxons]=' + categoryId
+        fetch(path).then(
+          function(response) {
+            return response.json()
+          }
+        ).then(
+          function(json) {
+            this.stylesBySubcategory = R.compose(
+              R.groupBy(function(x) {
+                return this.getSubcategory(x)
+              }.bind(this)),
+              R.prop('data'),
+              jsonapi.parse
+            )(json)
+          }.bind(this)
+        )
+      },
+      getSubcategory: function(style) {
+        return R.compose(
+          R.prop('name'),
+          R.nth(0),
+          R.reject(function(x) {
+            return x.is_root
+          })
+        )(style.taxons)
+      },
+      getImageUrl: function(style) {
+        return R.path([ 'images', 0, 'styles', 2, 'url' ], style)
+      }
+    },
+    watch: {
+      '$route': 'fetchData'
+    },
+    created: function() {
+      this.fetchData()
+    },
+    template: '#styles-template'
+  }
+</script>

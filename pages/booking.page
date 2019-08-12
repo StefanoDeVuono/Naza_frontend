@@ -1,0 +1,43 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/2.0.4/fetch.min.js" integrity="sha256-eOUokb/RjDw7kS+vDwbatNrLN8BIvvEhlLM5yogcDIo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.26.1/ramda.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jsonapi-parse@2.0.0/dist/jsonapi.min.js" integrity="sha256-oNbXw7GJs7jkCHu38PecJ3xHsZZacvkCOOigu/l4sqo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.1.2/vue-router.min.js" integrity="sha256-8pMASyWw9NDcTNlXYic8jMJ+tkvGB5b65l2t+EvKLWQ=" crossorigin="anonymous"></script>
+
+{@|apply booking-categories.block}
+{@|apply booking-styles.block}
+{@|apply booking-details.block}
+
+<div id="app">
+  <router-view></router-view>
+</div>
+
+<script>
+  window.SPREE_SERVER = 'http://localhost:3000/api/v2/storefront'
+
+  var routes = [
+    { 
+      path: '/categories', 
+      component: Categories,
+      name: 'categories'
+    },
+    { 
+      path: '/categories/:categoryId', 
+      component: Styles,
+      name: 'styles'
+    },
+    {
+      path: '/styles/:productId',
+      component: Details,
+      name: 'details'
+    }
+  ]
+
+  var router = new VueRouter({
+    routes: routes
+  })
+
+  new Vue({
+    router: router
+  }).$mount('#app')
+</script>

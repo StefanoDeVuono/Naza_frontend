@@ -1,0 +1,30 @@
+<script type="text/x-template" id="details-template">
+  <div>
+    <style>
+      [v-cloak] {
+        display: none;
+      }
+    </style>
+  </div>
+</script>
+
+<script>
+  var Details = {
+    data: function() {
+      return {
+      }
+    },
+    methods: {
+      fetchData: function() {
+
+      },
+    },
+    watch: {
+      '$route': 'fetchData'
+    },
+    created: function() {
+      this.fetchData()
+    },
+    template: '#details-template'
+  }
+</script>
