@@ -1,0 +1,17 @@
+<div>
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+  
+  <div v-cloak id="categories">
+    <div v-for="category in categories">
+      <h3>{{ category.name }}</h3>
+      <router-link :to="{ name: 'styles', params: { categoryId: category.id } }">
+        <img v-bind:src="window.CURL_ASSET_ROOT + getImageUrl(category)">
+      </router-link>
+      <hr>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,65 @@
+var Details = {
+  data: function() {
+    return {
+      product: undefined
+    }
+  },
+  props: ['categoryId'],
+  methods: {
+    getImageUrl: function(product) {
+      return R.path(['images', 0, 'styles', 3, 'url'], product)
+    },
+
+    getDuration: function(product) {
+      var duration = R.compose(
+        R.prop('value'),
+        R.nth(0),
+        R.filter(function(x) {
+          return x.name === 'Duration'
+        }),
+        R.prop('product_properties')
+      )(product)
+      var hours = duration / 60
+      var minutes = duration % 60
+
+      if (minutes > 0) {
+        if (hours === 1) {
+          return '1 hour ' + minutes + ' minutes'
+        } else {
+          return hours + ' hours ' + minutes + ' minutes'
+        }
+      }
+
+      if (hours === 1) {
+        return '1 hour'
+      } else {
+        return hours + ' hours'
+      }
+    },
+
+    fetchData: function() {
+      var productId = this.$route.params.productId
+      if (!productId) {
+        return
+      }
+
+      var path = window.SPREE_SERVER + '/products/' + productId + '?include=images,product_properties'
+      fetch(path).then(
+        function(response) {
+          return response.json()
+        }
+      ).then(
+        function(json) {
+          this.product = jsonapi.parse(json).data
+        }.bind(this)
+      )
+    },
+  },
+  watch: {
+    '$route': 'fetchData'
+  },
+  created: function() {
+    this.fetchData()
+  },
+  template: '#details-template'
+}

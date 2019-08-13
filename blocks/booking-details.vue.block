@@ -1,0 +1,20 @@
+<div>
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+
+  <div v-cloak>
+    <h1 v-if="product.name">{{ product.name }}</h1>
+    <img v-bind:src="window.CURL_ASSET_ROOT + getImageUrl(product) "> 
+    <ul>
+      <li><strong>Price</strong>: {{ product.display_price }}</li>
+      <li><strong>Duration</strong>: {{ getDuration(product) }}</li>
+    </ul>
+
+    <p>
+      <router-link :to="'/categories/' + $route.query.categoryId">Back</router-link>
+    </p>
+  </div>
+</div>
