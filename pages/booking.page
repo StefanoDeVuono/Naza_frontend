@@ -13,7 +13,7 @@
 </div>
 
 <script>
-  window.SPREE_SERVER = 'http://projectcurl.com/api/v2/storefront'
+  window.SPREE_SERVER = 'https://projectcurl-staging.herokuapp.com/api/v2/storefront'
 
   var routes = [
     { 
