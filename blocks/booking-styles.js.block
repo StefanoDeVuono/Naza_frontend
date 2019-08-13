@@ -30,10 +30,14 @@ var Styles = {
     },
     getSubcategory: function(style) {
       return R.compose(
+        function(x) {
+          console.log('subcategory is', x)
+          return x
+        },
         R.prop('name'),
         R.nth(0),
-        R.reject(function(x) {
-          return x.is_root
+        R.sortBy(function(x) {
+          return !x.is_root
         })
       )(style.taxons)
     },
