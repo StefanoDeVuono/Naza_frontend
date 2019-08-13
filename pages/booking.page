@@ -29,7 +29,8 @@
     {
       path: '/styles/:productId',
       component: Details,
-      name: 'details'
+      name: 'details',
+      props: true
     }
   ]
 

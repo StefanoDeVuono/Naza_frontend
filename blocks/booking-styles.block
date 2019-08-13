@@ -12,7 +12,7 @@
         <h2>{{ subcategory }}</h2>
         <div v-for="style in styles">
           <h3>{{ style.name }}</h3>
-          <router-link :to="{ name: 'details', params: { productId: style.id } }">
+          <router-link :to="{ name: 'details', params: { productId: style.id }, query: { categoryId: $route.params.categoryId } }">
             <img v-bind:src="'http://localhost:3000' + getImageUrl(style) ">
           </router-link>
         </div>
