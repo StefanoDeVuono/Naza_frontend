@@ -32,9 +32,9 @@ If this is your first time deploying to staging, you will need to add the instan
 
 When you are ready to deploy to staging, merge develop into staging and run:
 
-   git push staging head
+   git push staging staging:master
 
-This will update the staging Squarespace.
+This will update the staging Squarespace. You have to push to the remote master branch because Squarespace will only use whatever templates are in master.
 
 ### Deploying to production
 
