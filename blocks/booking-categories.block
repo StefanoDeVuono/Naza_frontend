@@ -10,7 +10,7 @@
       <div v-for="category in categories">
         <h3>{{ category.name }}</h3>
         <router-link :to="{ name: 'styles', params: { categoryId: category.id } }">
-          <img v-bind:src="'http://localhost:3000' + getImageUrl(category)">
+          <img v-bind:src="window.CURL_ASSET_ROOT + getImageUrl(category)">
         </router-link>
         <hr>
       </div>

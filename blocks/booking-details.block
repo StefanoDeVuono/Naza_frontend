@@ -8,7 +8,7 @@
 
     <div v-cloak>
       <h1 v-if="product.name">{{ product.name }}</h1>
-      <img v-bind:src="'http://localhost:3000' + getImageUrl(product) "> 
+      <img v-bind:src="window.CURL_ASSET_ROOT + getImageUrl(product) "> 
       <ul>
         <li><strong>Price</strong>: {{ product.display_price }}</li>
         <li><strong>Duration</strong>: {{ getDuration(product) }}</li>
