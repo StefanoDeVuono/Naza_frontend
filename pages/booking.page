@@ -14,6 +14,7 @@
 
 <script>
   window.SPREE_SERVER = 'https://projectcurl-staging.herokuapp.com/api/v2/storefront'
+  window.CURL_ASSET_ROOT = ''
 
   var routes = [
     { 
