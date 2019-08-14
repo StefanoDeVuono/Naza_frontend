@@ -31,7 +31,7 @@
 import { SPREE_SERVER, CURL_ASSET_ROOT } from '../constants'
 import 'whatwg-fetch'
 import { parse } from 'jsonapi-parse'
-import { groupBy, prop, compose, nth, sortby, path } from 'ramda'
+import { groupBy, prop, compose, nth, sortBy, path } from 'ramda'
 
 export default {
   data: () => {

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import fetchResponseJson from './categories.fetchResponse.json'
-import Categories from '../categories.vue'
+import fetchResponseJson from './styles.fetchResponse.json'
+import Styles from '../styles.vue'
 import { shallowMount, createLocalVue } from '@vue/test-utils'
 import flushPromises from 'flush-promises'
 
@@ -12,25 +12,33 @@ const mockFetchResponse = returnObj => {
   global.fetch = () => Promise.resolve(fetchResponse)
 }
 
-describe('Categories', () => {
+describe('Styles', () => {
   let oldFetch
   let wrapper
 
   beforeEach(() => {
     const localVue = createLocalVue()
-    localVue.use(VueRouter)
-    const router = new VueRouter()
+    // localVue.use(VueRouter)
+    // const router = new VueRouter()
 
     oldFetch = global.fetch
     mockFetchResponse()
 
-    wrapper = shallowMount(Categories, {
+    const mockRoute = {
+      params: { categoryId: 1 }
+    }
+
+    wrapper = shallowMount(Styles, {
       data: () => ({
-        categories: [],
+        stylesBySubcategory: {},
         CURL_ASSET_ROOT: 'something',
       }),
       localVue,
-      router,
+      stubs: ['router-link'],
+      mocks: {
+        $router: {},
+        $route: mockRoute
+      }
     })
   })
 
@@ -40,8 +48,8 @@ describe('Categories', () => {
 
   // this also tests that the taxon that correlates to the taxonomy is
   // stripped out
-  it('initializes the categories', async () => {
+  it('initializes the subcategories', async () => {
     await flushPromises()
-    expect(wrapper.vm.categories).toHaveLength(1)
+    expect(wrapper.vm.stylesBySubcategory).toHaveProperty('Cornrows')
   })
 })
