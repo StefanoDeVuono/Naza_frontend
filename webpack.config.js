@@ -1,5 +1,5 @@
-const path = require("path");
-const VueLoaderPlugin = require("vue-loader/lib/plugin");
+const path = require("path")
+const VueLoaderPlugin = require("vue-loader/lib/plugin")
 
 module.exports = {
   module: {
@@ -27,11 +27,12 @@ module.exports = {
       vue$: "vue/dist/vue.common.js"
     }
   },
-  mode: "development",
+  mode: process.env.NODE_ENV || "development",
   entry: "./src/main.js",
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "scripts")
   },
-  plugins: [new VueLoaderPlugin()]
-};
+  plugins: [new VueLoaderPlugin()],
+  watch: true
+}

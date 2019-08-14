@@ -43,7 +43,7 @@ import * as jsonapi from 'jsonapi-parse'
 import * as R from 'ramda'
 
 export default {
-  data: function() {
+  data: () => {
     return {
       CURL_ASSET_ROOT,
       product: undefined,
@@ -67,7 +67,7 @@ export default {
       var duration = R.compose(
         R.prop('value'),
         R.nth(0),
-        R.filter(function(x) {
+        R.filter(x => {
           return x.name === 'Duration'
         }),
         R.prop('product_properties')
@@ -96,33 +96,25 @@ export default {
         return
       }
 
-      var path =
-        SPREE_SERVER +
-        '/products/' +
-        productId +
-        '?include=images,option_types.option_values,product_properties'
+      var path = `${SPREE_SERVER}/products/${productId}?include=images,option_types.option_values,product_properties`
       fetch(path)
-        .then(function(response) {
+        .then(response => {
           return response.json()
         })
-        .then(
-          function(json) {
-            this.product = jsonapi.parse(json).data
-          }.bind(this)
-        )
+        .then(json => {
+          this.product = jsonapi.parse(json).data
+        })
     },
 
     fetchAddOns: function() {
-      var path = SPREE_SERVER + '/taxons/add-ons?include=products.images'
+      var path = `${SPREE_SERVER}/taxons/add-ons?include=products.images`
       fetch(path)
-        .then(function(response) {
+        .then(response => {
           return response.json()
         })
-        .then(
-          function(json) {
-            this.addOns = jsonapi.parse(json).data.products
-          }.bind(this)
-        )
+        .then(json => {
+          this.addOns = jsonapi.parse(json).data.products
+        })
     },
 
     fetchData: function() {

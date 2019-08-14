@@ -34,7 +34,7 @@ import * as jsonapi from 'jsonapi-parse'
 import * as R from 'ramda'
 
 export default {
-  data: function() {
+  data: () => {
     return {
       CURL_ASSET_ROOT,
       stylesBySubcategory: {},
@@ -47,33 +47,26 @@ export default {
         return
       }
 
-      var path =
-        SPREE_SERVER +
-        '/products?include=images,taxons&filter[taxons]=' +
-        categoryId
+      var path = `${SPREE_SERVER}/products?include=images,taxons&filter[taxons]=${categoryId}`
       fetch(path)
-        .then(function(response) {
+        .then(response => {
           return response.json()
         })
-        .then(
-          function(json) {
-            this.stylesBySubcategory = R.compose(
-              R.groupBy(
-                function(x) {
-                  return this.getSubcategory(x)
-                }.bind(this)
-              ),
-              R.prop('data'),
-              jsonapi.parse
-            )(json)
-          }.bind(this)
-        )
+        .then(json => {
+          this.stylesBySubcategory = R.compose(
+            R.groupBy(x => {
+              return this.getSubcategory(x)
+            }),
+            R.prop('data'),
+            jsonapi.parse
+          )(json)
+        })
     },
     getSubcategory: function(style) {
       return R.compose(
         R.prop('name'),
         R.nth(0),
-        R.sortBy(function(x) {
+        R.sortBy(x => {
           return !x.is_root
         })
       )(style.taxons)
