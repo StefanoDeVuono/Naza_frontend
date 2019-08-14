@@ -1,6 +1,6 @@
-import Categories from './booking-categories.vue'
-import Details from './booking-details.vue'
-import Styles from './booking-styles.vue'
+import Categories from './booking/categories.vue'
+import Details from './booking/details.vue'
+import Styles from './booking/styles.vue'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 

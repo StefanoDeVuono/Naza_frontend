@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import { SPREE_SERVER, CURL_ASSET_ROOT } from './constants'
+import { SPREE_SERVER, CURL_ASSET_ROOT } from '../constants'
 import 'whatwg-fetch'
 import * as jsonapi from 'jsonapi-parse'
 import * as R from 'ramda'

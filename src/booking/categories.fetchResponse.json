@@ -1,0 +1,129 @@
+{
+  "data": [
+    {
+      "id": "1",
+      "type": "taxon",
+      "attributes": {
+        "name": "Hair Styles",
+        "pretty_name": "Hair Styles",
+        "permalink": "hair-styles",
+        "seo_title": "Hair Styles",
+        "meta_title": null,
+        "meta_description": null,
+        "meta_keywords": null,
+        "left": 1,
+        "right": 2,
+        "position": 0,
+        "depth": 0,
+        "updated_at": "2019-08-13T20:35:17.313Z",
+        "is_root": true,
+        "is_child": false,
+        "is_leaf": true
+      },
+      "relationships": {
+        "parent": { "data": null },
+        "taxonomy": { "data": { "id": "1", "type": "taxonomy" } },
+        "children": { "data": [] },
+        "products": { "data": [] },
+        "image": { "data": null }
+      }
+    },
+    {
+      "id": "2",
+      "type": "taxon",
+      "attributes": {
+        "name": "Crochet Braids",
+        "pretty_name": "Crochet Braids",
+        "permalink": "crochet-braids",
+        "seo_title": "Crochet Braids",
+        "meta_title": null,
+        "meta_description": null,
+        "meta_keywords": null,
+        "left": 3,
+        "right": 10,
+        "position": 0,
+        "depth": 0,
+        "updated_at": "2019-08-13T23:07:19.909Z",
+        "is_root": true,
+        "is_child": false,
+        "is_leaf": false
+      },
+      "relationships": {
+        "parent": { "data": null },
+        "taxonomy": { "data": { "id": "1", "type": "taxonomy" } },
+        "children": {
+          "data": [
+            { "id": "3", "type": "taxon" },
+            { "id": "4", "type": "taxon" },
+            { "id": "5", "type": "taxon" }
+          ]
+        },
+        "products": {
+          "data": [
+            { "id": "10", "type": "product" },
+            { "id": "9", "type": "product" },
+            { "id": "8", "type": "product" },
+            { "id": "7", "type": "product" },
+            { "id": "6", "type": "product" },
+            { "id": "5", "type": "product" },
+            { "id": "4", "type": "product" },
+            { "id": "3", "type": "product" },
+            { "id": "2", "type": "product" },
+            { "id": "1", "type": "product" }
+          ]
+        },
+        "image": { "data": { "id": "34", "type": "taxon_image" } }
+      }
+    }
+  ],
+  "included": [
+    {
+      "id": "1",
+      "type": "taxonomy",
+      "attributes": { "name": "Hair Styles", "position": 1 }
+    },
+    {
+      "id": "34",
+      "type": "taxon_image",
+      "attributes": {
+        "viewable_type": "Spree::Taxon",
+        "viewable_id": 2,
+        "styles": [
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBKdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f8f6bf4ea8dea38bf64bf6f78c3860d7dd30c919/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lMTkRoNE5EZytCam9HUlZRPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--6c526e6335453ae1b12c1cec76e092ae660f63f1/Goddess_Locs.jpeg",
+            "width": "48",
+            "height": "48"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBKdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f8f6bf4ea8dea38bf64bf6f78c3860d7dd30c919/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTVRBd2VERXdNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--4fcf9c15e87600b986f46013093bef468325f574/Goddess_Locs.jpeg",
+            "width": "100",
+            "height": "100"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBKdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f8f6bf4ea8dea38bf64bf6f78c3860d7dd30c919/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTWpRd2VESTBNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--8ee0aa62ac866afdd71afe35c4cf7b866457a721/Goddess_Locs.jpeg",
+            "width": "240",
+            "height": "240"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBKdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f8f6bf4ea8dea38bf64bf6f78c3860d7dd30c919/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTmpBd2VEWXdNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--0ad03d61523648403b37e889f47a3d7b78145004/Goddess_Locs.jpeg",
+            "width": "600",
+            "height": "600"
+          }
+        ]
+      }
+    },
+    {
+      "id": "2",
+      "type": "taxonomy",
+      "attributes": { "name": "Add-ons", "position": 2 }
+    }
+  ],
+  "meta": { "count": 2, "total_count": 2, "total_pages": 1 },
+  "links": {
+    "self": "http://localhost:3000/api/v2/storefront/taxons?include=image,taxonomy\u0026roots=true",
+    "next": "http://localhost:3000/api/v2/storefront/taxons?include=image%2Ctaxonomy\u0026page=1",
+    "prev": "http://localhost:3000/api/v2/storefront/taxons?include=image%2Ctaxonomy\u0026page=1",
+    "last": "http://localhost:3000/api/v2/storefront/taxons?include=image%2Ctaxonomy\u0026page=1",
+    "first": "http://localhost:3000/api/v2/storefront/taxons?include=image%2Ctaxonomy\u0026page=1"
+  }
+}

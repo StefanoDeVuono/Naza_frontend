@@ -1,5 +1,5 @@
-const path = require("path")
-const VueLoaderPlugin = require("vue-loader/lib/plugin")
+const path = require('path')
+const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 module.exports = {
   module: {
@@ -7,32 +7,39 @@ module.exports = {
       {
         test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,
-        loader: "babel-loader",
+        loader: 'babel-loader',
         options: {
-          presets: ["@babel/preset-env"]
-        }
+          presets: ['@babel/preset-env'],
+        },
       },
       {
         test: /\.vue$/,
-        loader: "vue-loader"
+        loader: 'vue-loader',
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
-      }
-    ]
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.json$/,
+        loader: 'json-loader',
+      },
+    ],
   },
   resolve: {
     alias: {
-      vue$: "vue/dist/vue.common.js"
-    }
+      vue$: 'vue/dist/vue.common.js',
+    },
   },
-  mode: process.env.NODE_ENV || "development",
-  entry: "./src/main.js",
+  mode: process.env.NODE_ENV || 'development',
+  entry: './src/main.js',
   output: {
-    filename: "bundle.js",
-    path: path.resolve(__dirname, "scripts")
+    filename: 'bundle.js',
+    path: path.resolve(__dirname, 'scripts'),
+  },
+  optimization: {
+    usedExports: true,
   },
   plugins: [new VueLoaderPlugin()],
-  watch: true
+  watch: true,
 }
