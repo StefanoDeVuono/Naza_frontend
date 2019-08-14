@@ -50,6 +50,6 @@ This will update the production Squarespace.
 
 You can always reset the develop and staging branches if things go awry, but you need to remember to update the reference to the Heroku app. The file you need to change is:
 
-pages/booking.page
+src/constants.js
 
 Make sure `SPREE_SERVER` points to the correct server based on whatever branch you're in.

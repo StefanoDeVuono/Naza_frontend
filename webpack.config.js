@@ -31,7 +31,6 @@ module.exports = {
       vue$: 'vue/dist/vue.common.js',
     },
   },
-  mode: process.env.NODE_ENV || 'development',
   entry: './src/main.js',
   output: {
     filename: 'bundle.js',
@@ -41,5 +40,5 @@ module.exports = {
     usedExports: true,
   },
   plugins: [new VueLoaderPlugin()],
-  watch: true,
 }
+
