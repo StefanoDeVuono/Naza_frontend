@@ -30,8 +30,8 @@
 <script>
 import { SPREE_SERVER, CURL_ASSET_ROOT } from '../constants'
 import 'whatwg-fetch'
-import * as jsonapi from 'jsonapi-parse'
-import * as R from 'ramda'
+import { parse } from 'jsonapi-parse'
+import { groupBy, prop, compose, nth, sortby, path } from 'ramda'
 
 export default {
   data: () => {
@@ -53,26 +53,26 @@ export default {
           return response.json()
         })
         .then(json => {
-          this.stylesBySubcategory = R.compose(
-            R.groupBy(x => {
+          this.stylesBySubcategory = compose(
+            groupBy(x => {
               return this.getSubcategory(x)
             }),
-            R.prop('data'),
-            jsonapi.parse
+            prop('data'),
+            parse
           )(json)
         })
     },
     getSubcategory: function(style) {
-      return R.compose(
-        R.prop('name'),
-        R.nth(0),
-        R.sortBy(x => {
+      return compose(
+        prop('name'),
+        nth(0),
+        sortBy(x => {
           return !x.is_root
         })
       )(style.taxons)
     },
     getImageUrl: function(style) {
-      return R.path(['images', 0, 'styles', 2, 'url'], style)
+      return path(['images', 0, 'styles', 2, 'url'], style)
     },
   },
   watch: {

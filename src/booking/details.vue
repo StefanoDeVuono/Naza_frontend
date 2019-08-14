@@ -39,8 +39,8 @@
 <script>
 import { SPREE_SERVER, CURL_ASSET_ROOT } from '../constants'
 import 'whatwg-fetch'
-import * as jsonapi from 'jsonapi-parse'
-import * as R from 'ramda'
+import { parse } from 'jsonapi-parse'
+import { path, compose, prop, nth, filter } from 'ramda'
 
 export default {
   data: () => {
@@ -56,21 +56,21 @@ export default {
   props: ['categoryId'],
   methods: {
     getImageUrl: function(product) {
-      return R.path(['images', 0, 'styles', 3, 'url'], product)
+      return path(['images', 0, 'styles', 3, 'url'], product)
     },
 
     getSmallImageUrl: function(product) {
-      return R.path(['images', 0, 'styles', 2, 'url'], product)
+      return path(['images', 0, 'styles', 2, 'url'], product)
     },
 
     getDuration: function(product) {
-      var duration = R.compose(
-        R.prop('value'),
-        R.nth(0),
-        R.filter(x => {
+      var duration = compose(
+        prop('value'),
+        nth(0),
+        filter(x => {
           return x.name === 'Duration'
         }),
-        R.prop('product_properties')
+        prop('product_properties')
       )(product)
       var hours = duration / 60
       var minutes = duration % 60
@@ -102,7 +102,7 @@ export default {
           return response.json()
         })
         .then(json => {
-          this.product = jsonapi.parse(json).data
+          this.product = parse(json).data
         })
     },
 
@@ -113,7 +113,7 @@ export default {
           return response.json()
         })
         .then(json => {
-          this.addOns = jsonapi.parse(json).data.products
+          this.addOns = parse(json).data.products
         })
     },
 

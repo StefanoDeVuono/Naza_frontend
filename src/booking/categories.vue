@@ -17,7 +17,7 @@
 import { SPREE_SERVER, CURL_ASSET_ROOT } from '../constants'
 import 'whatwg-fetch'
 import * as jsonapi from 'jsonapi-parse'
-import * as R from 'ramda'
+import { sortBy, reject, prop, compose, path } from 'ramda'
 
 export default {
   data: () => {
@@ -25,7 +25,7 @@ export default {
   },
   methods: {
     getImageUrl: function(category) {
-      return R.path(['image', 'styles', 2, 'url'], category)
+      return path(['image', 'styles', 2, 'url'], category)
     },
     fetchData: function() {
       fetch(`${SPREE_SERVER}/taxons?include=image,taxonomy&roots=true`)
@@ -33,12 +33,12 @@ export default {
           return response.json()
         })
         .then(json => {
-          this.categories = R.compose(
-            R.sortBy(R.prop('name')),
-            R.reject(x => {
+          this.categories = compose(
+            sortBy(prop('name')),
+            reject(x => {
               return x.taxonomy.name === x.name
             }),
-            R.prop('data'),
+            prop('data'),
             jsonapi.parse
           )(json)
         })
