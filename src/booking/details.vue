@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import { SPREE_SERVER, CURL_ASSET_ROOT } from '../constants'
+import { getSpreeServer, getCurlAssetRoot } from '../constants'
 import 'whatwg-fetch'
 import { parse } from 'jsonapi-parse'
 import { path, compose, prop, nth, filter } from 'ramda'
@@ -45,7 +45,7 @@ import { path, compose, prop, nth, filter } from 'ramda'
 export default {
   data: () => {
     return {
-      CURL_ASSET_ROOT,
+      CURL_ASSET_ROOT: getCurlAssetRoot(),
       product: undefined,
       addOns: undefined,
       state: {
@@ -98,7 +98,7 @@ export default {
         return
       }
 
-      var path = `${SPREE_SERVER}/products/${productId}?include=images,option_types.option_values,product_properties`
+      var path = `${getSpreeServer()}/products/${productId}?include=images,option_types.option_values,product_properties`
       fetch(path)
         .then(response => {
           return response.json()
@@ -109,7 +109,7 @@ export default {
     },
 
     fetchAddOns: function() {
-      var path = `${SPREE_SERVER}/taxons/add-ons?include=products.images`
+      var path = `${getSpreeServer()}/taxons/add-ons?include=products.images`
       fetch(path)
         .then(response => {
           return response.json()

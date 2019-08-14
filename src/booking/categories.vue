@@ -14,21 +14,21 @@
 </template>
 
 <script>
-import { SPREE_SERVER, CURL_ASSET_ROOT } from '../constants'
+import { getSpreeServer, getCurlAssetRoot } from '../constants'
 import 'whatwg-fetch'
 import { parse } from 'jsonapi-parse'
 import { sortBy, reject, prop, compose, path } from 'ramda'
 
 export default {
   data: () => {
-    return { categories: [], CURL_ASSET_ROOT }
+    return { categories: [], CURL_ASSET_ROOT: getCurlAssetRoot() }
   },
   methods: {
     getImageUrl: function(category) {
       return path(['image', 'styles', 2, 'url'], category)
     },
     fetchData: function() {
-      fetch(`${SPREE_SERVER}/taxons?include=image,taxonomy&roots=true`)
+      fetch(`${getSpreeServer()}/taxons?include=image,taxonomy&roots=true`)
         .then(response => {
           return response.json()
         })
