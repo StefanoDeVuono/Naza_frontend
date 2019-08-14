@@ -1,13 +1,21 @@
 var Details = {
   data: function() {
     return {
-      product: undefined
+      product: undefined,
+      addOns: undefined,
+      state: {
+        selectedAddOns: new Set()
+      }
     }
   },
   props: ['categoryId'],
   methods: {
     getImageUrl: function(product) {
       return R.path(['images', 0, 'styles', 3, 'url'], product)
+    },
+
+    getSmallImageUrl: function(product) {
+      return R.path(['images', 0, 'styles', 2, 'url'], product)
     },
 
     getDuration: function(product) {
@@ -37,13 +45,13 @@ var Details = {
       }
     },
 
-    fetchData: function() {
+    fetchStyles: function() {
       var productId = this.$route.params.productId
       if (!productId) {
         return
       }
 
-      var path = window.SPREE_SERVER + '/products/' + productId + '?include=images,product_properties'
+      var path = window.SPREE_SERVER + '/products/' + productId + '?include=images,option_types.option_values,product_properties'
       fetch(path).then(
         function(response) {
           return response.json()
@@ -53,6 +61,24 @@ var Details = {
           this.product = jsonapi.parse(json).data
         }.bind(this)
       )
+    },
+
+    fetchAddOns: function() {
+      var path = window.SPREE_SERVER + '/taxons/add-ons?include=products.images'
+      fetch(path).then(
+        function(response) {
+          return response.json()
+        }
+      ).then(
+        function(json) {
+          this.addOns = jsonapi.parse(json).data.products
+        }.bind(this)
+      )
+    },
+
+    fetchData: function() {
+      this.fetchStyles()
+      this.fetchAddOns()
     },
   },
   watch: {

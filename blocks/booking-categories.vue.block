@@ -8,7 +8,7 @@
   <div v-cloak id="categories">
     <div v-for="category in categories">
       <h3>{{ category.name }}</h3>
-      <router-link :to="{ name: 'styles', params: { categoryId: category.id } }">
+      <router-link @click.native="$event.stopImmediatePropagation()" :to="{ name: 'styles', params: { categoryId: category.id } }">
         <img v-bind:src="window.CURL_ASSET_ROOT + getImageUrl(category)">
       </router-link>
       <hr>
