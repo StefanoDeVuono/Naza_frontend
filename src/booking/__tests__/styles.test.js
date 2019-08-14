@@ -25,7 +25,7 @@ describe('Styles', () => {
     mockFetchResponse()
 
     const mockRoute = {
-      params: { categoryId: 1 }
+      params: { categoryId: 1 },
     }
 
     wrapper = shallowMount(Styles, {
@@ -37,8 +37,8 @@ describe('Styles', () => {
       stubs: ['router-link'],
       mocks: {
         $router: {},
-        $route: mockRoute
-      }
+        $route: mockRoute,
+      },
     })
   })
 
@@ -46,10 +46,9 @@ describe('Styles', () => {
     global.fetch = oldFetch
   })
 
-  // this also tests that the taxon that correlates to the taxonomy is
-  // stripped out
   it('initializes the subcategories', async () => {
     await flushPromises()
     expect(wrapper.vm.stylesBySubcategory).toHaveProperty('Cornrows')
+    expect(wrapper.vm.stylesBySubcategory.Cornrows).toHaveLength(2)
   })
 })

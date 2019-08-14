@@ -16,7 +16,7 @@
 <script>
 import { SPREE_SERVER, CURL_ASSET_ROOT } from '../constants'
 import 'whatwg-fetch'
-import * as jsonapi from 'jsonapi-parse'
+import { parse } from 'jsonapi-parse'
 import { sortBy, reject, prop, compose, path } from 'ramda'
 
 export default {
@@ -39,7 +39,7 @@ export default {
               return x.taxonomy.name === x.name
             }),
             prop('data'),
-            jsonapi.parse
+            parse
           )(json)
         })
     },
