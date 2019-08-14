@@ -72,11 +72,13 @@ export default {
         }),
         prop('product_properties')
       )(product)
-      var hours = duration / 60
+      var hours = Math.floor(duration / 60)
       var minutes = duration % 60
 
       if (minutes > 0) {
-        if (hours === 1) {
+        if (hours === 0) {
+          return minutes + ' minutes'
+        } else if (hours === 1) {
           return '1 hour ' + minutes + ' minutes'
         } else {
           return hours + ' hours ' + minutes + ' minutes'
