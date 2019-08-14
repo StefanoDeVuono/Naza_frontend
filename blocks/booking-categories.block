@@ -1,7 +1,0 @@
-<script type="text/x-template" id="categories-template">
-  {@|apply booking-categories.vue.block}
-</script>
-
-<script>
-  {@|apply booking-categories.js.block}
-</script>

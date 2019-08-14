@@ -1,0 +1,99 @@
+<template>
+  <div v-cloak id="styles">
+    <p>
+      <router-link
+        @click.native="$event.stopImmediatePropagation()"
+        to="/categories"
+        >Back</router-link
+      >
+    </p>
+    <div v-for="(styles, subcategory) in stylesBySubcategory">
+      <h2>{{ subcategory }}</h2>
+      <div v-for="style in styles">
+        <h3>{{ style.name }}</h3>
+        <router-link
+          @click.native="$event.stopImmediatePropagation()"
+          :to="{
+            name: 'details',
+            params: { productId: style.id },
+            query: { categoryId: $route.params.categoryId },
+          }"
+        >
+          <img v-bind:src="CURL_ASSET_ROOT + getImageUrl(style)" />
+        </router-link>
+      </div>
+      <hr />
+    </div>
+  </div>
+</template>
+
+<script>
+import { SPREE_SERVER, CURL_ASSET_ROOT } from './constants'
+import 'whatwg-fetch'
+import * as jsonapi from 'jsonapi-parse'
+import * as R from 'ramda'
+
+export default {
+  data: function() {
+    return {
+      CURL_ASSET_ROOT,
+      stylesBySubcategory: {},
+    }
+  },
+  methods: {
+    fetchData: function() {
+      var categoryId = this.$route.params.categoryId
+      if (!categoryId) {
+        return
+      }
+
+      var path =
+        SPREE_SERVER +
+        '/products?include=images,taxons&filter[taxons]=' +
+        categoryId
+      fetch(path)
+        .then(function(response) {
+          return response.json()
+        })
+        .then(
+          function(json) {
+            this.stylesBySubcategory = R.compose(
+              R.groupBy(
+                function(x) {
+                  return this.getSubcategory(x)
+                }.bind(this)
+              ),
+              R.prop('data'),
+              jsonapi.parse
+            )(json)
+          }.bind(this)
+        )
+    },
+    getSubcategory: function(style) {
+      return R.compose(
+        R.prop('name'),
+        R.nth(0),
+        R.sortBy(function(x) {
+          return !x.is_root
+        })
+      )(style.taxons)
+    },
+    getImageUrl: function(style) {
+      return R.path(['images', 0, 'styles', 2, 'url'], style)
+    },
+  },
+  watch: {
+    $route: 'fetchData',
+  },
+  created: function() {
+    this.fetchData()
+  },
+  template: '#styles-template',
+}
+</script>
+
+<style>
+[v-cloak] {
+  display: none;
+}
+</style>
