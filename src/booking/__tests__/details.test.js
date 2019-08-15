@@ -8,14 +8,14 @@ import flushPromises from 'flush-promises'
 
 const mockFetchResponse = returnObj => {
   const productFetchResponse = {
-    json: jest.fn(() => Promise.resolve(productFetchResponseJson))
+    json: jest.fn(() => Promise.resolve(productFetchResponseJson)),
   }
 
   const addOnsFetchResponse = {
-    json: jest.fn(() => Promise.resolve(addOnsFetchResponseJson))
+    json: jest.fn(() => Promise.resolve(addOnsFetchResponseJson)),
   }
 
-  global.fetch = (url) => {
+  global.fetch = url => {
     if (url.match(/taxons/)) {
       return Promise.resolve(addOnsFetchResponse)
     } else {
@@ -66,14 +66,14 @@ describe('Details', () => {
   })
 
   describe('.getDuration', () => {
-    const buildProduct = (minutes) => {
+    const buildProduct = minutes => {
       return {
         product_properties: [
           {
             name: 'Duration',
-            value: minutes
-          }
-        ]
+            value: minutes,
+          },
+        ],
       }
     }
 
@@ -90,7 +90,9 @@ describe('Details', () => {
     })
 
     it('transforms 150 minutes to 2 hours 30 minutes', () => {
-      expect(wrapper.vm.getDuration(buildProduct(150))).toBe('2 hours 30 minutes')
+      expect(wrapper.vm.getDuration(buildProduct(150))).toBe(
+        '2 hours 30 minutes'
+      )
     })
   })
 })

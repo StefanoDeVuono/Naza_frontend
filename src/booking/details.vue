@@ -1,7 +1,10 @@
 <template>
   <div v-cloak v-if="product">
     <h1>{{ product.name }}</h1>
-    <img v-bind:src="CURL_ASSET_ROOT + getImageUrl(product)" />
+    <img
+      :data-url="CURL_ASSET_ROOT + getImageUrl(product)"
+      v-bind:src="CURL_ASSET_ROOT + getImageUrl(product)"
+    />
     <ul>
       <li><strong>Price</strong>: {{ product.display_price }}</li>
       <li><strong>Duration</strong>: {{ getDuration(product) }}</li>
@@ -22,7 +25,10 @@
 
       <div v-for="addOn in addOns">
         <h3>{{ addOn.name }}</h3>
-        <img v-bind:src="CURL_ASSET_ROOT + getSmallImageUrl(addOn)" />
+        <img
+          :data-url="CURL_ASSET_ROOT + getSmallImageUrl(addOn)"
+          v-bind:src="CURL_ASSET_ROOT + getSmallImageUrl(addOn)"
+        />
       </div>
     </div>
 

@@ -8,14 +8,14 @@ export const isProduction = () => {
 
 export const getSpreeServer = () => {
   if (isStaging()) {
-    return 'https://projectcurl-staging.herokuapp.com/api/v2/storefront'
+    return `${getCurlAssetRoot()}/api/v2/storefront`
   }
 
   if (isProduction()) {
-    return 'https://projectcurl.herokuapp.com/api/v2/storefront'
+    return `${getCurlAssetRoot()}/api/v2/storefront`
   }
 
-  return 'http://localhost:3000/api/v2/storefront'
+  return `${getCurlAssetRoot()}/api/v2/storefront`
 }
 
 export const getCurlAssetRoot = () => {
@@ -26,6 +26,6 @@ export const getCurlAssetRoot = () => {
   if (isProduction()) {
     return 'https://projectcurl.herokuapp.com'
   }
-  
+
   return 'http://localhost:3000'
 }

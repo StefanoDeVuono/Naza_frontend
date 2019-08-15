@@ -19,7 +19,10 @@
             query: { categoryId: $route.params.categoryId },
           }"
         >
-          <img v-bind:src="CURL_ASSET_ROOT + getImageUrl(style)" />
+          <img
+            :data-url="CURL_ASSET_ROOT + getImageUrl(style)"
+            v-bind:src="CURL_ASSET_ROOT + getImageUrl(style)"
+          />
         </router-link>
       </div>
       <hr />

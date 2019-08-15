@@ -6,7 +6,10 @@
         @click.native="$event.stopImmediatePropagation()"
         :to="{ name: 'styles', params: { categoryId: category.id } }"
       >
-        <img v-bind:src="CURL_ASSET_ROOT + getImageUrl(category)" />
+        <img
+          :data-src="CURL_ASSET_ROOT + getImageUrl(category)"
+          v-bind:src="CURL_ASSET_ROOT + getImageUrl(category)"
+        />
       </router-link>
       <hr />
     </div>
