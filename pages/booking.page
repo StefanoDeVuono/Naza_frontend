@@ -2,4 +2,4 @@
   <router-view></router-view>
 </div>
 
-<squarespace:script src="bundle.js" combo="true" />
+<script src="scripts/bundle.js"></script>
