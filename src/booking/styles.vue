@@ -1,46 +1,59 @@
 <template>
-  <div v-cloak id="styles">
-    <p>
-      <router-link
-        @click.native="$event.stopImmediatePropagation()"
-        to="/categories"
-        >Back</router-link
-      >
-    </p>
-    <div v-for="(styles, subcategory) in stylesBySubcategory">
-      <h2>{{ subcategory }}</h2>
-      <div v-for="style in styles">
-        <h3>{{ style.name }}</h3>
-        <router-link
-          @click.native="$event.stopImmediatePropagation()"
-          :to="{
-            name: 'details',
-            params: { productId: style.id },
-            query: { categoryId: $route.params.categoryId },
-          }"
-        >
-          <img
-            :data-url="CURL_ASSET_ROOT + getImageUrl(style)"
-            v-bind:src="CURL_ASSET_ROOT + getImageUrl(style)"
-          />
-        </router-link>
+  <div>
+    <Header :showBackArrow="true" :totalCost="totalCost" :totalDuration="totalDuration" />
+
+    <Content :progress-step="2">
+      <div v-for="(styles, subcategory) in stylesBySubcategory">
+        <h2>{{ subcategory }}</h2>
+        <div v-for="style in styles">
+          <h3>{{ style.name }} - {{ style.display_price }}</h3>
+          <router-link
+            @click.native="$event.stopImmediatePropagation()"
+            :to="{
+              name: 'details',
+              params: { productId: style.id },
+              query: { categoryId: $route.params.categoryId },
+            }"
+          >
+            <img
+              :data-url="CURL_ASSET_ROOT + getImageUrl(style)"
+              v-bind:src="CURL_ASSET_ROOT + getImageUrl(style)"
+            />
+          </router-link>
+        </div>
+        <hr />
       </div>
-      <hr />
-    </div>
+    </Content>
   </div>
 </template>
 
 <script>
+import Header from './header.vue'
+import Content from './content.vue'
 import { getSpreeServer, getCurlAssetRoot } from '../constants'
 import 'whatwg-fetch'
 import { parse } from 'jsonapi-parse'
-import { groupBy, prop, compose, nth, sortBy, path } from 'ramda'
+import {
+  groupBy,
+  prop,
+  propEq,
+  compose,
+  nth,
+  find,
+  sortBy,
+  path,
+  values,
+  map,
+  median,
+} from 'ramda'
 
 export default {
   data: () => {
     return {
       CURL_ASSET_ROOT: getCurlAssetRoot(),
       stylesBySubcategory: {},
+      totalCost: 0,
+      totalDuration: 0,
     }
   },
   methods: {
@@ -50,7 +63,7 @@ export default {
         return
       }
 
-      var path = `${getSpreeServer()}/products?include=images,taxons&filter[taxons]=${categoryId}`
+      var path = `${getSpreeServer()}/products?include=images,taxons,product_properties&filter[taxons]=${categoryId}`
       fetch(path)
         .then(response => {
           return response.json()
@@ -63,6 +76,21 @@ export default {
             prop('data'),
             parse
           )(json)
+
+          this.totalCost = compose(
+            median,
+            map(x => parseInt(x.price)),
+            nth(0),
+            values
+          )(this.stylesBySubcategory)
+
+          this.totalDuration = compose(
+            median,
+            map(x => parseInt(x.value)),
+            map(x => find(propEq('name', 'Duration'))(x.product_properties)),
+            nth(0),
+            values
+          )(this.stylesBySubcategory)
         })
     },
     getSubcategory: function(style) {
@@ -83,6 +111,10 @@ export default {
   },
   created: function() {
     this.fetchData()
+  },
+  components: {
+    Header,
+    Content,
   },
 }
 </script>
