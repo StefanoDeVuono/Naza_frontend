@@ -42,17 +42,17 @@ export default {
       return path(['image', 'styles', 2, 'url'], category)
     },
     fetchData: function() {
-      fetch(`${getSpreeServer()}/taxons?include=image,taxonomy&roots=true`)
+      fetch(`${getSpreeServer()}/taxons/hair-styles?include=children.image,children.taxonomy`)
         .then(response => {
           return response.json()
         })
         .then(json => {
           this.categories = compose(
-            sortBy(prop('name')),
+            sortBy(prop('position')),
             reject(x => {
               return x.taxonomy.name === x.name
             }),
-            prop('data'),
+            path(['data', 'children']),
             parse
           )(json)
         })
