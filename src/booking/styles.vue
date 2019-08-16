@@ -21,7 +21,6 @@
             />
           </router-link>
         </div>
-        <hr />
       </div>
     </Content>
   </div>
