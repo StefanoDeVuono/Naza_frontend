@@ -1,26 +1,37 @@
 <template>
-  <div v-cloak id="categories">
-    <div v-for="category in categories">
-      <h3>{{ category.name }}</h3>
-      <router-link
-        @click.native="$event.stopImmediatePropagation()"
-        :to="{ name: 'styles', params: { categoryId: category.id } }"
-      >
-        <img
-          :data-src="CURL_ASSET_ROOT + getImageUrl(category)"
-          v-bind:src="CURL_ASSET_ROOT + getImageUrl(category)"
-        />
-      </router-link>
-      <hr />
-    </div>
+  <div>
+    <Header />
+    <Content progress-step="1">
+      <div v-cloak id="categories">
+        <div class="cta">
+          <h2>What&apos;s Your Style?</h2>
+          <p>Choose your style and customize it in the following steps</p>
+        </div>
+
+        <div class="image-container" v-for="category in categories">
+          <router-link
+            @click.native="$event.stopImmediatePropagation()"
+            :to="{ name: 'styles', params: { categoryId: category.id } }"
+          >
+            <img
+              :alt="category.name"
+              :data-src="CURL_ASSET_ROOT + getImageUrl(category)"
+              v-bind:src="CURL_ASSET_ROOT + getImageUrl(category)"
+            />
+          </router-link>
+        </div>
+      </div>
+    </Content>
   </div>
 </template>
 
 <script>
+import Header from './header.vue'
 import { getSpreeServer, getCurlAssetRoot } from '../constants'
 import 'whatwg-fetch'
 import { parse } from 'jsonapi-parse'
 import { sortBy, reject, prop, compose, path } from 'ramda'
+import Content from './content.vue'
 
 export default {
   data: () => {
@@ -50,12 +61,41 @@ export default {
   created: function() {
     this.fetchData()
   },
-  template: '#categories-template',
+  components: {
+    Header,
+    Content,
+  }
 }
 </script>
 
 <style>
 [v-cloak] {
   display: none;
+}
+
+.cta {
+  text-align: center;
+  margin-bottom: 40px;
+  line-height: 24px;
+  color: #1c3042;
+}
+
+#categories {
+  margin-bottom: 100px;
+}
+
+.image-container {
+  line-height: 0;
+  margin-bottom: 4px;
+}
+
+a {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  width: 100%;
+  height: auto;
 }
 </style>

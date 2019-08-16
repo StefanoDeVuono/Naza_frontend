@@ -135,8 +135,7 @@ export default {
   },
   created: function() {
     this.fetchData()
-  },
-  template: '#details-template',
+  }
 }
 </script>
 

@@ -84,7 +84,6 @@ export default {
   created: function() {
     this.fetchData()
   },
-  template: '#styles-template',
 }
 </script>
 
