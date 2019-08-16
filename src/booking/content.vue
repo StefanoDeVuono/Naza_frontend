@@ -46,6 +46,8 @@ export default {
   }
 
   .v-stepper {
+    margin-right: calc(-25% + 35px);
+
     .v-step {
       margin-right: 0;
 
