@@ -60,6 +60,7 @@ export default {
     li {
       list-style-type: none;
       font-size: 14px;
+      line-height: 1.7em;
     }
   }
 </style>

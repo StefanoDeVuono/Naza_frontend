@@ -8,7 +8,7 @@
           <p>Choose your style and customize it in the following steps</p>
         </div>
 
-        <div v-for="category in categories">
+        <div class="image-container" v-for="category in categories">
           <router-link
             @click.native="$event.stopImmediatePropagation()"
             :to="{ name: 'styles', params: { categoryId: category.id } }"
@@ -76,6 +76,22 @@ export default {
 .cta {
   text-align: center;
   margin-bottom: 40px;
+  line-height: 24px;
+  color: #1c3042;
+}
+
+#categories {
+  margin-bottom: 100px;
+}
+
+.image-container {
+  line-height: 0;
+  margin-bottom: 4px;
+}
+
+a {
+  margin: 0;
+  padding: 0;
 }
 
 img {

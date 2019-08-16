@@ -23,6 +23,7 @@ export default {
     background-color: #bc5940;
     color: white;
     text-align: center;
+    line-height: 20px;
 
     a {
       text-decoration: underline;
