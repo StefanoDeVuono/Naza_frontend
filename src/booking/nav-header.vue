@@ -18,14 +18,14 @@
 </template>
 
 <script>
-import 'vue-material-design-icons/styles.css'
+// import 'vue-material-design-icons/styles.css'
 import KeyboardBackspaceIcon from 'vue-material-design-icons/KeyboardBackspace.vue'
 
 export default {
   props: {
     totalCost: Number,
     totalDuration: Number,
-    showBackArrow: Boolean
+    showBackArrow: Boolean,
   },
 
   computed: {
@@ -55,7 +55,7 @@ export default {
   methods: {
     goBack: function() {
       this.$router.go(-1)
-    }
+    },
   },
 
   components: {

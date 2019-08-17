@@ -1,6 +1,10 @@
 <template>
   <div>
-    <Header :showBackArrow="true" :totalCost="totalCost" :totalDuration="totalDuration" />
+    <Header
+      :showBackArrow="true"
+      :totalCost="totalCost"
+      :totalDuration="totalDuration"
+    />
 
     <Content :progress-step="2">
       <div v-for="(styles, subcategory) in stylesBySubcategory">
@@ -45,6 +49,8 @@ import {
   map,
   median,
 } from 'ramda'
+
+// TODO: update json files
 
 export default {
   data: () => {

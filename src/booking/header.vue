@@ -1,7 +1,11 @@
 <template>
   <div>
     <div class="booking-header">
-      <NavHeader :totalCost="totalCost" :totalDuration="totalDuration" :showBackArrow="showBackArrow" />
+      <NavHeader
+        :totalCost="totalCost"
+        :totalDuration="totalDuration"
+        :showBackArrow="showBackArrow"
+      />
 
       <h1>Our Services</h1>
       <div class="desc">
@@ -22,7 +26,7 @@ export default {
   props: {
     totalCost: Number,
     totalDuration: Number,
-    showBackArrow: Boolean
+    showBackArrow: Boolean,
   },
   components: {
     NavHeader,
