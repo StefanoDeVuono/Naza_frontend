@@ -7,11 +7,13 @@
     <div class="stats">
       <div id="total-cost">
         <span>Total</span>:
-        <span id="total-cost-value">{{ formattedCost }}</span>
+        <span id="total-cost-value">{{ formattedCost(totalCost) }}</span>
       </div>
       <div id="total-duration">
         <span>Duration</span>:
-        <span id="total-duration-value">{{ formattedHours }}</span>
+        <span id="total-duration-value">{{
+          formattedHours(totalDuration)
+        }}</span>
       </div>
     </div>
   </div>
@@ -20,6 +22,7 @@
 <script>
 // import 'vue-material-design-icons/styles.css'
 import KeyboardBackspaceIcon from 'vue-material-design-icons/KeyboardBackspace.vue'
+import { formattedCost, formattedHours } from 'common/utils'
 
 export default {
   props: {
@@ -28,34 +31,12 @@ export default {
     showBackArrow: Boolean,
   },
 
-  computed: {
-    formattedCost: function() {
-      if (global.Intl) {
-        const formatter = new global.Intl.NumberFormat('en-US', {
-          style: 'currency',
-          currency: 'USD',
-        })
-
-        return formatter.format(this.totalCost)
-      } else {
-        return `$${this.totalCost}`
-      }
-    },
-
-    formattedHours: function() {
-      if (this.totalDuration <= 60) {
-        return '1 HR'
-      } else {
-        const hours = Math.round(this.totalDuration / 60)
-        return `${hours} HRS`
-      }
-    },
-  },
-
   methods: {
     goBack: function() {
       this.$router.go(-1)
     },
+    formattedHours,
+    formattedCost
   },
 
   components: {

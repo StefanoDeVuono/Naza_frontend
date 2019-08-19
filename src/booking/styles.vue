@@ -10,10 +10,13 @@
       <div>
         <h2 class="cta">Be More Specific...</h2>
 
-        <p class="cta">Because the lovely little flower is free down to its root, and in that freedom bold.</p>
+        <p class="cta">
+          Because the lovely little flower is free down to its root, and in that
+          freedom bold.
+        </p>
       </div>
 
-      <div v-for="(styles, subcategory) in stylesBySubcategory">
+      <div class="category" v-for="(styles, subcategory) in stylesBySubcategory">
         <h2 class="subcategory">{{ subcategory }}</h2>
         <div class="option" v-for="style in styles">
           <router-link
@@ -28,13 +31,12 @@
               :data-url="CURL_ASSET_ROOT + getImageUrl(style)"
               :src="CURL_ASSET_ROOT + getImageUrl(style)"
             />
-            <div>
-              <h2 class="option">{{ style.name }}</h2>
-              <p class="option">{{ style.description }}</p>
-              <DurationAndCost />
-            </div>
-
           </router-link>
+          <div>
+            <h2 class="option">{{ style.name }}</h2>
+            <p class="option">{{ style.description }}</p>
+            <DurationAndCost :duration="totalDuration" :cost="totalCost" />
+          </div>
         </div>
       </div>
     </Content>
@@ -113,7 +115,7 @@ export default {
     getSubcategory: function(style) {
       return compose(
         prop('name'),
-        nth(0),
+        nth(1),
         sortBy(x => {
           return !x.is_root
         })
@@ -132,12 +134,14 @@ export default {
   components: {
     Header,
     Content,
-    DurationAndCost
+    DurationAndCost,
   },
 }
 </script>
 
-<style>
+<style lang="less">
+@import '../common/utils.less';
+
 [v-cloak] {
   display: none;
 }
@@ -154,12 +158,21 @@ p.cta {
   margin-bottom: 40px;
 }
 
+.category {
+  .ignore-parent-padding();
+  .ignore-parent-padding--add-padding(1);
+}
+
+.category:nth-child(odd) {
+  background-color: #f7f6f2;
+}
+
 h2.subcategory {
   text-align: center;
   font-size: 22px;
   line-height: 0.41;
   letter-spacing: 0.92px;
-  margin-bottom: 40px;
+  margin: 60px 0;
 }
 
 div.option {
@@ -180,6 +193,6 @@ p.option {
   font-size: 12px;
   line-height: 1;
   letter-spacing: 0.5px;
+  margin-bottom: 10px;
 }
-
 </style>

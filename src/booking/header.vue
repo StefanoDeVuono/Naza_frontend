@@ -13,7 +13,6 @@
         from my sight.
       </div>
     </div>
-
   </div>
 </template>
 
