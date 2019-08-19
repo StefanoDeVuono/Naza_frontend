@@ -1,6 +1,7 @@
 <template>
   <div>
     <Header :totalCost="totalCost" :totalDuration="totalDuration" />
+    <LoginCta />
     <Content :progress-step="1">
       <div v-cloak id="categories">
         <div class="cta">
@@ -32,6 +33,7 @@ import { getSpreeServer, getCurlAssetRoot } from '../constants'
 import 'whatwg-fetch'
 import { parse } from 'jsonapi-parse'
 import { sortBy, reject, prop, compose, path } from 'ramda'
+import LoginCta from './login-cta.vue'
 
 export default {
   data: () => {
@@ -71,6 +73,7 @@ export default {
   components: {
     Header,
     Content,
+    LoginCta,
   },
 }
 </script>

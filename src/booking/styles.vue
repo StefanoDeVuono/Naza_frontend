@@ -7,10 +7,15 @@
     />
 
     <Content :progress-step="2">
+      <div>
+        <h2 class="cta">Be More Specific...</h2>
+
+        <p class="cta">Because the lovely little flower is free down to its root, and in that freedom bold.</p>
+      </div>
+
       <div v-for="(styles, subcategory) in stylesBySubcategory">
-        <h2>{{ subcategory }}</h2>
-        <div v-for="style in styles">
-          <h3>{{ style.name }} - {{ style.display_price }}</h3>
+        <h2 class="subcategory">{{ subcategory }}</h2>
+        <div class="option" v-for="style in styles">
           <router-link
             @click.native="$event.stopImmediatePropagation()"
             :to="{
@@ -21,8 +26,14 @@
           >
             <img
               :data-url="CURL_ASSET_ROOT + getImageUrl(style)"
-              v-bind:src="CURL_ASSET_ROOT + getImageUrl(style)"
+              :src="CURL_ASSET_ROOT + getImageUrl(style)"
             />
+            <div>
+              <h2 class="option">{{ style.name }}</h2>
+              <p class="option">{{ style.description }}</p>
+              <DurationAndCost />
+            </div>
+
           </router-link>
         </div>
       </div>
@@ -49,6 +60,7 @@ import {
   map,
   median,
 } from 'ramda'
+import DurationAndCost from './duration-and-cost.vue'
 
 // TODO: update json files
 
@@ -120,6 +132,7 @@ export default {
   components: {
     Header,
     Content,
+    DurationAndCost
   },
 }
 </script>
@@ -128,4 +141,45 @@ export default {
 [v-cloak] {
   display: none;
 }
+
+h2.cta {
+  text-transform: uppercase;
+  font-size: 18px;
+  letter-spacing: 0.75px;
+  margin-bottom: 10px;
+}
+
+p.cta {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+h2.subcategory {
+  text-align: center;
+  font-size: 22px;
+  line-height: 0.41;
+  letter-spacing: 0.92px;
+  margin-bottom: 40px;
+}
+
+div.option {
+  margin-bottom: 60px;
+}
+
+h2.option {
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 0.75px;
+  text-transform: none;
+  color: #bc5940;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+p.option {
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.5px;
+}
+
 </style>

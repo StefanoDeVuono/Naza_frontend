@@ -14,13 +14,11 @@
       </div>
     </div>
 
-    <LoginCta />
   </div>
 </template>
 
 <script>
 import NavHeader from './nav-header.vue'
-import LoginCta from './login-cta.vue'
 
 export default {
   props: {
@@ -30,7 +28,6 @@ export default {
   },
   components: {
     NavHeader,
-    LoginCta,
   },
 }
 </script>
