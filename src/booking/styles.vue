@@ -163,7 +163,7 @@ p.cta {
   .ignore-parent-padding--add-padding(1);
 }
 
-.category:nth-child(odd) {
+.category:nth-child(even) {
   background-color: #f7f6f2;
 }
 
@@ -177,6 +177,11 @@ h2.subcategory {
 
 div.option {
   margin-bottom: 60px;
+  line-height: 0;
+
+  img {
+    margin-bottom: 10px;
+  }
 }
 
 h2.option {

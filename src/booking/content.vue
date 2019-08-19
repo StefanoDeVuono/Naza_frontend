@@ -2,7 +2,7 @@
   <div>
     <div class="content">
       <div class="progress-bar">
-        <VueStepper :steps="steps" :value="progressStep"></VueStepper>
+        <VueStepper :steps="steps" v-model="step"></VueStepper>
       </div>
       <slot></slot>
     </div>
@@ -21,6 +21,21 @@ export default {
   data: function() {
     return {
       steps: 5,
+    }
+  },
+  computed: {
+    step: {
+      get() {
+        return this.progressStep
+      },
+
+      set(step) {
+        const delta = this.progressStep - step
+        if (delta > 0) {
+          this.$router.go(-1 * delta)
+        }
+        return this.progressStep
+      }
     }
   },
   components: {
