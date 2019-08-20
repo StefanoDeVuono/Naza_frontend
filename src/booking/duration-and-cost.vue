@@ -55,7 +55,6 @@ export default {
     align-items: center;
 
     label {
-      padding-top: 0.7em;
       margin-left: 0.5em;
       font-size: 10px;
       line-height: 1.8;

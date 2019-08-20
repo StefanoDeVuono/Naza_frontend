@@ -155,12 +155,11 @@ h2.cta {
 
 p.cta {
   text-align: center;
-  margin-bottom: 40px;
 }
 
 .category {
   .ignore-parent-padding();
-  .ignore-parent-padding--add-padding(1);
+  .ignore-parent-padding--add-padding(0.5);
 }
 
 .category:nth-child(even) {
@@ -170,9 +169,9 @@ p.cta {
 h2.subcategory {
   text-align: center;
   font-size: 22px;
-  line-height: 0.41;
+  line-height: normal;
   letter-spacing: 0.92px;
-  margin: 60px 0;
+  margin: 40px 0;
 }
 
 div.option {
@@ -196,7 +195,7 @@ h2.option {
 
 p.option {
   font-size: 12px;
-  line-height: 1;
+  line-height: normal;
   letter-spacing: 0.5px;
   margin-bottom: 10px;
 }
