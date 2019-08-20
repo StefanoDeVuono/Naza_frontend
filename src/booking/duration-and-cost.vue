@@ -25,8 +25,8 @@ export default {
   },
   methods: {
     formattedCost,
-    formattedHours
-  }
+    formattedHours,
+  },
 }
 </script>
 

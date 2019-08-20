@@ -36,7 +36,7 @@ export default {
       this.$router.go(-1)
     },
     formattedHours,
-    formattedCost
+    formattedCost,
   },
 
   components: {

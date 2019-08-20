@@ -35,8 +35,8 @@ export default {
           this.$router.go(-1 * delta)
         }
         return this.progressStep
-      }
-    }
+      },
+    },
   },
   components: {
     VueStepper,

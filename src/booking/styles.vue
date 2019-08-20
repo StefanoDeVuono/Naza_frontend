@@ -18,7 +18,10 @@
         </p>
       </div>
 
-      <div class="category" v-for="(styles, subcategory) in stylesBySubcategory">
+      <div
+        class="category"
+        v-for="(styles, subcategory) in stylesBySubcategory"
+      >
         <h2 class="subcategory">{{ subcategory }}</h2>
         <div class="option" v-for="style in styles">
           <router-link
