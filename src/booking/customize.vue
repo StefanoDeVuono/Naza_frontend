@@ -28,7 +28,7 @@
       <hr />
 
       <div class="customization">
-        <h2>Size</h2>
+        <RadioButtonGrouping name="size" :options="['Small', 'Medium', 'Jumbo']" />
       </div>
 
     </Content>
@@ -43,6 +43,7 @@
   import 'whatwg-fetch'
   import { parse } from 'jsonapi-parse'
   import { path, compose, prop, nth, filter, map, last, sortBy, replace } from 'ramda'
+  import RadioButtonGrouping from 'common/radio-button-grouping.vue'
 
   export default {
     data: () => {
@@ -69,12 +70,13 @@
 
       duration: function() {
         const baseDuration = compose(
+          parseInt,
           prop('value'),
           nth(0),
           filter(x => {
             return x.name === 'Duration'
           }),
-          prop('product_properties')
+          prop('product_properties'),
         )(this.product)
 
         return baseDuration
@@ -134,7 +136,8 @@
     components: {
       Header,
       Content,
-      ArrowDownIcon
+      ArrowDownIcon,
+      RadioButtonGrouping
     },
   }
 </script>
@@ -182,14 +185,5 @@
   hr {
     border-top: 2px solid #1c3042;
     margin: 40px 0;
-  }
-
-  .customization {
-    h2 {
-      font-size: 22px;
-      font-weight: 500;
-      text-align: center;
-      color: #1c3042;
-    }
   }
 </style>
