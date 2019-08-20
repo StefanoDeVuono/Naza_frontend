@@ -21,13 +21,13 @@ describe('Styles', () => {
 
   describe('.formattedCost', () => {
     it('renders correctly', () => {
-      expect(wrapper.vm.formattedCost).toBe('$100.00')
+      expect(wrapper.html()).toMatch(/\$100\.00/)
     })
   })
 
   describe('.formattedHours', () => {
     it ('renders correctly', () => {
-      expect(wrapper.vm.formattedHours).toBe('3 HRS')
+      expect(wrapper.html()).toMatch(/3 HRS/)
     })
   })
 })

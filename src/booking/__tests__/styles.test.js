@@ -48,7 +48,7 @@ describe('Styles', () => {
 
   it('initializes the subcategories', async () => {
     await flushPromises()
-    expect(wrapper.vm.stylesBySubcategory).toHaveProperty('Crochet Braids')
-    expect(wrapper.vm.stylesBySubcategory['Crochet Braids']).toHaveLength(10)
+    expect(wrapper.vm.stylesBySubcategory).toHaveProperty('Curly Crochet Braids')
+    expect(wrapper.vm.stylesBySubcategory['Curly Crochet Braids']).toHaveLength(3)
   })
 })

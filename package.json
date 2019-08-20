@@ -57,6 +57,9 @@
     ]
   },
   "jest": {
+    "moduleNameMapper": {
+      "common/(.+)": "<rootDir>/src/common/$1"
+    },
     "moduleFileExtensions": [
       "js",
       "json",
