@@ -1,5 +1,5 @@
 import Categories from './booking/categories.vue'
-import Details from './booking/details.vue'
+import Customize from './booking/customize.vue'
 import Styles from './booking/styles.vue'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -19,8 +19,8 @@ var routes = [
   },
   {
     path: '/styles/:productId',
-    component: Details,
-    name: 'details',
+    component: Customize,
+    name: 'customize',
     props: true,
   },
 ]
@@ -30,5 +30,5 @@ var router = new VueRouter({
 })
 
 export default new Vue({
-  router: router,
+  router,
 }).$mount('#app')

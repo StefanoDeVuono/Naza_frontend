@@ -7,10 +7,9 @@
         :showBackArrow="showBackArrow"
       />
 
-      <h1>Our Services</h1>
+      <h1>{{ title }}</h1>
       <div class="desc">
-        That though the radiance which was once so bright be now forever taken
-        from my sight.
+        {{ instructions }}
       </div>
     </div>
   </div>
@@ -21,6 +20,8 @@ import NavHeader from './nav-header.vue'
 
 export default {
   props: {
+    title: String,
+    instructions: String,
     totalCost: Number,
     totalDuration: Number,
     showBackArrow: Boolean,

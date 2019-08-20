@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header :totalCost="totalCost" :totalDuration="totalDuration" />
+    <Header title="Our Services" instructions="That though the radiance which was once so bright be now forever taken from my sight." :totalCost="totalCost" :totalDuration="totalDuration" />
     <LoginCta />
     <Content :progress-step="1">
       <div v-cloak id="categories">

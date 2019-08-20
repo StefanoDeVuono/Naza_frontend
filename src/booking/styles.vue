@@ -1,6 +1,8 @@
 <template>
   <div>
     <Header
+      title="Our Services"
+      instructions="That though the radiance which was once so bright be now forever taken from my sight."
       :showBackArrow="true"
       :totalCost="totalCost"
       :totalDuration="totalDuration"
@@ -22,7 +24,7 @@
           <router-link
             @click.native="$event.stopImmediatePropagation()"
             :to="{
-              name: 'details',
+              name: 'customize',
               params: { productId: style.id },
               query: { categoryId: $route.params.categoryId },
             }"
