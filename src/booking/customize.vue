@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <Header title="Customizations" instructions="Though nothing can bring back the hour; Of splendor in the grass, of glory in the flower" :totalCost="0" :totalDuration="0" :showBackArrow="true" />
+  <div v-if="product">
+    <Header title="Customizations" instructions="Though nothing can bring back the hour; Of splendor in the grass, of glory in the flower" :totalCost="0" :totalDuration="duration" :showBackArrow="true" />
 
     <Content :progress-step="3">
       <h2 class="cta">Make it Your Style</h2>
@@ -9,12 +9,28 @@
 
       <ArrowDownIcon />
 
-      <div v-if="product" class="img-container">
+      <div class="img-container">
         <img
-          :data-url="CURL_ASSET_ROOT + getImageUrl(product)"
-          :src="CURL_ASSET_ROOT + getImageUrl(product)"
+          :data-url="CURL_ASSET_ROOT + largeImageUrl"
+          :src="CURL_ASSET_ROOT + largeImageUrl"
         />
       </div>
+
+      <div class="breadcrumbs">
+        {{ breadcrumbs }}
+      </div>
+
+      <div class="description">
+        <h2 class="option">{{ product.name }}</h2>
+        <p>{{ product.description }}</p>
+      </div>
+
+      <hr />
+
+      <div class="customization">
+        <h2>Size</h2>
+      </div>
+
     </Content>
   </div>
 </template>
@@ -26,7 +42,7 @@
   import ArrowDownIcon from 'vue-material-design-icons/ArrowDown.vue'
   import 'whatwg-fetch'
   import { parse } from 'jsonapi-parse'
-  import { path, compose, prop, nth, filter } from 'ramda'
+  import { path, compose, prop, nth, filter, map, last, sortBy, replace } from 'ramda'
 
   export default {
     data: () => {
@@ -41,51 +57,48 @@
     },
 
     props: ['categoryId'],
-    methods: {
-      getImageUrl: function(product) {
-        return path(['images', 0, 'styles', 3, 'url'], product)
+
+    computed: {
+      largeImageUrl: function() {
+        return path(['images', 0, 'styles', 3, 'url'], this.product)
       },
 
-      getSmallImageUrl: function(product) {
-        return path(['images', 0, 'styles', 2, 'url'], product)
+      smallImageUrl: function() {
+        return path(['images', 0, 'styles', 2, 'url'], this.product)
       },
 
-      getDuration: function(product) {
-        var duration = compose(
+      duration: function() {
+        const baseDuration = compose(
           prop('value'),
           nth(0),
           filter(x => {
             return x.name === 'Duration'
           }),
           prop('product_properties')
-        )(product)
-        var hours = Math.floor(duration / 60)
-        var minutes = duration % 60
+        )(this.product)
 
-        if (minutes > 0) {
-          if (hours === 0) {
-            return minutes + ' minutes'
-          } else if (hours === 1) {
-            return '1 hour ' + minutes + ' minutes'
-          } else {
-            return hours + ' hours ' + minutes + ' minutes'
-          }
-        }
-
-        if (hours === 1) {
-          return '1 hour'
-        } else {
-          return hours + ' hours'
-        }
+        return baseDuration
       },
 
+      breadcrumbs: function() {
+        return compose(
+          replace(/->/, '>'),
+          replace(/Hair Styles -> /, ""),
+          last,
+          sortBy(x => x.length),
+          map(x => x.pretty_name)
+        )(this.product.taxons)
+      },
+    },
+
+    methods: {
       fetchStyles: function() {
         var productId = this.$route.params.productId
         if (!productId) {
           return
         }
 
-        var path = `${getSpreeServer()}/products/${productId}?include=images,option_types.option_values,product_properties`
+        var path = `${getSpreeServer()}/products/${productId}?include=taxons,images,option_types.option_values,product_properties`
         fetch(path)
           .then(response => {
             return response.json()
@@ -148,5 +161,35 @@
 
   div.img-container {
     .ignore-parent-padding();
+  }
+
+  div.breadcrumbs {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    color: #1c3042;
+    margin-bottom: 1em;
+  }
+
+  div.description p {
+    margin-top: 0;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0.58px;
+    color: #1c3042;
+  }
+
+  hr {
+    border-top: 2px solid #1c3042;
+    margin: 40px 0;
+  }
+
+  .customization {
+    h2 {
+      font-size: 22px;
+      font-weight: 500;
+      text-align: center;
+      color: #1c3042;
+    }
   }
 </style>
