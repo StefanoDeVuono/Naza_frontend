@@ -1,7 +1,8 @@
 <template>
   <div>
-    <Header />
-    <Content progress-step="1">
+    <Header :totalCost="totalCost" :totalDuration="totalDuration" />
+    <LoginCta />
+    <Content :progress-step="1">
       <div v-cloak id="categories">
         <div class="cta">
           <h2>What&apos;s Your Style?</h2>
@@ -27,22 +28,30 @@
 
 <script>
 import Header from './header.vue'
+import Content from './content.vue'
 import { getSpreeServer, getCurlAssetRoot } from '../constants'
 import 'whatwg-fetch'
 import { parse } from 'jsonapi-parse'
 import { sortBy, reject, prop, compose, path } from 'ramda'
-import Content from './content.vue'
+import LoginCta from './login-cta.vue'
 
 export default {
   data: () => {
-    return { categories: [], CURL_ASSET_ROOT: getCurlAssetRoot() }
+    return {
+      categories: [],
+      CURL_ASSET_ROOT: getCurlAssetRoot(),
+      totalCost: 0,
+      totalDuration: 0,
+    }
   },
   methods: {
     getImageUrl: function(category) {
       return path(['image', 'styles', 2, 'url'], category)
     },
     fetchData: function() {
-      fetch(`${getSpreeServer()}/taxons/hair-styles?include=children.image,children.taxonomy`)
+      fetch(
+        `${getSpreeServer()}/taxons/hair-styles?include=children.image,children.taxonomy`
+      )
         .then(response => {
           return response.json()
         })
@@ -64,7 +73,8 @@ export default {
   components: {
     Header,
     Content,
-  }
+    LoginCta,
+  },
 }
 </script>
 

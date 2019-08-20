@@ -12,6 +12,8 @@ const mockFetchResponse = returnObj => {
   global.fetch = () => Promise.resolve(fetchResponse)
 }
 
+// TODO: update json files
+
 describe('Categories', () => {
   let oldFetch
   let wrapper
@@ -25,10 +27,6 @@ describe('Categories', () => {
     mockFetchResponse()
 
     wrapper = shallowMount(Categories, {
-      data: () => ({
-        categories: [],
-        CURL_ASSET_ROOT: 'something',
-      }),
       localVue,
       router,
     })
@@ -42,6 +40,6 @@ describe('Categories', () => {
   // stripped out
   it('initializes the categories', async () => {
     await flushPromises()
-    expect(wrapper.vm.categories).toHaveLength(1)
+    expect(wrapper.vm.categories).toHaveLength(5)
   })
 })

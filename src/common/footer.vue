@@ -28,39 +28,37 @@
 </template>
 
 <script>
-export default {
-
-}
+export default {}
 </script>
 
 <style lang="less">
-  @import "../../styles/util.less";
-  @import "../common/utils.less";
+@import '../../styles/util.less';
+@import '../common/utils.less';
 
-  @orange: #bc5940;
+@orange: #bc5940;
 
-  .footer {
-    .ignore-parent-padding();
-    .ignore-parent-padding--add-padding(2);
+.footer {
+  .ignore-parent-padding();
+  .ignore-parent-padding--add-padding(2);
 
-    background-color: #e6e1da;
+  background-color: #e6e1da;
 
-    h2 {
-      color: @orange;
-      font-weight: bold;
-      font-size: 14px;
-      margin-bottom: 0.25em;
-    }
-
-    ul {
-      padding: 0;
-      margin: 0;
-    }
-
-    li {
-      list-style-type: none;
-      font-size: 14px;
-      line-height: 1.7em;
-    }
+  h2 {
+    color: @orange;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 0.25em;
   }
+
+  ul {
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    list-style-type: none;
+    font-size: 14px;
+    line-height: 1.7em;
+  }
+}
 </style>

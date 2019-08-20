@@ -57,9 +57,16 @@
     ]
   },
   "jest": {
+    "moduleNameMapper": {
+      "common/(.+)": "<rootDir>/src/common/$1"
+    },
     "moduleFileExtensions": [
       "js",
+      "json",
       "vue"
+    ],
+    "transformIgnorePatterns": [
+      "/node_modules/(?!vue-material-design-icons)"
     ],
     "transform": {
       "^.+\\.js$": "<rootDir>/node_modules/babel-jest",

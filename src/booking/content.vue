@@ -2,7 +2,7 @@
   <div>
     <div class="content">
       <div class="progress-bar">
-        <VueStepper :steps="steps" :value="1"></VueStepper>
+        <VueStepper :steps="steps" v-model="step"></VueStepper>
       </div>
       <slot></slot>
     </div>
@@ -15,74 +15,90 @@ import VueStepper from 'vue-stepper-component'
 import Footer from '../common/footer.vue'
 
 export default {
-  props: ['progressStep'],
+  props: {
+    progressStep: Number,
+  },
   data: function() {
     return {
       steps: 5,
-      step: 1
+    }
+  },
+  computed: {
+    step: {
+      get() {
+        return this.progressStep
+      },
+
+      set(step) {
+        const delta = this.progressStep - step
+        if (delta > 0) {
+          this.$router.go(-1 * delta)
+        }
+        return this.progressStep
+      }
     }
   },
   components: {
     VueStepper,
-    Footer
-  }
+    Footer,
+  },
 }
 </script>
 
 <style lang="less">
-  @import "../../styles/util.less";
+@import '../../styles/util.less';
 
-  @contentPadding: 25px;
-  @darkBlue: #1c3042;
-  @orange: #bc5940;
+@contentPadding: 25px;
+@darkBlue: #1c3042;
+@orange: #bc5940;
 
-  .progress-bar {
-    margin-bottom: @contentPadding;
-  }
+.progress-bar {
+  margin-bottom: @contentPadding;
+}
 
-  .content {
-    padding-top: @contentPadding;
-    padding-bottom: @contentPadding;
-  }
+.content {
+  padding-top: @contentPadding;
+  padding-bottom: @contentPadding;
+}
 
-  .v-stepper {
-    margin-right: calc(-25% + 35px);
+.v-stepper {
+  margin-right: calc(-25% + 35px);
 
-    .v-step {
-      margin-right: 0;
+  .v-step {
+    margin-right: 0;
 
+    .divider {
+      border-bottom: 1px dashed @darkBlue;
+      margin-left: 3px;
+      margin-right: 3px;
+    }
+
+    &:last-child {
       .divider {
-        border-bottom: 1px dashed @darkBlue;
-        margin-left: 3px;
-        margin-right: 3px;
-      }
-
-      &:last-child {
-        .divider {
-          display: none;
-        }
-      }
-
-      .index {
-        width: 30px;
-        height: 30px;
-        box-shadow: none;
-        font-size: 20px;
-        border: 2px solid @darkBlue;
-        color: @orange;
-        padding-bottom: 0.1em;
-        margin-right: 0
-      }
-
-      &.is-visited .index {
-        color: @orange;
-      }
-
-      &.is-active .label .index {
-        background-color: @orange;
-        border: 2px solid @orange;
-        color: white;
+        display: none;
       }
     }
+
+    .index {
+      width: 30px;
+      height: 30px;
+      box-shadow: none;
+      font-size: 20px;
+      border: 2px solid @darkBlue;
+      color: @orange;
+      padding-bottom: 0.1em;
+      margin-right: 0;
+    }
+
+    &.is-visited .index {
+      color: @orange;
+    }
+
+    &.is-active .label .index {
+      background-color: @orange;
+      border: 2px solid @orange;
+      color: white;
+    }
   }
+}
 </style>

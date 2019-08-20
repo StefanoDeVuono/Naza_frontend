@@ -8,25 +8,23 @@
 </template>
 
 <script>
-
-export default {
-}
+export default {}
 </script>
 
 <style lang="less">
-  @import "../common/utils.less";
+@import '../common/utils.less';
 
-  .login-cta {
-    .ignore-parent-padding();
-    .ignore-parent-padding--add-padding(0.5);
+.login-cta {
+  .ignore-parent-padding();
+  .ignore-parent-padding--add-padding(0.5);
 
-    background-color: #bc5940;
-    color: white;
-    text-align: center;
-    line-height: 20px;
+  background-color: #bc5940;
+  color: white;
+  text-align: center;
+  line-height: 20px;
 
-    a {
-      text-decoration: underline;
-    }
+  a {
+    text-decoration: underline;
   }
+}
 </style>
