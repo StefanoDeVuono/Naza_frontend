@@ -3,7 +3,7 @@
     <h2>{{ name }}</h2>
     <div class="radio-button-grouping-options">
       <div class="radio-button-grouping-option" v-for="option in options">
-        <input type="radio" :id="name + '-' + option.presentation" :value="option.presentation" :name="name" />
+        <input type="radio" :id="name + '-' + option.presentation" :value="option.presentation" :name="name" v-model="localValue" />
         <label :for="name + '-' + option.presentation">{{ option.presentation }}</label>
       </div>
     </div>
@@ -12,10 +12,17 @@
 
 <script>
   export default {
+    computed: {
+      localValue: {
+        get() { return this.value },
+        set(x) { this.$emit('input', x)}
+      }
+    },
+
     // @param {string} name The name of the customization
     // @param {object[]} options An array of potential options
     // @param {string} options.presentation The name of the option
-    props: ['name', 'options']
+    props: ['value', 'name', 'options']
   }
 </script>
 
@@ -26,6 +33,7 @@
       font-weight: 500;
       text-align: center;
       color: #1c3042;
+      margin-bottom: 2em;
     }
 
     .radio-button-grouping-options {

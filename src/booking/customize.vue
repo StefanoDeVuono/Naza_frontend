@@ -28,7 +28,7 @@
       <hr />
 
       <div v-for="optionType in availableOptions" class="customization">
-        <RadioButtonGrouping :name="optionType.presentation" :options="optionType.option_values" />
+        <RadioButtonGrouping v-model="state.customizations[optionType.name]" :name="optionType.presentation" :options="optionType.option_values" />
       </div>
 
     </Content>
@@ -52,6 +52,11 @@
         product: undefined,
         addOns: undefined,
         state: {
+          customizations: {
+            Length: undefined,
+            Size: undefined,
+            Volume: undefined
+          },
           selectedAddOns: new Set(),
         },
       }
@@ -115,7 +120,6 @@
           })
           .then(json => {
             this.product = parse(json).data
-            console.log('product', this.product)
           })
       },
 
