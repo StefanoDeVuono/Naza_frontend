@@ -27,8 +27,8 @@
 
       <hr />
 
-      <div class="customization">
-        <RadioButtonGrouping name="size" :options="['Small', 'Medium', 'Jumbo']" />
+      <div v-for="optionType in availableOptions" class="customization">
+        <RadioButtonGrouping :name="optionType.presentation" :options="optionType.option_values" />
       </div>
 
     </Content>
@@ -57,6 +57,7 @@
       }
     },
 
+    // @param {integer} categoryId
     props: ['categoryId'],
 
     computed: {
@@ -66,6 +67,13 @@
 
       smallImageUrl: function() {
         return path(['images', 0, 'styles', 2, 'url'], this.product)
+      },
+
+      availableOptions: function() {
+        return filter(
+          x => x.option_values.length < 5,
+          this.product.option_types
+        )
       },
 
       duration: function() {
@@ -107,6 +115,7 @@
           })
           .then(json => {
             this.product = parse(json).data
+            console.log('product', this.product)
           })
       },
 
@@ -185,5 +194,9 @@
   hr {
     border-top: 2px solid #1c3042;
     margin: 40px 0;
+  }
+
+  div.customization {
+    margin-bottom: 40px;
   }
 </style>

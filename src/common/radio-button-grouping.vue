@@ -3,8 +3,8 @@
     <h2>{{ name }}</h2>
     <div class="radio-button-grouping-options">
       <div class="radio-button-grouping-option" v-for="option in options">
-        <input type="radio" :id="name + '-' + option" :value="option" :name="name" />
-        <label :for="name + '-' + option">{{ option }}</label>
+        <input type="radio" :id="name + '-' + option.presentation" :value="option.presentation" :name="name" />
+        <label :for="name + '-' + option.presentation">{{ option.presentation }}</label>
       </div>
     </div>
   </div>
@@ -12,6 +12,9 @@
 
 <script>
   export default {
+    // @param {string} name The name of the customization
+    // @param {object[]} options An array of potential options
+    // @param {string} options.presentation The name of the option
     props: ['name', 'options']
   }
 </script>
