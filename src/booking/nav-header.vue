@@ -5,9 +5,9 @@
     </div>
 
     <div class="stats">
-      <div id="total-cost">
+      <div id="total-price">
         <span>Total</span>:
-        <span id="total-cost-value">{{ formattedCost(totalCost) }}</span>
+        <span id="total-price-value">{{ formattedPrice(totalPrice) }}</span>
       </div>
       <div id="total-duration">
         <span>Duration</span>:
@@ -22,11 +22,11 @@
 <script>
 // import 'vue-material-design-icons/styles.css'
 import KeyboardBackspaceIcon from 'vue-material-design-icons/KeyboardBackspace.vue'
-import { formattedCost, formattedHours } from 'common/utils'
+import { formattedPrice, formattedHours } from 'common/utils'
 
 export default {
   props: {
-    totalCost: Number,
+    totalPrice: Number,
     totalDuration: Number,
     showBackArrow: Boolean,
   },
@@ -36,7 +36,7 @@ export default {
       this.$router.go(-1)
     },
     formattedHours,
-    formattedCost,
+    formattedPrice,
   },
 
   components: {
@@ -72,7 +72,7 @@ export default {
     text-align: right;
     line-height: 2em;
 
-    #total-cost-value,
+    #total-price-value,
     #total-duration-value {
       margin-left: 0.25em;
     }

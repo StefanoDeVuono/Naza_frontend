@@ -3,7 +3,7 @@
     <Header
       title="Customizations"
       instructions="Though nothing can bring back the hour; Of splendor in the grass, of glory in the flower"
-      :totalCost="0"
+      :totalPrice="price"
       :totalDuration="duration"
       :showBackArrow="true"
     />
@@ -38,9 +38,10 @@
 
       <div v-for="optionType in availableOptions" class="customization">
         <RadioButtonGrouping
-          v-model="state.customizations[optionType.name]"
+          v-model="customizations[optionType.name]"
           :name="optionType.presentation"
           :options="optionType.option_values"
+          :onChange="handleCustomizationChange"
         />
       </div>
 
@@ -66,6 +67,11 @@ import {
   last,
   sortBy,
   replace,
+  isNil,
+  join,
+  find,
+  difference,
+  isEmpty
 } from 'ramda'
 import RadioButtonGrouping from 'common/radio-button-grouping.vue'
 import FindYourStyle from './find-your-style.vue'
@@ -76,14 +82,11 @@ export default {
       CURL_ASSET_ROOT: getCurlAssetRoot(),
       product: undefined,
       addOns: undefined,
-      state: {
-        customizations: {
-          Length: undefined,
-          Size: undefined,
-          Volume: undefined,
-        },
-        selectedAddOns: new Set(),
+      customizations: {
       },
+      selectedAddOns: new Set(),
+      variantPrice: undefined,
+      variantDuration: undefined
     }
   },
 
@@ -104,17 +107,19 @@ export default {
     },
 
     duration: function() {
-      const baseDuration = compose(
-        parseInt,
-        prop('value'),
-        nth(0),
-        filter(x => {
-          return x.name === 'Duration'
-        }),
-        prop('product_properties')
-      )(this.product)
+      if (this.variantDuration) {
+        return parseInt(this.variantDuration)
+      }
 
-      return baseDuration
+      return parseInt(this.product.duration)
+    },
+
+    price: function() {
+      if (this.variantPrice) {
+        return parseInt(this.variantPrice)
+      }
+
+      return parseInt(this.product.price)
     },
 
     breadcrumbs: function() {
@@ -135,7 +140,7 @@ export default {
         return
       }
 
-      var path = `${getSpreeServer()}/products/${productId}?include=taxons,images,option_types.option_values,product_properties`
+      var path = `${getSpreeServer()}/products/${productId}?include=taxons,images,option_types.option_values,product_properties,variants`
       fetch(path)
         .then(response => {
           return response.json()
@@ -156,10 +161,50 @@ export default {
         })
     },
 
+    findMatchingVariant: function() {
+      // first build a list of customizations that have been
+      // chosen so far. this will look something like
+      // ['Size:Medium', 'Volume:Biggest']
+      const selectedCustomizations = compose(
+        sortBy(x => x),
+        map(x => join(':', x)),
+        filter(x => !isNil(x[1])),
+        Object.entries
+      )(this.customizations)
+
+      // next we get all the product variants. we want variants
+      // with multiple option values earlier so that the more
+      // generic ones are selected later.
+      const variants = sortBy(x => -x.option_values.length, this.product.variants)
+
+      // find the first matching variant that has all the
+      // customizations we selected.
+      const matchingVariant = find(variant => {
+        const options = map(x => x.name, variant.option_values)
+        const delta = difference(options, selectedCustomizations)
+        return isEmpty(delta)
+      }, variants)
+
+      return matchingVariant
+    },
+
     fetchData: function() {
       this.fetchStyles()
       this.fetchAddOns()
     },
+
+    handleCustomizationChange: function(optionType, value) {
+      this.customizations[optionType] = value
+      const match = this.findMatchingVariant()
+
+      if (match) {
+        this.variantPrice = match.price
+        this.variantDuration = match.duration
+      } else {
+        this.variantPrice = undefined
+        this.variantDuration = undefined
+      }
+    }
   },
   watch: {
     $route: 'fetchData',

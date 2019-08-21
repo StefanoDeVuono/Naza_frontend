@@ -4,7 +4,7 @@
       title="Our Services"
       instructions="That though the radiance which was once so bright be now forever taken from my sight."
       :showBackArrow="true"
-      :totalCost="totalCost"
+      :totalPrice="totalPrice"
       :totalDuration="totalDuration"
     />
 
@@ -40,7 +40,7 @@
           <div>
             <h2 class="option">{{ style.name }}</h2>
             <p class="option">{{ style.description }}</p>
-            <DurationAndCost :duration="totalDuration" :cost="totalCost" />
+            <DurationAndPrice :duration="totalDuration" :price="totalPrice" />
           </div>
         </div>
       </div>
@@ -67,7 +67,7 @@ import {
   map,
   median,
 } from 'ramda'
-import DurationAndCost from './duration-and-cost.vue'
+import DurationAndPrice from './duration-and-price.vue'
 
 // TODO: update json files
 
@@ -76,7 +76,7 @@ export default {
     return {
       CURL_ASSET_ROOT: getCurlAssetRoot(),
       stylesBySubcategory: {},
-      totalCost: 0,
+      totalPrice: 0,
       totalDuration: 0,
     }
   },
@@ -101,7 +101,7 @@ export default {
             parse
           )(json)
 
-          this.totalCost = compose(
+          this.totalPrice = compose(
             median,
             map(x => parseInt(x.price)),
             nth(0),
@@ -110,8 +110,7 @@ export default {
 
           this.totalDuration = compose(
             median,
-            map(x => parseInt(x.value)),
-            map(x => find(propEq('name', 'Duration'))(x.product_properties)),
+            map(x => parseInt(x.duration)),
             nth(0),
             values
           )(this.stylesBySubcategory)
@@ -139,7 +138,7 @@ export default {
   components: {
     Header,
     Content,
-    DurationAndCost,
+    DurationAndPrice,
   },
 }
 </script>

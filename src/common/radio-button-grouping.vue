@@ -26,7 +26,9 @@ export default {
         return this.value
       },
       set(x) {
-        this.$emit('input', x)
+        // do this instead of using v-model to trigger updates
+        // to the parent component
+        this.onChange(this.name, x)
       },
     },
   },
@@ -34,7 +36,8 @@ export default {
   // @param {string} name The name of the customization
   // @param {object[]} options An array of potential options
   // @param {string} options.presentation The name of the option
-  props: ['value', 'name', 'options'],
+  // @param {(value: string) => void} A callback when a button is pressed
+  props: ['value', 'name', 'options', 'onChange'],
 }
 </script>
 

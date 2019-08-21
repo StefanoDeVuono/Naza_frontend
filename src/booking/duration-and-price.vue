@@ -1,5 +1,5 @@
 <template>
-  <div class="duration-and-cost">
+  <div class="duration-and-price">
     <div class="container">
       <ClockOutlineIcon />
       <label>{{ formattedHours(duration) }}</label>
@@ -7,7 +7,7 @@
 
     <div class="container">
       <TagIcon />
-      <label>{{ formattedCost(cost) }}</label>
+      <label>{{ formattedPrice(price) }}</label>
     </div>
   </div>
 </template>
@@ -15,16 +15,16 @@
 <script>
 import ClockOutlineIcon from 'vue-material-design-icons/ClockOutline.vue'
 import TagIcon from 'vue-material-design-icons/TagOutline.vue'
-import { formattedHours, formattedCost } from 'common/utils'
+import { formattedHours, formattedPrice } from 'common/utils'
 
 export default {
-  props: ['duration', 'cost'],
+  props: ['duration', 'price'],
   components: {
     ClockOutlineIcon,
     TagIcon,
   },
   methods: {
-    formattedCost,
+    formattedPrice,
     formattedHours,
   },
 }
@@ -45,7 +45,7 @@ export default {
   width: 16px;
 }
 
-.duration-and-cost {
+.duration-and-price {
   display: flex;
   flex-direction: row;
 

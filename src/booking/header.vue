@@ -2,7 +2,7 @@
   <div>
     <div class="booking-header">
       <NavHeader
-        :totalCost="totalCost"
+        :totalPrice="totalPrice"
         :totalDuration="totalDuration"
         :showBackArrow="showBackArrow"
       />
@@ -22,7 +22,7 @@ export default {
   props: {
     title: String,
     instructions: String,
-    totalCost: Number,
+    totalPrice: Number,
     totalDuration: Number,
     showBackArrow: Boolean,
   },

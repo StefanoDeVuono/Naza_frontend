@@ -11,7 +11,7 @@ describe('Styles', () => {
 
     wrapper = shallowMount(NavHeader, {
       propsData: {
-        totalCost: 100,
+        totalPrice: 100,
         totalDuration: 200,
         showBackArrow: true
       },
@@ -19,7 +19,7 @@ describe('Styles', () => {
     })
   })
 
-  describe('.formattedCost', () => {
+  describe('.formattedPrice', () => {
     it('renders correctly', () => {
       expect(wrapper.html()).toMatch(/\$100\.00/)
     })

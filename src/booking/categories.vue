@@ -3,7 +3,7 @@
     <Header
       title="Our Services"
       instructions="That though the radiance which was once so bright be now forever taken from my sight."
-      :totalCost="totalCost"
+      :totalPrice="totalPrice"
       :totalDuration="totalDuration"
     />
     <LoginCta />
@@ -45,7 +45,7 @@ export default {
     return {
       categories: [],
       CURL_ASSET_ROOT: getCurlAssetRoot(),
-      totalCost: 0,
+      totalPrice: 0,
       totalDuration: 0,
     }
   },

@@ -1,24 +1,24 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import DurationAndCost from '../duration-and-cost.vue'
+import DurationAndPrice from '../duration-and-price.vue'
 import { shallowMount, createLocalVue } from '@vue/test-utils'
 
-describe('DurationAndCost', () => {
+describe('DurationAndPrice', () => {
   let wrapper
 
   beforeEach(() => {
     const localVue = createLocalVue()
 
-    wrapper = shallowMount(DurationAndCost, {
+    wrapper = shallowMount(DurationAndPrice, {
       propsData: {
-        cost: 100,
+        price: 100,
         duration: 200,
       },
       localVue
     })
   })
 
-  it('renders the cost', () => {
+  it('renders the price', () => {
     expect(wrapper.html()).toMatch(/\$100\.00/)
   })
 
