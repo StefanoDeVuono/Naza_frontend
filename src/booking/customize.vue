@@ -47,7 +47,7 @@
         </div>
 
         <div v-for="optionType in colorOptions" class="customization">
-          <HairColorSelector />
+          <HairColorSelector :colors="optionType.option_values" :onPress="handleColorChange" :selectedColor="customizations.Color" />
         </div>
       </div>
 
@@ -226,6 +226,13 @@
           this.variantPrice = undefined
           this.variantDuration = undefined
         }
+      },
+
+      handleColorChange: function(color) {
+        this.customizations.Color = color
+
+        // vue can't detect changes in objects
+        this.$forceUpdate()
       }
     },
     watch: {
@@ -294,6 +301,7 @@
     text-align: center;
     font-family: utopia-std;
     text-transform: none;
+    margin: 0;
   }
 
   div.style {
@@ -309,7 +317,7 @@
     text-align: center;
     font-family: utopia-std;
     text-transform: none;
-    margin-bottom: 20px;
+    margin: 0 auto 20px auto;
   }
 
   p.style-desc {
@@ -323,6 +331,7 @@
 
   div.img-container {
     .ignore-parent-padding();
+    line-height: 0;
   }
 
   div.customizations {
