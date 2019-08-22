@@ -62,10 +62,11 @@ export default {
 }
 
 .v-stepper {
-  margin-right: calc(-25% + 35px);
+  margin-top: calc(40px - @contentPadding);
 
   .v-step {
     margin-right: 0;
+    flex-basis: 24%;
 
     .divider {
       border-bottom: 1px dashed @darkBlue;
@@ -74,6 +75,8 @@ export default {
     }
 
     &:last-child {
+      flex-basis: 4%;
+
       .divider {
         display: none;
       }

@@ -51,3 +51,7 @@ When you are ready to deploy to master, merge staging into master and run:
     git push origin head
 
 This will update the production Squarespace.
+
+## Hair Colors
+
+A hair style can have a color option type, which lets you create variants based on hair color. But in order to maintain only one list of hair colors, they are also implemented as products underneath the Hair Color taxonomy.

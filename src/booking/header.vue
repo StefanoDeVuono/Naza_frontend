@@ -2,13 +2,11 @@
   <div>
     <div class="booking-header">
       <NavHeader
-        :totalPrice="totalPrice"
-        :totalDuration="totalDuration"
         :showBackArrow="showBackArrow"
       />
 
       <h1>{{ title }}</h1>
-      <div class="desc">
+      <div v-if="instructions" class="desc">
         {{ instructions }}
       </div>
     </div>
@@ -22,8 +20,6 @@ export default {
   props: {
     title: String,
     instructions: String,
-    totalPrice: Number,
-    totalDuration: Number,
     showBackArrow: Boolean,
   },
   components: {
@@ -51,5 +47,8 @@ export default {
 
 .booking-header h1 {
   color: white;
+  text-align: center;
+  font-size: 36px;
+  letter-spacing: 1.52px;
 }
 </style>
