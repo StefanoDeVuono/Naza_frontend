@@ -11,23 +11,23 @@
 </template>
 
 <script>
-  import Accordion from 'common/accordion.vue'
+import Accordion from 'common/accordion.vue'
 
-  export default {
-    components: {
-      Accordion
-    }
-  }
+export default {
+  components: {
+    Accordion,
+  },
+}
 </script>
 
 <style lang="less">
-  .find-your-style {
-    span {
-      font-size: 16px;
-    }
-
-    strong {
-      text-decoration: underline;
-    }
+.find-your-style {
+  span {
+    font-size: 16px;
   }
+
+  strong {
+    text-decoration: underline;
+  }
+}
 </style>

@@ -1,9 +1,7 @@
 <template>
   <div>
     <div class="booking-header">
-      <NavHeader
-        :showBackArrow="showBackArrow"
-      />
+      <NavHeader :showBackArrow="showBackArrow" />
 
       <h1>{{ title }}</h1>
       <div v-if="instructions" class="desc">

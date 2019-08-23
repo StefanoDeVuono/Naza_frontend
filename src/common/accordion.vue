@@ -18,25 +18,25 @@ export default {
   data: function() {
     return {
       state: {
-        open: false
-      }
+        open: false,
+      },
     }
   },
   methods: {
     toggleOpen: function() {
       this.state.open = !this.state.open
-    }
+    },
   },
   components: {
-    ChevronDownIcon
-  }
+    ChevronDownIcon,
+  },
 }
 </script>
 
 <style lang="less">
-  @import '../common/utils.less';
+@import '../common/utils.less';
 
-  .material-design-icon.chevron-down-icon,
+.material-design-icon.chevron-down-icon,
 .material-design-icon.chevron-down-icon > .material-design-icon__svg {
   height: 25px;
   width: 25px;
@@ -65,5 +65,4 @@ export default {
   align-items: center;
   justify-content: center;
 }
-
 </style>
