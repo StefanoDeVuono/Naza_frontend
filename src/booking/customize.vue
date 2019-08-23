@@ -110,7 +110,7 @@ export default {
     return {
       CURL_ASSET_ROOT: getCurlAssetRoot(),
       product: undefined,
-      addOns: undefined,
+      // addOns: undefined,
       customizations: {},
       variantPrice: undefined,
       variantDuration: undefined,
@@ -191,16 +191,16 @@ export default {
         })
     },
 
-    fetchAddOns: function() {
-      var path = `${getSpreeServer()}/taxons/add-ons?include=products.images`
-      fetch(path)
-        .then(response => {
-          return response.json()
-        })
-        .then(json => {
-          this.addOns = parse(json).data.products
-        })
-    },
+    // fetchAddOns: function() {
+    //   var path = `${getSpreeServer()}/taxons/add-ons?include=products.images`
+    //   fetch(path)
+    //     .then(response => {
+    //       return response.json()
+    //     })
+    //     .then(json => {
+    //       this.addOns = parse(json).data.products
+    //     })
+    // },
 
     findMatchingVariant: function() {
       // first build a list of customizations that have been
@@ -235,7 +235,7 @@ export default {
 
     fetchData: function() {
       this.fetchStyles()
-      this.fetchAddOns()
+      // this.fetchAddOns()
     },
 
     handleCustomizationChange: function(optionType, value) {

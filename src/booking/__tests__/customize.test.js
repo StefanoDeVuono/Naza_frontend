@@ -60,8 +60,13 @@ describe('Customize', () => {
     expect(wrapper.vm.product).toBeDefined()
   })
 
-  it('initializes the addons', async () => {
+  it('displays the style', async () => {
+    await flushPromises()    
+    expect(wrapper.text()).toMatch(/Box Braids\/Twists/)
+  })
+
+  it('displays the customizations', async () => {
     await flushPromises()
-    expect(wrapper.vm.addOns).toHaveLength(5)
+    expect(wrapper.findAll("div.customization")).toHaveLength(6)
   })
 })
