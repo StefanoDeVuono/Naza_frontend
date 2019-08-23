@@ -93,6 +93,7 @@ export default {
 
     .radio-button-grouping-option {
       flex-grow: 1;
+      flex-basis: 0;
 
       &:first-of-type label {
         border-radius: 32px 0 0 32px;

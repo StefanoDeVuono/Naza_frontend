@@ -49,8 +49,21 @@
         <div v-for="optionType in colorOptions" class="customization">
           <HairColorSelector :colors="optionType.option_values" :onPress="handleColorChange" :selectedColor="customizations.Color" />
         </div>
-      </div>
 
+        <router-link @click.native="$event.stopImmediatePropagation()" :to="{
+          name: 'add-ons',
+          params: { productId: product.id }
+        }">
+          <div class="sqs-block-button sqs-block button-block">
+            <div class="sqs-block-button-content sqs-block-content">
+              <div class="sqs-block-button-container--center">
+                <div class="sqs-block-button-element--medium sqs-block-button-element">Next Step, Please!</div>
+              </div>
+            </div>
+          </div>
+        </router-link>
+
+      </div>
     </Content>
   </div>
 </template>
@@ -343,5 +356,9 @@
 
   div.customization {
     margin-bottom: 40px;
+  }
+
+  .sqs-block-button .sqs-block-button-element {
+    display: block;
   }
 </style>

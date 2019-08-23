@@ -1,6 +1,7 @@
 import Categories from './booking/categories.vue'
 import Customize from './booking/customize.vue'
 import Styles from './booking/styles.vue'
+import AddOns from './booking/add-ons.vue'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
@@ -23,6 +24,12 @@ var routes = [
     name: 'customize',
     props: true,
   },
+  {
+    path: '/add-ons/:productId',
+    component: AddOns,
+    name: 'add-ons',
+    props: true
+  }
 ]
 
 var router = new VueRouter({
