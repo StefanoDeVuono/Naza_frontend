@@ -18,6 +18,18 @@ export const getSpreeServer = () => {
   return `${getCurlAssetRoot()}/api/v2/storefront`
 }
 
+export const getAppServer = () => {
+  if (isStaging()) {
+    return 'https://projectcurl-staging.herokuapp.com'
+  }
+
+  if (isProduction()) {
+    return 'https://projectcurl.herokuapp.com'
+  }
+
+  return 'http://localhost:3000'
+}
+
 export const getCurlAssetRoot = () => {
   if (isStaging()) {
     return 'https://projectcurl-staging.herokuapp.com'

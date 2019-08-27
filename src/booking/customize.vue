@@ -35,7 +35,6 @@
       <div class="customizations">
         <div v-for="optionType in availableOptions" class="customization">
           <RadioButtonGrouping
-            v-model="customizations[optionType.name]"
             :optionValueMap="optionValueMap"
             :name="optionType.presentation"
             :options="optionType.option_values"
@@ -51,25 +50,19 @@
           />
         </div>
 
-        <router-link
-          @click.native="$event.stopImmediatePropagation()"
-          :to="{
-            name: 'add-ons',
-            params: { productId: product.id },
-          }"
-        >
-          <div class="sqs-block-button sqs-block button-block">
-            <div class="sqs-block-button-content sqs-block-content">
-              <div class="sqs-block-button-container--center">
-                <div
-                  class="sqs-block-button-element--medium sqs-block-button-element"
-                >
-                  Next Step, Please!
-                </div>
+        <div class="sqs-block-button sqs-block button-block">
+          <div class="sqs-block-button-content sqs-block-content">
+            <div class="sqs-block-button-container--center">
+              <div
+                class="sqs-block-button-element--medium sqs-block-button-element"
+                v-bind:class="{ disabled: disableSubmit }"
+                @click="nextScreen"
+              >
+                Next Step, Please!
               </div>
             </div>
           </div>
-        </router-link>
+        </div>
       </div>
     </Content>
   </div>
@@ -110,10 +103,13 @@ export default {
     return {
       CURL_ASSET_ROOT: getCurlAssetRoot(),
       product: undefined,
-      // addOns: undefined,
       customizations: {},
       variantPrice: undefined,
       variantDuration: undefined,
+
+      // we need to store this separately so vue can
+      // track updates
+      customizationCount: 0,
     }
   },
 
@@ -121,6 +117,10 @@ export default {
   props: ['categoryId'],
 
   computed: {
+    disableSubmit: function() {
+      return this.customizationCount !== this.product.option_types.length
+    },
+
     largeImageUrl: function() {
       return path(['images', 0, 'styles', 3, 'url'], this.product)
     },
@@ -191,16 +191,23 @@ export default {
         })
     },
 
-    // fetchAddOns: function() {
-    //   var path = `${getSpreeServer()}/taxons/add-ons?include=products.images`
-    //   fetch(path)
-    //     .then(response => {
-    //       return response.json()
-    //     })
-    //     .then(json => {
-    //       this.addOns = parse(json).data.products
-    //     })
-    // },
+    nextScreen: function(event) {
+      event.stopImmediatePropagation()
+
+      if (this.disableSubmit) {
+        return
+      }
+
+      this.$router.push({
+        name: 'schedule-and-preferences',
+        params: {
+          product: this.product,
+          variantPrice: this.variantPrice,
+          variantDuration: this.variantDuration,
+          customizations: this.customizations,
+        },
+      })
+    },
 
     findMatchingVariant: function() {
       // first build a list of customizations that have been
@@ -239,7 +246,7 @@ export default {
     },
 
     handleCustomizationChange: function(optionType, value) {
-      this.customizations[optionType] = value
+      this.$set(this.customizations, optionType, value)
       const match = this.findMatchingVariant()
 
       if (match) {
@@ -249,13 +256,13 @@ export default {
         this.variantPrice = undefined
         this.variantDuration = undefined
       }
+
+      this.customizationCount = Object.keys(this.customizations).length
     },
 
     handleColorChange: function(color) {
-      this.customizations.Color = color
-
-      // vue can't detect changes in objects
-      this.$forceUpdate()
+      this.$set(this.customizations, 'Color', color)
+      this.customizationCount = Object.keys(this.customizations).length
     },
   },
   watch: {
@@ -370,5 +377,12 @@ div.customization {
 
 .sqs-block-button .sqs-block-button-element {
   display: block;
+
+  &.disabled {
+    background-color: white;
+    color: @darkBlue;
+    border: 2px solid @darkBlue;
+    font-weight: bold;
+  }
 }
 </style>
