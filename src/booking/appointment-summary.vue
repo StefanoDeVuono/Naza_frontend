@@ -29,6 +29,27 @@
           </li>
         </ul>
       </div>
+
+      <div class="section">
+        <p class="modify-notice">If something isn't right, you can go back and modify your reservation.</p>
+      </div>
+
+      <hr />
+
+      <div class="totals">
+        <div class="total total-price">
+          <h2>Total:</h2> <span>{{ formattedPrice(price) }}</span>
+        </div>
+
+        <div class="total total-duration">
+          <h2>Duration:</h2> <span>{{ formattedHours(duration) }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cancellation-policy">
+      <h2>Cancellation Policy</h2>
+      <p>A 24-hour cancellation notice is required to avoid being fully charged for the appointment.</p>
     </div>
   </div>
 </template>
@@ -38,12 +59,13 @@
   import ChevronDownIcon from 'vue-material-design-icons/ChevronDown.vue'
   import ChevronUpIcon from 'vue-material-design-icons/ChevronUp.vue'
   import { slice } from 'ramda'
+  import { formattedHours, formattedPrice } from 'common/utils'
 
   export default {
     props: {
       product: Object,
-      price: String,
-      duration: String
+      price: Number,
+      duration: Number
     },
 
     data: function() {
@@ -85,7 +107,9 @@
     methods: {
       expandDescription: function() {
         this.showMoreLink = false
-      }
+      },
+      formattedHours,
+      formattedPrice,
     },
     
     components: {
@@ -157,6 +181,7 @@
       }
 
       .description {
+        margin-top: 20px;
         font-size: 14px;
         line-height: 21px;
         text-align: center;
@@ -185,6 +210,66 @@
           width: 1em;
           margin-left: -1em;
         }
+      }
+
+      .modify-notice {
+        font-size: 14px;
+        font-weight: bold;
+        line-height: 1.5;
+        letter-spacing: 0.5px;
+        text-align: center;
+      }
+
+      hr {
+        margin: 20px 0;
+        height: 1px;
+        border-top: solid 1px @darkBlue;
+      }
+
+      .totals {
+        font-size: 12px;
+        font-weight: bold;
+
+        .total {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          margin: 10px 0;
+        }
+
+        h2 {
+          font-size: 12px;
+          font-weight: bold;
+          text-transform: uppercase;
+          margin: 0;
+          line-height: 1;
+          flex-grow: 1;
+        }
+
+        span {
+          line-height: 1;
+        }
+      }
+    }
+
+    .cancellation-policy {
+      margin: 20px 0;
+
+      h2 {
+        font-size: 14px;
+        font-weight: bold;
+        text-align: center;
+        text-transform: none;
+        margin: 0;
+        line-height: 1.5;
+      }
+
+      p {
+        font-size: 14px;
+        line-height: 21px;
+        text-align: center;
+        margin: 0;
+        line-height: 1.5;
       }
     }
   }

@@ -187,18 +187,24 @@ export default {
     display: grid;
     grid-template-columns: 1fr 1fr;
 
+    .material-design-icon.arrow-right-icon {
+      margin-top: 3px;
+      margin-left: 5px;
+    }
+
+    .material-design-icon.arrow-left-icon {
+      margin-top: 3px;
+      margin-right: 5px;      
+    }
+
     .material-design-icon.arrow-right-icon > .material-design-icon__svg {
       height: 15px;
       width: 15px;
-      margin-bottom: 3px;
-      margin-left: 2px;
     }
 
     .material-design-icon.arrow-left-icon > .material-design-icon__svg {
       height: 15px;
       width: 15px;
-      margin-bottom: 3px;
-      margin-right: 2px;
     }
 
     .previous {

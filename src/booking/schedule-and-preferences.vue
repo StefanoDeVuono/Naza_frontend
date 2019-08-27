@@ -14,7 +14,7 @@
       </div>
 
       <div class="sections">
-        <AppointmentSummary :product="product" />
+        <AppointmentSummary :product="product" :price="price" :duration="duration" />
         
         <div class="section">
           <div class="section-header">
