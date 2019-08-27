@@ -15,36 +15,36 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      label: String,
-      onClick: Function,
-      disabled: Boolean
-    },
+export default {
+  props: {
+    label: String,
+    onClick: Function,
+    disabled: Boolean,
+  },
 
-    methods: {
-      handleClick: function(event) {
-        if (this.disabled) {
-          return
-        }
-
-        this.onClick(event)
+  methods: {
+    handleClick: function(event) {
+      if (this.disabled) {
+        return
       }
-    }
-  }
+
+      this.onClick(event)
+    },
+  },
+}
 </script>
 
 <style lang="less">
-  @import '../common/utils.less';
+@import '../common/utils.less';
 
-  .next-step-button.sqs-block-button .sqs-block-button-element {
-    display: block;
+.next-step-button.sqs-block-button .sqs-block-button-element {
+  display: block;
 
-    &.disabled {
-      background-color: white;
-      color: @darkBlue;
-      border: 2px solid @darkBlue;
-      font-weight: bold;
-    }
+  &.disabled {
+    background-color: white;
+    color: @darkBlue;
+    border: 2px solid @darkBlue;
+    font-weight: bold;
   }
+}
 </style>

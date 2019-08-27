@@ -50,7 +50,11 @@
           />
         </div>
 
-        <NextStepButton label="Next Step, Please!" :onClick="nextScreen" :disabled="disableSubmit" />
+        <NextStepButton
+          label="Next Step, Please!"
+          :onClick="nextScreen"
+          :disabled="disableSubmit"
+        />
       </div>
     </Content>
   </div>
@@ -269,7 +273,7 @@ export default {
     FindYourStyle,
     HairColorSelector,
     RunningTotals,
-    NextStepButton
+    NextStepButton,
   },
 }
 </script>
@@ -361,5 +365,4 @@ div.customizations {
 div.customization {
   margin-bottom: 40px;
 }
-
 </style>
