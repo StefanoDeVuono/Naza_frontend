@@ -1,5 +1,5 @@
 <template>
-  <div v-if="product">
+  <div class="customize" v-if="product">
     <Header title="Customizations" :showBackArrow="true" />
 
     <RunningTotals :price="price" :duration="duration" />
@@ -279,90 +279,91 @@ export default {
 </script>
 
 <style lang="less">
-@import '../common/utils.less';
+  @import '../common/utils.less';
 
-.material-design-icon.chevron-down-icon,
-.material-design-icon.chevron-down-icon > .material-design-icon__svg {
-  height: 35px;
-  width: 35px;
-  display: block;
-  fill: @orange;
-  margin: 0 auto 0.5em auto;
-}
+  .customize {
+    .material-design-icon.chevron-down-icon > .material-design-icon__svg {
+    height: 35px;
+      width: 35px;
+      display: block;
+      fill: @orange;
+      margin: 0 auto 0.5em auto;
+    }
 
-h2.cta {
-  color: @darkBlue;
-  font-weight: bold;
-  font-size: 18px;
-  letter-spacing: 0.75px;
-}
+    h2.cta {
+      color: @darkBlue;
+      font-weight: bold;
+      font-size: 18px;
+      letter-spacing: 0.75px;
+    }
 
-p.cta {
-  text-align: center;
-  margin-bottom: 1em;
-}
+    p.cta {
+      text-align: center;
+      margin-bottom: 1em;
+    }
 
-h2.subheader {
-  text-align: center;
-  font-size: 12px;
-  color: @darkBlue;
-  letter-spacing: 0.5px;
-  font-weight: bold;
-}
+    h2.subheader {
+      text-align: center;
+      font-size: 12px;
+      color: @darkBlue;
+      letter-spacing: 0.5px;
+      font-weight: bold;
+    }
 
-div.taxon {
-  margin-top: 40px;
-  margin-bottom: 20px;
-}
+    div.taxon {
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
 
-h2.taxon-name {
-  font-size: 16px;
-  letter-spacing: 0.67px;
-  color: @orange;
-  text-align: center;
-  font-family: utopia-std;
-  text-transform: none;
-  margin: 0;
-}
+    h2.taxon-name {
+      font-size: 16px;
+      letter-spacing: 0.67px;
+      color: @orange;
+      text-align: center;
+      font-family: utopia-std;
+      text-transform: none;
+      margin: 0;
+    }
 
-div.style {
-  margin-top: 20px;
-  margin-bottom: 40px;
-}
+    div.style {
+      margin-top: 20px;
+      margin-bottom: 40px;
+    }
 
-h2.style-name {
-  font-size: 32px;
-  color: @orange;
-  letter-spacing: 1.33px;
-  font-weight: bold;
-  text-align: center;
-  font-family: utopia-std;
-  text-transform: none;
-  margin: 0 auto 20px auto;
-}
+    h2.style-name {
+      font-size: 32px;
+      color: @orange;
+      letter-spacing: 1.33px;
+      font-weight: bold;
+      text-align: center;
+      font-family: utopia-std;
+      text-transform: none;
+      margin: 0 auto 20px auto;
+    }
 
-p.style-desc {
-  margin-top: 0;
-  font-size: 14px;
-  line-height: 1.5;
-  letter-spacing: normal;
-  text-align: center;
-  color: @darkBlue;
-}
+    p.style-desc {
+      margin-top: 0;
+      font-size: 14px;
+      line-height: 1.5;
+      letter-spacing: normal;
+      text-align: center;
+      color: @darkBlue;
+    }
 
-div.img-container {
-  .ignore-parent-padding();
-  line-height: 0;
-}
+    div.img-container {
+      .ignore-parent-padding();
+      line-height: 0;
+    }
 
-div.customizations {
-  .ignore-parent-padding();
-  .ignore-parent-padding--add-padding(2);
+    div.customizations {
+      .ignore-parent-padding();
+      .ignore-parent-padding--add-padding(2);
 
-  background-color: @lightGray;
-}
+      background-color: @lightGray;
+    }
 
-div.customization {
-  margin-bottom: 40px;
-}
+    div.customization {
+      margin-bottom: 40px;
+    }
+  }
 </style>

@@ -36,14 +36,6 @@ export default {
 <style lang="less">
 @import '../common/utils.less';
 
-.material-design-icon.chevron-down-icon,
-.material-design-icon.chevron-down-icon > .material-design-icon__svg {
-  height: 25px;
-  width: 25px;
-  display: inline-block;
-  margin-top: 2px;
-}
-
 .accordion {
   .ignore-parent-padding();
   .ignore-parent-padding--add-padding(1);
@@ -64,5 +56,12 @@ export default {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+
+  .material-design-icon.chevron-down-icon > .material-design-icon__svg {
+    height: 25px;
+    width: 25px;
+    display: inline-block;
+    margin-top: 2px;
+  }
 }
 </style>

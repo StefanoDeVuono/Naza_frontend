@@ -14,6 +14,8 @@
       </div>
 
       <div class="sections">
+        <AppointmentSummary :product="product" />
+        
         <div class="section">
           <div class="section-header">
             <CalendarBlankOutlineIcon />
@@ -39,6 +41,7 @@ import RunningTotals from './running-totals.vue'
 import Content from './content.vue'
 import CalendarBlankOutlineIcon from 'vue-material-design-icons/CalendarBlankOutline.vue'
 import NextStepButton from 'common/next-step-button.vue'
+import AppointmentSummary from './appointment-summary.vue'
 
 export default {
   data: function() {
@@ -101,6 +104,7 @@ export default {
     Content,
     CalendarBlankOutlineIcon,
     NextStepButton,
+    AppointmentSummary,
   },
 }
 </script>
@@ -141,6 +145,7 @@ export default {
         font-weight: bold;
         text-align: center;
         margin: 0 0 10px 10px;
+        text-transform: none;
       }
 
       .material-design-icon.calendar-blank-outline-icon

@@ -187,7 +187,6 @@ export default {
     display: grid;
     grid-template-columns: 1fr 1fr;
 
-    .material-design-icon.arrow-right-icon,
     .material-design-icon.arrow-right-icon > .material-design-icon__svg {
       height: 15px;
       width: 15px;
@@ -195,7 +194,6 @@ export default {
       margin-left: 2px;
     }
 
-    .material-design-icon.arrow-left-icon,
     .material-design-icon.arrow-left-icon > .material-design-icon__svg {
       height: 15px;
       width: 15px;
