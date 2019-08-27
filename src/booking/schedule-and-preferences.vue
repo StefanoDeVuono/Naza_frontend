@@ -14,12 +14,9 @@
         <div class="section">
           <div class="section-header"><CalendarBlankOutlineIcon /> <h2>Date &amp; Time</h2></div>
           <AppointmentPicker :onTimeSelected="handleTimeSelected" />
-          <p>
-            <strong>Selected Time:</strong> {{ selectedTime }}
-          </p>
-
         </div>
 
+        <NextStepButton label="Book Appointment" :onClick="bookAppointment" :disabled="isDisabled" />
       </div>
 
     </Content>
@@ -32,19 +29,59 @@
   import RunningTotals from './running-totals.vue'
   import Content from './content.vue'
   import CalendarBlankOutlineIcon from 'vue-material-design-icons/CalendarBlankOutline.vue'
+  import NextStepButton from 'common/next-step-button.vue'
 
   export default {
     data: function() {
       return {
-        selectedTime: undefined,
-        price: 0,
-        duration: 0
+        selectedTime: undefined
+      }
+    },
+
+    props: {
+      product: Object,
+      variantPrice: String,
+      variantDuration: String,
+      customizations: Object
+    },
+
+    computed: {
+      isDisabled: function() {
+        return this.selectedTime === undefined
+      },
+
+      price: function() {
+        if (this.variantPrice) {
+          return parseInt(this.variantPrice)
+        }
+
+        if (!this.product) {
+          return 0
+        }
+
+        return parseInt(this.product.price)
+      },
+
+      duration: function() {
+        if (this.variantDuration) {
+          return parseInt(this.variantDuration)
+        }
+
+        if (!this.product) {
+          return 0
+        }
+
+        return parseInt(this.product.duration)
       }
     },
 
     methods: {
       handleTimeSelected: function(time) {
         this.selectedTime = time
+      },
+
+      bookAppointment: function() {
+        window.alert('This would be the confirmation screen')
       }
     },
     
@@ -53,15 +90,14 @@
       Header,
       RunningTotals,
       Content,
-      CalendarBlankOutlineIcon
+      CalendarBlankOutlineIcon,
+      NextStepButton
     }
   }
 </script>
 
 <style lang="less">
   @import '../common/utils.less';
-  @lightGray: #f7f6f2;
-  @brown: #bc5940;
 
   .schedule-and-preferences {
     .cta {
@@ -101,7 +137,7 @@
         .material-design-icon.calendar-blank-outline-icon > .material-design-icon__svg {
           height: 25px;
           width: 25px;
-          fill: @brown;
+          fill: @orange;
         }
       }
     }

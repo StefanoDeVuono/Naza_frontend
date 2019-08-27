@@ -50,19 +50,7 @@
           />
         </div>
 
-        <div class="sqs-block-button sqs-block button-block">
-          <div class="sqs-block-button-content sqs-block-content">
-            <div class="sqs-block-button-container--center">
-              <div
-                class="sqs-block-button-element--medium sqs-block-button-element"
-                v-bind:class="{ disabled: disableSubmit }"
-                @click="nextScreen"
-              >
-                Next Step, Please!
-              </div>
-            </div>
-          </div>
-        </div>
+        <NextStepButton label="Next Step, Please!" :onClick="nextScreen" :disabled="disableSubmit" />
       </div>
     </Content>
   </div>
@@ -97,6 +85,7 @@ import {
 import RadioButtonGrouping from 'common/radio-button-grouping.vue'
 import FindYourStyle from './find-your-style.vue'
 import RunningTotals from './running-totals.vue'
+import NextStepButton from 'common/next-step-button.vue'
 
 export default {
   data: () => {
@@ -280,15 +269,13 @@ export default {
     FindYourStyle,
     HairColorSelector,
     RunningTotals,
+    NextStepButton
   },
 }
 </script>
 
 <style lang="less">
 @import '../common/utils.less';
-@darkBlue: #1c3042;
-@orange: #bc4940;
-@lightGray: #f7f6f2;
 
 .material-design-icon.chevron-down-icon,
 .material-design-icon.chevron-down-icon > .material-design-icon__svg {
@@ -375,14 +362,4 @@ div.customization {
   margin-bottom: 40px;
 }
 
-.sqs-block-button .sqs-block-button-element {
-  display: block;
-
-  &.disabled {
-    background-color: white;
-    color: @darkBlue;
-    border: 2px solid @darkBlue;
-    font-weight: bold;
-  }
-}
 </style>
