@@ -2,12 +2,14 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Content from '../content.vue'
 import { shallowMount, createLocalVue } from '@vue/test-utils'
+import Storage from 'common/storage'
 
 describe('Content', () => {
   let wrapper
   let routerMock
 
   beforeEach(() => {
+    Storage.reset()
     const localVue = createLocalVue()
     routerMock = {
       go: jest.fn()

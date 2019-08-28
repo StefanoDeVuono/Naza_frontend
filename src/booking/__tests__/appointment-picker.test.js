@@ -2,17 +2,19 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import AppointmentPicker from '../appointment-picker.vue'
 import { shallowMount, createLocalVue } from '@vue/test-utils'
-import { mockFetch, restoreFetch } from './helper'
+import { mockFetch, restoreFetch } from 'common/testHelper'
 import fetchResponseJson from './appointment-picker.fetchResponse.json'
 import nextFetchResponseJson from './appointment-picker.next.fetchResponse.json'
 import flushPromises from 'flush-promises'
 import { map, nth } from 'ramda'
+import Storage from 'common/storage'
 
 describe('AppointmentPicker', () => {
   let wrapper
   let handleTimeSelected
 
   beforeEach(() => {
+    Storage.reset()
     jest.spyOn(Date, 'now').mockImplementation(() => 1566933102428)
     const localVue = createLocalVue()
     handleTimeSelected = jest.fn()

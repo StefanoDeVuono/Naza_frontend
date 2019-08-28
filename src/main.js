@@ -26,16 +26,14 @@ var routes = [
     props: true,
   },
   {
-    path: '/add-ons/:productId',
+    path: '/add-ons',
     component: AddOns,
     name: 'add-ons',
-    props: true
   },
   {
-    path: '/schedule-and-preferences/:productId',
+    path: '/schedule-and-preferences',
     component: ScheduleAndPreferences,
     name: 'schedule-and-preferences',
-    props: true
   }
 ]
 

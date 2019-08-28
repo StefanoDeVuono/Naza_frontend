@@ -177,9 +177,6 @@ export default {
 
       this.$router.push({
         name: 'schedule-and-preferences',
-        params: {
-          productId: this.$route.params.productId,
-        }
       })
     },
 
@@ -222,12 +219,17 @@ export default {
       Storage.setCustomization(optionType, value)
       const match = this.findMatchingVariant()
 
+      Storage.setPrice(this.shared.product.price)
+      Storage.setDuration(this.shared.product.duration)
+
       if (match) {
-        Storage.setPrice(match.price || this.shared.product.price)
-        Storage.setDuration(match.duration || this.shared.product.duration)
-      } else {
-        Storage.setPrice(this.shared.product.price)
-        Storage.setDuration(this.shared.product.duration)
+        if (match.price) {
+          Storage.setPrice(match.price)          
+        }
+
+        if (match.duration) {
+          Storage.setDuration(match.duration)
+        }
       }
 
       this.customizationCount = Object.keys(this.shared.customizations).length

@@ -4,6 +4,7 @@ import fetchResponseJson from './categories.fetchResponse.json'
 import Categories from '../categories.vue'
 import { shallowMount, createLocalVue } from '@vue/test-utils'
 import flushPromises from 'flush-promises'
+import Storage from 'common/storage'
 
 const mockFetchResponse = returnObj => {
   const fetchResponse = {
@@ -19,6 +20,8 @@ describe('Categories', () => {
   let wrapper
 
   beforeEach(() => {
+    Storage.reset()
+    
     const localVue = createLocalVue()
     localVue.use(VueRouter)
     const router = new VueRouter()

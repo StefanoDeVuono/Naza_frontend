@@ -4,25 +4,19 @@ import fetchResponseJson from './styles.fetchResponse.json'
 import Styles from '../styles.vue'
 import { shallowMount, createLocalVue } from '@vue/test-utils'
 import flushPromises from 'flush-promises'
-
-const mockFetchResponse = returnObj => {
-  const fetchResponse = {
-    json: jest.fn(() => Promise.resolve(fetchResponseJson)),
-  }
-  global.fetch = () => Promise.resolve(fetchResponse)
-}
+import Storage from 'common/storage'
+import { mockFetch, restoreFetch } from 'common/testHelper'
 
 describe('Styles', () => {
   let oldFetch
   let wrapper
 
   beforeEach(() => {
+    Storage.reset()
+    
     const localVue = createLocalVue()
-    // localVue.use(VueRouter)
-    // const router = new VueRouter()
 
-    oldFetch = global.fetch
-    mockFetchResponse()
+    mockFetch(fetchResponseJson)
 
     const mockRoute = {
       params: { categoryId: 1 },
@@ -43,7 +37,7 @@ describe('Styles', () => {
   })
 
   afterEach(() => {
-    global.fetch = oldFetch
+    restoreFetch()
   })
 
   it('initializes the subcategories', async () => {

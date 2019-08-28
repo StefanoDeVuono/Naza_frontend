@@ -4,15 +4,29 @@ import Vue from 'vue'
 // add-ons, and appointment time.
 
 export default {
-  debug: true,
+  debug: process.env === 'development',
 
   sharedState: {
     product: undefined,
     customizations: {},
     selectedTime: undefined,
+
+    // these aren't strictly necessary and just stored here
+    // for caching
     price: undefined,
     duration: undefined,
     taxonName: undefined,
+  },
+
+  reset() {
+    this.sharedState = {
+      product: undefined,
+      customizations: {},
+      selectedTime: undefined,
+      price: undefined,
+      duration: undefined,
+      taxonName: undefined,
+    }
   },
 
   setProduct(product) {

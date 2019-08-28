@@ -4,12 +4,15 @@ import TimeSlots from '../time-slots.vue'
 import { shallowMount, createLocalVue } from '@vue/test-utils'
 import fetchResponseJson from './appointment-picker.fetchResponse.json'
 import flushPromises from 'flush-promises'
+import Storage from 'common/storage'
 
 describe('TimeSlots', () => {
   let wrapper
   let handleTimeSelected
 
   beforeEach(() => {
+    Storage.reset()
+    
     const localVue = createLocalVue()
     handleTimeSelected = jest.fn()
 

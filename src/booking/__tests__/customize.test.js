@@ -5,6 +5,7 @@ import addOnsFetchResponseJson from './customize.addOns.fetchResponse.json'
 import Customize from '../customize.vue'
 import { shallowMount, createLocalVue } from '@vue/test-utils'
 import flushPromises from 'flush-promises'
+import Storage from 'common/storage'
 
 const mockFetchResponse = returnObj => {
   const productFetchResponse = {
@@ -29,6 +30,8 @@ describe('Customize', () => {
   let wrapper
 
   beforeEach(() => {
+    Storage.reset()
+
     const localVue = createLocalVue()
     // localVue.use(VueRouter)
     // const router = new VueRouter()
@@ -57,7 +60,7 @@ describe('Customize', () => {
 
   it('initializes the product', async () => {
     await flushPromises()
-    expect(wrapper.vm.product).toBeDefined()
+    expect(Storage.sharedState.product).toBeDefined()
   })
 
   it('displays the style', async () => {

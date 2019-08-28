@@ -8,8 +8,7 @@
       <div class="cta">
         <h2>Let's Pick a Time &amp; Date</h2>
         <p>
-          For oft, when on my couch I lie \ In vacant or in pensive mood \ They
-          flash upon that inward eye \ Which is the bliss of solitude
+          For oft, when on my couch I lie In vacant or in pensive mood They flash upon that inward eye Which is the bliss of solitude
         </p>
       </div>
 
@@ -49,9 +48,6 @@ export default {
     return {
       shared: Storage.sharedState
     }
-  },
-
-  props: {
   },
 
   computed: {

@@ -2,20 +2,23 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import RunningTotals from '../running-totals.vue'
 import { shallowMount, createLocalVue } from '@vue/test-utils'
+import Storage from 'common/storage'
 
 describe('RunningTotals', () => {
   let wrapper
 
   const buildWrapper = (price, duration) => {
     const localVue = createLocalVue()
+    Storage.setPrice(price)
+    Storage.setDuration(duration)
     return shallowMount(RunningTotals, {
-      propsData: {
-        price,
-        duration
-      },
       localVue
     })
   }
+
+  beforeEach(() => {
+    Storage.reset()
+  })
 
   it('transform 0 minutes', () => {
     wrapper = buildWrapper(30, 0) 
