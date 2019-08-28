@@ -9,7 +9,7 @@
     <div class="body">
       <div class="section">
         <h2 class="style-header">Style</h2>
-        <h2 class="style-name">{{ styleName }}</h2>
+        <h2 class="style-name">{{ shared.taxonName }}</h2>
       </div>
 
       <div class="section">
@@ -24,7 +24,7 @@
 
       <div class="section">
         <ul class="customizations">
-          <li v-for="(value, customization) in customizations">
+          <li v-for="(value, customization) in shared.customizations">
             <strong>{{ customization }}:</strong> {{value}}
           </li>
         </ul>
@@ -38,11 +38,11 @@
 
       <div class="totals">
         <div class="total total-price">
-          <h2>Total:</h2> <span>{{ formattedPrice(price) }}</span>
+          <h2>Total:</h2> <span>{{ formattedPrice(shared.price) }}</span>
         </div>
 
         <div class="total total-duration">
-          <h2>Duration:</h2> <span>{{ formattedHours(duration) }}</span>
+          <h2>Duration:</h2> <span>{{ formattedHours(shared.duration) }}</span>
         </div>
       </div>
     </div>
@@ -60,27 +60,22 @@
   import ChevronUpIcon from 'vue-material-design-icons/ChevronUp.vue'
   import { slice } from 'ramda'
   import { formattedHours, formattedPrice } from 'common/utils'
+  import Storage from 'common/storage'
 
   export default {
     props: {
-      product: Object,
-      price: Number,
-      duration: Number
     },
 
     data: function() {
       return {
-        showMoreLink: true
+        showMoreLink: true,
+        shared: Storage.sharedState
       }
     },
 
     computed: {
-      styleName: function() {
-        return "Crochet Braids"
-      },
-
       patternName: function() {
-        return "Twists"
+        return this.shared.product.name
       },
 
       truncatedDescription: function() {
@@ -88,19 +83,7 @@
       },
 
       description: function() {
-        return "What though the radiance which was once so bright Be now for ever taken from my sight, Though nothing can bring back the hour Of splendour in the grass, of glory in the flower"
-      },
-
-      customizations: function() {
-        return {
-          "Size": "Medium",
-          "Length": "Medium",
-          "Volume": "Biggest",
-          "Color": "Brown with Blonde Highlights",
-          // "Free Add-ons": "Organic Add-On",
-          // "Premium Add-ons": "Wash &amp; Deep Condition",
-          // "Drink": "Mocktail"
-        }
+        return this.shared.product.description
       },
     },
 
@@ -111,7 +94,7 @@
       formattedHours,
       formattedPrice,
     },
-    
+
     components: {
       CalendarCheckOutlineIcon,
       ChevronDownIcon,
@@ -151,6 +134,7 @@
     .body {
       border: 2px solid @darkBlue;
       padding: 15px;
+      background-color: white;
 
       .section {
         margin: 5px 0;

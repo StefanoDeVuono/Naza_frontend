@@ -1,8 +1,8 @@
 <template>
-  <div class="customize" v-if="product">
+  <div class="customize" v-if="shared.product">
     <Header title="Customizations" :showBackArrow="true" />
 
-    <RunningTotals :price="price" :duration="duration" />
+    <RunningTotals :price="shared.price" :duration="shared.duration" />
 
     <Content :progress-step="3">
       <h2 class="cta">Make it Your Style</h2>
@@ -23,13 +23,13 @@
 
       <div class="taxon">
         <h2 class="subheader">Style</h2>
-        <h2 class="taxon-name">{{ taxonName }}</h2>
+        <h2 class="taxon-name">{{ shared.taxonName }}</h2>
       </div>
 
       <div class="style">
         <h2 class="subheader">Pattern</h2>
-        <h2 class="style-name">{{ product.name }}</h2>
-        <p class="style-desc">{{ product.description }}</p>
+        <h2 class="style-name">{{ shared.product.name }}</h2>
+        <p class="style-desc">{{ shared.product.description }}</p>
       </div>
 
       <div class="customizations">
@@ -46,7 +46,7 @@
           <HairColorSelector
             :colors="optionType.option_values"
             :onPress="handleColorChange"
-            :selectedColor="customizations.Color"
+            :selectedColor="shared.customizations.Color"
           />
         </div>
 
@@ -90,19 +90,18 @@ import RadioButtonGrouping from 'common/radio-button-grouping.vue'
 import FindYourStyle from './find-your-style.vue'
 import RunningTotals from './running-totals.vue'
 import NextStepButton from 'common/next-step-button.vue'
+import Storage from 'common/storage'
 
 export default {
-  data: () => {
+  data: function() {
     return {
       CURL_ASSET_ROOT: getCurlAssetRoot(),
-      product: undefined,
-      customizations: {},
-      variantPrice: undefined,
-      variantDuration: undefined,
 
       // we need to store this separately so vue can
       // track updates
       customizationCount: 0,
+
+      shared: Storage.sharedState
     }
   },
 
@@ -111,39 +110,23 @@ export default {
 
   computed: {
     disableSubmit: function() {
-      return this.customizationCount !== this.product.option_types.length
+      return this.customizationCount !== this.shared.product.option_types.length
     },
 
     largeImageUrl: function() {
-      return path(['images', 0, 'styles', 3, 'url'], this.product)
+      return path(['images', 0, 'styles', 3, 'url'], this.shared.product)
     },
 
     smallImageUrl: function() {
-      return path(['images', 0, 'styles', 2, 'url'], this.product)
+      return path(['images', 0, 'styles', 2, 'url'], this.shared.product)
     },
 
     availableOptions: function() {
-      return filter(x => x.name !== 'Color', this.product.option_types)
+      return filter(x => x.name !== 'Color', this.shared.product.option_types)
     },
 
     colorOptions: function() {
-      return filter(x => x.name === 'Color', this.product.option_types)
-    },
-
-    duration: function() {
-      if (this.variantDuration) {
-        return parseInt(this.variantDuration)
-      }
-
-      return parseInt(this.product.duration)
-    },
-
-    price: function() {
-      if (this.variantPrice) {
-        return parseInt(this.variantPrice)
-      }
-
-      return parseInt(this.product.price)
+      return filter(x => x.name === 'Color', this.shared.product.option_types)
     },
 
     optionValueMap: function() {
@@ -154,17 +137,8 @@ export default {
         }, {}),
         flatten(),
         map(x => x.option_values)
-      )(this.product.option_types)
-    },
-
-    taxonName: function() {
-      return compose(
-        replace(/Hair Styles -> /, ''),
-        last,
-        sortBy(x => -x.length),
-        map(x => x.pretty_name)
-      )(this.product.taxons)
-    },
+      )(this.shared.product.option_types)
+    }
   },
 
   methods: {
@@ -180,8 +154,18 @@ export default {
           return response.json()
         })
         .then(json => {
-          this.product = parse(json).data
+          Storage.setProduct(parse(json).data)
+          Storage.setTaxonName(this.findTaxonName())
         })
+    },
+
+    findTaxonName: function() {
+      return compose(
+        replace(/Hair Styles -> /, ''),
+        last,
+        sortBy(x => -x.length),
+        map(x => x.pretty_name)
+      )(this.shared.product.taxons)
     },
 
     nextScreen: function(event) {
@@ -194,11 +178,8 @@ export default {
       this.$router.push({
         name: 'schedule-and-preferences',
         params: {
-          product: this.product,
-          variantPrice: this.variantPrice,
-          variantDuration: this.variantDuration,
-          customizations: this.customizations,
-        },
+          productId: this.$route.params.productId,
+        }
       })
     },
 
@@ -212,14 +193,14 @@ export default {
         map(x => join(':', x)),
         filter(x => !isNil(x[1])),
         Object.entries
-      )(this.customizations)
+      )(this.shared.customizations)
 
       // next we get all the product variants. we want variants
       // with multiple option values earlier so that the more
       // generic ones are selected later.
       const variants = sortBy(
         x => -x.option_values.length,
-        this.product.variants
+        this.shared.product.variants
       )
 
       // find the first matching variant that has all the
@@ -235,27 +216,26 @@ export default {
 
     fetchData: function() {
       this.fetchStyles()
-      // this.fetchAddOns()
     },
 
     handleCustomizationChange: function(optionType, value) {
-      this.$set(this.customizations, optionType, value)
+      Storage.setCustomization(optionType, value)
       const match = this.findMatchingVariant()
 
       if (match) {
-        this.variantPrice = match.price
-        this.variantDuration = match.duration
+        Storage.setPrice(match.price || this.shared.product.price)
+        Storage.setDuration(match.duration || this.shared.product.duration)
       } else {
-        this.variantPrice = undefined
-        this.variantDuration = undefined
+        Storage.setPrice(this.shared.product.price)
+        Storage.setDuration(this.shared.product.duration)
       }
 
-      this.customizationCount = Object.keys(this.customizations).length
+      this.customizationCount = Object.keys(this.shared.customizations).length
     },
 
     handleColorChange: function(color) {
-      this.$set(this.customizations, 'Color', color)
-      this.customizationCount = Object.keys(this.customizations).length
+      Storage.setCustomization('Color', color)
+      this.customizationCount = Object.keys(this.shared.customizations).length
     },
   },
   watch: {

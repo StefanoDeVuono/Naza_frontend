@@ -2,7 +2,7 @@
   <div class="schedule-and-preferences">
     <Header title="Schedule &amp; Preferences" :showBackArrow="true" />
 
-    <RunningTotals :price="price" :duration="duration" />
+    <RunningTotals />
 
     <Content :progress-step="5">
       <div class="cta">
@@ -14,7 +14,7 @@
       </div>
 
       <div class="sections">
-        <AppointmentSummary :product="product" :price="price" :duration="duration" />
+        <AppointmentSummary />
         
         <div class="section">
           <div class="section-header">
@@ -42,54 +42,27 @@ import Content from './content.vue'
 import CalendarBlankOutlineIcon from 'vue-material-design-icons/CalendarBlankOutline.vue'
 import NextStepButton from 'common/next-step-button.vue'
 import AppointmentSummary from './appointment-summary.vue'
+import Storage from 'common/storage'
 
 export default {
   data: function() {
     return {
-      selectedTime: undefined,
+      shared: Storage.sharedState
     }
   },
 
   props: {
-    product: Object,
-    variantPrice: String,
-    variantDuration: String,
-    customizations: Object,
   },
 
   computed: {
     isDisabled: function() {
-      return this.selectedTime === undefined
-    },
-
-    price: function() {
-      if (this.variantPrice) {
-        return parseInt(this.variantPrice)
-      }
-
-      if (!this.product) {
-        return 0
-      }
-
-      return parseInt(this.product.price)
-    },
-
-    duration: function() {
-      if (this.variantDuration) {
-        return parseInt(this.variantDuration)
-      }
-
-      if (!this.product) {
-        return 0
-      }
-
-      return parseInt(this.product.duration)
+      return this.shared.selectedTime === undefined
     },
   },
 
   methods: {
     handleTimeSelected: function(time) {
-      this.selectedTime = time
+      Storage.setSelectedTime(time)
     },
 
     bookAppointment: function() {
