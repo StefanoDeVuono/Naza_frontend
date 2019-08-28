@@ -3,10 +3,11 @@
     <div class="header">
       <CalendarCheckOutlineIcon />
       <h2>Appointment Summary</h2>
-      <ChevronUpIcon />
+      <ChevronUpIcon v-show="!bodyHidden" @click="hideBody" />
+      <ChevronDownIcon v-show="bodyHidden" @click="showBody" />
     </div>
 
-    <div class="body">
+    <div class="body" v-show="!bodyHidden">
       <div class="section">
         <h2 class="style-header">Style</h2>
         <h2 class="style-name">{{ shared.taxonName }}</h2>
@@ -69,7 +70,8 @@
     data: function() {
       return {
         showMoreLink: true,
-        shared: Storage.sharedState
+        shared: Storage.sharedState,
+        bodyHidden: false
       }
     },
 
@@ -90,6 +92,12 @@
     methods: {
       expandDescription: function() {
         this.showMoreLink = false
+      },
+      showBody() {
+        this.bodyHidden = false
+      },
+      hideBody() {
+        this.bodyHidden = true
       },
       formattedHours,
       formattedPrice,
