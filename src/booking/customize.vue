@@ -265,7 +265,7 @@ export default {
 
   .customize {
     .material-design-icon.chevron-down-icon > .material-design-icon__svg {
-    height: 35px;
+      height: 35px;
       width: 35px;
       display: block;
       fill: @orange;
