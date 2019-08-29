@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import TimeSlots from '../time-slots.vue'
-import { shallowMount, createLocalVue } from '@vue/test-utils'
+import TimeSlots from '../schedule-and-preferences/time-slots.vue'
+import { shallowMount, createLocalVue, createWrapper } from '@vue/test-utils'
 import fetchResponseJson from './appointment-picker.fetchResponse.json'
 import flushPromises from 'flush-promises'
 import Storage from 'common/storage'
@@ -9,19 +9,20 @@ import Storage from 'common/storage'
 describe('TimeSlots', () => {
   let wrapper
   let handleTimeSelected
+  let localVue
 
   beforeEach(() => {
     Storage.reset()
-    
-    const localVue = createLocalVue()
+
+    localVue = createLocalVue()
     handleTimeSelected = jest.fn()
 
     wrapper = shallowMount(TimeSlots, {
       propsData: {
         onTimeSelected: handleTimeSelected,
-        slotsByDate: fetchResponseJson
+        slotsByDate: fetchResponseJson,
       },
-      localVue
+      localVue,
     })
   })
 
@@ -29,7 +30,8 @@ describe('TimeSlots', () => {
     it('calls the callback', async () => {
       wrapper.find('.time-slot').trigger('click')
       await flushPromises()
-      expect(handleTimeSelected).toHaveBeenCalledWith('2019-08-28T09:00:00-0700')
+      const rootWrapper = createWrapper(wrapper.vm.$root)
+      expect(rootWrapper.emitted('appointment-picker:selected')).toBeTruthy()
     })
 
     it('sets state', async () => {

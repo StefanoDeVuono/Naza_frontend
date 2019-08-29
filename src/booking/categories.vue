@@ -34,7 +34,7 @@
 <script>
 import Header from './header.vue'
 import Content from './content.vue'
-import { getSpreeServer, getCurlAssetRoot } from '../constants'
+import { getSpreeServer, getCurlAssetRoot } from 'common/constants'
 import 'whatwg-fetch'
 import { parse } from 'jsonapi-parse'
 import { sortBy, reject, prop, compose, path } from 'ramda'

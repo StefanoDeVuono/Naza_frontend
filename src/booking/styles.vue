@@ -51,7 +51,7 @@
 <script>
 import Header from './header.vue'
 import Content from './content.vue'
-import { getSpreeServer, getCurlAssetRoot } from '../constants'
+import { getSpreeServer, getCurlAssetRoot } from 'common/constants'
 import 'whatwg-fetch'
 import { parse } from 'jsonapi-parse'
 import {
@@ -65,7 +65,8 @@ import {
   path,
   values,
   map,
-  median,
+  reduce,
+  min,
 } from 'ramda'
 import DurationAndPrice from './duration-and-price.vue'
 
@@ -102,14 +103,14 @@ export default {
           )(json)
 
           this.totalPrice = compose(
-            median,
+            reduce(min, Infinity),
             map(x => parseInt(x.price)),
             nth(0),
             values
           )(this.stylesBySubcategory)
 
           this.totalDuration = compose(
-            median,
+            reduce(min, Infinity),
             map(x => parseInt(x.duration)),
             nth(0),
             values
@@ -117,9 +118,22 @@ export default {
         })
     },
     getSubcategory: function(style) {
-      return compose(
+      const subcategory = compose(
         prop('name'),
         nth(1),
+        sortBy(x => {
+          return !x.is_root
+        })
+      )(style.taxons)
+
+      if (subcategory) {
+        return subcategory
+      }
+
+      // some of these aren't nested
+      return compose(
+        prop('name'),
+        nth(0),
         sortBy(x => {
           return !x.is_root
         })

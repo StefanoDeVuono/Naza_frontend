@@ -64,12 +64,12 @@ describe('Customize', () => {
   })
 
   it('displays the style', async () => {
-    await flushPromises()    
+    await flushPromises()
     expect(wrapper.text()).toMatch(/Box Braids\/Twists/)
   })
 
   it('displays the customizations', async () => {
     await flushPromises()
-    expect(wrapper.findAll("div.customization")).toHaveLength(6)
+    expect(wrapper.findAll('div.customization')).toHaveLength(6)
   })
 })

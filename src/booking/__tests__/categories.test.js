@@ -21,7 +21,7 @@ describe('Categories', () => {
 
   beforeEach(() => {
     Storage.reset()
-    
+
     const localVue = createLocalVue()
     localVue.use(VueRouter)
     const router = new VueRouter()

@@ -12,7 +12,7 @@ describe('RunningTotals', () => {
     Storage.setPrice(price)
     Storage.setDuration(duration)
     return shallowMount(RunningTotals, {
-      localVue
+      localVue,
     })
   }
 
@@ -21,12 +21,12 @@ describe('RunningTotals', () => {
   })
 
   it('transform 0 minutes', () => {
-    wrapper = buildWrapper(30, 0) 
-    expect(wrapper.html()).toMatch(/0 HRS/)    
+    wrapper = buildWrapper(30, 0)
+    expect(wrapper.html()).toMatch(/0 HRS/)
   })
 
   it('transforms 30 minutes', () => {
-    wrapper = buildWrapper(30, 30) 
+    wrapper = buildWrapper(30, 30)
     expect(wrapper.html()).toMatch(/1 HR/)
   })
 
@@ -46,7 +46,7 @@ describe('RunningTotals', () => {
   })
 
   it('transforms price', () => {
-    wrapper = buildWrapper(30, 0) 
-    expect(wrapper.html()).toMatch(/\$30\.00/)   
+    wrapper = buildWrapper(30, 0)
+    expect(wrapper.html()).toMatch(/\$30\.00/)
   })
 })

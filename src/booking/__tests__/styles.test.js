@@ -13,7 +13,7 @@ describe('Styles', () => {
 
   beforeEach(() => {
     Storage.reset()
-    
+
     const localVue = createLocalVue()
 
     mockFetch(fetchResponseJson)
@@ -42,7 +42,11 @@ describe('Styles', () => {
 
   it('initializes the subcategories', async () => {
     await flushPromises()
-    expect(wrapper.vm.stylesBySubcategory).toHaveProperty('Curly Crochet Braids')
-    expect(wrapper.vm.stylesBySubcategory['Curly Crochet Braids']).toHaveLength(3)
+    expect(wrapper.vm.stylesBySubcategory).toHaveProperty(
+      'Curly Crochet Braids'
+    )
+    expect(wrapper.vm.stylesBySubcategory['Curly Crochet Braids']).toHaveLength(
+      3
+    )
   })
 })

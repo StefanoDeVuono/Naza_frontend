@@ -31,13 +31,18 @@ module.exports = {
           'css-loader',
           'less-loader'
         ]
+      },
+      {
+        test: /\.svg$/,
+        use: 'vue-svg-loader'
       }
     ],
   },
   resolve: {
     alias: {
       vue$: 'vue/dist/vue.common.js',
-      common: path.resolve(__dirname, 'src/common')
+      common: path.resolve(__dirname, 'src/common'),
+      images: path.resolve(__dirname, 'src/images')
     },
   },
   entry: './src/main.js',

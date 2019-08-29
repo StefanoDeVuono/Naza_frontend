@@ -4,12 +4,25 @@ import Vue from 'vue'
 // add-ons, and appointment time.
 
 export default {
-  debug: process.env === 'development',
+  debug: true || process.env === 'development',
 
   sharedState: {
     product: undefined,
     customizations: {},
     selectedTime: undefined,
+    variant: undefined,
+
+    customerFirstName: undefined,
+    customerLastName: undefined,
+    customerPhone: undefined,
+    customerEmail: undefined,
+    customerZipCode: undefined,
+    customerPassword: undefined,
+
+    stripePaymentMethod: undefined,
+
+    orderNumber: undefined,
+    orderToken: undefined,
 
     // these aren't strictly necessary and just stored here
     // for caching
@@ -19,14 +32,14 @@ export default {
   },
 
   reset() {
-    this.sharedState = {
-      product: undefined,
-      customizations: {},
-      selectedTime: undefined,
-      price: undefined,
-      duration: undefined,
-      taxonName: undefined,
-    }
+    Object.keys(this.sharedState).forEach(x => {
+      this.sharedState[x] = undefined
+    })
+    this.sharedState.customizations = {}
+  },
+
+  setStripePaymentMethod(stripePaymentMethod) {
+    Vue.set(this.sharedState, 'stripePaymentMethod', stripePaymentMethod)
   },
 
   setProduct(product) {
@@ -37,11 +50,19 @@ export default {
     }
   },
 
+  setVariant(variant) {
+    Vue.set(this.sharedState, 'variant', variant)
+
+    if (this.debug) {
+      console.log('setting variant')
+    }
+  },
+
   setCustomization(key, value) {
     Vue.set(this.sharedState.customizations, key, value)
 
     if (this.debug) {
-      console.log('setting customization', key, value)      
+      console.log('setting customization', key, value)
     }
   },
 
@@ -75,5 +96,5 @@ export default {
     if (this.debug) {
       console.log('setting taxonName', taxonName)
     }
-  }
+  },
 }

@@ -12,20 +12,20 @@ describe('Content', () => {
     Storage.reset()
     const localVue = createLocalVue()
     routerMock = {
-      go: jest.fn()
+      go: jest.fn(),
     }
 
     wrapper = shallowMount(Content, {
       slots: {
-        default: ['hello world']
+        default: ['hello world'],
       },
       propsData: {
-        progressStep: 3
+        progressStep: 3,
       },
       localVue,
       mocks: {
-        $router: routerMock
-      }
+        $router: routerMock,
+      },
     })
   })
 

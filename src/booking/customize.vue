@@ -1,5 +1,7 @@
 <template>
   <div class="customize" v-if="shared.product">
+    <Loading :active.sync="isLoading" :is-full-page="true" />
+
     <Header title="Customizations" :showBackArrow="true" />
 
     <RunningTotals :price="shared.price" :duration="shared.duration" />
@@ -52,7 +54,7 @@
 
         <NextStepButton
           label="Next Step, Please!"
-          :onClick="nextScreen"
+          :onClick="submit"
           :disabled="disableSubmit"
         />
       </div>
@@ -61,7 +63,11 @@
 </template>
 
 <script>
-import { getSpreeServer, getCurlAssetRoot } from '../constants'
+import {
+  getSpreeServer,
+  getCurlAssetRoot,
+  getAppServer,
+} from 'common/constants'
 import Header from './header.vue'
 import Content from './content.vue'
 import ChevronDownIcon from 'vue-material-design-icons/ChevronDown.vue'
@@ -91,17 +97,19 @@ import FindYourStyle from './find-your-style.vue'
 import RunningTotals from './running-totals.vue'
 import NextStepButton from 'common/next-step-button.vue'
 import Storage from 'common/storage'
+import Loading from 'vue-loading-overlay'
 
 export default {
-  data: function() {
+  data() {
     return {
       CURL_ASSET_ROOT: getCurlAssetRoot(),
 
       // we need to store this separately so vue can
       // track updates
       customizationCount: 0,
+      isLoading: false,
 
-      shared: Storage.sharedState
+      shared: Storage.sharedState,
     }
   },
 
@@ -138,17 +146,17 @@ export default {
         flatten(),
         map(x => x.option_values)
       )(this.shared.product.option_types)
-    }
+    },
   },
 
   methods: {
-    fetchStyles: function() {
+    fetchStyles() {
       var productId = this.$route.params.productId
       if (!productId) {
         return
       }
 
-      var path = `${getSpreeServer()}/products/${productId}?include=taxons,images,option_types.option_values,product_properties,variants`
+      var path = `${getSpreeServer()}/products/${productId}?include=taxons,images,option_types.option_values,product_properties,variants,default_variant`
       fetch(path)
         .then(response => {
           return response.json()
@@ -159,7 +167,58 @@ export default {
         })
     },
 
-    findTaxonName: function() {
+    // when the user submits, we have enough information to
+    // create the shopping cart order
+    createOrder() {
+      this.isLoading = true
+      this.findVariant()
+
+      const data = {
+        variant_id: this.shared.variant.id,
+      }
+
+      fetch(getSpreeServer() + '/cart', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+        .then(resp => resp.json())
+        .then(json => {
+          this.$session.set('orderNumber', json.data.attributes.number)
+          this.shared.orderNumber = json.data.attributes.number
+          this.shared.orderToken = json.data.attributes.token
+          this.createAppointment(this.shared.orderNumber)
+        })
+    },
+
+    createAppointment(order_number) {
+      const data = {
+        order_number,
+        customizations: this.shared.customizations,
+        price: this.shared.price,
+        duration: this.shared.duration,
+      }
+
+      fetch(getAppServer() + '/naza/appointments.json', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+        .then(resp => resp.json())
+        .then(json => {
+          this.shared.nazaAppointmentId = json.id
+          this.isLoading = false
+          this.$router.push({
+            name: 'schedule-and-preferences',
+          })
+        })
+    },
+
+    findTaxonName() {
       return compose(
         replace(/Hair Styles -> /, ''),
         last,
@@ -168,19 +227,17 @@ export default {
       )(this.shared.product.taxons)
     },
 
-    nextScreen: function(event) {
+    submit(event) {
       event.stopImmediatePropagation()
 
       if (this.disableSubmit) {
         return
       }
 
-      this.$router.push({
-        name: 'schedule-and-preferences',
-      })
+      this.createOrder()
     },
 
-    findMatchingVariant: function() {
+    findMatchingVariant() {
       // first build a list of customizations that have been
       // chosen so far. this will look something like
       // ['Size:Medium', 'Volume:Biggest']
@@ -211,38 +268,46 @@ export default {
       return matchingVariant
     },
 
-    fetchData: function() {
+    fetchData() {
       this.fetchStyles()
     },
 
-    handleCustomizationChange: function(optionType, value) {
-      Storage.setCustomization(optionType, value)
-      const match = this.findMatchingVariant()
-
+    findVariant() {
       Storage.setPrice(this.shared.product.price)
       Storage.setDuration(this.shared.product.duration)
+      Storage.setVariant(this.findMatchingVariant())
 
-      if (match) {
-        if (match.price) {
-          Storage.setPrice(match.price)          
+      if (this.shared.variant) {
+        if (this.shared.variant.price) {
+          Storage.setPrice(this.shared.variant.price)
         }
 
-        if (match.duration) {
-          Storage.setDuration(match.duration)
+        if (this.shared.variant.duration) {
+          Storage.setDuration(this.shared.variant.duration)
         }
+      } else {
+        Storage.setVariant(this.shared.product.default_variant)
       }
+    },
+
+    handleCustomizationChange(optionType, value) {
+      Storage.setCustomization(optionType, value)
+
+      this.findVariant()
 
       this.customizationCount = Object.keys(this.shared.customizations).length
     },
 
-    handleColorChange: function(color) {
+    handleColorChange(color) {
       Storage.setCustomization('Color', color)
       this.customizationCount = Object.keys(this.shared.customizations).length
     },
   },
+
   watch: {
     $route: 'fetchData',
   },
+
   created: function() {
     this.fetchData()
   },
@@ -256,96 +321,97 @@ export default {
     HairColorSelector,
     RunningTotals,
     NextStepButton,
+    Loading,
   },
 }
 </script>
 
 <style lang="less">
-  @import '../common/utils.less';
+@import '../common/utils.less';
 
-  .customize {
-    .material-design-icon.chevron-down-icon > .material-design-icon__svg {
-      height: 35px;
-      width: 35px;
-      display: block;
-      fill: @orange;
-      margin: 0 auto 0.5em auto;
-    }
-
-    h2.cta {
-      color: @darkBlue;
-      font-weight: bold;
-      font-size: 18px;
-      letter-spacing: 0.75px;
-    }
-
-    p.cta {
-      text-align: center;
-      margin-bottom: 1em;
-    }
-
-    h2.subheader {
-      text-align: center;
-      font-size: 12px;
-      color: @darkBlue;
-      letter-spacing: 0.5px;
-      font-weight: bold;
-    }
-
-    div.taxon {
-      margin-top: 40px;
-      margin-bottom: 20px;
-    }
-
-    h2.taxon-name {
-      font-size: 16px;
-      letter-spacing: 0.67px;
-      color: @orange;
-      text-align: center;
-      font-family: utopia-std;
-      text-transform: none;
-      margin: 0;
-    }
-
-    div.style {
-      margin-top: 20px;
-      margin-bottom: 40px;
-    }
-
-    h2.style-name {
-      font-size: 32px;
-      color: @orange;
-      letter-spacing: 1.33px;
-      font-weight: bold;
-      text-align: center;
-      font-family: utopia-std;
-      text-transform: none;
-      margin: 0 auto 20px auto;
-    }
-
-    p.style-desc {
-      margin-top: 0;
-      font-size: 14px;
-      line-height: 1.5;
-      letter-spacing: normal;
-      text-align: center;
-      color: @darkBlue;
-    }
-
-    div.img-container {
-      .ignore-parent-padding();
-      line-height: 0;
-    }
-
-    div.customizations {
-      .ignore-parent-padding();
-      .ignore-parent-padding--add-padding(2);
-
-      background-color: @lightGray;
-    }
-
-    div.customization {
-      margin-bottom: 40px;
-    }
+.customize {
+  .material-design-icon.chevron-down-icon > .material-design-icon__svg {
+    height: 35px;
+    width: 35px;
+    display: block;
+    fill: @orange;
+    margin: 0 auto 0.5em auto;
   }
+
+  h2.cta {
+    color: @darkBlue;
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 0.75px;
+  }
+
+  p.cta {
+    text-align: center;
+    margin-bottom: 1em;
+  }
+
+  h2.subheader {
+    text-align: center;
+    font-size: 12px;
+    color: @darkBlue;
+    letter-spacing: 0.5px;
+    font-weight: bold;
+  }
+
+  div.taxon {
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+
+  h2.taxon-name {
+    font-size: 16px;
+    letter-spacing: 0.67px;
+    color: @orange;
+    text-align: center;
+    font-family: utopia-std;
+    text-transform: none;
+    margin: 0;
+  }
+
+  div.style {
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+
+  h2.style-name {
+    font-size: 32px;
+    color: @orange;
+    letter-spacing: 1.33px;
+    font-weight: bold;
+    text-align: center;
+    font-family: utopia-std;
+    text-transform: none;
+    margin: 0 auto 20px auto;
+  }
+
+  p.style-desc {
+    margin-top: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    letter-spacing: normal;
+    text-align: center;
+    color: @darkBlue;
+  }
+
+  div.img-container {
+    .ignore-parent-padding();
+    line-height: 0;
+  }
+
+  div.customizations {
+    .ignore-parent-padding();
+    .ignore-parent-padding--add-padding(2);
+
+    background-color: @lightGray;
+  }
+
+  div.customization {
+    margin-bottom: 40px;
+  }
+}
 </style>

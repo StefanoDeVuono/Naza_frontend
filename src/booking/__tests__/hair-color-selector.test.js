@@ -13,14 +13,14 @@ describe('HairColorSelector', () => {
     wrapper = shallowMount(HairColorSelector, {
       propsData: {
         colors: [
-          {presentation: 'red'}, 
-          {presentation: 'blue'}, 
-          {presentation: 'green'}
+          { presentation: 'red' },
+          { presentation: 'blue' },
+          { presentation: 'green' },
         ],
         selectedColor: 'blue',
-        onPress: handlePress
+        onPress: handlePress,
       },
-      localVue
+      localVue,
     })
   })
 
