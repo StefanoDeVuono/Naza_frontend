@@ -23,24 +23,38 @@
         v-for="(styles, subcategory) in stylesBySubcategory"
       >
         <h1 class="subcategory">{{ subcategory }}</h1>
-        <div class="option" v-for="style in styles">
-          <router-link
-            @click.native="$event.stopImmediatePropagation()"
-            :to="{
-              name: 'customize',
-              params: { productId: style.id },
-              query: { categoryId: $route.params.categoryId },
-            }"
-          >
-            <img
-              :data-url="CURL_ASSET_ROOT + getImageUrl(style)"
-              :src="CURL_ASSET_ROOT + getImageUrl(style)"
-            />
-          </router-link>
+        <div class="option" v-for="style in styles" @click="activateSubcategory(style.id)">
+          <img
+            :data-url="CURL_ASSET_ROOT + getImageUrl(style)"
+            :src="CURL_ASSET_ROOT + getImageUrl(style)"
+          />
           <div class="description">
             <h2>{{ style.name }}</h2>
-            <p>{{ style.description }}</p>
+            <p v-show="truncatedDescs[style.id]">{{ truncatedDesc(style.description) }} <span @click="expandDesc(style.id)" class="expand-desc">more</span></p>
+            <p v-show="fullDescs[style.id]">{{ style.description }}</p>
             <DurationAndPrice :duration="totalDuration" :price="totalPrice" />
+          </div>
+          <div v-show="activeSubcategory === style.id" class="select-this-style">
+            <div class="sqs-block-button sqs-block button-block">
+              <div class="sqs-block-button-content sqs-block-content">
+                <div class="sqs-block-button-container--center">
+                  <div
+                    class="sqs-block-button-element--medium sqs-block-button-element"
+                  >
+                    <router-link
+                      @click.native="$event.stopImmediatePropagation()"
+                      :to="{
+                        name: 'customize',
+                        params: { productId: style.id },
+                        query: { categoryId: $route.params.categoryId },
+                      }"
+                    >
+                      Select This Style
+                    </router-link>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -67,6 +81,9 @@ import {
   map,
   reduce,
   min,
+  slice,
+  forEach,
+  flatten,
 } from 'ramda'
 import DurationAndPrice from '../duration-and-price.vue'
 
@@ -79,10 +96,13 @@ export default {
       stylesBySubcategory: {},
       totalPrice: 0,
       totalDuration: 0,
+      truncatedDescs: {},
+      fullDescs: {},
+      activeSubcategory: undefined
     }
   },
   methods: {
-    fetchData: function() {
+    fetchData() {
       var categoryId = this.$route.params.categoryId
       if (!categoryId) {
         return
@@ -102,6 +122,15 @@ export default {
             parse
           )(json)
 
+          compose(
+            forEach(style => {
+              this.$set(this.truncatedDescs, style.id, true)
+              this.$set(this.fullDescs, style.id, false)
+            }),
+            flatten,
+            values,
+          )(this.stylesBySubcategory)
+
           this.totalPrice = compose(
             reduce(min, Infinity),
             map(x => parseInt(x.price)),
@@ -117,7 +146,22 @@ export default {
           )(this.stylesBySubcategory)
         })
     },
-    getSubcategory: function(style) {
+
+    expandDesc(id) {
+      console.log('expanding', id)
+      this.$set(this.truncatedDescs, id, false)
+      this.$set(this.fullDescs, id, true)
+    },
+
+    activateSubcategory(id) {
+      this.activeSubcategory = id
+    },
+
+    truncatedDesc(desc) {
+      return slice(0, 35, desc) + '...'
+    },
+
+    getSubcategory(style) {
       const subcategory = compose(
         prop('name'),
         nth(1),
@@ -139,7 +183,8 @@ export default {
         })
       )(style.taxons)
     },
-    getImageUrl: function(style) {
+
+    getImageUrl(style) {
       return path(['images', 0, 'styles', 2, 'url'], style)
     },
   },
@@ -223,6 +268,14 @@ div.option {
     letter-spacing: 0.5px;
     margin-bottom: 10px;
     text-align: center;
+  }
+
+  .expand-desc {
+    color: rgba(28, 48, 66, 0.56);
+  }
+
+  .select-this-style {
+    margin: 10px 20px;
   }
 }
 </style>
