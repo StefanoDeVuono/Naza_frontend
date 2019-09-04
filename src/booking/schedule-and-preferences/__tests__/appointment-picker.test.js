@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import AppointmentPicker from '../schedule-and-preferences/appointment-picker.vue'
+import AppointmentPicker from '../appointment-picker.vue'
 import { shallowMount, createLocalVue } from '@vue/test-utils'
 import { mockFetch, restoreFetch } from 'common/testHelper'
 import fetchResponseJson from './appointment-picker.fetchResponse.json'

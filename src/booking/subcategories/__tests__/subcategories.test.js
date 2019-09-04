@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import fetchResponseJson from './styles.fetchResponse.json'
-import Styles from '../styles.vue'
+import fetchResponseJson from './subcategories.fetchResponse.json'
+import Subcategories from '../component.vue'
 import { shallowMount, createLocalVue } from '@vue/test-utils'
 import flushPromises from 'flush-promises'
 import Storage from 'common/storage'
 import { mockFetch, restoreFetch } from 'common/testHelper'
 
-describe('Styles', () => {
+describe('Subcategories', () => {
   let oldFetch
   let wrapper
 
@@ -22,7 +22,7 @@ describe('Styles', () => {
       params: { categoryId: 1 },
     }
 
-    wrapper = shallowMount(Styles, {
+    wrapper = shallowMount(Subcategories, {
       data: () => ({
         stylesBySubcategory: {},
         CURL_ASSET_ROOT: 'something',
@@ -38,6 +38,24 @@ describe('Styles', () => {
 
   afterEach(() => {
     restoreFetch()
+  })
+
+  it('shows the full description after clicking more', async () => {
+    const more = wrapper.find('.expand-desc')
+    more.trigger('click')
+    await flushPromises()
+    const truncDesc = wrapper.find('.trunc-desc')
+    const fullDesc = wrapper.find('.full-desc')
+    expect(truncDesc.isVisible()).toBe(false)
+    expect(fullDesc.isVisible()).toBe(true)
+  })
+
+  it('shows the button after clicking on a style', async () => {
+    const style = wrapper.find('.option')
+    style.trigger('click')
+    await flushPromises()
+    const button = wrapper.find('.select-this-style')
+    expect(button.isVisible()).toBe(true)
   })
 
   it('initializes the subcategories', async () => {

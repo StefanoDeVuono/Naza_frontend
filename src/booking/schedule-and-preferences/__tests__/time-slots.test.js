@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import TimeSlots from '../schedule-and-preferences/time-slots.vue'
+import TimeSlots from '../time-slots.vue'
 import { shallowMount, createLocalVue, createWrapper } from '@vue/test-utils'
 import fetchResponseJson from './appointment-picker.fetchResponse.json'
 import flushPromises from 'flush-promises'

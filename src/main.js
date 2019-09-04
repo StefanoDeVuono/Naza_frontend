@@ -1,6 +1,6 @@
 import Categories from './booking/categories.vue'
 import Customize from './booking/customize.vue'
-import Styles from './booking/styles.vue'
+import Subcategories from './booking/subcategories/component.vue'
 import AddOns from './booking/add-ons.vue'
 import ScheduleAndPreferences from './booking/schedule-and-preferences/component.vue'
 import Confirmation from './booking/confirmation/component.vue'
@@ -19,8 +19,8 @@ var routes = [
   },
   {
     path: '/categories/:categoryId',
-    component: Styles,
-    name: 'styles',
+    component: Subcategories,
+    name: 'subcategories',
   },
   {
     path: '/styles/:productId',

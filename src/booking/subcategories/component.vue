@@ -22,25 +22,51 @@
         class="category"
         v-for="(styles, subcategory) in stylesBySubcategory"
       >
-        <h2 class="subcategory">{{ subcategory }}</h2>
-        <div class="option" v-for="style in styles">
-          <router-link
-            @click.native="$event.stopImmediatePropagation()"
-            :to="{
-              name: 'customize',
-              params: { productId: style.id },
-              query: { categoryId: $route.params.categoryId },
-            }"
-          >
-            <img
-              :data-url="CURL_ASSET_ROOT + getImageUrl(style)"
-              :src="CURL_ASSET_ROOT + getImageUrl(style)"
-            />
-          </router-link>
-          <div>
-            <h2 class="option">{{ style.name }}</h2>
-            <p class="option">{{ style.description }}</p>
+        <h1 class="subcategory">{{ subcategory }}</h1>
+        <div
+          class="option"
+          v-for="style in styles"
+          @click="activateSubcategory(style.id)"
+        >
+          <img
+            :data-url="CURL_ASSET_ROOT + getImageUrl(style)"
+            :src="CURL_ASSET_ROOT + getImageUrl(style)"
+          />
+          <div class="description">
+            <h2>{{ style.name }}</h2>
+            <p class="trunc-desc" v-show="truncatedDescs[style.id]">
+              {{ truncatedDesc(style.description) }}
+              <span @click="expandDesc(style.id)" class="expand-desc"
+                >more</span
+              >
+            </p>
+            <p class="full-desc" v-show="fullDescs[style.id]">{{ style.description }}</p>
             <DurationAndPrice :duration="totalDuration" :price="totalPrice" />
+          </div>
+          <div
+            v-show="activeSubcategory === style.id"
+            class="select-this-style"
+          >
+            <div class="sqs-block-button sqs-block button-block">
+              <div class="sqs-block-button-content sqs-block-content">
+                <div class="sqs-block-button-container--center">
+                  <div
+                    class="sqs-block-button-element--medium sqs-block-button-element"
+                  >
+                    <router-link
+                      @click.native="$event.stopImmediatePropagation()"
+                      :to="{
+                        name: 'customize',
+                        params: { productId: style.id },
+                        query: { categoryId: $route.params.categoryId },
+                      }"
+                    >
+                      Select This Style
+                    </router-link>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -49,8 +75,8 @@
 </template>
 
 <script>
-import Header from './header.vue'
-import Content from './content.vue'
+import Header from '../header.vue'
+import Content from '../content.vue'
 import { getSpreeServer, getCurlAssetRoot } from 'common/constants'
 import 'whatwg-fetch'
 import { parse } from 'jsonapi-parse'
@@ -67,6 +93,9 @@ import {
   map,
   reduce,
   min,
+  slice,
+  forEach,
+  flatten,
 } from 'ramda'
 import DurationAndPrice from './duration-and-price.vue'
 
@@ -79,10 +108,13 @@ export default {
       stylesBySubcategory: {},
       totalPrice: 0,
       totalDuration: 0,
+      truncatedDescs: {},
+      fullDescs: {},
+      activeSubcategory: undefined,
     }
   },
   methods: {
-    fetchData: function() {
+    fetchData() {
       var categoryId = this.$route.params.categoryId
       if (!categoryId) {
         return
@@ -102,6 +134,15 @@ export default {
             parse
           )(json)
 
+          compose(
+            forEach(style => {
+              this.$set(this.truncatedDescs, style.id, true)
+              this.$set(this.fullDescs, style.id, false)
+            }),
+            flatten,
+            values
+          )(this.stylesBySubcategory)
+
           this.totalPrice = compose(
             reduce(min, Infinity),
             map(x => parseInt(x.price)),
@@ -117,7 +158,22 @@ export default {
           )(this.stylesBySubcategory)
         })
     },
-    getSubcategory: function(style) {
+
+    expandDesc(id) {
+      console.log('expanding', id)
+      this.$set(this.truncatedDescs, id, false)
+      this.$set(this.fullDescs, id, true)
+    },
+
+    activateSubcategory(id) {
+      this.activeSubcategory = id
+    },
+
+    truncatedDesc(desc) {
+      return slice(0, 35, desc) + '...'
+    },
+
+    getSubcategory(style) {
       const subcategory = compose(
         prop('name'),
         nth(1),
@@ -139,7 +195,8 @@ export default {
         })
       )(style.taxons)
     },
-    getImageUrl: function(style) {
+
+    getImageUrl(style) {
       return path(['images', 0, 'styles', 2, 'url'], style)
     },
   },
@@ -158,7 +215,7 @@ export default {
 </script>
 
 <style lang="less">
-@import '../common/utils.less';
+@import '../../common/utils.less';
 
 [v-cloak] {
   display: none;
@@ -180,41 +237,57 @@ p.cta {
   .ignore-parent-padding--add-padding(0.5);
 }
 
-.category:nth-child(even) {
+.category:nth-child(odd) {
   background-color: #f7f6f2;
 }
 
-h2.subcategory {
+h1.subcategory {
   text-align: center;
-  font-size: 22px;
+  font-size: 32px;
   line-height: normal;
   letter-spacing: 0.92px;
-  margin: 40px 0;
+  margin: 20px 0;
+  color: @darkBlue;
 }
 
 div.option {
   margin-bottom: 60px;
   line-height: 0;
+  border: 2px solid @darkBlue;
 
   img {
     margin-bottom: 10px;
   }
-}
 
-h2.option {
-  font-size: 18px;
-  line-height: 18px;
-  letter-spacing: 0.75px;
-  text-transform: none;
-  color: #bc5940;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
+  .description {
+    padding: 10px;
+  }
 
-p.option {
-  font-size: 12px;
-  line-height: normal;
-  letter-spacing: 0.5px;
-  margin-bottom: 10px;
+  h2 {
+    font-size: 18px;
+    line-height: 18px;
+    letter-spacing: 0.75px;
+    text-transform: none;
+    text-align: center;
+    color: #bc5940;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  p {
+    font-size: 12px;
+    line-height: normal;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .expand-desc {
+    color: rgba(28, 48, 66, 0.56);
+  }
+
+  .select-this-style {
+    margin: 10px 20px;
+  }
 }
 </style>

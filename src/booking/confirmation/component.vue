@@ -19,22 +19,6 @@ export default {
   },
 
   methods: {
-    createCart() {
-      const data = {}
-
-      fetch(getSpreeServer() + '/cart', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      })
-        .then(resp => resp.json())
-        .then(json => {
-          this.shared.orderNumber = json.data.attributes.number
-          this.shared.orderToken = json.data.attributes.token
-        })
-    },
   },
 
   created() {
