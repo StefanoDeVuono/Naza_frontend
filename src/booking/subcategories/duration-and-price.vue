@@ -42,8 +42,8 @@ export default {
 </script>
 
 <style lang="less">
-@import '../../styles/util.less';
-@import '../common/utils.less';
+@import '../../../styles/util.less';
+@import '../../common/utils.less';
 
 .material-design-icon.clock-outline-icon,
 .material-design-icon.clock-outline-icon > .material-design-icon__svg {
