@@ -36,7 +36,7 @@ import Storage from 'common/storage'
 import Loading from 'vue-loading-overlay'
 import { mockProductIfDevelopment } from 'common/utils'
 import 'vue-loading-overlay/dist/vue-loading.css'
-import Section from './section.vue'
+import Section from '../section.vue'
 import PaymentIcon from 'images/noun_payment_511229.svg'
 
 export default {

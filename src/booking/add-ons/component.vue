@@ -35,8 +35,8 @@
 
 <script>
 import { getSpreeServer, getCurlAssetRoot } from 'common/constants'
-import Header from './header.vue'
-import Content from './content.vue'
+import Header from '../header.vue'
+import Content from '../content.vue'
 import 'whatwg-fetch'
 import { parse } from 'jsonapi-parse'
 import {
@@ -57,7 +57,7 @@ import {
   reduce,
   flatten,
 } from 'ramda'
-import RunningTotals from './running-totals.vue'
+import RunningTotals from '../running-totals.vue'
 import Storage from 'common/storage'
 
 export default {
@@ -80,13 +80,13 @@ export default {
 
   methods: {
     fetchAddOns: function() {
-      var path = `${getSpreeServer()}/taxons/add-ons?include=products.images`
+      var path = `${getSpreeServer()}/taxons/drink-add-ons?include=products.images`
       fetch(path)
         .then(response => {
           return response.json()
         })
         .then(json => {
-          this.addOns = parse(json).data.products
+          this.drinkAddOns = parse(json).data.products
         })
     },
 
@@ -106,7 +106,7 @@ export default {
 </script>
 
 <style lang="less">
-@import '../common/utils.less';
+@import '../../common/utils.less';
 
 h2.cta {
   color: @darkBlue;

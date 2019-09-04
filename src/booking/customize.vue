@@ -213,7 +213,7 @@ export default {
           this.shared.nazaAppointmentId = json.id
           this.isLoading = false
           this.$router.push({
-            name: 'schedule-and-preferences',
+            name: 'add-ons',
           })
         })
     },
