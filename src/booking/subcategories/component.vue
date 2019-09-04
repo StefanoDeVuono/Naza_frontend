@@ -22,7 +22,7 @@
         class="category"
         v-for="(styles, subcategory) in stylesBySubcategory"
       >
-        <h2 class="subcategory">{{ subcategory }}</h2>
+        <h1 class="subcategory">{{ subcategory }}</h1>
         <div class="option" v-for="style in styles">
           <router-link
             @click.native="$event.stopImmediatePropagation()"
@@ -37,9 +37,9 @@
               :src="CURL_ASSET_ROOT + getImageUrl(style)"
             />
           </router-link>
-          <div>
-            <h2 class="option">{{ style.name }}</h2>
-            <p class="option">{{ style.description }}</p>
+          <div class="description">
+            <h2>{{ style.name }}</h2>
+            <p>{{ style.description }}</p>
             <DurationAndPrice :duration="totalDuration" :price="totalPrice" />
           </div>
         </div>
@@ -49,8 +49,8 @@
 </template>
 
 <script>
-import Header from './header.vue'
-import Content from './content.vue'
+import Header from '../header.vue'
+import Content from '../content.vue'
 import { getSpreeServer, getCurlAssetRoot } from 'common/constants'
 import 'whatwg-fetch'
 import { parse } from 'jsonapi-parse'
@@ -68,7 +68,7 @@ import {
   reduce,
   min,
 } from 'ramda'
-import DurationAndPrice from './duration-and-price.vue'
+import DurationAndPrice from '../duration-and-price.vue'
 
 // TODO: update json files
 
@@ -158,7 +158,7 @@ export default {
 </script>
 
 <style lang="less">
-@import '../common/utils.less';
+@import '../../common/utils.less';
 
 [v-cloak] {
   display: none;
@@ -180,41 +180,49 @@ p.cta {
   .ignore-parent-padding--add-padding(0.5);
 }
 
-.category:nth-child(even) {
+.category:nth-child(odd) {
   background-color: #f7f6f2;
 }
 
-h2.subcategory {
+h1.subcategory {
   text-align: center;
-  font-size: 22px;
+  font-size: 32px;
   line-height: normal;
   letter-spacing: 0.92px;
-  margin: 40px 0;
+  margin: 20px 0;
+  color: @darkBlue;
 }
 
 div.option {
   margin-bottom: 60px;
   line-height: 0;
+  border: 2px solid @darkBlue;
 
   img {
     margin-bottom: 10px;
   }
-}
 
-h2.option {
-  font-size: 18px;
-  line-height: 18px;
-  letter-spacing: 0.75px;
-  text-transform: none;
-  color: #bc5940;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
+  .description {
+    padding: 10px;
+  }
 
-p.option {
-  font-size: 12px;
-  line-height: normal;
-  letter-spacing: 0.5px;
-  margin-bottom: 10px;
+  h2 {
+    font-size: 18px;
+    line-height: 18px;
+    letter-spacing: 0.75px;
+    text-transform: none;
+    text-align: center;
+    color: #bc5940;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  p {
+    font-size: 12px;
+    line-height: normal;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
 }
 </style>

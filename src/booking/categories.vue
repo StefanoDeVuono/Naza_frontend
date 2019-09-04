@@ -17,7 +17,7 @@
         <div class="image-container" v-for="category in categories">
           <router-link
             @click.native="$event.stopImmediatePropagation()"
-            :to="{ name: 'styles', params: { categoryId: category.id } }"
+            :to="{ name: 'subcategories', params: { categoryId: category.id } }"
           >
             <img
               :alt="category.name"
