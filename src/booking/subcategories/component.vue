@@ -34,13 +34,13 @@
           />
           <div class="description">
             <h2>{{ style.name }}</h2>
-            <p v-show="truncatedDescs[style.id]">
+            <p class="trunc-desc" v-show="truncatedDescs[style.id]">
               {{ truncatedDesc(style.description) }}
               <span @click="expandDesc(style.id)" class="expand-desc"
                 >more</span
               >
             </p>
-            <p v-show="fullDescs[style.id]">{{ style.description }}</p>
+            <p class="full-desc" v-show="fullDescs[style.id]">{{ style.description }}</p>
             <DurationAndPrice :duration="totalDuration" :price="totalPrice" />
           </div>
           <div
