@@ -1,13 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import fetchResponseJson from './styles.fetchResponse.json'
-import Styles from '../styles.vue'
+import fetchResponseJson from './subcategories.fetchResponse.json'
+import Subcategories from '../component.vue'
 import { shallowMount, createLocalVue } from '@vue/test-utils'
 import flushPromises from 'flush-promises'
 import Storage from 'common/storage'
 import { mockFetch, restoreFetch } from 'common/testHelper'
 
-describe('Styles', () => {
+describe('Subcategories', () => {
   let oldFetch
   let wrapper
 
@@ -22,7 +22,7 @@ describe('Styles', () => {
       params: { categoryId: 1 },
     }
 
-    wrapper = shallowMount(Styles, {
+    wrapper = shallowMount(Subcategories, {
       data: () => ({
         stylesBySubcategory: {},
         CURL_ASSET_ROOT: 'something',

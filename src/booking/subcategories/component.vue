@@ -23,18 +23,30 @@
         v-for="(styles, subcategory) in stylesBySubcategory"
       >
         <h1 class="subcategory">{{ subcategory }}</h1>
-        <div class="option" v-for="style in styles" @click="activateSubcategory(style.id)">
+        <div
+          class="option"
+          v-for="style in styles"
+          @click="activateSubcategory(style.id)"
+        >
           <img
             :data-url="CURL_ASSET_ROOT + getImageUrl(style)"
             :src="CURL_ASSET_ROOT + getImageUrl(style)"
           />
           <div class="description">
             <h2>{{ style.name }}</h2>
-            <p v-show="truncatedDescs[style.id]">{{ truncatedDesc(style.description) }} <span @click="expandDesc(style.id)" class="expand-desc">more</span></p>
+            <p v-show="truncatedDescs[style.id]">
+              {{ truncatedDesc(style.description) }}
+              <span @click="expandDesc(style.id)" class="expand-desc"
+                >more</span
+              >
+            </p>
             <p v-show="fullDescs[style.id]">{{ style.description }}</p>
             <DurationAndPrice :duration="totalDuration" :price="totalPrice" />
           </div>
-          <div v-show="activeSubcategory === style.id" class="select-this-style">
+          <div
+            v-show="activeSubcategory === style.id"
+            class="select-this-style"
+          >
             <div class="sqs-block-button sqs-block button-block">
               <div class="sqs-block-button-content sqs-block-content">
                 <div class="sqs-block-button-container--center">
@@ -85,7 +97,7 @@ import {
   forEach,
   flatten,
 } from 'ramda'
-import DurationAndPrice from '../duration-and-price.vue'
+import DurationAndPrice from './duration-and-price.vue'
 
 // TODO: update json files
 
@@ -98,7 +110,7 @@ export default {
       totalDuration: 0,
       truncatedDescs: {},
       fullDescs: {},
-      activeSubcategory: undefined
+      activeSubcategory: undefined,
     }
   },
   methods: {
@@ -128,7 +140,7 @@ export default {
               this.$set(this.fullDescs, style.id, false)
             }),
             flatten,
-            values,
+            values
           )(this.stylesBySubcategory)
 
           this.totalPrice = compose(
