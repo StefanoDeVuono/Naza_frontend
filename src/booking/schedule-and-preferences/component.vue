@@ -38,18 +38,18 @@
 
 <script>
 import AppointmentPicker from './appointment-picker.vue'
+import AppointmentSummary from '../appointment-summary.vue'
+import YourInformation from './your-information.vue'
 import Header from '../header.vue'
 import RunningTotals from '../running-totals.vue'
 import Content from '../content.vue'
-import CalendarBlankOutlineIcon from 'vue-material-design-icons/CalendarBlankOutline.vue'
+import Errors from './errors.vue'
 import NextStepButton from 'common/next-step-button.vue'
-import AppointmentSummary from './appointment-summary.vue'
 import Storage from 'common/storage'
 import PaymentInfo from './payment-info.vue'
-import YourInformation from './your-information.vue'
 import { getAppServer, getSpreeServer } from 'common/constants'
+import CalendarBlankOutlineIcon from 'vue-material-design-icons/CalendarBlankOutline.vue'
 import Loading from 'vue-loading-overlay'
-import Errors from './errors.vue'
 import { join } from 'ramda'
 
 export default {

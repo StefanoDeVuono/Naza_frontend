@@ -42,8 +42,8 @@ export default {
 </script>
 
 <style lang="less">
-@import '../../../styles/util.less';
-@import '../../common/utils.less';
+@import '../../styles/util.less';
+@import '../common/utils.less';
 
 .material-design-icon.clock-outline-icon,
 .material-design-icon.clock-outline-icon > .material-design-icon__svg {
@@ -64,7 +64,6 @@ export default {
   align-items: center;
 
   .container {
-    flex-basis: 70px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -75,10 +74,6 @@ export default {
       font-size: 10px;
       line-height: 1.8;
       color: #1c3042;
-    }
-
-    svg {
-      transform: translate(0, 2px);
     }
   }
 

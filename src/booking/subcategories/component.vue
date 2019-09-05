@@ -40,7 +40,9 @@
                 >more</span
               >
             </p>
-            <p class="full-desc" v-show="fullDescs[style.id]">{{ style.description }}</p>
+            <p class="full-desc" v-show="fullDescs[style.id]">
+              {{ style.description }}
+            </p>
             <DurationAndPrice :duration="totalDuration" :price="totalPrice" />
           </div>
           <div
@@ -50,20 +52,20 @@
             <div class="sqs-block-button sqs-block button-block">
               <div class="sqs-block-button-content sqs-block-content">
                 <div class="sqs-block-button-container--center">
-                  <div
-                    class="sqs-block-button-element--medium sqs-block-button-element"
+                  <router-link
+                    @click.native="$event.stopImmediatePropagation()"
+                    :to="{
+                      name: 'customize',
+                      params: { productId: style.id },
+                      query: { categoryId: $route.params.categoryId },
+                    }"
                   >
-                    <router-link
-                      @click.native="$event.stopImmediatePropagation()"
-                      :to="{
-                        name: 'customize',
-                        params: { productId: style.id },
-                        query: { categoryId: $route.params.categoryId },
-                      }"
+                    <div
+                      class="sqs-block-button-element--medium sqs-block-button-element"
                     >
                       Select This Style
-                    </router-link>
-                  </div>
+                    </div>
+                  </router-link>
                 </div>
               </div>
             </div>
@@ -77,6 +79,7 @@
 <script>
 import Header from '../header.vue'
 import Content from '../content.vue'
+import DurationAndPrice from '../duration-and-price.vue'
 import { getSpreeServer, getCurlAssetRoot } from 'common/constants'
 import 'whatwg-fetch'
 import { parse } from 'jsonapi-parse'
@@ -97,7 +100,6 @@ import {
   forEach,
   flatten,
 } from 'ramda'
-import DurationAndPrice from './duration-and-price.vue'
 
 // TODO: update json files
 
@@ -261,6 +263,10 @@ div.option {
 
   .description {
     padding: 10px;
+  }
+
+  svg {
+    transform: translate(0, 2px);
   }
 
   h2 {

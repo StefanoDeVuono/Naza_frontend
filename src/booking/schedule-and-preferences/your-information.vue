@@ -109,7 +109,7 @@
 <script>
 import Storage from 'common/storage'
 import HairstyleIcon from 'images/noun_hairstyle_1105146.svg'
-import Section from './section.vue'
+import Section from '../section.vue'
 import { isNil, isEmpty, find, prop } from 'ramda'
 
 export default {
