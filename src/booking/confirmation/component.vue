@@ -1,7 +1,6 @@
 <template>
   <div>
     <h1>Confirmation</h1>
-    <button @click="createCart">Create Order</button>
   </div>
 </template>
 
@@ -18,8 +17,7 @@ export default {
     }
   },
 
-  methods: {
-  },
+  methods: {},
 
   created() {
     mockProductIfDevelopment()
