@@ -57,7 +57,7 @@ import {
   differenceInWeeks,
   getHours,
 } from 'date-fns'
-import Section from '../section.vue'
+import Section from '../components/section.vue'
 import { map, find, compose, equals, nth } from 'ramda'
 import CalendarIcon from 'images/noun_Calendar_2804231.svg'
 

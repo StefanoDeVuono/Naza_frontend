@@ -27,7 +27,7 @@
 <script>
 import Storage from 'common/storage'
 import { slice } from 'ramda'
-import CustomizationsAndAddOns from './components/customizations-and-add-ons.vue'
+import CustomizationsAndAddOns from './customizations-and-add-ons.vue'
 
 export default {
   data() {
@@ -64,7 +64,7 @@ export default {
 </script>
 
 <style lang="less">
-@import '../common/utils.less';
+@import '../../common/utils.less';
 
 .appointment-summary-content {
   .row {

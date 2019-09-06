@@ -40,7 +40,7 @@
 
 <script>
 import AppointmentPicker from './appointment-picker.vue'
-import AppointmentSummary from '../appointment-summary.vue'
+import AppointmentSummary from '../components/appointment-summary.vue'
 import YourInformation from './your-information.vue'
 import PersonalPreferences from './personal-preferences.vue'
 import Header from '../header.vue'

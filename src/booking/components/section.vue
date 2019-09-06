@@ -72,7 +72,7 @@ export default {
 </script>
 
 <style lang="less">
-@import '../common/utils.less';
+@import '../../common/utils.less';
 
 .section {
   margin-bottom: 20px;

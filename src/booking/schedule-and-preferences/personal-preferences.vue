@@ -32,7 +32,7 @@
 <script>
 import Storage from 'common/storage'
 import ShampooIcon from 'images/noun_shampoo_2677530.svg'
-import Section from '../section.vue'
+import Section from '../components/section.vue'
 import RadioButtonGrouping from 'common/simple-radio-button-grouping.vue'
 
 export default {

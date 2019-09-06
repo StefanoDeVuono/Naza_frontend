@@ -78,7 +78,7 @@ export default {
 </script>
 
 <style lang="less">
-@import '../common/utils.less';
+@import '../../common/utils.less';
 
 .appointment-summary {
   // .ignore-parent-padding();

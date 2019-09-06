@@ -61,7 +61,7 @@ import { mockProductIfDevelopment } from 'common/utils'
 import Storage from 'common/storage'
 import CheckIcon from 'vue-material-design-icons/Check.vue'
 import CustomizationsAndAddOns from '../components/customizations-and-add-ons.vue'
-import Section from '../section.vue'
+import Section from '../components/section.vue'
 import { parseISO, format } from 'date-fns'
 import SqButton from 'common/sq-button.vue'
 
