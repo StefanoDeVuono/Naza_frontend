@@ -28,7 +28,7 @@
 
         <PersonalPreferences />
 
-        <NextStepButton
+        <SqButton
           label="Book Appointment"
           :onClick="bookAppointment"
           :disabled="isDisabled"
@@ -47,7 +47,7 @@ import Header from '../header.vue'
 import RunningTotals from '../running-totals.vue'
 import Content from '../content.vue'
 import Errors from './errors.vue'
-import NextStepButton from 'common/next-step-button.vue'
+import SqButton from 'common/sq-button.vue'
 import Storage from 'common/storage'
 import PaymentInfo from './payment-info.vue'
 import { getAppServer, getSpreeServer } from 'common/constants'
@@ -175,7 +175,7 @@ export default {
     RunningTotals,
     Content,
     CalendarBlankOutlineIcon,
-    NextStepButton,
+    SqButton,
     AppointmentSummary,
     PaymentInfo,
     YourInformation,

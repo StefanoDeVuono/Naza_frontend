@@ -53,7 +53,7 @@
           />
         </div>
 
-        <NextStepButton
+        <SqButton
           label="Next Step, Please!"
           :onClick="submit"
           :disabled="disableSubmit"
@@ -96,7 +96,7 @@ import {
 import RadioButtonGrouping from 'common/radio-button-grouping.vue'
 import FindYourStyle from './find-your-style.vue'
 import RunningTotals from './running-totals.vue'
-import NextStepButton from 'common/next-step-button.vue'
+import SqButton from 'common/sq-button.vue'
 import Storage from 'common/storage'
 import Loading from 'vue-loading-overlay'
 
@@ -321,7 +321,7 @@ export default {
     FindYourStyle,
     HairColorSelector,
     RunningTotals,
-    NextStepButton,
+    SqButton,
     Loading,
   },
 }

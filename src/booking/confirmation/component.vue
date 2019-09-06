@@ -1,6 +1,6 @@
 <template>
   <div class="confirmation">
-    <div class="confirmation-header">
+    <div class="youre-all-set">
       <div class="text">
         <h1>You&rsquo;re all set</h1>
         <p>We can&rsquo;t wait to get you styled!</p>
@@ -13,7 +13,7 @@
       <CheckIcon :size="28" fillColor="white" />
     </div>
 
-    <div class="summary">
+    <div class="appointment-info">
       <h2>Your Appointment Information:</h2>
 
       <div class="section">
@@ -35,6 +35,21 @@
         <h2>Our Location</h2>
         <p>985 Valencia St, San Francisco, CA</p>
       </div>
+
+      <hr />
+
+      <div class="section">
+        <p class="to-change-appointment">To change/update your appointment information just give us a call or text:</p>
+        <p><strong>(415) 123-456</strong></p>
+      </div>
+
+      <hr />
+
+      <div class="section">
+        <p class="appointment-prep">Check out the best ways to prep for your appointment:</p>
+
+        <SqButton label="Visit Our Blog" :onClick="visitOurBlock" />
+      </div>      
     </div>
   </div>
 </template>
@@ -48,6 +63,7 @@ import CheckIcon from 'vue-material-design-icons/Check.vue'
 import CustomizationsAndAddOns from '../components/customizations-and-add-ons.vue'
 import Section from '../section.vue'
 import { parseISO, format } from 'date-fns'
+import SqButton from 'common/sq-button.vue'
 
 export default {
   data() {
@@ -56,7 +72,11 @@ export default {
     }
   },
 
-  methods: {},
+  methods: {
+    visitOurBlock() {
+      window.location = 'http://www.google.com'
+    }
+  },
 
   computed: {
     formattedTime() {
@@ -72,7 +92,8 @@ export default {
   components: {
     CheckIcon,
     CustomizationsAndAddOns,
-    Section
+    Section,
+    SqButton
   }
 }
 </script>
@@ -81,7 +102,7 @@ export default {
 @import '../../common/utils.less';
 
 .confirmation {
-  .confirmation-header {
+  .youre-all-set {
     .ignore-parent-padding();
     background-color: rgba(28, 48, 66, 0.5);
     color: white;
@@ -126,7 +147,7 @@ export default {
     }
   }
 
-  .summary {
+  .appointment-info {
     h2 {
       margin: 0 auto 10px auto;
       color: @orange;
@@ -138,6 +159,11 @@ export default {
     p {
       text-align: center;
       margin: 0;
+    }
+
+    hr {
+      border: none;
+      border-bottom: 1px solid @darkBlue;
     }
 
     .section {
@@ -169,6 +195,16 @@ export default {
           margin: 0;
           font-weight: normal;
         }
+      }
+
+      .to-change-appointment {
+        margin: 0 auto;
+        max-width: 90%;
+      }
+
+      .appointment-prep {
+        font-size: 20px;
+        margin-bottom: 30px;
       }
     }
   }

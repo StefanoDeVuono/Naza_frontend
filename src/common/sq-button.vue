@@ -1,5 +1,5 @@
 <template>
-  <div class="next-step-button sqs-block-button sqs-block button-block">
+  <div class="sqs-block-button sqs-block button-block">
     <div class="sqs-block-button-content sqs-block-content">
       <div class="sqs-block-button-container--center">
         <div
@@ -15,29 +15,29 @@
 </template>
 
 <script>
-export default {
-  props: {
-    label: String,
-    onClick: Function,
-    disabled: Boolean,
-  },
+  export default {
+    methods: {
+      handleClick(e) {
+        if (this.disabled) {
+          return
+        }
 
-  methods: {
-    handleClick: function(event) {
-      if (this.disabled) {
-        return
+        this.onClick(e)
       }
-
-      this.onClick(event)
     },
-  },
-}
+    
+    props: {
+      label: String,
+      disabled: Boolean,
+      onClick: Function
+    }
+  }
 </script>
 
 <style lang="less">
 @import '../common/utils.less';
 
-.next-step-button.sqs-block-button .sqs-block-button-element {
+.sqs-block-button .sqs-block-button-element {
   display: block;
 
   &.disabled {

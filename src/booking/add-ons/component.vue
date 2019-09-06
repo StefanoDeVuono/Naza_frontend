@@ -45,7 +45,7 @@
           </div>
         </div>
 
-        <NextStepButton
+        <SqButton
           label="Schedule Your Appointment"
           :onClick="scheduleYourAppointment"
         />
@@ -84,7 +84,7 @@ import {
 import Storage from 'common/storage'
 import { mockProductIfDevelopment } from 'common/utils'
 import DrinkIcon from 'images/noun_drinks_2776386.svg'
-import NextStepButton from 'common/next-step-button.vue'
+import SqButton from 'common/sq-button.vue'
 
 export default {
   data() {
@@ -165,7 +165,7 @@ export default {
     RunningTotals,
     AppointmentSummaryContent,
     DrinkIcon,
-    NextStepButton,
+    SqButton,
     DurationAndPrice,
   },
   created() {
