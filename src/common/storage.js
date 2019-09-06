@@ -18,6 +18,7 @@ export default {
     customerEmail: undefined,
     customerZipCode: undefined,
     customerPassword: undefined,
+    note: undefined,
 
     stripePaymentMethod: undefined,
 
