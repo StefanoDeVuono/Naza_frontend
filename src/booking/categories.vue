@@ -10,7 +10,7 @@
     <Content :progress-step="1">
       <div v-cloak id="categories">
         <div class="cta">
-          <h2>What&apos;s Your Style?</h2>
+          <h2>What&rsquo;s Your Style?</h2>
           <p>Choose your style and customize it in the following steps</p>
         </div>
 

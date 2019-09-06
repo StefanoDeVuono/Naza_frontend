@@ -53,6 +53,7 @@ export const mockProductIfDevelopment = () => {
       Color: 'Brown with Blonde Highlights',
     }
     Storage.sharedState.note = 'Extra cheese'
+    Storage.sharedState.selectedTime = "2016-12-03T14:00:00-0800"
   }
 }
 

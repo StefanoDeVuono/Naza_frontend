@@ -19,11 +19,7 @@
     </div>
 
     <div class="row">
-      <ul class="customizations">
-        <li v-for="(value, customization) in shared.customizations">
-          <strong>{{ customization }}:</strong> {{ value }}
-        </li>
-      </ul>
+      <CustomizationsAndAddOns />
     </div>
   </div>
 </template>
@@ -31,6 +27,7 @@
 <script>
 import Storage from 'common/storage'
 import { slice } from 'ramda'
+import CustomizationsAndAddOns from './components/customizations-and-add-ons.vue'
 
 export default {
   data() {
@@ -59,6 +56,10 @@ export default {
       return this.shared.product.description
     },
   },
+
+  components: {
+    CustomizationsAndAddOns
+  }
 }
 </script>
 
@@ -103,27 +104,6 @@ export default {
 
   .more-action {
     color: rgba(28, 48, 66, 0.5);
-  }
-
-  .customizations {
-    strong {
-      color: @orange;
-    }
-
-    li {
-      list-style: none;
-      font-size: 14px;
-      line-height: 21px;
-    }
-
-    li::before {
-      content: '\2022';
-      color: @orange;
-      font-weight: bold;
-      display: inline-block;
-      width: 1em;
-      margin-left: -1em;
-    }
   }
 }
 </style>

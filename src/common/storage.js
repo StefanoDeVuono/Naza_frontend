@@ -20,6 +20,9 @@ export default {
     customerPassword: undefined,
     note: undefined,
     prefScalpTenderness: undefined,
+    drinkAddOns: undefined,
+    freeAddOns: undefined,
+    premiumAddOns: undefined,
 
     stripePaymentMethod: undefined,
 

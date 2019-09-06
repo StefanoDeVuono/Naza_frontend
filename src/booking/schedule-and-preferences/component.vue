@@ -8,7 +8,7 @@
 
     <Content :progress-step="5">
       <div class="cta">
-        <h2>Let's Pick a Time &amp; Date</h2>
+        <h2>Let&rsquo;s Pick a Time &amp; Date</h2>
         <p>
           For oft, when on my couch I lie In vacant or in pensive mood They
           flash upon that inward eye Which is the bliss of solitude

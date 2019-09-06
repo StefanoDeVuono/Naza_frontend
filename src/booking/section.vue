@@ -1,18 +1,16 @@
 <template>
   <div class="section">
-    <div class="header">
+    <div class="header" @click="onToggleBody">
       <slot name="header-icon"></slot>
 
       <h2>{{ title }}</h2>
       <ChevronUpIcon
         v-if="showChevron"
         v-show="isBodyVisible"
-        @click="onHideBody"
       />
       <ChevronDownIcon
         v-if="showChevron"
         v-show="!isBodyVisible"
-        @click="onShowBody"
       />
     </div>
 
@@ -34,13 +32,9 @@ export default {
   },
 
   methods: {
-    onShowBody() {
-      this.isBodyVisible = true
-    },
-
-    onHideBody() {
-      this.isBodyVisible = false
-    },
+    onToggleBody() {
+      this.isBodyVisible = !this.isBodyVisible
+    }
   },
 
   props: {
