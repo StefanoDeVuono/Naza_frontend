@@ -26,6 +26,8 @@
 
         <Errors />
 
+        <PersonalPreferences />
+
         <NextStepButton
           label="Book Appointment"
           :onClick="bookAppointment"
@@ -40,6 +42,7 @@
 import AppointmentPicker from './appointment-picker.vue'
 import AppointmentSummary from '../appointment-summary.vue'
 import YourInformation from './your-information.vue'
+import PersonalPreferences from './personal-preferences.vue'
 import Header from '../header.vue'
 import RunningTotals from '../running-totals.vue'
 import Content from '../content.vue'
@@ -86,6 +89,7 @@ export default {
         appointment: {
           startTime: Storage.sharedState.selectedTime,
           duration: Storage.sharedState.duration,
+          note: Storage.sharedState.note,
         },
         user: {
           email: Storage.sharedState.customerEmail,
@@ -176,6 +180,7 @@ export default {
     YourInformation,
     Loading,
     Errors,
+    PersonalPreferences,
   },
 }
 </script>

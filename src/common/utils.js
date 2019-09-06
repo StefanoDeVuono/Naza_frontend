@@ -52,6 +52,7 @@ export const mockProductIfDevelopment = () => {
       Volume: 'Biggest',
       Color: 'Brown with Blonde Highlights',
     }
+    Storage.sharedState.note = 'Extra cheese'
   }
 }
 

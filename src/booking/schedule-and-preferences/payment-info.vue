@@ -75,6 +75,7 @@ export default {
           this.$root.$emit('your-information:hide')
           this.$root.$emit('payment-information:completed')
           this.$root.$emit('payment-information:hide')
+          this.$root.$emit('personal-preferences:show')
         })
     },
 
