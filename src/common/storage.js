@@ -4,7 +4,7 @@ import Vue from 'vue'
 // add-ons, and appointment time.
 
 export default {
-  debug: true || process.env === 'development',
+  debug: true,
 
   sharedState: {
     product: undefined,
@@ -19,6 +19,7 @@ export default {
     customerZipCode: undefined,
     customerPassword: undefined,
     note: undefined,
+    prefScalpTenderness: undefined,
 
     stripePaymentMethod: undefined,
 
@@ -40,11 +41,11 @@ export default {
   },
 
   setStripePaymentMethod(stripePaymentMethod) {
-    Vue.set(this.sharedState, 'stripePaymentMethod', stripePaymentMethod)
+    this.sharedState.stripePaymentMethod = stripePaymentMethod
   },
 
   setProduct(product) {
-    Vue.set(this.sharedState, 'product', product)
+    this.sharedState.product = product
 
     if (this.debug) {
       console.log('setting product')
@@ -52,7 +53,7 @@ export default {
   },
 
   setVariant(variant) {
-    Vue.set(this.sharedState, 'variant', variant)
+    this.sharedState.variant = variant
 
     if (this.debug) {
       console.log('setting variant')
@@ -68,7 +69,7 @@ export default {
   },
 
   setSelectedTime(time) {
-    Vue.set(this.sharedState, 'selectedTime', time)
+    this.sharedState.selectedTime = time
 
     if (this.debug) {
       console.log('setting selected time', time)
@@ -76,7 +77,7 @@ export default {
   },
 
   setPrice(price) {
-    Vue.set(this.sharedState, 'price', price)
+    this.sharedState.price = price
 
     if (this.debug) {
       console.log('setting price', price)
@@ -84,7 +85,7 @@ export default {
   },
 
   setDuration(duration) {
-    Vue.set(this.sharedState, 'duration', duration)
+    this.sharedState.duration = duration
 
     if (this.debug) {
       console.log('setting duration', duration)
@@ -92,7 +93,7 @@ export default {
   },
 
   setTaxonName(taxonName) {
-    Vue.set(this.sharedState, 'taxonName', taxonName)
+    this.sharedState.taxonName = taxonName
 
     if (this.debug) {
       console.log('setting taxonName', taxonName)
