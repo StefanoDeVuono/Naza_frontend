@@ -41,6 +41,7 @@
             :name="optionType.presentation"
             :options="optionType.option_values"
             :onChange="handleCustomizationChange"
+            :showHelp="true"
           />
         </div>
 

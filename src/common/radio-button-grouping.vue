@@ -1,7 +1,7 @@
 <template>
   <div class="radio-button-grouping">
     <div class="header">
-      <h2>{{ name }} <HelpCircleOutlineIcon @click="expandHelp" /></h2>
+      <h2>{{ name }} <HelpCircleOutlineIcon v-if="showHelp" @click="expandHelp" /></h2>
       <div class="supplemental-price" v-show="supplementalPrice">
         + {{ supplementalPrice }}
       </div>
@@ -33,6 +33,17 @@
 import HelpCircleOutlineIcon from 'vue-material-design-icons/HelpCircleOutline.vue'
 
 export default {
+  // @param {string} name The name of the customization
+  // @param {object[]} options An array of potential options
+  // @param {string} options[].presentation The name of the option
+  // @param {(value: string) => void} A callback when a button is pressed
+  // @param {object} optionValueMap Maps option types to option values
+  // @param {object} optionValueMap[]
+  // @param {number} optionValueMap[].supplemental_price
+  // @param {string} optionValueMap[].description
+  // @param {boolean} showHelp
+  props: ['name', 'options', 'onChange', 'optionValueMap', 'showHelp'],
+
   data: function() {
     return {
       supplementalPrice: undefined,
@@ -78,12 +89,6 @@ export default {
       this.isDescriptionVisible = true
     },
   },
-
-  // @param {string} name The name of the customization
-  // @param {object[]} options An array of potential options
-  // @param {string} options.presentation The name of the option
-  // @param {(value: string) => void} A callback when a button is pressed
-  props: ['value', 'name', 'options', 'onChange', 'optionValueMap'],
 
   components: {
     HelpCircleOutlineIcon,

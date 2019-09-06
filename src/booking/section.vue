@@ -91,6 +91,7 @@ export default {
     margin-bottom: 20px;
 
     h2 {
+      color: @darkBlue;
       margin: 0 10px 0 20px;
       font-size: 22px;
       font-weight: bold;
