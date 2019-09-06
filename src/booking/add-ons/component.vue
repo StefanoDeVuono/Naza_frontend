@@ -56,11 +56,11 @@
 
 <script>
 import { getSpreeServer, getCurlAssetRoot } from 'common/constants'
-import Header from '../header.vue'
-import Content from '../content.vue'
+import Header from '../components/header.vue'
+import Content from '../components/content.vue'
 import AppointmentSummaryContent from '../components/appointment-summary-content.vue'
-import RunningTotals from '../running-totals.vue'
-import DurationAndPrice from '../duration-and-price.vue'
+import RunningTotals from '../components/running-totals.vue'
+import DurationAndPrice from '../components/duration-and-price.vue'
 import 'whatwg-fetch'
 import { parse } from 'jsonapi-parse'
 import {

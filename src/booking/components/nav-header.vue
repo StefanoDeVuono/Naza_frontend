@@ -28,7 +28,7 @@ export default {
 </script>
 
 <style lang="less">
-@import '../../styles/util.less';
+@import '../../../styles/util.less';
 
 .material-design-icon.keyboard-backspace-icon,
 .material-design-icon.keyboard-backspace-icon > .material-design-icon__svg {

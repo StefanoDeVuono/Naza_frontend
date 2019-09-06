@@ -102,6 +102,8 @@ export default {
 @import '../../common/utils.less';
 
 .confirmation {
+  padding-bottom: 30px;
+
   .youre-all-set {
     .ignore-parent-padding();
     background-color: rgba(28, 48, 66, 0.5);

@@ -27,8 +27,8 @@ export default {
 </script>
 
 <style lang="less">
-@import '../../styles/util.less';
-@import '../common/utils.less';
+@import '../../../styles/util.less';
+@import '../../common/utils.less';
 
 .booking-header {
   .ignore-parent-padding();

@@ -77,9 +77,9 @@
 </template>
 
 <script>
-import Header from '../header.vue'
-import Content from '../content.vue'
-import DurationAndPrice from '../duration-and-price.vue'
+import Header from '../components/header.vue'
+import Content from '../components/content.vue'
+import DurationAndPrice from '../components/duration-and-price.vue'
 import { getSpreeServer, getCurlAssetRoot } from 'common/constants'
 import 'whatwg-fetch'
 import { parse } from 'jsonapi-parse'

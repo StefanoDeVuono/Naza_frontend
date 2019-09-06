@@ -69,8 +69,8 @@ import {
   getCurlAssetRoot,
   getAppServer,
 } from 'common/constants'
-import Header from './header.vue'
-import Content from './content.vue'
+import Header from '../components/header.vue'
+import Content from '../components/content.vue'
 import ChevronDownIcon from 'vue-material-design-icons/ChevronDown.vue'
 import 'whatwg-fetch'
 import { parse } from 'jsonapi-parse'
@@ -95,7 +95,7 @@ import {
 } from 'ramda'
 import RadioButtonGrouping from 'common/radio-button-grouping.vue'
 import FindYourStyle from './find-your-style.vue'
-import RunningTotals from './running-totals.vue'
+import RunningTotals from '../components/running-totals.vue'
 import SqButton from 'common/sq-button.vue'
 import Storage from 'common/storage'
 import Loading from 'vue-loading-overlay'
@@ -328,7 +328,7 @@ export default {
 </script>
 
 <style lang="less">
-@import '../common/utils.less';
+@import '../../common/utils.less';
 
 .customize {
   .material-design-icon.chevron-down-icon > .material-design-icon__svg {

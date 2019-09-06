@@ -1,5 +1,5 @@
-import Categories from './booking/categories.vue'
-import Customize from './booking/customize.vue'
+import Categories from './booking/categories/component.vue'
+import Customize from './booking/customize/component.vue'
 import Subcategories from './booking/subcategories/component.vue'
 import AddOns from './booking/add-ons/component.vue'
 import ScheduleAndPreferences from './booking/schedule-and-preferences/component.vue'

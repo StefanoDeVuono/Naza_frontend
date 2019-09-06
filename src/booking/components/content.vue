@@ -12,7 +12,7 @@
 
 <script>
 import VueStepper from 'vue-stepper-component'
-import Footer from '../common/footer.vue'
+import Footer from 'common/footer.vue'
 
 export default {
   props: {
@@ -46,7 +46,7 @@ export default {
 </script>
 
 <style lang="less">
-@import '../../styles/util.less';
+@import '../../../styles/util.less';
 
 @contentPadding: 25px;
 @darkBlue: #1c3042;

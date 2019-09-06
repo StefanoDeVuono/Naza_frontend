@@ -32,8 +32,8 @@
 </template>
 
 <script>
-import Header from './header.vue'
-import Content from './content.vue'
+import Header from '../components/header.vue'
+import Content from '../components/content.vue'
 import { getSpreeServer, getCurlAssetRoot } from 'common/constants'
 import 'whatwg-fetch'
 import { parse } from 'jsonapi-parse'
