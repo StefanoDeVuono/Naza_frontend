@@ -19,9 +19,14 @@
       <div class="section">
         <h2>Appointment Summary</h2>
 
-        <p class="style-name">{{ shared.taxonName }} - {{ shared.product.name }}</p>
+        <p class="style-name">
+          {{ shared.taxonName }} - {{ shared.product.name }}
+        </p>
 
-        <Section title="Customizations & Add-Ons" name="customizations-and-add-ons">
+        <Section
+          title="Customizations & Add-Ons"
+          name="customizations-and-add-ons"
+        >
           <CustomizationsAndAddOns />
         </Section>
       </div>
@@ -39,17 +44,22 @@
       <hr />
 
       <div class="section">
-        <p class="to-change-appointment">To change/update your appointment information just give us a call or text:</p>
+        <p class="to-change-appointment">
+          To change/update your appointment information just give us a call or
+          text:
+        </p>
         <p><strong>(415) 123-456</strong></p>
       </div>
 
       <hr />
 
       <div class="section">
-        <p class="appointment-prep">Check out the best ways to prep for your appointment:</p>
+        <p class="appointment-prep">
+          Check out the best ways to prep for your appointment:
+        </p>
 
         <SqButton label="Visit Our Blog" :onClick="visitOurBlock" />
-      </div>      
+      </div>
     </div>
   </div>
 </template>
@@ -75,14 +85,14 @@ export default {
   methods: {
     visitOurBlock() {
       window.location = 'http://www.google.com'
-    }
+    },
   },
 
   computed: {
     formattedTime() {
       const timeObj = parseISO(this.shared.selectedTime)
       return format(timeObj, 'LLLL d, h:mm aa')
-    }
+    },
   },
 
   created() {
@@ -93,8 +103,8 @@ export default {
     CheckIcon,
     CustomizationsAndAddOns,
     Section,
-    SqButton
-  }
+    SqButton,
+  },
 }
 </script>
 
@@ -211,5 +221,4 @@ export default {
     }
   }
 }
-
 </style>

@@ -46,8 +46,7 @@ export default {
       return ['Not Sensitive', 'Sensitive']
     },
   },
-  methods: {
-  },
+  methods: {},
   components: {
     ShampooIcon,
     Section,

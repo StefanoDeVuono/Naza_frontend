@@ -58,8 +58,8 @@ export default {
   },
 
   components: {
-    CustomizationsAndAddOns
-  }
+    CustomizationsAndAddOns,
+  },
 }
 </script>
 

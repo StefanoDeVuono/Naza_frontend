@@ -15,23 +15,23 @@
 </template>
 
 <script>
-  export default {
-    methods: {
-      handleClick(e) {
-        if (this.disabled) {
-          return
-        }
-
-        this.onClick(e)
+export default {
+  methods: {
+    handleClick(e) {
+      if (this.disabled) {
+        return
       }
+
+      this.onClick(e)
     },
-    
-    props: {
-      label: String,
-      disabled: Boolean,
-      onClick: Function
-    }
-  }
+  },
+
+  props: {
+    label: String,
+    disabled: Boolean,
+    onClick: Function,
+  },
+}
 </script>
 
 <style lang="less">

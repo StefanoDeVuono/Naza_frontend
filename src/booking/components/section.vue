@@ -4,14 +4,8 @@
       <slot name="header-icon"></slot>
 
       <h2>{{ title }}</h2>
-      <ChevronUpIcon
-        v-if="showChevron"
-        v-show="isBodyVisible"
-      />
-      <ChevronDownIcon
-        v-if="showChevron"
-        v-show="!isBodyVisible"
-      />
+      <ChevronUpIcon v-if="showChevron" v-show="isBodyVisible" />
+      <ChevronDownIcon v-if="showChevron" v-show="!isBodyVisible" />
     </div>
 
     <div class="body" v-show="isBodyVisible">
@@ -34,7 +28,7 @@ export default {
   methods: {
     onToggleBody() {
       this.isBodyVisible = !this.isBodyVisible
-    }
+    },
   },
 
   props: {

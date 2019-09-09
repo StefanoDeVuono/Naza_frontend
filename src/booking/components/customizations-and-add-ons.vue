@@ -19,15 +19,15 @@
 </template>
 
 <script>
-  import Storage from 'common/storage'
+import Storage from 'common/storage'
 
-  export default {
-    data() {
-      return {
-        shared: Storage.sharedState
-      }
+export default {
+  data() {
+    return {
+      shared: Storage.sharedState,
     }
-  }
+  },
+}
 </script>
 
 <style lang="less">

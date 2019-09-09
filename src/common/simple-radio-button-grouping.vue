@@ -13,9 +13,7 @@
           ref="radio"
           @input="updateValue(option)"
         />
-        <label :for="name + '-' + option">{{
-          option
-        }}</label>
+        <label :for="name + '-' + option">{{ option }}</label>
       </div>
     </div>
   </div>
@@ -34,8 +32,8 @@ export default {
   methods: {
     updateValue(option) {
       this.$emit('input', option)
-    }
-  }
+    },
+  },
 }
 </script>
 

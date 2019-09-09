@@ -90,7 +90,7 @@ export default {
           startTime: Storage.sharedState.selectedTime,
           duration: Storage.sharedState.duration,
           note: Storage.sharedState.note,
-          prefScalpTenderness: Storage.sharedState.prefScalpTenderness
+          prefScalpTenderness: Storage.sharedState.prefScalpTenderness,
         },
         user: {
           email: Storage.sharedState.customerEmail,
