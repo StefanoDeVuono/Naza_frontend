@@ -180,6 +180,15 @@ export default {
     }
   }
 
+  .form-item.checkbox .option {
+    border: none;
+
+    label {
+      font-weight: normal;
+      line-height: 1;
+    }
+  }
+
   .field-list .field .field-element {
     border: 2px solid @darkBlue;
     font-family: sofia-pro;
