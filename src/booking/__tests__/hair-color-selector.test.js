@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HairColorSelector from '../hair-color-selector.vue'
+import HairColorSelector from '../customize/hair-color-selector.vue'
 import { shallowMount, createLocalVue } from '@vue/test-utils'
 
 describe('HairColorSelector', () => {

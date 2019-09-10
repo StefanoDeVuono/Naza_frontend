@@ -20,7 +20,29 @@
       </div>
 
       <AppointmentSummaryContent />
-      
+
+      <Group
+        title="Premium Add-ons"
+        :products="premiumAddOns"
+        :onSelect="selectPremiumAddOn"
+        :isActive="isPremiumAddOnActive"
+      >
+        <template v-slot:icon>
+          <DrinkIcon />
+        </template>
+      </Group>
+
+      <Group
+        title="Free Add-ons"
+        :products="freeAddOns"
+        :onSelect="selectFreeAddOn"
+        :isActive="isFreeAddOnActive"
+      >
+        <template v-slot:icon>
+          <DrinkIcon />
+        </template>
+      </Group>
+
       <Group
         title="A Drink On Us!"
         :products="drinkAddOns"
@@ -51,7 +73,7 @@ import RunningTotals from '../components/running-totals.vue'
 import Group from './group.vue'
 import 'whatwg-fetch'
 import { parse } from 'jsonapi-parse'
-import { path } from 'ramda'
+import { path, reduce, concat, filter, map, join } from 'ramda'
 import Storage from 'common/storage'
 import { mockProductIfDevelopment } from 'common/utils'
 import DrinkIcon from 'images/noun_drinks_2776386.svg'
@@ -63,7 +85,12 @@ export default {
       CURL_ASSET_ROOT: getCurlAssetRoot(),
       shared: Storage.sharedState,
       drinkAddOns: [],
+      freeAddOns: [],
+      premiumAddOns: [],
       selectedDrinkId: undefined,
+      selectedDrinkName: undefined,
+      selectedFreeAddOns: {},
+      selectedPremiumAddOns: {},
     }
   },
 
@@ -84,6 +111,35 @@ export default {
 
     selectDrink(product) {
       this.selectedDrinkId = product.default_variant.id
+      this.selectedDrinkName = product.default_variant.name
+    },
+
+    isFreeAddOnActive(productId) {
+      return !!this.selectedFreeAddOns[productId]
+    },
+
+    selectFreeAddOn(product) {
+      const variant = product.default_variant
+
+      if (this.selectedFreeAddOns[variant.id]) {
+        this.$delete(this.selectedFreeAddOns, variant.id)
+      } else {
+        this.$set(this.selectedFreeAddOns, variant.id, variant.name)
+      }
+    },
+
+    isPremiumAddOnActive(productId) {
+      return !!this.selectedPremiumAddOns[productId]
+    },
+
+    selectPremiumAddOn(product) {
+      const variant = product.default_variant
+
+      if (this.selectedPremiumAddOns[variant.id]) {
+        this.$delete(this.selectedPremiumAddOns, variant.id)
+      } else {
+        this.$set(this.selectedPremiumAddOns, variant.id, variant.name)
+      }
     },
 
     fetchAddOns() {
@@ -116,20 +172,40 @@ export default {
       this.fetchAddOns()
     },
 
-    scheduleYourAppointment() {
-      const data = {
-        variant_id: this.selectedDrinkId,
-        quantity: 1,
-      }
-
+    addCartItem(variantId) {
       return fetch(getSpreeServer() + '/cart/add_item', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'X-Spree-Order-Token': this.shared.orderToken,
         },
-        body: JSON.stringify(data),
-      }).then(() => {
+        body: JSON.stringify({
+          variant_id: variantId,
+          quantity: 1,
+        }),
+      })
+    },
+
+    scheduleYourAppointment() {
+      this.shared.drinkAddOn = this.shared.selectedDrinkName
+      this.shared.freeAddOns = join(
+        ', ',
+        Object.values(this.selectedFreeAddOns)
+      )
+      this.shared.premiumAddOns = join(', ', Object.values(this.premiumAddOns))
+
+      const variantIds = filter(
+        Boolean,
+        reduce(concat, [])([
+          [this.selectedDrinkId],
+          Object.keys(this.selectedFreeAddOns),
+          Object.keys(this.selectedPremiumAddOns),
+        ])
+      )
+
+      reduce((promise, variantId) => {
+        return promise.then(() => this.addCartItem(variantId))
+      }, Promise.resolve())(variantIds).then(() => {
         this.$router.push({
           name: 'schedule-and-preferences',
         })

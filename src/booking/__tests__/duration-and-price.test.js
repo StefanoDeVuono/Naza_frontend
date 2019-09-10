@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import DurationAndPrice from '../duration-and-price.vue'
+import DurationAndPrice from '../components/duration-and-price.vue'
 import { shallowMount, createLocalVue } from '@vue/test-utils'
 
 describe('DurationAndPrice', () => {

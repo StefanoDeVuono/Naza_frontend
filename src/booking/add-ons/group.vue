@@ -8,7 +8,7 @@
     <div class="products">
       <div
         class="product"
-        v-bind:class="{ active: isActive(product.id) }"
+        v-bind:class="{ active: isActive(product.default_variant.id) }"
         v-for="product in products"
       >
         <img @click="onSelect(product)" :src="getImageUrl(product)" />
@@ -57,7 +57,7 @@ export default {
 
   components: {
     DurationAndPrice,
-  }
+  },
 }
 </script>
 
@@ -68,7 +68,7 @@ export default {
   .ignore-parent-padding();
   .ignore-parent-padding--add-padding(1);
 
-  &:nth-child(even) {
+  &:nth-child(odd) {
     background-color: @lightGray;
   }
 
