@@ -91,6 +91,10 @@ export default {
           duration: Storage.sharedState.duration,
           note: Storage.sharedState.note,
           prefScalpTenderness: Storage.sharedState.prefScalpTenderness,
+          taxonName: Storage.sharedState.taxonName,
+          styleName: Storage.sharedState.product.name,
+          customizations: Storage.sharedState.customizations,
+          drink: Storage.sharedState.drinkAddOn,
         },
         user: {
           email: Storage.sharedState.customerEmail,
