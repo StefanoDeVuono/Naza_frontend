@@ -1,11 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import fetchResponseJson from './fetchResponse.json'
+import drinkFetchResponseJson from './drink.fetchResponse.json'
+import freeFetchResponseJson from './free.fetchResponse.json'
+import premiumFetchResponseJson from './premium.fetchResponse.json'
 import AddOns from '../component.vue'
 import { shallowMount, createLocalVue } from '@vue/test-utils'
 import flushPromises from 'flush-promises'
 import Storage from 'common/storage'
-import { mockFetch, restoreFetch } from 'common/testHelper'
+import Group from '../group.vue'
+import SqButton from 'common/sq-button.vue'
 
 jest.mock('images/noun_drinks_2776386.svg', () => {
   return {
@@ -20,8 +23,29 @@ describe('Add-ons', () => {
     Storage.reset()
 
     const localVue = createLocalVue()
+    oldFetch = global.fetch
 
-    mockFetch(fetchResponseJson)
+    global.fetch = jest.fn(url => {
+      if (url.match(/drink/)) {
+        return Promise.resolve(
+          {
+            json: () => Promise.resolve(drinkFetchResponseJson)
+          }
+        )
+      } else if (url.match(/free/)) {
+        return Promise.resolve(
+          {
+            json: () => Promise.resolve(freeFetchResponseJson)
+          }
+        )
+      } else {
+        return Promise.resolve(
+          {
+            json: () => Promise.resolve(premiumFetchResponseJson)
+          }
+        )
+      }
+    })
 
     const mockRoute = {
       params: { categoryId: 1 },
@@ -38,19 +62,12 @@ describe('Add-ons', () => {
   })
 
   afterEach(() => {
-    restoreFetch()
+    global.fetch = oldFetch
   })
 
-  it('should render the products', async () => {
+  it('should render 3 groups', async () => {
     await flushPromises()
-    const addOns = wrapper.findAll('.add-ons .product')
-    expect(addOns).toHaveLength(4)
-  })
-
-  it('should select the drink variant id when clicked', async () => {
-    await flushPromises()
-    const addOn = wrapper.find('.product img')
-    addOn.trigger('click')
-    expect(wrapper.vm.selectedDrinkId).toBe("37")
+    const addOns = wrapper.findAll(Group)
+    expect(addOns).toHaveLength(3)
   })
 })

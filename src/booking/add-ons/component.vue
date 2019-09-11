@@ -22,6 +22,7 @@
       <AppointmentSummaryContent />
 
       <Group
+        testID="premium-add-ons"
         title="Premium Add-ons"
         :products="premiumAddOns"
         :onSelect="selectPremiumAddOn"
@@ -33,6 +34,7 @@
       </Group>
 
       <Group
+        testID="free-add-ons"
         title="Free Add-ons"
         :products="freeAddOns"
         :onSelect="selectFreeAddOn"
@@ -44,6 +46,7 @@
       </Group>
 
       <Group
+        testID="drink-add-ons"
         title="A Drink On Us!"
         :products="drinkAddOns"
         :onSelect="selectDrink"
