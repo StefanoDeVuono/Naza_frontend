@@ -4,11 +4,11 @@
       <strong>{{ customization }}:</strong> {{ value }}
     </li>
 
-    <li v-if="shared.freeAddOn">
+    <li v-if="shared.freeAddOns">
       <strong>Free Add-Ons:</strong> {{ shared.freeAddOns }}
     </li>
 
-    <li v-if="shared.premiumAddOn">
+    <li v-if="shared.premiumAddOns">
       <strong>Premium Add-Ons:</strong> {{ shared.premiumAddOns }}
     </li>
 

@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Content from '../content.vue'
+import Content from '../components/content.vue'
 import { shallowMount, createLocalVue } from '@vue/test-utils'
 import Storage from 'common/storage'
 

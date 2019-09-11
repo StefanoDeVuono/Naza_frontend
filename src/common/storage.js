@@ -20,7 +20,7 @@ export default {
     customerPassword: undefined,
     note: undefined,
     prefScalpTenderness: undefined,
-    drinkAddOns: undefined,
+    drinkAddOn: undefined,
     freeAddOns: undefined,
     premiumAddOns: undefined,
 

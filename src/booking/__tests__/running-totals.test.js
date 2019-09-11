@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import RunningTotals from '../running-totals.vue'
+import RunningTotals from '../components/running-totals.vue'
 import { shallowMount, createLocalVue } from '@vue/test-utils'
 import Storage from 'common/storage'
 

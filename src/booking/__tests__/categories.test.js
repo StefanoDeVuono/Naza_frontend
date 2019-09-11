@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import fetchResponseJson from './categories.fetchResponse.json'
-import Categories from '../categories.vue'
+import Categories from '../categories/component.vue'
 import { shallowMount, createLocalVue } from '@vue/test-utils'
 import flushPromises from 'flush-promises'
 import Storage from 'common/storage'

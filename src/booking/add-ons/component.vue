@@ -21,35 +21,48 @@
 
       <AppointmentSummaryContent />
 
-      <div class="add-ons">
-        <div class="header">
+      <Group
+        testID="premium-add-ons"
+        title="Premium Add-ons"
+        :products="premiumAddOns"
+        :onSelect="selectPremiumAddOn"
+        :isActive="isPremiumAddOnActive"
+      >
+        <template v-slot:icon>
           <DrinkIcon />
-          <h2>A Drink On Us!</h2>
-        </div>
+        </template>
+      </Group>
 
-        <div class="products">
-          <div
-            class="product"
-            v-bind:class="{ active: isActive(product.id) }"
-            v-for="product in drinkAddOns"
-          >
-            <img
-              @click="selectDrink(product)"
-              :src="getAddOnImageUrl(product)"
-            />
-            <h2>{{ product.name }}</h2>
-            <p>{{ product.description }}</p>
-            <div class="duration-and-price-wrapper">
-              <DurationAndPrice :duration="0" :price="0" />
-            </div>
-          </div>
-        </div>
+      <Group
+        testID="free-add-ons"
+        title="Free Add-ons"
+        :products="freeAddOns"
+        :onSelect="selectFreeAddOn"
+        :isActive="isFreeAddOnActive"
+      >
+        <template v-slot:icon>
+          <DrinkIcon />
+        </template>
+      </Group>
 
-        <SqButton
-          label="Schedule Your Appointment"
-          :onClick="scheduleYourAppointment"
-        />
-      </div>
+      <Group
+        testID="drink-add-ons"
+        title="A Drink On Us!"
+        :products="drinkAddOns"
+        :onSelect="selectDrink"
+        :isActive="isDrinkActive"
+      >
+        <template v-slot:icon>
+          <DrinkIcon />
+        </template>
+
+        <template v-slot:footer>
+          <SqButton
+            label="Schedule Your Appointment"
+            :onClick="scheduleYourAppointment"
+          />
+        </template>
+      </Group>
     </Content>
   </div>
 </template>
@@ -60,27 +73,10 @@ import Header from '../components/header.vue'
 import Content from '../components/content.vue'
 import AppointmentSummaryContent from '../components/appointment-summary-content.vue'
 import RunningTotals from '../components/running-totals.vue'
-import DurationAndPrice from '../components/duration-and-price.vue'
+import Group from './group.vue'
 import 'whatwg-fetch'
 import { parse } from 'jsonapi-parse'
-import {
-  path,
-  compose,
-  prop,
-  nth,
-  filter,
-  map,
-  last,
-  sortBy,
-  replace,
-  isNil,
-  join,
-  find,
-  difference,
-  isEmpty,
-  reduce,
-  flatten,
-} from 'ramda'
+import { path, reduce, concat, filter, map, join } from 'ramda'
 import Storage from 'common/storage'
 import { mockProductIfDevelopment } from 'common/utils'
 import DrinkIcon from 'images/noun_drinks_2776386.svg'
@@ -92,7 +88,12 @@ export default {
       CURL_ASSET_ROOT: getCurlAssetRoot(),
       shared: Storage.sharedState,
       drinkAddOns: [],
+      freeAddOns: [],
+      premiumAddOns: [],
       selectedDrinkId: undefined,
+      selectedDrinkName: undefined,
+      selectedFreeAddOns: {},
+      selectedPremiumAddOns: {},
     }
   },
 
@@ -107,28 +108,66 @@ export default {
   },
 
   methods: {
-    isActive(productId) {
+    isDrinkActive(productId) {
       return this.selectedDrinkId === productId
-    },
-
-    getAddOnImageUrl(product) {
-      return (
-        this.CURL_ASSET_ROOT + path(['images', 0, 'styles', 1, 'url'], product)
-      )
     },
 
     selectDrink(product) {
       this.selectedDrinkId = product.default_variant.id
+      this.selectedDrinkName = product.default_variant.name
+    },
+
+    isFreeAddOnActive(productId) {
+      return !!this.selectedFreeAddOns[productId]
+    },
+
+    selectFreeAddOn(product) {
+      const variant = product.default_variant
+
+      if (this.selectedFreeAddOns[variant.id]) {
+        this.$delete(this.selectedFreeAddOns, variant.id)
+      } else {
+        this.$set(this.selectedFreeAddOns, variant.id, variant.name)
+      }
+    },
+
+    isPremiumAddOnActive(productId) {
+      return !!this.selectedPremiumAddOns[productId]
+    },
+
+    selectPremiumAddOn(product) {
+      const variant = product.default_variant
+
+      if (this.selectedPremiumAddOns[variant.id]) {
+        this.$delete(this.selectedPremiumAddOns, variant.id)
+      } else {
+        this.$set(this.selectedPremiumAddOns, variant.id, variant.name)
+      }
     },
 
     fetchAddOns() {
-      var path = `${getSpreeServer()}/taxons/drink-add-ons?include=products.images,default_variant`
-      fetch(path)
-        .then(response => {
-          return response.json()
-        })
+      fetch(
+        `${getSpreeServer()}/taxons/drink-add-ons?include=products.images,default_variant`
+      )
+        .then(response => response.json())
         .then(json => {
           this.drinkAddOns = parse(json).data.products
+        })
+
+      fetch(
+        `${getSpreeServer()}/taxons/free-add-ons?include=products.images,default_variant`
+      )
+        .then(response => response.json())
+        .then(json => {
+          this.freeAddOns = parse(json).data.products
+        })
+
+      fetch(
+        `${getSpreeServer()}/taxons/premium-add-ons?include=products.images,default_variant`
+      )
+        .then(response => response.json())
+        .then(json => {
+          this.premiumAddOns = parse(json).data.products
         })
     },
 
@@ -136,20 +175,40 @@ export default {
       this.fetchAddOns()
     },
 
-    scheduleYourAppointment() {
-      const data = {
-        variant_id: this.selectedDrinkId,
-        quantity: 1,
-      }
-
+    addCartItem(variantId) {
       return fetch(getSpreeServer() + '/cart/add_item', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'X-Spree-Order-Token': this.shared.orderToken,
         },
-        body: JSON.stringify(data),
-      }).then(() => {
+        body: JSON.stringify({
+          variant_id: variantId,
+          quantity: 1,
+        }),
+      })
+    },
+
+    scheduleYourAppointment() {
+      this.shared.drinkAddOn = this.shared.selectedDrinkName
+      this.shared.freeAddOns = join(
+        ', ',
+        Object.values(this.selectedFreeAddOns)
+      )
+      this.shared.premiumAddOns = join(', ', Object.values(this.premiumAddOns))
+
+      const variantIds = filter(
+        Boolean,
+        reduce(concat, [])([
+          [this.selectedDrinkId],
+          Object.keys(this.selectedFreeAddOns),
+          Object.keys(this.selectedPremiumAddOns),
+        ])
+      )
+
+      reduce((promise, variantId) => {
+        return promise.then(() => this.addCartItem(variantId))
+      }, Promise.resolve())(variantIds).then(() => {
         this.$router.push({
           name: 'schedule-and-preferences',
         })
@@ -166,7 +225,7 @@ export default {
     AppointmentSummaryContent,
     DrinkIcon,
     SqButton,
-    DurationAndPrice,
+    Group,
   },
   created() {
     mockProductIfDevelopment()
@@ -198,82 +257,5 @@ div.img-container {
 
 .sqs-block-button .sqs-block-button-element {
   display: block;
-}
-
-.add-ons {
-  .ignore-parent-padding();
-  .ignore-parent-padding--add-padding(1);
-
-  &:nth-child(even) {
-    background-color: @lightGray;
-  }
-
-  .header {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-
-    h2 {
-      font-size: 22px;
-      font-weight: bold;
-      color: @darkBlue;
-      text-transform: none;
-    }
-
-    svg {
-      margin-right: 10px;
-      transform: translate(0, 8px);
-    }
-  }
-
-  .products {
-    margin-top: 20px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    grid-column-gap: 15px;
-    grid-row-gap: 15px;
-  }
-
-  .product {
-    margin-bottom: 20px;
-
-    h2 {
-      text-align: center;
-      color: @orange;
-      text-transform: none;
-      font-size: 14px;
-      margin: 5px 0;
-    }
-
-    p {
-      text-align: center;
-      font-size: 12px;
-      margin: 0;
-      color: @darkBlue;
-    }
-
-    svg {
-      transform: translate(0, -2px);
-    }
-
-    img {
-      width: 100%;
-      height: calc(50vw - 30px);
-      object-fit: cover;
-      line-height: 0;
-      border: 3px solid @darkBlue;
-    }
-
-    &.active img {
-      border: 3px solid @orange;
-    }
-
-    .duration-and-price-wrapper {
-      width: 80%;
-      margin: 0 auto;
-    }
-  }
 }
 </style>
