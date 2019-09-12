@@ -8,7 +8,7 @@ export default {
 
   sharedState: {
     userToken: undefined,
-    
+
     product: undefined,
     customizations: {},
     selectedTime: undefined,

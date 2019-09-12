@@ -1,5 +1,5 @@
 <template>
-  <div class="add-ons" >
+  <div class="add-ons">
     <div class="header">
       <slot name="icon"></slot>
       <h2>{{ title }}</h2>

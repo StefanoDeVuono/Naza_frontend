@@ -44,7 +44,7 @@ export const mockProductIfDevelopment = () => {
     Storage.sharedState.taxonName = 'Cakes'
     Storage.sharedState.customerName = 'Hibiki Sakura'
     Storage.sharedState.customerZipCode = '12345'
-    Storage.sharedState.customerEmail = 'hibiki@silverman.gym'
+    Storage.sharedState.customerEmail = 'spree@example.com'
     Storage.sharedState.customerPhone = '555-555-5555'
     Storage.sharedState.customizations = {
       Size: 'Medium',
