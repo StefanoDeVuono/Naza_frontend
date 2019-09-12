@@ -3,7 +3,7 @@ export const isStaging = () => {
 }
 
 export const isProduction = () => {
-  return window.location.hostname === 'www.nazabeauty.com' || 'nazabeauty.com'
+  return window.location.hostname === 'www.nazabeauty.com' || window.location.hostname === 'nazabeauty.com'
 }
 
 // this is the publically accessible key
@@ -29,11 +29,11 @@ export const getSpreeServer = () => {
 
 export const getAppServer = () => {
   if (isStaging()) {
-    return 'https://projectcurl-staging.herokuapp.com'
+    return 'https://api-staging.nazabeauty.com'
   }
 
   if (isProduction()) {
-    return 'https://projectcurl.herokuapp.com'
+    return 'https://api-prod.nazabeauty.com'
   }
 
   return 'http://localhost:3000'
