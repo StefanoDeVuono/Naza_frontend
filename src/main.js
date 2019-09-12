@@ -4,6 +4,7 @@ import Subcategories from './booking/subcategories/component.vue'
 import AddOns from './booking/add-ons/component.vue'
 import ScheduleAndPreferences from './booking/schedule-and-preferences/component.vue'
 import Confirmation from './booking/confirmation/component.vue'
+import SignIn from './user/sign-in.vue'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueSessionStorage from 'vue-sessionstorage'
@@ -42,6 +43,11 @@ var routes = [
     path: '/confirmation',
     component: Confirmation,
     name: "confirmation"
+  },
+  {
+    path: '/sign-in',
+    component: SignIn,
+    name: 'sign-in'
   }
 ]
 

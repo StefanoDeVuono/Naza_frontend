@@ -7,6 +7,8 @@ export default {
   debug: true,
 
   sharedState: {
+    userToken: undefined,
+    
     product: undefined,
     customizations: {},
     selectedTime: undefined,
