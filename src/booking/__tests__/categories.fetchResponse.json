@@ -1,0 +1,478 @@
+{
+  "data": {
+    "id": "38",
+    "type": "taxon",
+    "attributes": {
+      "name": "Hair Styles",
+      "pretty_name": "Hair Styles",
+      "permalink": "hair-styles",
+      "seo_title": "Hair Styles",
+      "meta_title": null,
+      "meta_description": null,
+      "meta_keywords": null,
+      "left": 1,
+      "right": 34,
+      "position": 0,
+      "depth": 0,
+      "updated_at": "2019-08-16T18:31:27.951Z",
+      "is_root": true,
+      "is_child": false,
+      "is_leaf": false
+    },
+    "relationships": {
+      "parent": { "data": null },
+      "taxonomy": { "data": { "id": "5", "type": "taxonomy" } },
+      "children": {
+        "data": [
+          { "id": "40", "type": "taxon" },
+          { "id": "44", "type": "taxon" },
+          { "id": "48", "type": "taxon" },
+          { "id": "51", "type": "taxon" },
+          { "id": "55", "type": "taxon" }
+        ]
+      },
+      "products": { "data": [] },
+      "image": { "data": null }
+    }
+  },
+  "included": [
+    {
+      "id": "207",
+      "type": "taxon_image",
+      "attributes": {
+        "viewable_type": "Spree::Taxon",
+        "viewable_id": 40,
+        "styles": [
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYzg9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5e18637a4ace83756db97c5eed850fe37be28a53/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTXpJd2VETXlNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--a8f2a8ad5ca9825ff788dd3a5901789b9e0397e2/Crochet_Braids.jpeg",
+            "width": "320",
+            "height": "320"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYzg9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5e18637a4ace83756db97c5eed850fe37be28a53/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTmpRd2VEWTBNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--addcc9329975562bb8ced4fc697d2966d4cb8140/Crochet_Braids.jpeg",
+            "width": "640",
+            "height": "640"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYzg9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5e18637a4ace83756db97c5eed850fe37be28a53/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTnpZNGVEYzJPRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--7857c8efdcbfa344c0274122f5fdb04173e9ccfd/Crochet_Braids.jpeg",
+            "width": "768",
+            "height": "768"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYzg9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5e18637a4ace83756db97c5eed850fe37be28a53/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lPTVRBeU5IZzNOamcrQmpvR1JWUT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--06178243ea6ba42743b366cdc040074e680f8b49/Crochet_Braids.jpeg",
+            "width": "1024",
+            "height": "768"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYzg9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5e18637a4ace83756db97c5eed850fe37be28a53/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lPTVRNMk5uZzNOamcrQmpvR1JWUT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--2f533de88baab0ff6e660227fd6b73ce2a641691/Crochet_Braids.jpeg",
+            "width": "1366",
+            "height": "768"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYzg9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5e18637a4ace83756db97c5eed850fe37be28a53/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lPTVRZd01IZzVNREErQmpvR1JWUT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--24d66db8fb0de7d2909ab510268b1e7a90812068/Crochet_Braids.jpeg",
+            "width": "1600",
+            "height": "900"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBYzg9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5e18637a4ace83756db97c5eed850fe37be28a53/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lQTVRreU1IZ3hNRGd3UGdZNkJrVlUiLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--d77649a4570dc7bc2904d6968bff5807913d8064/Crochet_Braids.jpeg",
+            "width": "1920",
+            "height": "1080"
+          }
+        ]
+      }
+    },
+    {
+      "id": "40",
+      "type": "taxon",
+      "attributes": {
+        "name": "Crochet Braids",
+        "pretty_name": "Hair Styles -\u003e Crochet Braids",
+        "permalink": "crochet-braids",
+        "seo_title": "Hair Styles - Crochet Braids",
+        "meta_title": null,
+        "meta_description": null,
+        "meta_keywords": null,
+        "left": 2,
+        "right": 9,
+        "position": 0,
+        "depth": 1,
+        "updated_at": "2019-08-16T17:10:08.151Z",
+        "is_root": false,
+        "is_child": true,
+        "is_leaf": false
+      },
+      "relationships": {
+        "parent": { "data": { "id": "38", "type": "taxon" } },
+        "taxonomy": { "data": { "id": "5", "type": "taxonomy" } },
+        "children": {
+          "data": [
+            { "id": "41", "type": "taxon" },
+            { "id": "42", "type": "taxon" },
+            { "id": "43", "type": "taxon" }
+          ]
+        },
+        "products": {
+          "data": [
+            { "id": "74", "type": "product" },
+            { "id": "75", "type": "product" },
+            { "id": "76", "type": "product" },
+            { "id": "77", "type": "product" },
+            { "id": "78", "type": "product" },
+            { "id": "79", "type": "product" },
+            { "id": "80", "type": "product" },
+            { "id": "81", "type": "product" },
+            { "id": "82", "type": "product" },
+            { "id": "83", "type": "product" }
+          ]
+        },
+        "image": { "data": { "id": "207", "type": "taxon_image" } }
+      }
+    },
+    {
+      "id": "208",
+      "type": "taxon_image",
+      "attributes": {
+        "viewable_type": "Spree::Taxon",
+        "viewable_id": 44,
+        "styles": [
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZEE9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2a71f2d8a61856ad0e5de80886e27364fe4b8a8d/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTXpJd2VETXlNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--a8f2a8ad5ca9825ff788dd3a5901789b9e0397e2/Weave_Installs.jpeg",
+            "width": "320",
+            "height": "320"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZEE9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2a71f2d8a61856ad0e5de80886e27364fe4b8a8d/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTmpRd2VEWTBNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--addcc9329975562bb8ced4fc697d2966d4cb8140/Weave_Installs.jpeg",
+            "width": "640",
+            "height": "640"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZEE9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2a71f2d8a61856ad0e5de80886e27364fe4b8a8d/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTnpZNGVEYzJPRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--7857c8efdcbfa344c0274122f5fdb04173e9ccfd/Weave_Installs.jpeg",
+            "width": "768",
+            "height": "768"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZEE9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2a71f2d8a61856ad0e5de80886e27364fe4b8a8d/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lPTVRBeU5IZzNOamcrQmpvR1JWUT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--06178243ea6ba42743b366cdc040074e680f8b49/Weave_Installs.jpeg",
+            "width": "1024",
+            "height": "768"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZEE9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2a71f2d8a61856ad0e5de80886e27364fe4b8a8d/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lPTVRNMk5uZzNOamcrQmpvR1JWUT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--2f533de88baab0ff6e660227fd6b73ce2a641691/Weave_Installs.jpeg",
+            "width": "1366",
+            "height": "768"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZEE9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2a71f2d8a61856ad0e5de80886e27364fe4b8a8d/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lPTVRZd01IZzVNREErQmpvR1JWUT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--24d66db8fb0de7d2909ab510268b1e7a90812068/Weave_Installs.jpeg",
+            "width": "1600",
+            "height": "900"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZEE9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2a71f2d8a61856ad0e5de80886e27364fe4b8a8d/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lQTVRreU1IZ3hNRGd3UGdZNkJrVlUiLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--d77649a4570dc7bc2904d6968bff5807913d8064/Weave_Installs.jpeg",
+            "width": "1920",
+            "height": "1080"
+          }
+        ]
+      }
+    },
+    {
+      "id": "44",
+      "type": "taxon",
+      "attributes": {
+        "name": "Weave Installs",
+        "pretty_name": "Hair Styles -\u003e Weave Installs",
+        "permalink": "weave-installs",
+        "seo_title": "Hair Styles - Weave Installs",
+        "meta_title": null,
+        "meta_description": null,
+        "meta_keywords": null,
+        "left": 10,
+        "right": 17,
+        "position": 4,
+        "depth": 1,
+        "updated_at": "2019-08-16T17:10:08.631Z",
+        "is_root": false,
+        "is_child": true,
+        "is_leaf": false
+      },
+      "relationships": {
+        "parent": { "data": { "id": "38", "type": "taxon" } },
+        "taxonomy": { "data": { "id": "5", "type": "taxonomy" } },
+        "children": {
+          "data": [
+            { "id": "45", "type": "taxon" },
+            { "id": "46", "type": "taxon" },
+            { "id": "47", "type": "taxon" }
+          ]
+        },
+        "products": {
+          "data": [
+            { "id": "89", "type": "product" },
+            { "id": "90", "type": "product" },
+            { "id": "84", "type": "product" },
+            { "id": "85", "type": "product" },
+            { "id": "86", "type": "product" },
+            { "id": "87", "type": "product" },
+            { "id": "88", "type": "product" }
+          ]
+        },
+        "image": { "data": { "id": "208", "type": "taxon_image" } }
+      }
+    },
+    {
+      "id": "209",
+      "type": "taxon_image",
+      "attributes": {
+        "viewable_type": "Spree::Taxon",
+        "viewable_id": 48,
+        "styles": [
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZEU9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--67959a3cb0e9cf5491089d4e8b9147aa171987f7/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTXpJd2VETXlNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--a8f2a8ad5ca9825ff788dd3a5901789b9e0397e2/Box_Braids_Twists.jpeg",
+            "width": "320",
+            "height": "320"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZEU9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--67959a3cb0e9cf5491089d4e8b9147aa171987f7/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTmpRd2VEWTBNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--addcc9329975562bb8ced4fc697d2966d4cb8140/Box_Braids_Twists.jpeg",
+            "width": "640",
+            "height": "640"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZEU9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--67959a3cb0e9cf5491089d4e8b9147aa171987f7/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTnpZNGVEYzJPRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--7857c8efdcbfa344c0274122f5fdb04173e9ccfd/Box_Braids_Twists.jpeg",
+            "width": "768",
+            "height": "768"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZEU9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--67959a3cb0e9cf5491089d4e8b9147aa171987f7/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lPTVRBeU5IZzNOamcrQmpvR1JWUT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--06178243ea6ba42743b366cdc040074e680f8b49/Box_Braids_Twists.jpeg",
+            "width": "1024",
+            "height": "768"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZEU9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--67959a3cb0e9cf5491089d4e8b9147aa171987f7/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lPTVRNMk5uZzNOamcrQmpvR1JWUT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--2f533de88baab0ff6e660227fd6b73ce2a641691/Box_Braids_Twists.jpeg",
+            "width": "1366",
+            "height": "768"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZEU9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--67959a3cb0e9cf5491089d4e8b9147aa171987f7/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lPTVRZd01IZzVNREErQmpvR1JWUT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--24d66db8fb0de7d2909ab510268b1e7a90812068/Box_Braids_Twists.jpeg",
+            "width": "1600",
+            "height": "900"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZEU9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--67959a3cb0e9cf5491089d4e8b9147aa171987f7/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lQTVRreU1IZ3hNRGd3UGdZNkJrVlUiLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--d77649a4570dc7bc2904d6968bff5807913d8064/Box_Braids_Twists.jpeg",
+            "width": "1920",
+            "height": "1080"
+          }
+        ]
+      }
+    },
+    {
+      "id": "48",
+      "type": "taxon",
+      "attributes": {
+        "name": "Box Braids/Twists",
+        "pretty_name": "Hair Styles -\u003e Box Braids/Twists",
+        "permalink": "box-braids-slash-twists",
+        "seo_title": "Hair Styles - Box Braids/Twists",
+        "meta_title": null,
+        "meta_description": null,
+        "meta_keywords": null,
+        "left": 18,
+        "right": 23,
+        "position": 3,
+        "depth": 1,
+        "updated_at": "2019-08-16T18:31:27.917Z",
+        "is_root": false,
+        "is_child": true,
+        "is_leaf": false
+      },
+      "relationships": {
+        "parent": { "data": { "id": "38", "type": "taxon" } },
+        "taxonomy": { "data": { "id": "5", "type": "taxonomy" } },
+        "children": {
+          "data": [
+            { "id": "49", "type": "taxon" },
+            { "id": "50", "type": "taxon" }
+          ]
+        },
+        "products": {
+          "data": [
+            { "id": "91", "type": "product" },
+            { "id": "92", "type": "product" },
+            { "id": "93", "type": "product" },
+            { "id": "94", "type": "product" },
+            { "id": "95", "type": "product" }
+          ]
+        },
+        "image": { "data": { "id": "209", "type": "taxon_image" } }
+      }
+    },
+    {
+      "id": "211",
+      "type": "taxon_image",
+      "attributes": {
+        "viewable_type": "Spree::Taxon",
+        "viewable_id": 51,
+        "styles": [
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZE09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c733c330b14b8be058af4aa70031726347f35657/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTXpJd2VETXlNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--a8f2a8ad5ca9825ff788dd3a5901789b9e0397e2/Cornrows.jpeg",
+            "width": "320",
+            "height": "320"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZE09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c733c330b14b8be058af4aa70031726347f35657/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTmpRd2VEWTBNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--addcc9329975562bb8ced4fc697d2966d4cb8140/Cornrows.jpeg",
+            "width": "640",
+            "height": "640"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZE09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c733c330b14b8be058af4aa70031726347f35657/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTnpZNGVEYzJPRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--7857c8efdcbfa344c0274122f5fdb04173e9ccfd/Cornrows.jpeg",
+            "width": "768",
+            "height": "768"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZE09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c733c330b14b8be058af4aa70031726347f35657/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lPTVRBeU5IZzNOamcrQmpvR1JWUT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--06178243ea6ba42743b366cdc040074e680f8b49/Cornrows.jpeg",
+            "width": "1024",
+            "height": "768"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZE09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c733c330b14b8be058af4aa70031726347f35657/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lPTVRNMk5uZzNOamcrQmpvR1JWUT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--2f533de88baab0ff6e660227fd6b73ce2a641691/Cornrows.jpeg",
+            "width": "1366",
+            "height": "768"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZE09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c733c330b14b8be058af4aa70031726347f35657/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lPTVRZd01IZzVNREErQmpvR1JWUT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--24d66db8fb0de7d2909ab510268b1e7a90812068/Cornrows.jpeg",
+            "width": "1600",
+            "height": "900"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZE09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c733c330b14b8be058af4aa70031726347f35657/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lQTVRreU1IZ3hNRGd3UGdZNkJrVlUiLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--d77649a4570dc7bc2904d6968bff5807913d8064/Cornrows.jpeg",
+            "width": "1920",
+            "height": "1080"
+          }
+        ]
+      }
+    },
+    {
+      "id": "51",
+      "type": "taxon",
+      "attributes": {
+        "name": "Cornrows",
+        "pretty_name": "Hair Styles -\u003e Cornrows",
+        "permalink": "cornrows",
+        "seo_title": "Hair Styles - Cornrows",
+        "meta_title": null,
+        "meta_description": null,
+        "meta_keywords": null,
+        "left": 24,
+        "right": 31,
+        "position": 2,
+        "depth": 1,
+        "updated_at": "2019-08-16T17:10:09.441Z",
+        "is_root": false,
+        "is_child": true,
+        "is_leaf": false
+      },
+      "relationships": {
+        "parent": { "data": { "id": "38", "type": "taxon" } },
+        "taxonomy": { "data": { "id": "5", "type": "taxonomy" } },
+        "children": {
+          "data": [
+            { "id": "52", "type": "taxon" },
+            { "id": "53", "type": "taxon" },
+            { "id": "54", "type": "taxon" }
+          ]
+        },
+        "products": {
+          "data": [
+            { "id": "96", "type": "product" },
+            { "id": "97", "type": "product" },
+            { "id": "98", "type": "product" },
+            { "id": "99", "type": "product" },
+            { "id": "100", "type": "product" },
+            { "id": "101", "type": "product" }
+          ]
+        },
+        "image": { "data": { "id": "211", "type": "taxon_image" } }
+      }
+    },
+    {
+      "id": "212",
+      "type": "taxon_image",
+      "attributes": {
+        "viewable_type": "Spree::Taxon",
+        "viewable_id": 55,
+        "styles": [
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZFE9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--71448b23cf2d33bde38efe27983217b8ca20d45f/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTXpJd2VETXlNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--a8f2a8ad5ca9825ff788dd3a5901789b9e0397e2/Silk_Press.jpeg",
+            "width": "320",
+            "height": "320"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZFE9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--71448b23cf2d33bde38efe27983217b8ca20d45f/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTmpRd2VEWTBNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--addcc9329975562bb8ced4fc697d2966d4cb8140/Silk_Press.jpeg",
+            "width": "640",
+            "height": "640"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZFE9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--71448b23cf2d33bde38efe27983217b8ca20d45f/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTnpZNGVEYzJPRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--7857c8efdcbfa344c0274122f5fdb04173e9ccfd/Silk_Press.jpeg",
+            "width": "768",
+            "height": "768"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZFE9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--71448b23cf2d33bde38efe27983217b8ca20d45f/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lPTVRBeU5IZzNOamcrQmpvR1JWUT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--06178243ea6ba42743b366cdc040074e680f8b49/Silk_Press.jpeg",
+            "width": "1024",
+            "height": "768"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZFE9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--71448b23cf2d33bde38efe27983217b8ca20d45f/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lPTVRNMk5uZzNOamcrQmpvR1JWUT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--2f533de88baab0ff6e660227fd6b73ce2a641691/Silk_Press.jpeg",
+            "width": "1366",
+            "height": "768"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZFE9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--71448b23cf2d33bde38efe27983217b8ca20d45f/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lPTVRZd01IZzVNREErQmpvR1JWUT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--24d66db8fb0de7d2909ab510268b1e7a90812068/Silk_Press.jpeg",
+            "width": "1600",
+            "height": "900"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBZFE9IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--71448b23cf2d33bde38efe27983217b8ca20d45f/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lQTVRreU1IZ3hNRGd3UGdZNkJrVlUiLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--d77649a4570dc7bc2904d6968bff5807913d8064/Silk_Press.jpeg",
+            "width": "1920",
+            "height": "1080"
+          }
+        ]
+      }
+    },
+    {
+      "id": "55",
+      "type": "taxon",
+      "attributes": {
+        "name": "Silk Press",
+        "pretty_name": "Hair Styles -\u003e Silk Press",
+        "permalink": "silk-press",
+        "seo_title": "Hair Styles - Silk Press",
+        "meta_title": null,
+        "meta_description": null,
+        "meta_keywords": null,
+        "left": 32,
+        "right": 33,
+        "position": 1,
+        "depth": 1,
+        "updated_at": "2019-08-16T17:10:09.518Z",
+        "is_root": false,
+        "is_child": true,
+        "is_leaf": true
+      },
+      "relationships": {
+        "parent": { "data": { "id": "38", "type": "taxon" } },
+        "taxonomy": { "data": { "id": "5", "type": "taxonomy" } },
+        "children": { "data": [] },
+        "products": {
+          "data": [
+            { "id": "102", "type": "product" },
+            { "id": "103", "type": "product" }
+          ]
+        },
+        "image": { "data": { "id": "212", "type": "taxon_image" } }
+      }
+    },
+    {
+      "id": "5",
+      "type": "taxonomy",
+      "attributes": { "name": "Hair Styles", "position": 1 }
+    }
+  ]
+}

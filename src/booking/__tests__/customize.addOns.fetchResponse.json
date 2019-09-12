@@ -1,0 +1,366 @@
+{
+  "data": {
+    "id": "2",
+    "type": "taxon",
+    "attributes": {
+      "name": "Add-ons",
+      "pretty_name": "Add-ons",
+      "permalink": "add-ons",
+      "seo_title": "Add-ons",
+      "meta_title": null,
+      "meta_description": null,
+      "meta_keywords": null,
+      "left": 33,
+      "right": 34,
+      "position": 1,
+      "depth": 0,
+      "updated_at": "2019-08-22T22:34:42.502Z",
+      "is_root": true,
+      "is_child": false,
+      "is_leaf": true
+    },
+    "relationships": {
+      "parent": { "data": null },
+      "taxonomy": { "data": { "id": "2", "type": "taxonomy" } },
+      "children": { "data": [] },
+      "products": {
+        "data": [
+          { "id": "33", "type": "product" },
+          { "id": "32", "type": "product" },
+          { "id": "31", "type": "product" },
+          { "id": "30", "type": "product" },
+          { "id": "29", "type": "product" }
+        ]
+      },
+      "image": { "data": { "id": "41", "type": "taxon_image" } }
+    }
+  },
+  "included": [
+    {
+      "id": "33",
+      "type": "image",
+      "attributes": {
+        "viewable_type": "Spree::Variant",
+        "viewable_id": 33,
+        "styles": [
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBKZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b9540d48f8c82b83901842f68adebed5cb38f5fb/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lMTkRoNE5EZytCam9HUlZRPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--6c526e6335453ae1b12c1cec76e092ae660f63f1/Thread.jpeg",
+            "width": "48",
+            "height": "48"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBKZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b9540d48f8c82b83901842f68adebed5cb38f5fb/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTVRBd2VERXdNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--4fcf9c15e87600b986f46013093bef468325f574/Thread.jpeg",
+            "width": "100",
+            "height": "100"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBKZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b9540d48f8c82b83901842f68adebed5cb38f5fb/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTWpRd2VESTBNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--8ee0aa62ac866afdd71afe35c4cf7b866457a721/Thread.jpeg",
+            "width": "240",
+            "height": "240"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBKZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--b9540d48f8c82b83901842f68adebed5cb38f5fb/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTmpBd2VEWXdNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--0ad03d61523648403b37e889f47a3d7b78145004/Thread.jpeg",
+            "width": "600",
+            "height": "600"
+          }
+        ]
+      }
+    },
+    {
+      "id": "33",
+      "type": "product",
+      "attributes": {
+        "name": "Thread",
+        "description": "Wow!",
+        "price": "50.0",
+        "currency": "USD",
+        "display_price": "$50.00",
+        "available_on": "2019-08-22T22:34:38.200Z",
+        "slug": "thread",
+        "meta_description": null,
+        "meta_keywords": null,
+        "updated_at": "2019-08-22T22:34:42.430Z",
+        "purchasable": true,
+        "in_stock": false,
+        "backorderable": true,
+        "duration": null
+      },
+      "relationships": {
+        "variants": { "data": [] },
+        "option_types": { "data": [] },
+        "product_properties": { "data": [] },
+        "taxons": { "data": [{ "id": "2", "type": "taxon" }] },
+        "images": { "data": [{ "id": "33", "type": "image" }] },
+        "default_variant": { "data": { "id": "33", "type": "variant" } }
+      }
+    },
+    {
+      "id": "32",
+      "type": "image",
+      "attributes": {
+        "viewable_type": "Spree::Variant",
+        "viewable_id": 32,
+        "styles": [
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBKUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5c1d2aabb4a8db0f7a89d41460915a72fe76a625/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lMTkRoNE5EZytCam9HUlZRPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--6c526e6335453ae1b12c1cec76e092ae660f63f1/Beads.jpeg",
+            "width": "48",
+            "height": "48"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBKUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5c1d2aabb4a8db0f7a89d41460915a72fe76a625/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTVRBd2VERXdNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--4fcf9c15e87600b986f46013093bef468325f574/Beads.jpeg",
+            "width": "100",
+            "height": "100"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBKUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5c1d2aabb4a8db0f7a89d41460915a72fe76a625/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTWpRd2VESTBNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--8ee0aa62ac866afdd71afe35c4cf7b866457a721/Beads.jpeg",
+            "width": "240",
+            "height": "240"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBKUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--5c1d2aabb4a8db0f7a89d41460915a72fe76a625/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTmpBd2VEWXdNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--0ad03d61523648403b37e889f47a3d7b78145004/Beads.jpeg",
+            "width": "600",
+            "height": "600"
+          }
+        ]
+      }
+    },
+    {
+      "id": "32",
+      "type": "product",
+      "attributes": {
+        "name": "Beads",
+        "description": "Wow!",
+        "price": "50.0",
+        "currency": "USD",
+        "display_price": "$50.00",
+        "available_on": "2019-08-22T22:34:37.757Z",
+        "slug": "beads",
+        "meta_description": null,
+        "meta_keywords": null,
+        "updated_at": "2019-08-22T22:34:42.433Z",
+        "purchasable": true,
+        "in_stock": false,
+        "backorderable": true,
+        "duration": null
+      },
+      "relationships": {
+        "variants": { "data": [] },
+        "option_types": { "data": [] },
+        "product_properties": { "data": [] },
+        "taxons": { "data": [{ "id": "2", "type": "taxon" }] },
+        "images": { "data": [{ "id": "32", "type": "image" }] },
+        "default_variant": { "data": { "id": "32", "type": "variant" } }
+      }
+    },
+    {
+      "id": "31",
+      "type": "image",
+      "attributes": {
+        "viewable_type": "Spree::Variant",
+        "viewable_id": 31,
+        "styles": [
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBKQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--20ad7d7d68cec9abb87de4739a8ca067ab1893bb/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lMTkRoNE5EZytCam9HUlZRPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--6c526e6335453ae1b12c1cec76e092ae660f63f1/Protein_Treatment.jpeg",
+            "width": "48",
+            "height": "48"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBKQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--20ad7d7d68cec9abb87de4739a8ca067ab1893bb/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTVRBd2VERXdNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--4fcf9c15e87600b986f46013093bef468325f574/Protein_Treatment.jpeg",
+            "width": "100",
+            "height": "100"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBKQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--20ad7d7d68cec9abb87de4739a8ca067ab1893bb/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTWpRd2VESTBNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--8ee0aa62ac866afdd71afe35c4cf7b866457a721/Protein_Treatment.jpeg",
+            "width": "240",
+            "height": "240"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBKQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--20ad7d7d68cec9abb87de4739a8ca067ab1893bb/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTmpBd2VEWXdNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--0ad03d61523648403b37e889f47a3d7b78145004/Protein_Treatment.jpeg",
+            "width": "600",
+            "height": "600"
+          }
+        ]
+      }
+    },
+    {
+      "id": "31",
+      "type": "product",
+      "attributes": {
+        "name": "Protein Treatment",
+        "description": "Wow!",
+        "price": "50.0",
+        "currency": "USD",
+        "display_price": "$50.00",
+        "available_on": "2019-08-22T22:34:37.390Z",
+        "slug": "protein-treatment",
+        "meta_description": null,
+        "meta_keywords": null,
+        "updated_at": "2019-08-22T22:34:42.437Z",
+        "purchasable": true,
+        "in_stock": false,
+        "backorderable": true,
+        "duration": null
+      },
+      "relationships": {
+        "variants": { "data": [] },
+        "option_types": { "data": [] },
+        "product_properties": { "data": [] },
+        "taxons": { "data": [{ "id": "2", "type": "taxon" }] },
+        "images": { "data": [{ "id": "31", "type": "image" }] },
+        "default_variant": { "data": { "id": "31", "type": "variant" } }
+      }
+    },
+    {
+      "id": "30",
+      "type": "image",
+      "attributes": {
+        "viewable_type": "Spree::Variant",
+        "viewable_id": 30,
+        "styles": [
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d346d8b760ce7e9a29704e3bb049e7cfad90c435/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lMTkRoNE5EZytCam9HUlZRPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--6c526e6335453ae1b12c1cec76e092ae660f63f1/Deep_Condition.jpeg",
+            "width": "48",
+            "height": "48"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d346d8b760ce7e9a29704e3bb049e7cfad90c435/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTVRBd2VERXdNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--4fcf9c15e87600b986f46013093bef468325f574/Deep_Condition.jpeg",
+            "width": "100",
+            "height": "100"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d346d8b760ce7e9a29704e3bb049e7cfad90c435/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTWpRd2VESTBNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--8ee0aa62ac866afdd71afe35c4cf7b866457a721/Deep_Condition.jpeg",
+            "width": "240",
+            "height": "240"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--d346d8b760ce7e9a29704e3bb049e7cfad90c435/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTmpBd2VEWXdNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--0ad03d61523648403b37e889f47a3d7b78145004/Deep_Condition.jpeg",
+            "width": "600",
+            "height": "600"
+          }
+        ]
+      }
+    },
+    {
+      "id": "30",
+      "type": "product",
+      "attributes": {
+        "name": "Deep Condition",
+        "description": "Wow!",
+        "price": "50.0",
+        "currency": "USD",
+        "display_price": "$50.00",
+        "available_on": "2019-08-22T22:34:36.880Z",
+        "slug": "deep-condition",
+        "meta_description": null,
+        "meta_keywords": null,
+        "updated_at": "2019-08-22T22:34:42.440Z",
+        "purchasable": true,
+        "in_stock": false,
+        "backorderable": true,
+        "duration": null
+      },
+      "relationships": {
+        "variants": { "data": [] },
+        "option_types": { "data": [] },
+        "product_properties": { "data": [] },
+        "taxons": { "data": [{ "id": "2", "type": "taxon" }] },
+        "images": { "data": [{ "id": "30", "type": "image" }] },
+        "default_variant": { "data": { "id": "30", "type": "variant" } }
+      }
+    },
+    {
+      "id": "29",
+      "type": "image",
+      "attributes": {
+        "viewable_type": "Spree::Variant",
+        "viewable_id": 29,
+        "styles": [
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e655049f4d80e231868148b4e682d636809d83ad/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lMTkRoNE5EZytCam9HUlZRPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--6c526e6335453ae1b12c1cec76e092ae660f63f1/Wash.jpeg",
+            "width": "48",
+            "height": "48"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e655049f4d80e231868148b4e682d636809d83ad/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTVRBd2VERXdNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--4fcf9c15e87600b986f46013093bef468325f574/Wash.jpeg",
+            "width": "100",
+            "height": "100"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e655049f4d80e231868148b4e682d636809d83ad/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTWpRd2VESTBNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--8ee0aa62ac866afdd71afe35c4cf7b866457a721/Wash.jpeg",
+            "width": "240",
+            "height": "240"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBJZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e655049f4d80e231868148b4e682d636809d83ad/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTmpBd2VEWXdNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--0ad03d61523648403b37e889f47a3d7b78145004/Wash.jpeg",
+            "width": "600",
+            "height": "600"
+          }
+        ]
+      }
+    },
+    {
+      "id": "29",
+      "type": "product",
+      "attributes": {
+        "name": "Wash",
+        "description": "Wow!",
+        "price": "50.0",
+        "currency": "USD",
+        "display_price": "$50.00",
+        "available_on": "2019-08-22T22:34:36.645Z",
+        "slug": "wash",
+        "meta_description": null,
+        "meta_keywords": null,
+        "updated_at": "2019-08-22T22:34:42.445Z",
+        "purchasable": true,
+        "in_stock": false,
+        "backorderable": true,
+        "duration": null
+      },
+      "relationships": {
+        "variants": { "data": [] },
+        "option_types": { "data": [] },
+        "product_properties": { "data": [] },
+        "taxons": { "data": [{ "id": "2", "type": "taxon" }] },
+        "images": { "data": [{ "id": "29", "type": "image" }] },
+        "default_variant": { "data": { "id": "29", "type": "variant" } }
+      }
+    },
+    {
+      "id": "2",
+      "type": "taxon",
+      "attributes": {
+        "name": "Add-ons",
+        "pretty_name": "Add-ons",
+        "permalink": "add-ons",
+        "seo_title": "Add-ons",
+        "meta_title": null,
+        "meta_description": null,
+        "meta_keywords": null,
+        "left": 33,
+        "right": 34,
+        "position": 1,
+        "depth": 0,
+        "updated_at": "2019-08-22T22:34:42.502Z",
+        "is_root": true,
+        "is_child": false,
+        "is_leaf": true
+      },
+      "relationships": {
+        "parent": { "data": null },
+        "taxonomy": { "data": { "id": "2", "type": "taxonomy" } },
+        "children": { "data": [] },
+        "products": {
+          "data": [
+            { "id": "33", "type": "product" },
+            { "id": "32", "type": "product" },
+            { "id": "31", "type": "product" },
+            { "id": "30", "type": "product" },
+            { "id": "29", "type": "product" }
+          ]
+        },
+        "image": { "data": { "id": "41", "type": "taxon_image" } }
+      }
+    }
+  ]
+}

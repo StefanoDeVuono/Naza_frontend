@@ -1,0 +1,40 @@
+@import "../../styles/util.less";
+@import "../../styles/tweak.less";
+
+@darkBlue: #1c3042;
+@orange: #bc4940;
+@lightGray: #f7f6f2;
+
+.ignore-parent-padding () {
+  margin: 0 calc(-1 * @tweak-site-side-padding);
+
+  @media screen and (max-width: 1024px) {
+    margin: 0 calc(-1 * @paddingXL);
+  }
+  @media screen and (max-width: 960px) {
+    margin: 0 calc(-1 * @paddingL);
+  }
+  @media screen and (max-width: 768px) {
+    margin: 0 calc(-1 * @paddingM);
+  }
+  @media screen and (max-width: 640px) {
+    margin: 0 calc(-1 * @paddingS);
+  }
+}
+
+.ignore-parent-padding--add-padding(@multiplier) {
+  padding: calc(@tweak-site-side-padding * (@multiplier)) @tweak-site-side-padding;
+
+  @media screen and (max-width: 1024px) {
+    padding: calc(@paddingXL * (@multiplier)) @paddingXL;
+  }
+  @media screen and (max-width: 960px) {
+    padding: calc(@paddingL * (@multiplier)) @paddingL;
+  }
+  @media screen and (max-width: 768px) {
+    padding: calc(@paddingM * (@multiplier)) @paddingM;
+  }
+  @media screen and (max-width: 640px) {
+    padding: calc(@paddingS * (@multiplier)) @paddingS;
+  }
+}

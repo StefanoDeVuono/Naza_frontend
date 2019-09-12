@@ -1,0 +1,83 @@
+{
+  "name": "projectcurl-squarespace",
+  "version": "1.0.0",
+  "private": true,
+  "repository": "https://plane-turbot-n4sc.squarespace.com/template.git",
+  "author": "Albert Yi <albert@carbonfive.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/polyfill": "^7.4.4",
+    "@babel/preset-env": "^7.5.5",
+    "@vue/test-utils": "^1.0.0-beta.29",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^24.8.0",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
+    "date-fns": "^2.0.1",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "flush-promises": "^1.0.2",
+    "jest": "^24.8.0",
+    "json-loader": "^0.5.7",
+    "jsonapi-parse": "^2.0.0",
+    "less": "^3.9.0",
+    "less-loader": "^5.0.0",
+    "prettier": "^1.18.2",
+    "ramda": "^0.26.1",
+    "style-loader": "^1.0.0",
+    "vue": "^2.6.10",
+    "vue-jest": "^3.0.4",
+    "vue-loader": "^15.7.1",
+    "vue-loading-overlay": "^3.2.0",
+    "vue-material-design-icons": "^3.3.1",
+    "vue-router": "^3.1.2",
+    "vue-sessionstorage": "^1.0.0",
+    "vue-stepper-component": "^1.0.0",
+    "vue-style-loader": "^4.1.2",
+    "vue-svg-loader": "^0.12.0",
+    "vue-template-compiler": "^2.6.10",
+    "vue-template-loader": "^1.0.0",
+    "webpack": "^4.39.2",
+    "webpack-bundle-analyzer": "^3.4.1",
+    "webpack-cli": "^3.3.6",
+    "webpack-merge": "^4.2.1",
+    "whatwg-fetch": "^3.0.0"
+  },
+  "scripts": {
+    "test": "jest",
+    "build": "./node_modules/.bin/webpack --config webpack.dev.js --watch",
+    "release": "./node_modules/.bin/webpack --config webpack.prod.js",
+    "prettier": "./node_modules/.bin/prettier --write src/**/*.{vue,js,json} src/*/**/*.{vue,js,json}"
+  },
+  "dependencies": {},
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "plugin:vue/essential",
+      "plugin:prettier/recommended",
+      "eslint:recommended"
+    ]
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "common/(.+)": "<rootDir>/src/common/$1",
+      "images/(.+)": "<rootDir>/src/images/$1",
+      "\\.(jpg|jpeg|svg)$": "<rootDir>/src/__mocks__/fileMock.js"
+    },
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "vue",
+      "svg"
+    ],
+    "transformIgnorePatterns": [
+      "/node_modules/(?!vue-material-design-icons)"
+    ],
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest",
+      ".*\\.(vue)$": "<rootDir>/node_modules/vue-jest"
+    }
+  }
+}
