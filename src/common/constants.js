@@ -1,9 +1,9 @@
 export const isStaging = () => {
-  return window.location.hostname === 'amethyst-okra-dblc.squarespace.com'
+  return window.location.hostname === 'staging.nazabeauty.com'
 }
 
 export const isProduction = () => {
-  return window.location.hostname === 'plane-turbot-n4sc.squarespace.com'
+  return window.location.hostname === 'www.nazabeauty.com' || 'nazabeauty.com'
 }
 
 // this is the publically accessible key
@@ -41,11 +41,11 @@ export const getAppServer = () => {
 
 export const getCurlAssetRoot = () => {
   if (isStaging()) {
-    return 'https://projectcurl-staging.herokuapp.com'
+    return 'https://api-staging.nazabeauty.com'
   }
 
   if (isProduction()) {
-    return 'https://projectcurl.herokuapp.com'
+    return 'https://api-prod.nazabeauty.com'
   }
 
   return 'http://localhost:3000'
