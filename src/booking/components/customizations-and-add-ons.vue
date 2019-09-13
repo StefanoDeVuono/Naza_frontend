@@ -31,11 +31,11 @@ export default {
 
   computed: {
     freeAddOns() {
-      join(', ', Object.values(this.shared.selectedFreeAddOns))
+      return join(', ', Object.values(this.shared.selectedFreeAddOns))
     },
 
     premiumAddOns() {
-      join(', ', Object.values(this.shared.selectedPremiumAddOns))
+      return join(', ', Object.values(this.shared.selectedPremiumAddOns))
     },
   },
 

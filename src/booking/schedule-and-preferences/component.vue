@@ -101,8 +101,8 @@ export default {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          email: this.shared.customerEmail
-        })
+          email: this.shared.customerEmail,
+        }),
       })
         .then(resp => resp.json())
         .then(json => {
@@ -159,7 +159,7 @@ export default {
 
     completeCheckout() {
       const data = {
-        email: this.shared.customerEmail
+        email: this.shared.customerEmail,
       }
 
       return fetch(getSpreeServer() + '/checkout/complete', {
