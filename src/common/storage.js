@@ -3,6 +3,8 @@ import Vue from 'vue'
 // this keeps track of the selected product, customizations,
 // add-ons, and appointment time.
 
+import { isNil } from 'ramda'
+
 export default {
   debug: true,
 
@@ -20,6 +22,8 @@ export default {
     customerEmail: undefined,
     customerZipCode: undefined,
     customerPassword: undefined,
+    canReceiveEmailReminders: undefined,
+    canReceiveSmsReminders: undefined,
     note: undefined,
     prefScalpTenderness: undefined,
     drinkAddOn: undefined,
@@ -27,6 +31,7 @@ export default {
     premiumAddOns: undefined,
 
     stripePaymentMethod: undefined,
+    stripeCustomerId: undefined,
 
     orderNumber: undefined,
     orderToken: undefined,
@@ -43,6 +48,10 @@ export default {
       this.sharedState[x] = undefined
     })
     this.sharedState.customizations = {}
+  },
+
+  loggedIn() {
+    return !isNil(this.sharedState.userToken)
   },
 
   setStripePaymentMethod(stripePaymentMethod) {

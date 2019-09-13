@@ -5,7 +5,14 @@
     </template>
 
     <div class="your-information form-wrapper">
-      <p>Returning? <a href="/login">Login</a></p>
+      <p v-if="!loggedIn">
+        Returning?
+        <router-link
+          @click.native="$event.stopImmediatePropagation()"
+          :to="{ name: 'sign-in' }"
+          >Login</router-link
+        >
+      </p>
 
       <div class="field-list">
         <div class="form-item field text required">
@@ -44,6 +51,7 @@
         <div class="form-item field email required">
           <label class="title" for="email">Email:</label>
           <input
+            :disabled="loggedIn"
             class="field-element"
             type="email"
             v-model="shared.customerEmail"
@@ -63,7 +71,7 @@
           />
         </div>
 
-        <div class="form-item field password required">
+        <div v-if="!loggedIn" class="form-item field password required">
           <label class="title" for="password">Password:</label>
           <input
             class="field-element password"
@@ -120,7 +128,13 @@ export default {
       isCompleted: false,
     }
   },
+  computed: {
+    loggedIn() {
+      return Storage.loggedIn()
+    },
+  },
   methods: {
+    isNil,
     checkCompletion() {
       const fields = [
         'customerFirstName',
@@ -152,16 +166,6 @@ export default {
   components: {
     HairstyleIcon,
     Section,
-  },
-  mounted() {
-    if (this.shared.userToken) {
-      const query = `user_email=${this.shared.customerEmail}&user_token=${this.shared.userToken}`
-      fetch(getAppServer() + '/naza/users/me.json?' + query)
-        .then(resp => resp.json())
-        .then(json => {
-          console.log('user', json)
-        })
-    }
   },
   created() {
     const fields = [
@@ -204,6 +208,10 @@ export default {
     border: 2px solid @darkBlue;
     font-family: sofia-pro;
     font-size: 16px;
+
+    &[disabled] {
+      color: lighten(greyscale(@darkBlue, 100%), 50%);
+    }
   }
 }
 </style>

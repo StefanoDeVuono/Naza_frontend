@@ -114,7 +114,7 @@ export default {
 
     selectDrink(product) {
       this.selectedDrinkId = product.default_variant.id
-      this.selectedDrinkName = product.default_variant.name
+      this.selectedDrinkName = product.name
     },
 
     isFreeAddOnActive(productId) {
@@ -127,7 +127,7 @@ export default {
       if (this.selectedFreeAddOns[variant.id]) {
         this.$delete(this.selectedFreeAddOns, variant.id)
       } else {
-        this.$set(this.selectedFreeAddOns, variant.id, variant.name)
+        this.$set(this.selectedFreeAddOns, variant.id, product.name)
       }
     },
 
@@ -141,7 +141,7 @@ export default {
       if (this.selectedPremiumAddOns[variant.id]) {
         this.$delete(this.selectedPremiumAddOns, variant.id)
       } else {
-        this.$set(this.selectedPremiumAddOns, variant.id, variant.name)
+        this.$set(this.selectedPremiumAddOns, variant.id, product.name)
       }
     },
 

@@ -59,6 +59,7 @@ import 'whatwg-fetch'
 import { getAppServer } from 'common/constants'
 import { parse } from 'jsonapi-parse'
 import Storage from 'common/storage'
+import { loadUserFromToken } from 'common/utils'
 
 export default {
   data() {
@@ -66,12 +67,14 @@ export default {
       shared: Storage.sharedState,
       errorMsg: undefined,
 
-      email: undefined,
-      password: undefined,
+      email: 'albert@carbonfive.com',
+      password: 'spree123',
     }
   },
 
   methods: {
+    loadUserFromToken,
+
     signIn() {
       const credentials = {
         sign_in: {
@@ -96,22 +99,18 @@ export default {
         })
         .then(json => {
           this.shared.userToken = parse(json).data.authentication_token
+          this.$session.set('email', this.email)
+          this.$session.set('userToken', this.shared.userToken)
+          this.$root.$emit('payment-information:show')
 
-          return fetch(
-            getAppServer() +
-              '/naza/users/me.json?spree%2Fuser_email=' +
-              this.email +
-              '&spree%2Fuser_token=' +
-              this.shared.userToken
-          )
+          return loadUserFromToken(this.email, this.shared.userToken)
         })
-        .then(resp => resp.json())
-        .then(json => {
-          console.log('json', json)
+        .then(() => {
           this.$router.push({
             name: 'categories',
           })
-        }).catch(err => {
+        })
+        .catch(err => {
           this.errorMsg = err['message']
         })
     },
@@ -120,7 +119,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-@import "../common/utils.less";
+@import '../common/utils.less';
 
 .sign-in {
   padding-bottom: 50px;

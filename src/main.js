@@ -8,6 +8,7 @@ import SignIn from './user/sign-in.vue'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueSessionStorage from 'vue-sessionstorage'
+import { loadUserFromToken } from 'common/utils'
 
 Vue.use(VueSessionStorage)
 Vue.use(VueRouter)
@@ -60,4 +61,13 @@ var router = new VueRouter({
 
 export default new Vue({
   router,
+
+  mounted() {
+    const userToken = this.$session.get('userToken')
+
+    if (userToken) {
+      loadUserFromToken(this.$session.get('email'), userToken)
+      this.$root.$emit('payment-information:show')
+    }
+  }
 }).$mount('#app')
