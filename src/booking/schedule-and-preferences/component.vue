@@ -78,16 +78,17 @@ export default {
   },
 
   methods: {
-    bookAppointment: async function() {
+    async bookAppointment() {
       this.isLoading = true
 
+      // the ordering of these is important
       await this.createOrder()
-      await this.updateOrder()
       await this.addStyleToCart()
       await this.addAddOnsToCart()
       await this.createAppointment()
       await this.createOrUpdateUser()
       await this.completeCheckout()
+
       this.$router.push({
         name: 'confirmation',
       })
@@ -99,46 +100,19 @@ export default {
         headers: {
           'Content-Type': 'application/json',
         },
+        body: JSON.stringify({
+          email: this.shared.customerEmail
+        })
       })
         .then(resp => resp.json())
         .then(json => {
           this.$session.set('orderNumber', json.data.attributes.number)
           this.shared.orderNumber = json.data.attributes.number
           this.shared.orderToken = json.data.attributes.token
-          console.log('set order token', this.shared.orderToken)
         })
     },
 
-    updateOrder() {
-      console.log('updateOrder')
-
-      const data = {
-        email: this.shared.customerEmail,
-        bill_address_attributes: {
-          firstname: this.shared.customerFirstName,
-          lastname: this.shared.customerLastName,
-          address1: 'N/A',
-          city: 'N/A',
-          phone: this.shared.customerPhone,
-          zipcode: this.shared.customerZipCode,
-          state_name: 'CA',
-          country_iso: 'US'
-        }
-      }
-
-      return fetch(getSpreeServer() + '/checkout', {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Spree-Order-Token': this.shared.orderToken,
-        },
-        body: JSON.stringify(data),
-      }).then(resp => resp.json()).then(json => {console.log('updated', json)})
-    },
-
     addStyleToCart() {
-      console.log('addStyleToCart')
-
       const data = {
         variant_id: this.shared.variant.id,
         quantity: 1,
@@ -155,8 +129,6 @@ export default {
     },
 
     addAddOnToCart(variantId) {
-      console.log('addAddOnToCart', variantId)
-
       return fetch(getSpreeServer() + '/cart/add_item', {
         method: 'POST',
         headers: {
@@ -171,8 +143,6 @@ export default {
     },
 
     addAddOnsToCart() {
-      console.log('addAddOnsToCart')
-
       const variantIds = filter(
         Boolean,
         reduce(concat, [])([
@@ -188,8 +158,6 @@ export default {
     },
 
     completeCheckout() {
-      console.log('completeCheckout')
-
       const data = {
         email: this.shared.customerEmail
       }
@@ -205,7 +173,6 @@ export default {
     },
 
     createOrUpdateUser() {
-      console.log('createOrUpdateUser')
       const loggedIn = Storage.loggedIn()
 
       const updateData = {
@@ -269,8 +236,6 @@ export default {
     },
 
     createAppointment() {
-      console.log('createAppointment')
-
       const data = {
         order_number: this.shared.orderNumber,
         customizations: this.shared.customizations,
