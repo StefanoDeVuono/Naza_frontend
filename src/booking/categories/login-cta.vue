@@ -1,14 +1,26 @@
 <template>
-  <div class="login-cta">
+  <div v-if="!loggedIn" class="login-cta">
     <div>Already a customer?</div>
     <div>
-      <a href="/login">Retrieve your preferences here</a>
+      <router-link
+        @click.native="$event.stopImmediatePropagation()"
+        :to="{ name: 'sign-in' }"
+        >Retrieve your preferences here</router-link
+      >
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+import Storage from 'common/storage'
+
+export default {
+  computed: {
+    loggedIn() {
+      return Storage.loggedIn()
+    },
+  },
+}
 </script>
 
 <style lang="less">

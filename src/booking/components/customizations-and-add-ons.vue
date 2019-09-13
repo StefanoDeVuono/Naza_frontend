@@ -4,28 +4,43 @@
       <strong>{{ customization }}:</strong> {{ value }}
     </li>
 
-    <li v-if="shared.freeAddOns">
-      <strong>Free Add-Ons:</strong> {{ shared.freeAddOns }}
+    <li v-if="!isEmpty(shared.selectedFreeAddOns)">
+      <strong>Free Add-Ons:</strong> {{ freeAddOns }}
     </li>
 
-    <li v-if="shared.premiumAddOns">
-      <strong>Premium Add-Ons:</strong> {{ shared.premiumAddOns }}
+    <li v-if="!isEmpty(shared.selectedPremiumAddOns)">
+      <strong>Premium Add-Ons:</strong> {{ premiumAddOns }}
     </li>
 
-    <li v-if="shared.drinkAddOn">
-      <strong>Drink:</strong> {{ shared.drinkAddOn }}
+    <li v-if="!isEmpty(shared.selectedDrinkAddOnString)">
+      <strong>Drink:</strong> {{ shared.selectedDrinkAddOnString }}
     </li>
   </ul>
 </template>
 
 <script>
 import Storage from 'common/storage'
+import { join, isEmpty } from 'ramda'
 
 export default {
   data() {
     return {
       shared: Storage.sharedState,
     }
+  },
+
+  computed: {
+    freeAddOns() {
+      return join(', ', Object.values(this.shared.selectedFreeAddOns))
+    },
+
+    premiumAddOns() {
+      return join(', ', Object.values(this.shared.selectedPremiumAddOns))
+    },
+  },
+
+  methods: {
+    isEmpty,
   },
 }
 </script>

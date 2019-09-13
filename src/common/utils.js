@@ -1,5 +1,6 @@
-import { isProduction, getSpreeServer } from 'common/constants'
+import { isProduction, getSpreeServer, getAppServer } from 'common/constants'
 import Storage from 'common/storage'
+import { parse } from 'jsonapi-parse'
 
 export const createCart = () => {
   const data = {}
@@ -18,12 +19,49 @@ export const createCart = () => {
     })
 }
 
+export const loadUserFromToken = (email, userToken) => {
+  return fetch(
+    getAppServer() +
+      '/naza/users/me.json?spree%2Fuser_email=' +
+      email +
+      '&spree%2Fuser_token=' +
+      userToken +
+      '&include=spree_user'
+  )
+    .then(resp => {
+      if (resp.ok) {
+        return resp.json()
+      } else {
+        return resp.json().then(json => Promise.reject(json))
+      }
+    })
+    .then(json => {
+      const data = parse(json).data
+
+      if (!data) {
+        return
+      }
+
+      Storage.sharedState.customerEmail = email
+      Storage.sharedState.customerFirstName = data.first_name
+      Storage.sharedState.customerLastName = data.last_name
+      Storage.sharedState.customerZipCode = data.zip_code
+      Storage.sharedState.customerPhone = data.phone_number
+      Storage.sharedState.canReceiveSmsReminders =
+        data.can_receive_sms_reminders
+      Storage.sharedState.canReceiveEmailReminders =
+        data.can_receive_email_reminders
+    })
+}
+
 export const mockProductIfDevelopment = () => {
   if (isProduction()) {
     return
   }
 
-  if (!Storage.sharedState.product) {
+  if (!Storage.sharedState.userToken) {
+    // Storage.sharedState.userToken = 'abc'
+
     Storage.sharedState.product = {
       name: 'Strawberry Shortcake',
       description: "Don't steal my strawberry!",
@@ -42,10 +80,12 @@ export const mockProductIfDevelopment = () => {
       ],
     }
     Storage.sharedState.taxonName = 'Cakes'
-    Storage.sharedState.customerName = 'Hibiki Sakura'
+    Storage.sharedState.customerFirstName = 'Hibiki'
+    Storage.sharedState.customerLastName = 'Sakura'
     Storage.sharedState.customerZipCode = '12345'
-    Storage.sharedState.customerEmail = 'hibiki@silverman.gym'
+    Storage.sharedState.customerEmail = 'albert@carbonfive.com'
     Storage.sharedState.customerPhone = '555-555-5555'
+    Storage.sharedState.customerPassword = 'spree123'
     Storage.sharedState.customizations = {
       Size: 'Medium',
       Length: 'Medium',

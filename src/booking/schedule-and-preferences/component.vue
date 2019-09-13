@@ -53,12 +53,12 @@ import PaymentInfo from './payment-info.vue'
 import { getAppServer, getSpreeServer } from 'common/constants'
 import CalendarBlankOutlineIcon from 'vue-material-design-icons/CalendarBlankOutline.vue'
 import Loading from 'vue-loading-overlay'
-import { join } from 'ramda'
+import { join, filter, reduce, concat } from 'ramda'
 
 export default {
   data: function() {
     return {
-      isPaymentSaved: false,
+      isPaymentSaved: true,
       isLoading: false,
 
       shared: Storage.sharedState,
@@ -78,8 +78,111 @@ export default {
   },
 
   methods: {
-    createUser() {
+    async bookAppointment() {
+      this.isLoading = true
+
+      // the ordering of these is important
+      await this.createOrder()
+      await this.addStyleToCart()
+      await this.addAddOnsToCart()
+      await this.createAppointment()
+      await this.createOrUpdateUser()
+      await this.completeCheckout()
+
+      this.$router.push({
+        name: 'confirmation',
+      })
+    },
+
+    createOrder() {
+      return fetch(getSpreeServer() + '/cart', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: this.shared.customerEmail,
+        }),
+      })
+        .then(resp => resp.json())
+        .then(json => {
+          this.$session.set('orderNumber', json.data.attributes.number)
+          this.shared.orderNumber = json.data.attributes.number
+          this.shared.orderToken = json.data.attributes.token
+        })
+    },
+
+    addStyleToCart() {
       const data = {
+        variant_id: this.shared.variant.id,
+        quantity: 1,
+      }
+
+      return fetch(getSpreeServer() + '/cart/add_item', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Spree-Order-Token': this.shared.orderToken,
+        },
+        body: JSON.stringify(data),
+      })
+    },
+
+    addAddOnToCart(variantId) {
+      return fetch(getSpreeServer() + '/cart/add_item', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Spree-Order-Token': this.shared.orderToken,
+        },
+        body: JSON.stringify({
+          variant_id: variantId,
+          quantity: 1,
+        }),
+      })
+    },
+
+    addAddOnsToCart() {
+      const variantIds = filter(
+        Boolean,
+        reduce(concat, [])([
+          [this.shared.selectedDrinkAddOnId],
+          Object.keys(this.shared.selectedFreeAddOns),
+          Object.keys(this.shared.selectedPremiumAddOns),
+        ])
+      )
+
+      return reduce((promise, variantId) => {
+        return promise.then(() => this.addAddOnToCart(variantId))
+      }, Promise.resolve())(variantIds)
+    },
+
+    completeCheckout() {
+      const data = {
+        email: this.shared.customerEmail,
+      }
+
+      return fetch(getSpreeServer() + '/checkout/complete', {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Spree-Order-Token': this.shared.orderToken,
+        },
+        body: JSON.stringify(data),
+      })
+    },
+
+    createOrUpdateUser() {
+      const loggedIn = Storage.loggedIn()
+
+      const updateData = {
+        'spree/user_email': Storage.sharedState.customerEmail,
+        'spree/user_token': Storage.sharedState.userToken,
+      }
+
+      const data = {
+        ...(loggedIn && updateData),
+
         order: {
           number: Storage.sharedState.orderNumber,
         },
@@ -112,8 +215,11 @@ export default {
         },
       }
 
-      fetch(getAppServer() + '/naza/users.json', {
-        method: 'POST',
+      const path = loggedIn ? '/naza/users/me.json' : '/naza/users.json'
+      const fetchMethod = loggedIn ? 'PATCH' : 'POST'
+
+      return fetch(getAppServer() + path, {
+        method: fetchMethod,
         headers: {
           'Content-Type': 'application/json',
         },
@@ -127,49 +233,28 @@ export default {
           }
           this.shared.spreeUserId = json.data.id
         })
-        .then(() => {
-          return this.cartCheckout()
-        })
-        .then(json => {
-          this.$router.push({
-            name: 'confirmation',
-          })
-        })
-        .catch(errors => {
-          this.$root.$emit('error', errors)
-        })
     },
 
-    cartCheckout() {
+    createAppointment() {
       const data = {
-        variant_id: this.shared.variant.id,
-        quantity: 1,
+        order_number: this.shared.orderNumber,
+        customizations: this.shared.customizations,
+        price: this.shared.price,
+        duration: this.shared.duration,
       }
 
-      return fetch(getSpreeServer() + '/cart/add_item', {
+      return fetch(getAppServer() + '/naza/appointments.json', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'X-Spree-Order-Token': this.shared.orderToken,
         },
         body: JSON.stringify(data),
       })
-        .then(() => {
-          return fetch(getSpreeServer() + '/checkout/complete', {
-            method: 'PATCH',
-            headers: {
-              'Content-Type': 'application/json',
-              'X-Spree-Order-Token': this.shared.orderToken,
-            },
-          })
+        .then(resp => resp.json())
+        .then(json => {
+          this.shared.nazaAppointmentId = json.id
+          this.isLoading = false
         })
-        .then(result => result.json())
-    },
-
-    bookAppointment() {
-      this.isLoading = true
-
-      this.createUser()
     },
   },
 

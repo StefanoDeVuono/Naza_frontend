@@ -5,9 +5,17 @@
     </template>
 
     <div class="your-information form-wrapper">
-      <p>Returning? <a href="/login">Login</a></p>
+      <div v-show="isLoginVisible">
+        <p>New to Naza Beauty? <a @click.prevent="showInfo">Sign up</a></p>
+        <SignInForm :onSubmit="onSignIn" />
+      </div>
 
-      <div class="field-list">
+      <div v-show="!isLoginVisible" class="field-list">
+        <p v-if="!loggedIn">
+          Returning?
+          <a @click.prevent="showLogin">Login</a>
+        </p>
+
         <div class="form-item field text required">
           <label class="title" for="first-name">First Name:</label>
           <input
@@ -44,6 +52,7 @@
         <div class="form-item field email required">
           <label class="title" for="email">Email:</label>
           <input
+            :disabled="loggedIn"
             class="field-element"
             type="email"
             v-model="shared.customerEmail"
@@ -63,7 +72,7 @@
           />
         </div>
 
-        <div class="form-item field password required">
+        <div v-if="!loggedIn" class="form-item field password required">
           <label class="title" for="password">Password:</label>
           <input
             class="field-element password"
@@ -111,15 +120,33 @@ import Storage from 'common/storage'
 import HairstyleIcon from 'images/noun_hairstyle_1105146.svg'
 import Section from '../components/section.vue'
 import { isNil, isEmpty, find, prop } from 'ramda'
+import { getAppServer } from 'common/constants'
+import SignInForm from '../../user/sign-in-form.vue'
 
 export default {
   data() {
     return {
       shared: Storage.sharedState,
       isCompleted: false,
+      isLoginVisible: false,
     }
   },
+  computed: {
+    loggedIn() {
+      return Storage.loggedIn()
+    },
+  },
   methods: {
+    isNil,
+    showLogin() {
+      this.isLoginVisible = true
+    },
+    showInfo() {
+      this.isLoginVisible = false
+    },
+    onSignIn() {
+      this.showInfo()
+    },
     checkCompletion() {
       const fields = [
         'customerFirstName',
@@ -151,6 +178,7 @@ export default {
   components: {
     HairstyleIcon,
     Section,
+    SignInForm,
   },
   created() {
     const fields = [
@@ -189,10 +217,18 @@ export default {
     }
   }
 
+  .section .form-item label {
+    margin: 0;
+  }
+
   .field-list .field .field-element {
     border: 2px solid @darkBlue;
     font-family: sofia-pro;
     font-size: 16px;
+
+    &[disabled] {
+      color: lighten(greyscale(@darkBlue, 100%), 50%);
+    }
   }
 }
 </style>
