@@ -78,8 +78,10 @@ export default {
   },
 
   methods: {
-    createUser() {
+    createOrUpdateUser() {
       const data = {
+        'spree/user_email': Storage.sharedState.customerEmail,
+        'spree/user_token': Storage.sharedState.userToken,
         order: {
           number: Storage.sharedState.orderNumber,
         },
@@ -112,8 +114,11 @@ export default {
         },
       }
 
-      fetch(getAppServer() + '/naza/users.json', {
-        method: 'POST',
+      const path = Storage.loggedIn() ? '/naza/users/me.json' : '/naza/users.json'
+      const fetchMethod = Storage.loggedIn() ? 'PATCH' : 'POST'
+
+      fetch(getAppServer() + path, {
+        method: fetchMethod,
         headers: {
           'Content-Type': 'application/json',
         },
@@ -169,7 +174,7 @@ export default {
     bookAppointment() {
       this.isLoading = true
 
-      this.createUser()
+      this.createOrUpdateUser()
     },
   },
 

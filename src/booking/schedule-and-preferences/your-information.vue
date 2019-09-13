@@ -5,17 +5,17 @@
     </template>
 
     <div class="your-information form-wrapper">
-      <p v-if="!loggedIn && !isLoginVisible">
-        Returning?
-        <a @click.prevent="showLogin">Login</a>
-      </p>
-
       <div v-show="isLoginVisible">
         <p>New to Naza Beauty? <a @click.prevent="showInfo">Sign up</a></p>
         <SignInForm :onSubmit="onSignIn" />
       </div>
 
       <div v-show="!isLoginVisible" class="field-list">
+        <p v-if="!loggedIn">
+          Returning?
+          <a @click.prevent="showLogin">Login</a>
+        </p>
+
         <div class="form-item field text required">
           <label class="title" for="first-name">First Name:</label>
           <input
@@ -215,6 +215,10 @@ export default {
       font-weight: normal;
       line-height: 1;
     }
+  }
+
+  .section .form-item label {
+    margin: 0;
   }
 
   .field-list .field .field-element {
