@@ -53,12 +53,12 @@ import PaymentInfo from './payment-info.vue'
 import { getAppServer, getSpreeServer } from 'common/constants'
 import CalendarBlankOutlineIcon from 'vue-material-design-icons/CalendarBlankOutline.vue'
 import Loading from 'vue-loading-overlay'
-import { join } from 'ramda'
+import { join, filter, reduce, concat } from 'ramda'
 
 export default {
   data: function() {
     return {
-      isPaymentSaved: false,
+      isPaymentSaved: true,
       isLoading: false,
 
       shared: Storage.sharedState,
@@ -78,10 +78,144 @@ export default {
   },
 
   methods: {
-    createOrUpdateUser() {
+    bookAppointment: async function() {
+      this.isLoading = true
+
+      await this.createOrder()
+      await this.updateOrder()
+      await this.addStyleToCart()
+      await this.addAddOnsToCart()
+      await this.createAppointment()
+      await this.createOrUpdateUser()
+      await this.completeCheckout()
+      this.$router.push({
+        name: 'confirmation',
+      })
+    },
+
+    createOrder() {
+      return fetch(getSpreeServer() + '/cart', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then(resp => resp.json())
+        .then(json => {
+          this.$session.set('orderNumber', json.data.attributes.number)
+          this.shared.orderNumber = json.data.attributes.number
+          this.shared.orderToken = json.data.attributes.token
+          console.log('set order token', this.shared.orderToken)
+        })
+    },
+
+    updateOrder() {
+      console.log('updateOrder')
+
       const data = {
+        email: this.shared.customerEmail,
+        bill_address_attributes: {
+          firstname: this.shared.customerFirstName,
+          lastname: this.shared.customerLastName,
+          address1: 'N/A',
+          city: 'N/A',
+          phone: this.shared.customerPhone,
+          zipcode: this.shared.customerZipCode,
+          state_name: 'CA',
+          country_iso: 'US'
+        }
+      }
+
+      return fetch(getSpreeServer() + '/checkout', {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Spree-Order-Token': this.shared.orderToken,
+        },
+        body: JSON.stringify(data),
+      }).then(resp => resp.json()).then(json => {console.log('updated', json)})
+    },
+
+    addStyleToCart() {
+      console.log('addStyleToCart')
+
+      const data = {
+        variant_id: this.shared.variant.id,
+        quantity: 1,
+      }
+
+      return fetch(getSpreeServer() + '/cart/add_item', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Spree-Order-Token': this.shared.orderToken,
+        },
+        body: JSON.stringify(data),
+      })
+    },
+
+    addAddOnToCart(variantId) {
+      console.log('addAddOnToCart', variantId)
+
+      return fetch(getSpreeServer() + '/cart/add_item', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Spree-Order-Token': this.shared.orderToken,
+        },
+        body: JSON.stringify({
+          variant_id: variantId,
+          quantity: 1,
+        }),
+      })
+    },
+
+    addAddOnsToCart() {
+      console.log('addAddOnsToCart')
+
+      const variantIds = filter(
+        Boolean,
+        reduce(concat, [])([
+          [this.shared.selectedDrinkAddOnId],
+          Object.keys(this.shared.selectedFreeAddOns),
+          Object.keys(this.shared.selectedPremiumAddOns),
+        ])
+      )
+
+      return reduce((promise, variantId) => {
+        return promise.then(() => this.addAddOnToCart(variantId))
+      }, Promise.resolve())(variantIds)
+    },
+
+    completeCheckout() {
+      console.log('completeCheckout')
+
+      const data = {
+        email: this.shared.customerEmail
+      }
+
+      return fetch(getSpreeServer() + '/checkout/complete', {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Spree-Order-Token': this.shared.orderToken,
+        },
+        body: JSON.stringify(data),
+      })
+    },
+
+    createOrUpdateUser() {
+      console.log('createOrUpdateUser')
+      const loggedIn = Storage.loggedIn()
+
+      const updateData = {
         'spree/user_email': Storage.sharedState.customerEmail,
         'spree/user_token': Storage.sharedState.userToken,
+      }
+
+      const data = {
+        ...(loggedIn && updateData),
+
         order: {
           number: Storage.sharedState.orderNumber,
         },
@@ -114,10 +248,10 @@ export default {
         },
       }
 
-      const path = Storage.loggedIn() ? '/naza/users/me.json' : '/naza/users.json'
-      const fetchMethod = Storage.loggedIn() ? 'PATCH' : 'POST'
+      const path = loggedIn ? '/naza/users/me.json' : '/naza/users.json'
+      const fetchMethod = loggedIn ? 'PATCH' : 'POST'
 
-      fetch(getAppServer() + path, {
+      return fetch(getAppServer() + path, {
         method: fetchMethod,
         headers: {
           'Content-Type': 'application/json',
@@ -132,49 +266,30 @@ export default {
           }
           this.shared.spreeUserId = json.data.id
         })
-        .then(() => {
-          return this.cartCheckout()
-        })
-        .then(json => {
-          this.$router.push({
-            name: 'confirmation',
-          })
-        })
-        .catch(errors => {
-          this.$root.$emit('error', errors)
-        })
     },
 
-    cartCheckout() {
+    createAppointment() {
+      console.log('createAppointment')
+
       const data = {
-        variant_id: this.shared.variant.id,
-        quantity: 1,
+        order_number: this.shared.orderNumber,
+        customizations: this.shared.customizations,
+        price: this.shared.price,
+        duration: this.shared.duration,
       }
 
-      return fetch(getSpreeServer() + '/cart/add_item', {
+      return fetch(getAppServer() + '/naza/appointments.json', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'X-Spree-Order-Token': this.shared.orderToken,
         },
         body: JSON.stringify(data),
       })
-        .then(() => {
-          return fetch(getSpreeServer() + '/checkout/complete', {
-            method: 'PATCH',
-            headers: {
-              'Content-Type': 'application/json',
-              'X-Spree-Order-Token': this.shared.orderToken,
-            },
-          })
+        .then(resp => resp.json())
+        .then(json => {
+          this.shared.nazaAppointmentId = json.id
+          this.isLoading = false
         })
-        .then(result => result.json())
-    },
-
-    bookAppointment() {
-      this.isLoading = true
-
-      this.createOrUpdateUser()
     },
   },
 

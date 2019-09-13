@@ -26,9 +26,10 @@ export default {
     canReceiveSmsReminders: undefined,
     note: undefined,
     prefScalpTenderness: undefined,
-    drinkAddOn: undefined,
-    freeAddOns: undefined,
-    premiumAddOns: undefined,
+    selectedDrinkAddOnId: undefined,
+    selectedDrinkAddOnString: undefined,
+    selectedFreeAddOns: {},
+    selectedPremiumAddOns: {},
 
     stripePaymentMethod: undefined,
     stripeCustomerId: undefined,

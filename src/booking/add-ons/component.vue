@@ -76,11 +76,12 @@ import RunningTotals from '../components/running-totals.vue'
 import Group from './group.vue'
 import 'whatwg-fetch'
 import { parse } from 'jsonapi-parse'
-import { path, reduce, concat, filter, map, join } from 'ramda'
+import { path } from 'ramda'
 import Storage from 'common/storage'
 import { mockProductIfDevelopment } from 'common/utils'
 import DrinkIcon from 'images/noun_drinks_2776386.svg'
 import SqButton from 'common/sq-button.vue'
+import Vue from 'vue'
 
 export default {
   data() {
@@ -90,10 +91,6 @@ export default {
       drinkAddOns: [],
       freeAddOns: [],
       premiumAddOns: [],
-      selectedDrinkId: undefined,
-      selectedDrinkName: undefined,
-      selectedFreeAddOns: {},
-      selectedPremiumAddOns: {},
     }
   },
 
@@ -109,39 +106,39 @@ export default {
 
   methods: {
     isDrinkActive(productId) {
-      return this.selectedDrinkId === productId
+      return this.shared.selectedDrinkAddOnId === productId
     },
 
     selectDrink(product) {
-      this.selectedDrinkId = product.default_variant.id
-      this.selectedDrinkName = product.name
+      this.shared.selectedDrinkAddOnId = product.default_variant.id
+      this.shared.selectedDrinkAddOnString = product.name
     },
 
     isFreeAddOnActive(productId) {
-      return !!this.selectedFreeAddOns[productId]
+      return !!this.shared.selectedFreeAddOns[productId]
     },
 
     selectFreeAddOn(product) {
       const variant = product.default_variant
 
-      if (this.selectedFreeAddOns[variant.id]) {
-        this.$delete(this.selectedFreeAddOns, variant.id)
+      if (this.shared.selectedFreeAddOns[variant.id]) {
+        Vue.delete(this.shared.selectedFreeAddOns, variant.id)
       } else {
-        this.$set(this.selectedFreeAddOns, variant.id, product.name)
+        Vue.set(this.shared.selectedFreeAddOns, variant.id, product.name)
       }
     },
 
     isPremiumAddOnActive(productId) {
-      return !!this.selectedPremiumAddOns[productId]
+      return !!this.shared.selectedPremiumAddOns[productId]
     },
 
     selectPremiumAddOn(product) {
       const variant = product.default_variant
 
-      if (this.selectedPremiumAddOns[variant.id]) {
-        this.$delete(this.selectedPremiumAddOns, variant.id)
+      if (this.shared.selectedPremiumAddOns[variant.id]) {
+        Vue.delete(this.shared.selectedPremiumAddOns, variant.id)
       } else {
-        this.$set(this.selectedPremiumAddOns, variant.id, product.name)
+        Vue.set(this.shared.selectedPremiumAddOns, variant.id, product.name)
       }
     },
 
@@ -175,43 +172,9 @@ export default {
       this.fetchAddOns()
     },
 
-    addCartItem(variantId) {
-      return fetch(getSpreeServer() + '/cart/add_item', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Spree-Order-Token': this.shared.orderToken,
-        },
-        body: JSON.stringify({
-          variant_id: variantId,
-          quantity: 1,
-        }),
-      })
-    },
-
     scheduleYourAppointment() {
-      this.shared.drinkAddOn = this.shared.selectedDrinkName
-      this.shared.freeAddOns = join(
-        ', ',
-        Object.values(this.selectedFreeAddOns)
-      )
-      this.shared.premiumAddOns = join(', ', Object.values(this.premiumAddOns))
-
-      const variantIds = filter(
-        Boolean,
-        reduce(concat, [])([
-          [this.selectedDrinkId],
-          Object.keys(this.selectedFreeAddOns),
-          Object.keys(this.selectedPremiumAddOns),
-        ])
-      )
-
-      reduce((promise, variantId) => {
-        return promise.then(() => this.addCartItem(variantId))
-      }, Promise.resolve())(variantIds).then(() => {
-        this.$router.push({
-          name: 'schedule-and-preferences',
-        })
+      this.$router.push({
+        name: 'schedule-and-preferences',
       })
     },
   },

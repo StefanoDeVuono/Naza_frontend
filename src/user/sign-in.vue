@@ -13,13 +13,12 @@ export default {
       this.$router.push({
         name: 'categories',
       })
-    }
+    },
   },
   components: {
-    SignInForm
-  }
+    SignInForm,
+  },
 }
 </script>
 
-<style lang="less">
-</style>
+<style lang="less"></style>

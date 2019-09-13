@@ -1,5 +1,6 @@
 import { isProduction, getSpreeServer, getAppServer } from 'common/constants'
 import Storage from 'common/storage'
+import { parse } from 'jsonapi-parse'
 
 export const createCart = () => {
   const data = {}
@@ -35,7 +36,12 @@ export const loadUserFromToken = (email, userToken) => {
       }
     })
     .then(json => {
-      const data = json.data.attributes
+      const data = parse(json).data
+
+      if (!data) {
+        return
+      }
+
       Storage.sharedState.customerEmail = email
       Storage.sharedState.customerFirstName = data.first_name
       Storage.sharedState.customerLastName = data.last_name
@@ -77,8 +83,9 @@ export const mockProductIfDevelopment = () => {
     Storage.sharedState.customerFirstName = 'Hibiki'
     Storage.sharedState.customerLastName = 'Sakura'
     Storage.sharedState.customerZipCode = '12345'
-    Storage.sharedState.customerEmail = 'spree@example.com'
+    Storage.sharedState.customerEmail = 'albert@carbonfive.com'
     Storage.sharedState.customerPhone = '555-555-5555'
+    Storage.sharedState.customerPassword = 'spree123'
     Storage.sharedState.customizations = {
       Size: 'Medium',
       Length: 'Medium',

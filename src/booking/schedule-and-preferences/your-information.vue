@@ -128,7 +128,7 @@ export default {
     return {
       shared: Storage.sharedState,
       isCompleted: false,
-      isLoginVisible: false
+      isLoginVisible: false,
     }
   },
   computed: {

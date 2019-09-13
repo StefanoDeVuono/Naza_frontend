@@ -168,57 +168,6 @@ export default {
         })
     },
 
-    // when the user submits, we have enough information to
-    // create the shopping cart order
-    createOrder() {
-      this.isLoading = true
-      this.findVariant()
-
-      const data = {
-        variant_id: this.shared.variant.id,
-      }
-
-      fetch(getSpreeServer() + '/cart', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      })
-        .then(resp => resp.json())
-        .then(json => {
-          this.$session.set('orderNumber', json.data.attributes.number)
-          this.shared.orderNumber = json.data.attributes.number
-          this.shared.orderToken = json.data.attributes.token
-          this.createAppointment(this.shared.orderNumber)
-        })
-    },
-
-    createAppointment(order_number) {
-      const data = {
-        order_number,
-        customizations: this.shared.customizations,
-        price: this.shared.price,
-        duration: this.shared.duration,
-      }
-
-      fetch(getAppServer() + '/naza/appointments.json', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      })
-        .then(resp => resp.json())
-        .then(json => {
-          this.shared.nazaAppointmentId = json.id
-          this.isLoading = false
-          this.$router.push({
-            name: 'add-ons',
-          })
-        })
-    },
-
     findTaxonName() {
       return compose(
         replace(/Hair Styles -> /, ''),
@@ -235,7 +184,10 @@ export default {
         return
       }
 
-      this.createOrder()
+      this.findVariant()
+      this.$router.push({
+        name: 'add-ons',
+      })
     },
 
     findMatchingVariant() {
