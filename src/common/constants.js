@@ -16,14 +16,6 @@ export const getStripeKey = () => {
 }
 
 export const getSpreeServer = () => {
-  if (isStaging()) {
-    return `${getCurlAssetRoot()}/api/v2/storefront`
-  }
-
-  if (isProduction()) {
-    return `${getCurlAssetRoot()}/api/v2/storefront`
-  }
-
   return `${getCurlAssetRoot()}/api/v2/storefront`
 }
 
@@ -40,6 +32,8 @@ export const getAppServer = () => {
 }
 
 export const getCurlAssetRoot = () => {
+  console.log('******************** window.location.hostname', window.location.hostname)
+
   if (isStaging()) {
     return 'https://api-staging.nazabeauty.com'
   }
