@@ -23,7 +23,7 @@ export default {
     customerZipCode: undefined,
     customerPassword: undefined,
     canReceiveEmailReminders: undefined,
-    canReceiveSmsReminders: undefined,
+    canReceiveSmsReminders: true,
     note: undefined,
     prefScalpTenderness: undefined,
     selectedDrinkAddOnId: undefined,

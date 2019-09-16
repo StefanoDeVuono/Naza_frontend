@@ -104,9 +104,9 @@
                 v-model="shared.canReceiveSmsReminders"
                 type="checkbox"
                 name="sms-reminders"
-                id="sms-remindders"
+                id="sms-reminders"
               />
-              I would like to receive booking reminders via SMS
+              I understand I will receive SMS updates about this booking. (required)
             </label>
           </div>
         </div>

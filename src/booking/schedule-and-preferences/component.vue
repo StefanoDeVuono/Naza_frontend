@@ -58,7 +58,7 @@ import { join, filter, reduce, concat } from 'ramda'
 export default {
   data: function() {
     return {
-      isPaymentSaved: true,
+      isPaymentSaved: false,
       isLoading: false,
 
       shared: Storage.sharedState,
@@ -67,7 +67,7 @@ export default {
 
   computed: {
     isDisabled: function() {
-      return !this.isPaymentSaved
+      return !this.isPaymentSaved || !this.shared.canReceiveSmsReminders
     },
   },
 
