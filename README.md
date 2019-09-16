@@ -20,9 +20,20 @@ The Squarespace Git repository has three main branches:
 
 ### Development
 
+Requirements:
+* [Yarn](https://yarnpkg.com/en/docs/getting-started)
+* [Squarespace-server](https://developers.squarespace.com/local-development)
+
 You should branch off develop and merge back into develop.
 
 This app uses Webpack + Vue to build most of the functionality. You will need to run `yarn build` to compile all the scripts. You can also run `yarn prettier` to run the Javascript prettier.
+
+To run the Squarespace template locally:
+ ```
+ squarespace-server https://site-name.squarespace.com
+ ``` 
+
+If the site is password protected, append `--auth` to the above command.
 
 ### Deploying to Staging
 
