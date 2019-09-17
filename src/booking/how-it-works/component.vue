@@ -1,6 +1,10 @@
 <template>
   <div>
     <div class="how-it-works--container">
+      <div class="how-it-works--corner ne"></div>
+      <div class="how-it-works--corner nw"></div>
+      <div class="how-it-works--corner se"></div>
+      <div class="how-it-works--corner sw"></div>
       <div class="how-it-works">
         <div class="how-it-works--content">
           <div class="how-it-works--header">
@@ -91,10 +95,42 @@ export default {
 
 <style lang="less">
 @import '../../common/utils.less';
+@cornerSize: 10px;
+@cornerBorderWidth: 2px;
+@pageMargin: 20px;
+@cornerOffset: calc(@pageMargin - @cornerSize - @cornerBorderWidth);
 
 .how-it-works--container {
   .ignore-parent-padding();
+  position: relative;
   display: flex;
+
+  .how-it-works--corner {
+    position: absolute;
+    width: @cornerSize;
+    height: @cornerSize;
+    border: @cornerBorderWidth solid white;
+
+    &.ne {
+      top: @cornerOffset;
+      left: @cornerOffset;
+    }
+
+    &.nw {
+      top: @cornerOffset;
+      right: @cornerOffset;
+    }
+
+    &.se {
+      left: @cornerOffset;
+      bottom: @cornerOffset;
+    }
+
+    &.sw {
+      right: @cornerOffset;
+      bottom: @cornerOffset;
+    }
+  }
 
   @font-face {
     font-family: 'ttcommons';
