@@ -85,7 +85,6 @@ export default {
       await this.createOrder()
       await this.addStyleToCart()
       await this.addAddOnsToCart()
-      await this.createAppointment()
       await this.createOrUpdateUser()
       await this.completeCheckout()
 
@@ -218,6 +217,8 @@ export default {
       const path = loggedIn ? '/naza/users/me.json' : '/naza/users.json'
       const fetchMethod = loggedIn ? 'PATCH' : 'POST'
 
+      this.isDisabled = true
+
       return fetch(getAppServer() + path, {
         method: fetchMethod,
         headers: {
@@ -232,28 +233,7 @@ export default {
             throw join(', ', json.errors)
           }
           this.shared.spreeUserId = json.data.id
-        })
-    },
-
-    createAppointment() {
-      const data = {
-        order_number: this.shared.orderNumber,
-        customizations: this.shared.customizations,
-        price: this.shared.price,
-        duration: this.shared.duration,
-      }
-
-      return fetch(getAppServer() + '/naza/appointments.json', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
-      })
-        .then(resp => resp.json())
-        .then(json => {
-          this.shared.nazaAppointmentId = json.id
-          this.isLoading = false
+          this.isDisabled = false
         })
     },
   },
