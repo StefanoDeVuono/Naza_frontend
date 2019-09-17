@@ -1,70 +1,74 @@
 <template>
-  <div class="how-it-works--container">
-    <div class="how-it-works">
-      <div class="how-it-works--content">
-        <div class="how-it-works--header">
-          <img
-            alt="How Does Naza Work?"
-            aria-label="How Does Naza Work?"
-            src="assets/images/HowItWorks-header@1x.png"
-          />
-          <FlowerImage class="divider" />
-        </div>
-        <Carousel
-          ref="carousel"
-          :per-page="1"
-          :paginationPadding="5"
-          paginationColor="rgba(28, 48, 66, 0.4)"
-          paginationActiveColor="#ffffff"
-        >
-          <template v-slot:pagination>
-            <CustomCarouselPaginator
-              @paginationclick="$refs.carousel.goToPage($event, 'pagination')"
+  <div>
+    <div class="how-it-works--container">
+      <div class="how-it-works">
+        <div class="how-it-works--content">
+          <div class="how-it-works--header">
+            <img
+              alt="How Does Naza Work?"
+              aria-label="How Does Naza Work?"
+              src="assets/images/HowItWorks-header@1x.png"
             />
-          </template>
-
-          <Slide data-index="0">
-            <img src="assets/images/HowItWorks1.jpeg" />
-            <h2 class="step-title">Select a Style and Customize It</h2>
-            <p>
-              Personal your style by choosing color, length, volume, and size of
-              your favorite hairstyle.
-            </p>
-          </Slide>
-
-          <Slide data-index="1">
-            <h2 class="step-title">Step 2</h2>
-          </Slide>
-
-          <Slide data-index="2">
-            <h2 class="step-title">Step 3</h2>
-          </Slide>
-
-          <Slide data-index="3">
-            <h2 class="step-title">Step 4</h2>
-          </Slide>
-
-          <Slide data-index="4">
-            <h2 class="step-title">Step 5</h2>
-            <p>
-              <router-link
-                @click.native="$event.stopImmediatePropagation()"
-                :to="{ name: 'categories' }"
-                >Launch booking flow</router-link
-              >
-            </p>
-          </Slide>
-        </Carousel>
-
-        <div class="skip-and-start">
-          <router-link
-            @click.native="$event.stopImmediatePropagation()"
-            :to="{ name: 'categories' }"
-            >Skip &amp; Start &rarr;</router-link
+            <FlowerImage class="divider" />
+          </div>
+          <Carousel
+            ref="carousel"
+            :per-page="1"
+            :paginationPadding="5"
+            paginationColor="rgba(28, 48, 66, 0.4)"
+            paginationActiveColor="#ffffff"
           >
+            <template v-slot:pagination>
+              <CustomCarouselPaginator
+                @paginationclick="$refs.carousel.goToPage($event, 'pagination')"
+              />
+            </template>
+
+            <Slide data-index="0">
+              <img src="assets/images/HowItWorks1.jpeg" />
+              <h2 class="step-title">Select a Style and Customize It</h2>
+              <p>
+                Personal your style by choosing color, length, volume, and size of
+                your favorite hairstyle.
+              </p>
+            </Slide>
+
+            <Slide data-index="1">
+              <h2 class="step-title">Step 2</h2>
+            </Slide>
+
+            <Slide data-index="2">
+              <h2 class="step-title">Step 3</h2>
+            </Slide>
+
+            <Slide data-index="3">
+              <h2 class="step-title">Step 4</h2>
+            </Slide>
+
+            <Slide data-index="4">
+              <h2 class="step-title">Step 5</h2>
+              <p>
+                <router-link
+                  @click.native="$event.stopImmediatePropagation()"
+                  :to="{ name: 'categories' }"
+                  >Launch booking flow</router-link
+                >
+              </p>
+            </Slide>
+          </Carousel>
+
+          <div class="skip-and-start">
+            <router-link
+              @click.native="$event.stopImmediatePropagation()"
+              :to="{ name: 'categories' }"
+              >Skip &amp; Start &rarr;</router-link
+            >
+          </div>
         </div>
       </div>
     </div>
+
+    <Footer></Footer>
   </div>
 </template>
 
@@ -72,6 +76,7 @@
 import { Carousel, Slide } from 'vue-carousel'
 import CustomCarouselPaginator from '../components/custom-carousel-paginator.vue'
 import FlowerImage from './flower.svg'
+import Footer from 'common/footer.vue'
 
 export default {
   components: {
@@ -79,6 +84,7 @@ export default {
     Slide,
     CustomCarouselPaginator,
     FlowerImage,
+    Footer
   },
 }
 </script>
