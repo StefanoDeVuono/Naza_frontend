@@ -1,4 +1,4 @@
-import { isProduction, getSpreeServer, getAppServer } from 'common/constants'
+import { isProduction, isStaging, getSpreeServer, getAppServer } from 'common/constants'
 import Storage from 'common/storage'
 import { parse } from 'jsonapi-parse'
 
@@ -55,7 +55,7 @@ export const loadUserFromToken = (email, userToken) => {
 }
 
 export const mockProductIfDevelopment = () => {
-  if (isProduction()) {
+  if (isProduction() || isStaging()) {
     return
   }
 

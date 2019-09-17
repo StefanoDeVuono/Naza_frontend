@@ -81,7 +81,7 @@ export default {
 
     signIn() {
       const credentials = {
-        sign_in: {
+        spree_user: {
           email: this.email,
           password: this.password,
         },
