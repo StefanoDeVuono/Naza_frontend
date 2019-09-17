@@ -7,26 +7,41 @@
       :totalDuration="0"
     />
     <LoginCta />
-    <Content :progress-step="1">
+    <Content :progress-step="1" >
       <div v-cloak id="categories">
         <div class="cta">
           <h2>What&rsquo;s Your Style?</h2>
           <p>Choose your style and customize it in the following steps</p>
         </div>
 
-        <div class="image-container" v-for="category in categories">
-          <router-link
-            @click.native="$event.stopImmediatePropagation()"
-            :to="{ name: 'subcategories', params: { categoryId: category.id } }"
-          >
-            <img
-              :alt="category.name"
-              :data-src="CURL_ASSET_ROOT + getImageUrl(category)"
-              v-bind:src="CURL_ASSET_ROOT + getImageUrl(category)"
-            />
-          </router-link>
+          <carousel :perPage="1" :centerMode="true">
+            <slide class="category-container" v-for="category in categories">
+              <div class="category-container-inner">
+                <div class="image-container">
+                    <img
+                            :alt="categories[0].name"
+                            :src="`assets/categories/group-6@3x.png`"
+                    />
+                </div>
+                <div class="category-details-container">
+                  <div class="category-name"><h1>{{category.name}}</h1></div>
+                  <div class="category-description"><span>{{category.meta_description}}</span></div>
+                    <router-link
+                            @click.native="$event.stopImmediatePropagation()"
+                            :to="{ name: 'subcategories', params: { categoryId: category.id } }"
+                    >
+                        <div class="category-select">
+                            <span>
+                              Select This Style <span class="select-arrow">&rarr;</span>
+                            </span>
+                        </div>
+                    </router-link>
+
+                </div>
+              </div>
+            </slide>
+          </carousel>
         </div>
-      </div>
     </Content>
   </div>
 </template>
@@ -39,6 +54,7 @@ import 'whatwg-fetch'
 import { parse } from 'jsonapi-parse'
 import { sortBy, reject, prop, compose, path } from 'ramda'
 import LoginCta from './login-cta.vue'
+import { Carousel, Slide } from 'vue-carousel';
 
 export default {
   data: () => {
@@ -77,38 +93,82 @@ export default {
     Header,
     Content,
     LoginCta,
+    Carousel,
+    Slide
   },
 }
 </script>
 
 <style>
-[v-cloak] {
-  display: none;
-}
+  [v-cloak] {
+    display: none;
+  }
 
-.cta {
-  text-align: center;
-  margin-bottom: 40px;
-  line-height: 24px;
-  color: #1c3042;
-}
+  .cta {
+    text-align: center;
+    margin-bottom: 40px;
+    line-height: 24px;
+    color: #1c3042;
+  }
 
-#categories {
-  margin-bottom: 100px;
-}
+  #categories {
+    margin-bottom: 100px;
+  }
 
-.image-container {
-  line-height: 0;
-  margin-bottom: 4px;
-}
+  .image-container {
+    margin-bottom: 20px;
+  }
 
-a {
-  margin: 0;
-  padding: 0;
-}
+  img {
+    width: 100%;
+    height: auto;
+  }
 
-img {
-  width: 100%;
-  height: auto;
-}
+  .category-container {
+    background-color: #1c3042;
+    display: flex;
+    justify-content: center;
+  }
+
+  .category-container-inner {
+    padding: 12px;
+  }
+
+  .category-details-container {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+
+  .category-name h1 {
+    letter-spacing: 1.3px;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 10px;
+  }
+
+  .category-description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 63px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: center;
+    color: #ffffff;
+  }
+
+  .category-select {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.15px;
+    text-align: center;
+    color: #1c3042;
+    background-color: #ffffff;
+    text-transform: uppercase;
+  }
 </style>

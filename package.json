@@ -56,7 +56,9 @@
     "release": "./node_modules/.bin/webpack --config webpack.prod.js",
     "prettier": "./node_modules/.bin/prettier --write src/**/*.{vue,js,json} src/*/**/*.{vue,js,json}"
   },
-  "dependencies": {},
+  "dependencies": {
+    "vue-carousel": "^0.18.0"
+  },
   "eslintConfig": {
     "root": true,
     "extends": [
