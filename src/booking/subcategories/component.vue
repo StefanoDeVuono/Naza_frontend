@@ -162,7 +162,6 @@ export default {
     },
 
     expandDesc(id) {
-      console.log('expanding', id)
       this.$set(this.truncatedDescs, id, false)
       this.$set(this.fullDescs, id, true)
     },

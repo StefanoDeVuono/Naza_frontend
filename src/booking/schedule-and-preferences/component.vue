@@ -67,7 +67,7 @@ export default {
 
   computed: {
     isDisabled: function() {
-      return !this.isPaymentSaved || !this.shared.canReceiveSmsReminders
+      return !this.isPaymentSaved
     },
   },
 
