@@ -223,6 +223,7 @@ export default {
 
     fetchData() {
       this.fetchStyles()
+      this.findVariant()
     },
 
     findVariant() {

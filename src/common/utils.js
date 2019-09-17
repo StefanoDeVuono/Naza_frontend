@@ -55,7 +55,7 @@ export const loadUserFromToken = (email, userToken) => {
 }
 
 export const mockProductIfDevelopment = () => {
-  if (isProduction()) {
+  if (isProduction() || isStaging()) {
     return
   }
 
