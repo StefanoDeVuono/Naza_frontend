@@ -2,18 +2,24 @@
   <div
     v-show="carousel.pageCount > 1"
     class="VueCarousel-pagination"
-    v-bind:class="{ [`VueCarousel-pagination--${paginationPositionModifierName}`]: paginationPositionModifierName }"
+    v-bind:class="{
+      [`VueCarousel-pagination--${paginationPositionModifierName}`]: paginationPositionModifierName,
+    }"
   >
-    <div class="VueCarousel-dot-container" role="tablist" :style="dotContainerStyle">
+    <div
+      class="VueCarousel-dot-container"
+      role="tablist"
+      :style="dotContainerStyle"
+    >
       <button
-        class="VueCarousel-arrow"
+        class="VueCarousel-arrow VueCarousel-arrow--prev"
         aria-hidden="false"
         role="tab"
         title="Previous"
         aria-label="Previous"
         v-on:click="goToPrevious()"
       >
-        <ChevronLeftIcon fillColor="#ffffff" />
+        <ChevronIcon />
       </button>
       <button
         v-for="(page, index) in paginationCount"
@@ -37,54 +43,53 @@
         aria-label="Next"
         v-on:click="goToNext()"
       >
-        <ChevronRightIcon fillColor="#ffffff" />
+        <ChevronIcon />
       </button>
     </div>
   </div>
 </template>
 
 <script>
-import ChevronLeftIcon from 'vue-material-design-icons/ChevronLeft.vue'
-import ChevronRightIcon from 'vue-material-design-icons/ChevronRight.vue'
+import ChevronIcon from '../../images/chevron.svg'
 
 export default {
-  name: "pagination",
-  inject: ["carousel"],
+  name: 'pagination',
+  inject: ['carousel'],
   computed: {
     paginationPositionModifierName() {
-      const { paginationPosition } = this.carousel;
+      const { paginationPosition } = this.carousel
       // guard to add only required class modifiers
-      if (paginationPosition.indexOf("overlay") < 0) return;
-      return paginationPosition;
+      if (paginationPosition.indexOf('overlay') < 0) return
+      return paginationPosition
     },
     paginationPropertyBasedOnPosition() {
-      return this.carousel.paginationPosition.indexOf("top") >= 0
-        ? "bottom"
-        : "top";
+      return this.carousel.paginationPosition.indexOf('top') >= 0
+        ? 'bottom'
+        : 'top'
     },
     paginationCount() {
       return this.carousel && this.carousel.scrollPerPage
         ? this.carousel.pageCount
-        : this.carousel.slideCount || 0;
+        : this.carousel.slideCount || 0
     },
     dotContainerStyle() {
-      const { carousel } = this;
+      const { carousel } = this
       if (carousel.maxPaginationDotCount === -1)
         return {
-          "margin-top": `${carousel.paginationPadding * 2}px`
-        };
-      const doublePadding = carousel.paginationPadding * 2;
+          'margin-top': `${carousel.paginationPadding * 2}px`,
+        }
+      const doublePadding = carousel.paginationPadding * 2
       const containerWidth =
         carousel.maxPaginationDotCount *
-        (carousel.paginationSize + doublePadding);
+        (carousel.paginationSize + doublePadding)
       return {
-        "margin-top": `${carousel.paginationPadding * 2}px`,
-        overflow: "hidden",
+        'margin-top': `${carousel.paginationPadding * 2}px`,
+        overflow: 'hidden',
         width: `${containerWidth}px`,
-        margin: "0 auto",
-        "white-space": "nowrap"
-      };
-    }
+        margin: '0 auto',
+        'white-space': 'nowrap',
+      }
+    },
   },
   methods: {
     /**
@@ -97,7 +102,7 @@ export default {
        * @event paginationclick
        * @type {number}
        */
-      this.$emit("paginationclick", index);
+      this.$emit('paginationclick', index)
     },
 
     goToPrevious() {
@@ -106,7 +111,7 @@ export default {
 
     goToNext() {
       if (this.carousel.currentPage < this.carousel.pageCount - 1) {
-        this.$emit('paginationclick', this.carousel.currentPage + 1)        
+        this.$emit('paginationclick', this.carousel.currentPage + 1)
       }
     },
 
@@ -116,7 +121,7 @@ export default {
      * @return {boolean}
      */
     isCurrentDot(index) {
-      return index === this.carousel.currentPage;
+      return index === this.carousel.currentPage
     },
 
     /**
@@ -127,7 +132,7 @@ export default {
     getDotTitle(index) {
       return this.carousel.$children[index].title
         ? this.carousel.$children[index].title
-        : `Item ${index}`;
+        : `Item ${index}`
     },
     /**
      * Control dots appear and disappear
@@ -135,50 +140,49 @@ export default {
      * @return {Object} - dot(buttn) style
      */
     dotStyle(index) {
-      const { carousel } = this;
-      const basicBtnStyle = {};
+      const { carousel } = this
+      const basicBtnStyle = {}
       basicBtnStyle[
         `margin-${this.paginationPropertyBasedOnPosition}`
-      ] = `${carousel.paginationPadding * 2}px`;
+      ] = `${carousel.paginationPadding * 2}px`
 
       Object.assign(basicBtnStyle, {
         padding: `${carousel.paginationPadding}px`,
         width: `${carousel.paginationSize}px`,
         height: `${carousel.paginationSize}px`,
-        "background-color": `${
+        'background-color': `${
           this.isCurrentDot(index)
             ? carousel.paginationActiveColor
             : carousel.paginationColor
-        }`
-      });
+        }`,
+      })
 
-      if (carousel.maxPaginationDotCount === -1) return basicBtnStyle;
+      if (carousel.maxPaginationDotCount === -1) return basicBtnStyle
 
       const eachDotsWidth =
-        carousel.paginationSize + carousel.paginationPadding * 2;
-      const maxReverse = carousel.pageCount - carousel.maxPaginationDotCount;
+        carousel.paginationSize + carousel.paginationPadding * 2
+      const maxReverse = carousel.pageCount - carousel.maxPaginationDotCount
       const translateAmount =
         carousel.currentPage > maxReverse
           ? maxReverse
           : carousel.currentPage <= carousel.maxPaginationDotCount / 2
-            ? 0
-            : carousel.currentPage -
-              Math.ceil(carousel.maxPaginationDotCount / 2) +
-              1;
-      const transformWidth = 0 - eachDotsWidth * translateAmount;
+          ? 0
+          : carousel.currentPage -
+            Math.ceil(carousel.maxPaginationDotCount / 2) +
+            1
+      const transformWidth = 0 - eachDotsWidth * translateAmount
       return Object.assign(basicBtnStyle, {
-        "-webkit-transform": `translate3d(${transformWidth}px,0,0)`,
+        '-webkit-transform': `translate3d(${transformWidth}px,0,0)`,
         transform: `translate3d(${transformWidth}px,0,0)`,
-        "-webkit-transition": `-webkit-transform ${carousel.speed / 1000}s`,
-        transition: `transform ${carousel.speed / 1000}s`
-      });
-    }
+        '-webkit-transition': `-webkit-transform ${carousel.speed / 1000}s`,
+        transition: `transform ${carousel.speed / 1000}s`,
+      })
+    },
   },
   components: {
-    ChevronLeftIcon,
-    ChevronRightIcon
-  }
-};
+    ChevronIcon,
+  },
+}
 </script>
 
 <style scoped>
@@ -205,9 +209,11 @@ export default {
 
 .VueCarousel-arrow {
   margin-top: 10px;
-  span {
-    transform: translate(0, 7px);
-  }
+  transform: translateY(2px);
+}
+
+.VueCarousel-arrow--prev {
+  transform: scaleX(-1) translateY(2px);
 }
 
 .VueCarousel-dot {

@@ -35,6 +35,14 @@ module.exports = {
       {
         test: /\.svg$/,
         use: 'vue-svg-loader'
+      },
+      {
+        test: /\.(otf)$/,
+        use: [
+          {
+            loader: 'url-loader'
+          }
+        ],
       }
     ],
   },

@@ -3,28 +3,64 @@
     <div class="how-it-works">
       <div class="how-it-works--content">
         <div class="how-it-works--header">
-          <img src="assets/images/HowItWorks-header@1x.png" />
+          <img
+            alt="How Does Naza Work?"
+            aria-label="How Does Naza Work?"
+            src="assets/images/HowItWorks-header@1x.png"
+          />
           <FlowerImage class="divider" />
         </div>
-        <Carousel ref="carousel" :per-page="1" paginationColor="rgba(28, 48, 66, 0.4)" paginationActiveColor="#ffffff">
+        <Carousel
+          ref="carousel"
+          :per-page="1"
+          paginationColor="rgba(28, 48, 66, 0.4)"
+          paginationActiveColor="#ffffff"
+        >
           <template v-slot:pagination>
-            <CustomCarouselPaginator @paginationclick="$refs.carousel.goToPage($event, 'pagination')" />
+            <CustomCarouselPaginator
+              @paginationclick="$refs.carousel.goToPage($event, 'pagination')"
+            />
           </template>
 
           <Slide data-index="0">
             <img src="assets/images/HowItWorks1.jpeg" />
-            <h2>Select a Style and Customize It</h2>
-            <p>Personal your style by choosing color, length, volume, and size of your favorite hairstyle.</p>
+            <h2 class="step-title">Select a Style and Customize It</h2>
+            <p>
+              Personal your style by choosing color, length, volume, and size of
+              your favorite hairstyle.
+            </p>
           </Slide>
 
           <Slide data-index="1">
-            <h2>Stuff Happens</h2>
-            <p>Zoop!</p>
+            <h2 class="step-title">Step 2</h2>
+          </Slide>
+
+          <Slide data-index="2">
+            <h2 class="step-title">Step 3</h2>
+          </Slide>
+
+          <Slide data-index="3">
+            <h2 class="step-title">Step 4</h2>
+          </Slide>
+
+          <Slide data-index="4">
+            <h2 class="step-title">Step 5</h2>
+            <p>
+              <router-link
+                @click.native="$event.stopImmediatePropagation()"
+                :to="{ name: 'categories' }"
+                >Launch booking flow</router-link
+              >
+            </p>
           </Slide>
         </Carousel>
 
         <div class="skip-and-start">
-          Skip &amp; Start
+          <router-link
+            @click.native="$event.stopImmediatePropagation()"
+            :to="{ name: 'categories' }"
+            >Skip &amp; Start &rarr;</router-link
+          >
         </div>
       </div>
     </div>
@@ -32,18 +68,18 @@
 </template>
 
 <script>
-  import { Carousel, Slide } from 'vue-carousel'
-  import CustomCarouselPaginator from '../components/custom-carousel-paginator.vue'
-  import FlowerImage from './flower.svg'
+import { Carousel, Slide } from 'vue-carousel'
+import CustomCarouselPaginator from '../components/custom-carousel-paginator.vue'
+import FlowerImage from './flower.svg'
 
-  export default {
-    components: {
-      Carousel,
-      Slide,
-      CustomCarouselPaginator,
-      FlowerImage,
-    }
-  }
+export default {
+  components: {
+    Carousel,
+    Slide,
+    CustomCarouselPaginator,
+    FlowerImage,
+  },
+}
 </script>
 
 <style lang="less">
@@ -52,6 +88,20 @@
 .how-it-works--container {
   .ignore-parent-padding();
   display: flex;
+
+  @font-face {
+    font-family: 'ttcommons';
+    src: url('../../fonts/TTCommons-Medium.otf');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'ttcommons';
+    src: url('../../fonts/TTCommons-DemiBold.otf');
+    font-weight: bold;
+    font-style: normal;
+  }
 
   .how-it-works {
     color: white;
@@ -62,11 +112,22 @@
       border: 2px solid white;
       padding: 20px;
 
+      h2.step-title {
+        text-transform: lowercase;
+        font-weight: normal;
+      }
+
       .how-it-works--header {
         display: flex;
         flex-direction: column;
         align-items: center;
+        margin-top: 30px;
         padding-bottom: 40px;
+
+        img {
+          width: auto;
+          height: auto;
+        }
 
         .title {
           margin-top: 20px;
@@ -77,7 +138,8 @@
         }
       }
 
-      h1, h2 {
+      h1,
+      h2 {
         font-weight: normal;
         color: white;
         text-align: center;
@@ -89,7 +151,13 @@
       }
 
       .skip-and-start {
+        margin-top: 10px;
+        font-family: 'ttcommons', sans-serif;
+        font-weight: bold;
         text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 0.3px;
+        font-size: 14px;
       }
     }
   }

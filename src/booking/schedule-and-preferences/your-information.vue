@@ -106,7 +106,8 @@
                 name="sms-reminders"
                 id="sms-reminders"
               />
-              I understand I will receive SMS updates about this booking. (required)
+              I understand I will receive SMS updates about this booking.
+              (required)
             </label>
           </div>
         </div>
