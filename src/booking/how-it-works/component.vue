@@ -13,6 +13,7 @@
         <Carousel
           ref="carousel"
           :per-page="1"
+          :paginationPadding="5"
           paginationColor="rgba(28, 48, 66, 0.4)"
           paginationActiveColor="#ffffff"
         >
