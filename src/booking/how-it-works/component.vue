@@ -19,6 +19,7 @@
             ref="carousel"
             :per-page="1"
             :paginationPadding="5"
+            @page-change="handlePageChange"
             paginationColor="rgba(28, 48, 66, 0.4)"
             paginationActiveColor="#ffffff"
           >
@@ -61,7 +62,7 @@
             </Slide>
           </Carousel>
 
-          <div class="skip-and-start">
+          <div class="skip-and-start" v-show="showSkipAndStart">
             <router-link
               @click.native="$event.stopImmediatePropagation()"
               :to="{ name: 'categories' }"
@@ -83,6 +84,21 @@ import FlowerImage from './flower.svg'
 import Footer from 'common/footer.vue'
 
 export default {
+  data() {
+    return {
+      showSkipAndStart: true
+    }
+  },
+
+  methods: {
+    handlePageChange(page) {
+      if (page === 4) {
+        this.showSkipAndStart = false
+      } else {
+        this.showSkipAndStart = true
+      }
+    }
+  },
   components: {
     Carousel,
     Slide,
