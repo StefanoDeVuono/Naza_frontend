@@ -1,55 +1,63 @@
 <template>
-  <div class="sign-in form-wrapper">
-    <div class="form-inner-wrapper">
-      <div v-show="errorMsg" class="errors">
-        {{ errorMsg }}
-      </div>
+  <div>
+    <ForgotPasswordModal :initialEmail="email" />
 
-      <form autocomplete="on" method="POST" @submit.prevent="signIn">
-        <div class="field-list clear">
-          <div class="form-item field email">
-            <label
-              class="title"
-              for="email-yui_3_17_2_1_1568231635626_12630-field"
-              >Email</label
-            >
-
-            <input
-              class="field-element"
-              name="email"
-              type="email"
-              autocomplete="off"
-              v-model="email"
-              spellcheck="false"
-              style='background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAUBJREFUOBGVVE2ORUAQLvIS4gwzEysHkHgnkMiEc4zEJXCMNwtWTmDh3UGcYoaFhZUFCzFVnu4wIaiE+vvq6+6qTgthGH6O4/jA7x1OiCAIPwj7CoLgSXDxSjEVzAt9k01CBKdWfsFf/2WNuEwc2YqigKZpK9glAlVVwTTNbQJZlnlCkiTAZnF/mePB2biRdhwHdF2HJEmgaRrwPA+qqoI4jle5/8XkXzrCFoHg+/5ICdpm13UTho7Q9/0WnsfwiL/ouHwHrJgQR8WEwVG+oXpMPaDAkdzvd7AsC8qyhCiKJjiRnCKwbRsMw9hcQ5zv9maSBeu6hjRNYRgGFuKaCNwjkjzPoSiK1d1gDDecQobOBwswzabD/D3Np7AHOIrvNpHmPI+Kc2RZBm3bcp8wuwSIot7QQ0PznoR6wYSK0Xb/AGVLcWwc7Ng3AAAAAElFTkSuQmCC"); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;'
-            />
-          </div>
-
-          <div class="form-item field password">
-            <label
-              class="title"
-              for="password-yui_3_17_2_1_1568231635626_11851-field"
-              >Password</label
-            >
-
-            <input
-              class="field-element"
-              type="password"
-              autocomplete="off"
-              v-model="password"
-              style='background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAUBJREFUOBGVVE2ORUAQLvIS4gwzEysHkHgnkMiEc4zEJXCMNwtWTmDh3UGcYoaFhZUFCzFVnu4wIaiE+vvq6+6qTgthGH6O4/jA7x1OiCAIPwj7CoLgSXDxSjEVzAt9k01CBKdWfsFf/2WNuEwc2YqigKZpK9glAlVVwTTNbQJZlnlCkiTAZnF/mePB2biRdhwHdF2HJEmgaRrwPA+qqoI4jle5/8XkXzrCFoHg+/5ICdpm13UTho7Q9/0WnsfwiL/ouHwHrJgQR8WEwVG+oXpMPaDAkdzvd7AsC8qyhCiKJjiRnCKwbRsMw9hcQ5zv9maSBeu6hjRNYRgGFuKaCNwjkjzPoSiK1d1gDDecQobOBwswzabD/D3Np7AHOIrvNpHmPI+Kc2RZBm3bcp8wuwSIot7QQ0PznoR6wYSK0Xb/AGVLcWwc7Ng3AAAAAElFTkSuQmCC"); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;'
-            />
-          </div>
+    <div class="sign-in form-wrapper">
+      <div class="form-inner-wrapper">
+        <div v-show="errorMsg" class="errors">
+          {{ errorMsg }}
         </div>
 
-        <div class="form-button-wrapper form-button-wrapper--align-left">
+        <div class="cta">
+          <h3>Login to Your Account</h3>
+        </div>
+
+        <form autocomplete="on" method="POST" @submit.stop.prevent="signIn">
+          <div class="field-list clear">
+            <div class="form-item field email">
+              <label
+                class="title"
+                for="email-yui_3_17_2_1_1568231635626_12630-field"
+                >Email Address:</label
+              >
+
+              <input
+                class="field-element"
+                name="email"
+                type="email"
+                autocomplete="off"
+                v-model="email"
+                spellcheck="false"
+                style='background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAUBJREFUOBGVVE2ORUAQLvIS4gwzEysHkHgnkMiEc4zEJXCMNwtWTmDh3UGcYoaFhZUFCzFVnu4wIaiE+vvq6+6qTgthGH6O4/jA7x1OiCAIPwj7CoLgSXDxSjEVzAt9k01CBKdWfsFf/2WNuEwc2YqigKZpK9glAlVVwTTNbQJZlnlCkiTAZnF/mePB2biRdhwHdF2HJEmgaRrwPA+qqoI4jle5/8XkXzrCFoHg+/5ICdpm13UTho7Q9/0WnsfwiL/ouHwHrJgQR8WEwVG+oXpMPaDAkdzvd7AsC8qyhCiKJjiRnCKwbRsMw9hcQ5zv9maSBeu6hjRNYRgGFuKaCNwjkjzPoSiK1d1gDDecQobOBwswzabD/D3Np7AHOIrvNpHmPI+Kc2RZBm3bcp8wuwSIot7QQ0PznoR6wYSK0Xb/AGVLcWwc7Ng3AAAAAElFTkSuQmCC"); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;'
+              />
+            </div>
+
+            <div class="form-item field password">
+              <label
+                class="title"
+                for="password-yui_3_17_2_1_1568231635626_11851-field"
+                >Password:</label
+              >
+
+              <input
+                class="field-element"
+                type="password"
+                autocomplete="off"
+                v-model="password"
+                style='background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAUBJREFUOBGVVE2ORUAQLvIS4gwzEysHkHgnkMiEc4zEJXCMNwtWTmDh3UGcYoaFhZUFCzFVnu4wIaiE+vvq6+6qTgthGH6O4/jA7x1OiCAIPwj7CoLgSXDxSjEVzAt9k01CBKdWfsFf/2WNuEwc2YqigKZpK9glAlVVwTTNbQJZlnlCkiTAZnF/mePB2biRdhwHdF2HJEmgaRrwPA+qqoI4jle5/8XkXzrCFoHg+/5ICdpm13UTho7Q9/0WnsfwiL/ouHwHrJgQR8WEwVG+oXpMPaDAkdzvd7AsC8qyhCiKJjiRnCKwbRsMw9hcQ5zv9maSBeu6hjRNYRgGFuKaCNwjkjzPoSiK1d1gDDecQobOBwswzabD/D3Np7AHOIrvNpHmPI+Kc2RZBm3bcp8wuwSIot7QQ0PznoR6wYSK0Xb/AGVLcWwc7Ng3AAAAAElFTkSuQmCC"); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;'
+              />
+
+              <p><a href="#" @click.prevent.stop="openForgotPasswordModal">Forgot your password?</a></p>
+            </div>
+          </div>
+
           <input
-            class="button sqs-system-button sqs-editable-button"
+            class="submit-button"
             type="submit"
             value="Login"
           />
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
 </template>
@@ -60,6 +68,7 @@ import { getAppServer } from 'common/constants'
 import { parse } from 'jsonapi-parse'
 import Storage from 'common/storage'
 import { loadUserFromToken } from 'common/utils'
+import ForgotPasswordModal from './forgot-password.vue'
 
 export default {
   data() {
@@ -78,6 +87,10 @@ export default {
 
   methods: {
     loadUserFromToken,
+
+    openForgotPasswordModal() {
+      this.$modal.show('forgot-password')
+    },
 
     signIn() {
       const credentials = {
@@ -117,14 +130,30 @@ export default {
         })
     },
   },
+
+  components: {
+    ForgotPasswordModal
+  }
 }
 </script>
 
 <style lang="less" scoped>
 @import '../common/utils.less';
 
+.cta {
+  padding-top: 40px;
+
+  h3 {
+    text-align: center;
+  }
+}
+
 .sign-in {
   padding-bottom: 50px;
+
+  a {
+    text-decoration: underline;
+  }
 }
 
 .errors {
@@ -133,4 +162,5 @@ export default {
   font-weight: bold;
   margin: 0;
 }
+
 </style>

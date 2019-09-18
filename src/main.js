@@ -11,12 +11,18 @@ import VueRouter from 'vue-router'
 import VueSessionStorage from 'vue-sessionstorage'
 import VueCarousel from 'vue-carousel'
 import { loadUserFromToken } from 'common/utils'
+import VueModal from 'vue-js-modal'
 
 Vue.use(VueSessionStorage)
 Vue.use(VueRouter)
 Vue.use(VueCarousel)
+Vue.use(VueModal)
 
 var routes = [
+  {
+    path: '/',
+    redirect: '/categories'
+  },
   {
     path: '/categories',
     component: Categories,
@@ -72,7 +78,7 @@ export default new Vue({
 
   mounted() {
     const userToken = this.$session.get('userToken')
-
+    
     if (userToken) {
       loadUserFromToken(this.$session.get('email'), userToken)
       this.$root.$emit('payment-information:show')

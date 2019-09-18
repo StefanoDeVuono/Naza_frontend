@@ -67,7 +67,7 @@ export default {
 
   computed: {
     isDisabled: function() {
-      return !this.isPaymentSaved || !this.shared.canReceiveSmsReminders
+      return !this.isLoading && (!this.isPaymentSaved || !this.shared.canReceiveSmsReminders)
     },
   },
 
@@ -217,8 +217,6 @@ export default {
       const path = loggedIn ? '/naza/users/me.json' : '/naza/users.json'
       const fetchMethod = loggedIn ? 'PATCH' : 'POST'
 
-      this.isDisabled = true
-
       return fetch(getAppServer() + path, {
         method: fetchMethod,
         headers: {
@@ -233,7 +231,6 @@ export default {
             throw join(', ', json.errors)
           }
           this.shared.spreeUserId = json.data.id
-          this.isDisabled = false
         })
     },
   },
