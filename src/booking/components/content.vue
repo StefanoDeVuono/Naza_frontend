@@ -77,8 +77,6 @@ export default {
 }
 
 .v-stepper {
-  margin-top: calc(40px - @contentPadding);
-
   .v-step {
     margin-right: 0;
     flex-basis: 24%;
