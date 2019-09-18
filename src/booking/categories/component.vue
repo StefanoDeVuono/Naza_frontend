@@ -1,17 +1,18 @@
 <template>
   <div>
-    <Header
-      title="Our Services"
-      instructions="That though the radiance which was once so bright be now forever taken from my sight."
-      :totalPrice="0"
-      :totalDuration="0"
-    />
     <LoginCta />
-    <Content :progress-step="1" >
+    <Content :progress-step="1">
       <div v-cloak id="categories">
         <div class="cta">
-          <h2>What&rsquo;s Your Style?</h2>
-          <p>Choose your style and customize it in the following steps</p>
+          <div class="cta-subheader"><span>Step One</span></div>
+          <div class="cta-header-container">
+            <div class="cta-header">
+              <img alt="Pick Your Style"
+                   src="assets/categories/cta-header@3x.png"
+              >
+            </div>
+          </div>
+          <div class="cta-text"><h2>Select one of the options below</h2></div>
         </div>
 
           <carousel :perPage="1" :centerMode="true">
@@ -99,16 +100,46 @@ export default {
 }
 </script>
 
-<style>
+<style lang="less">
+  @import '../../common/utils.less';
+
   [v-cloak] {
     display: none;
   }
 
   .cta {
     text-align: center;
+    margin-right: 20px;
+    margin-left: 20px;
     margin-bottom: 40px;
     line-height: 24px;
-    color: #1c3042;
+    color: @darkBlue;
+  }
+
+  .cta-subheader {
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.75px;
+    color: @orange;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .cta-header-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .cta-header {
+    width: 122px;
+  }
+
+  .cta-text h2 {
+    height: 24px;
+    font-size: 18px;
+    font-weight: normal;
+    letter-spacing: .53px;
   }
 
   #categories {
@@ -125,7 +156,7 @@ export default {
   }
 
   .category-container {
-    background-color: #1c3042;
+    background-color: @darkBlue;
     display: flex;
     justify-content: center;
   }
@@ -167,7 +198,7 @@ export default {
     font-weight: bold;
     letter-spacing: 0.15px;
     text-align: center;
-    color: #1c3042;
+    color: @darkBlue;
     background-color: #ffffff;
     text-transform: uppercase;
   }
