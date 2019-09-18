@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!loggedIn" class="login-cta">
+  <div v-if="!shared.userToken" class="login-cta">
     <div>Already a customer?</div>
     <div>
       <router-link
@@ -15,10 +15,10 @@
 import Storage from 'common/storage'
 
 export default {
-  computed: {
-    loggedIn() {
-      return Storage.loggedIn()
-    },
+  data() {
+    return {
+      shared: Storage.sharedState
+    }
   },
 }
 </script>

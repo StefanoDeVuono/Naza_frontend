@@ -17,14 +17,14 @@ export const getStripeKey = () => {
 
 export const getSpreeServer = () => {
   if (isStaging()) {
-    return `${getCurlAssetRoot()}/api/v2/storefront`
+    return `${getCurlAssetRoot()}/spree/api/v2/storefront`
   }
 
   if (isProduction()) {
-    return `${getCurlAssetRoot()}/api/v2/storefront`
+    return `${getCurlAssetRoot()}/spree/api/v2/storefront`
   }
 
-  return `${getCurlAssetRoot()}/api/v2/storefront`
+  return `${getCurlAssetRoot()}/spree/api/v2/storefront`
 }
 
 export const getAppServer = () => {

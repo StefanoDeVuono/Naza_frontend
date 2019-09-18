@@ -29,13 +29,33 @@
         <ul>
           <li>Stylists</li>
         </ul>
+
+        <h2>Account</h2>
+        <ul>
+          <li v-if="shared.userToken"><a @click.prevent.stop="logOut">Log Out</a></li>
+        </ul>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+import Storage from 'common/storage'
+
+export default {
+  data() {
+    return {
+      shared: Storage.sharedState
+    }
+  },
+
+  methods: {
+    logOut() {
+      this.$session.remove('userToken')
+      this.shared.userToken = null
+    }
+  }
+}
 </script>
 
 <style lang="less">
