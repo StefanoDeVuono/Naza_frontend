@@ -2,7 +2,7 @@
   <div>
     <LoginCta />
     <Content :progress-step="1">
-      <div v-cloak id="categories">
+      <div v-cloak class="categories">
         <div class="cta">
           <div class="cta-subheader"><span>Step One</span></div>
           <div class="cta-header-container">
@@ -15,8 +15,20 @@
           <div class="cta-text"><h2>Select one of the options below</h2></div>
         </div>
 
-          <carousel :perPage="1" :centerMode="true">
-            <slide class="category-container" v-for="category in categories">
+          <carousel
+              ref="carousel"
+              :perPage="1"
+              :centerMode="true"
+              :paginationPadding="5"
+              paginationActiveColor="#bc4940"
+          >
+            <template v-slot:pagination>
+              <CustomCarouselPaginator
+                  @paginationclick="$refs.carousel.goToPage($event, 'pagination')"
+              />
+            </template>
+
+            <slide class="category-container" v-for="category in categories" v-bind:key="category.id">
               <div class="category-container-inner">
                 <div class="image-container">
                     <img
@@ -56,6 +68,7 @@ import { parse } from 'jsonapi-parse'
 import { sortBy, reject, prop, compose, path } from 'ramda'
 import LoginCta from './login-cta.vue'
 import { Carousel, Slide } from 'vue-carousel';
+import CustomCarouselPaginator from '../components/custom-carousel-paginator.vue'
 
 export default {
   data: () => {
@@ -95,7 +108,8 @@ export default {
     Content,
     LoginCta,
     Carousel,
-    Slide
+    Slide,
+    CustomCarouselPaginator,
   },
 }
 </script>
@@ -142,8 +156,12 @@ export default {
     letter-spacing: .53px;
   }
 
-  #categories {
-    margin-bottom: 100px;
+  .categories {
+    margin-bottom: 62px;
+
+    .VueCarousel-arrow-icon path {
+      fill: @darkBlue
+    }
   }
 
   .image-container {
