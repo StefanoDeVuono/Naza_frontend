@@ -2,25 +2,32 @@
   <div class="footer sqs-grid-12 columns-12">
     <div class="row sqs-row">
       <div class="col sqs-col-5 span-5">
-        <h2>Brand</h2>
+        <h3>NAZA</h3>
         <ul>
-          <li>Book Appointment</li>
+          <li><router-link @click.native="$event.stopImmediatePropagation()" :to="{ name: 'categories' }">Book Appointment</router-link></li>
           <li>Our Services</li>
-          <li>Abous us</li>
-          <li>Blog</li>
+          <li><router-link @click.native="$event.stopImmediatePropagation()" :to="{ name: 'how-it-works' }">How Naza Works</router-link></li>
+          <li>Our Stylists</li>
         </ul>
       </div>
       <div class="col sqs-col-4 span-4">
-        <h2>Support</h2>
+        <h3>EXPLORE</h3>
+        <ul>
+          <li>Gallery</li>
+          <li>About us</li>
+          <li>Blog</li>
+        </ul>
+      </div>
+      <div class="col sqs-col-3 span-3">
+        <h3>SUPPORT</h3>
         <ul>
           <li>FAQ</li>
           <li>Contact Us</li>
         </ul>
-      </div>
-      <div class="col sqs-col-3 span-3">
-        <h2>Stylist</h2>
+
+        <h3>JOIN US</h3>
         <ul>
-          <li>Join us!</li>
+          <li>Stylists</li>
         </ul>
       </div>
     </div>
@@ -43,7 +50,7 @@ export default {}
 
   background-color: #e6e1da;
 
-  h2 {
+  h3 {
     color: @orange;
     font-weight: bold;
     font-size: 14px;

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="119px" height="14px" viewBox="0 0 119 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.1 (78136) - https://sketchapp.com -->
+    <title>Group 5</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Booking-Flow-revision" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="How-it-works" transform="translate(-128.000000, -210.000000)">
+            <g id="Group-5" transform="translate(129.000000, 210.000000)">
+                <g id="noun_flowers_2032846" transform="translate(52.000000, 0.000000)" fill="#FFFFFF">
+                    <path d="M6.52460888,0.0848119833 C9.67454506,-0.598853836 7.90270596,2.96597508 6.67226214,6.62847054 C9.47767405,3.35664126 11.2987309,0.37781162 12.3323037,3.55197435 C14.5471026,5.99363799 10.6096824,6.23780436 6.9183509,6.97030345 C11.0526421,7.84930236 14.4978848,7.89813563 12.3323037,10.4374658 C11.3971664,13.6116285 9.23158528,10.2421327 6.72147989,7.36096963 C8.09957697,11.4629645 9.72376281,14.5394607 6.52460888,13.9046282 C3.37467269,14.6371273 5.09729404,11.0234651 6.32773786,7.4098029 C3.52232595,10.6327989 1.75048685,13.6116285 0.667696286,10.4374658 C-1.49788484,8.04463545 2.39031764,7.75163581 6.0816491,7.01913672 C1.94735786,6.18897108 -1.49788484,6.09130454 0.667696286,3.55197435 C1.65205134,0.426644893 3.81763247,3.74730744 6.27852011,6.62847054 C4.94964078,2.52647562 3.27623719,-0.550020563 6.52460888,0.0848119833 Z" id="Path"></path>
+                </g>
+                <g id="Group-4" transform="translate(75.000000, 5.000000)" stroke="#FFFFFF" stroke-linecap="square">
+                    <path d="M0,0.5 L42,0.5" id="Line"></path>
+                    <path d="M0,4.5 L42,4.5" id="Line-Copy"></path>
+                </g>
+                <g id="Group-4-Copy" transform="translate(0.000000, 5.000000)" stroke="#FFFFFF" stroke-linecap="square">
+                    <path d="M0,0.5 L42,0.5" id="Line"></path>
+                    <path d="M0,4.5 L42,4.5" id="Line-Copy"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
