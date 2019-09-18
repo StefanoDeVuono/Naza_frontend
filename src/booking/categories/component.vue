@@ -20,6 +20,7 @@
               :perPage="1"
               :centerMode="true"
               :paginationPadding="5"
+              paginationColor="rgba(28, 48, 66, 0.4)"
               paginationActiveColor="#bc4940"
           >
             <template v-slot:pagination>
@@ -133,7 +134,7 @@ export default {
   .cta-subheader {
     font-size: 14px;
     font-weight: bold;
-    letter-spacing: 0.75px;
+    letter-spacing: 0.89px;
     color: @orange;
     text-transform: uppercase;
     margin-bottom: 10px;
@@ -202,7 +203,7 @@ export default {
     height: 63px;
     margin-bottom: 20px;
     font-size: 14px;
-    line-height: 1.5;
+    line-height: 1.29;
     text-align: center;
     color: #ffffff;
   }
@@ -212,9 +213,9 @@ export default {
     justify-content: center;
     align-items: center;
     height: 40px;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: bold;
-    letter-spacing: 0.15px;
+    letter-spacing: 0.26px;
     text-align: center;
     color: @darkBlue;
     background-color: #ffffff;
