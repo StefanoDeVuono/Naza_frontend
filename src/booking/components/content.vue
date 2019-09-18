@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="content">
+      <img class="border-top" src="assets/content/border-top.svg">
       <div class="progress-bar">
         <VueStepper :steps="steps" v-model="step"></VueStepper>
       </div>
@@ -46,24 +47,36 @@ export default {
 </script>
 
 <style lang="less">
-@import '../../../styles/util.less';
+@import '../../common/utils.less';
 
 @contentPadding: 25px;
 @darkBlue: #1c3042;
 @orange: #bc5940;
 
 .progress-bar {
-  margin-bottom: @contentPadding;
+  margin-bottom: 30px;
+  margin-right: 54px;
+  margin-left: 54px;
+  font-family: Moret;
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .content {
-  padding-top: @contentPadding;
+  display: flex;
+  flex-direction: column;
   padding-bottom: @contentPadding;
+  .ignore-parent-padding();
+  background-color: @lightGray;
+}
+
+.border-top {
+  width: 100%;
+  height: auto;
+  margin-bottom: 30px;
 }
 
 .v-stepper {
-  margin-top: calc(40px - @contentPadding);
-
   .v-step {
     margin-right: 0;
     flex-basis: 24%;
@@ -75,7 +88,7 @@ export default {
     }
 
     &:last-child {
-      flex-basis: 4%;
+      flex-basis: 2%;
 
       .divider {
         display: none;
@@ -88,7 +101,7 @@ export default {
       box-shadow: none;
       font-size: 20px;
       border: 2px solid @darkBlue;
-      color: @orange;
+      color: @darkBlue;
       padding-bottom: 0.1em;
       margin-right: 0;
     }
@@ -98,8 +111,8 @@ export default {
     }
 
     &.is-active .label .index {
-      background-color: @orange;
-      border: 2px solid @orange;
+      background-color: @darkBlue;
+      border: 2px solid;
       color: white;
     }
   }

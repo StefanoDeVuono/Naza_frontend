@@ -1,32 +1,61 @@
 <template>
   <div>
-    <Header
-      title="Our Services"
-      instructions="That though the radiance which was once so bright be now forever taken from my sight."
-      :totalPrice="0"
-      :totalDuration="0"
-    />
     <LoginCta />
     <Content :progress-step="1">
-      <div v-cloak id="categories">
+      <div v-cloak class="categories">
         <div class="cta">
-          <h2>What&rsquo;s Your Style?</h2>
-          <p>Choose your style and customize it in the following steps</p>
+          <div class="cta-subheader"><span>Step One</span></div>
+          <div class="cta-header-container">
+            <div class="cta-header">
+              <img alt="Pick Your Style"
+                   src="assets/categories/cta-header@3x.png"
+              >
+            </div>
+          </div>
+          <div class="cta-text"><h2>Select one of the options below</h2></div>
         </div>
 
-        <div class="image-container" v-for="category in categories">
-          <router-link
-            @click.native="$event.stopImmediatePropagation()"
-            :to="{ name: 'subcategories', params: { categoryId: category.id } }"
+          <carousel
+              ref="carousel"
+              :perPage="1"
+              :centerMode="true"
+              :paginationPadding="5"
+              paginationColor="rgba(28, 48, 66, 0.4)"
+              paginationActiveColor="#bc4940"
           >
-            <img
-              :alt="category.name"
-              :data-src="CURL_ASSET_ROOT + getImageUrl(category)"
-              v-bind:src="CURL_ASSET_ROOT + getImageUrl(category)"
-            />
-          </router-link>
+            <template v-slot:pagination>
+              <CustomCarouselPaginator
+                  @paginationclick="$refs.carousel.goToPage($event, 'pagination')"
+              />
+            </template>
+
+            <slide class="category-container" v-for="category in categories" v-bind:key="category.id">
+              <div class="category-container-inner">
+                <div class="image-container">
+                    <img
+                            :alt="categories[0].name"
+                            :src="`assets/categories/group-6@3x.png`"
+                    />
+                </div>
+                <div class="category-details-container">
+                  <div class="category-name"><h1>{{category.name}}</h1></div>
+                  <div class="category-description"><span>{{category.meta_description}}</span></div>
+                    <router-link
+                            @click.native="$event.stopImmediatePropagation()"
+                            :to="{ name: 'subcategories', params: { categoryId: category.id } }"
+                    >
+                        <div class="category-select">
+                            <span>
+                              Select This Style <span class="select-arrow">&rarr;</span>
+                            </span>
+                        </div>
+                    </router-link>
+
+                </div>
+              </div>
+            </slide>
+          </carousel>
         </div>
-      </div>
     </Content>
   </div>
 </template>
@@ -39,6 +68,8 @@ import 'whatwg-fetch'
 import { parse } from 'jsonapi-parse'
 import { sortBy, reject, prop, compose, path } from 'ramda'
 import LoginCta from './login-cta.vue'
+import { Carousel, Slide } from 'vue-carousel';
+import CustomCarouselPaginator from '../components/custom-carousel-paginator.vue'
 
 export default {
   data: () => {
@@ -77,38 +108,117 @@ export default {
     Header,
     Content,
     LoginCta,
+    Carousel,
+    Slide,
+    CustomCarouselPaginator,
   },
 }
 </script>
 
-<style>
-[v-cloak] {
-  display: none;
-}
+<style lang="less">
+  @import '../../common/utils.less';
 
-.cta {
-  text-align: center;
-  margin-bottom: 40px;
-  line-height: 24px;
-  color: #1c3042;
-}
+  [v-cloak] {
+    display: none;
+  }
 
-#categories {
-  margin-bottom: 100px;
-}
+  .cta {
+    text-align: center;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom: 40px;
+    line-height: 24px;
+    color: @darkBlue;
+  }
 
-.image-container {
-  line-height: 0;
-  margin-bottom: 4px;
-}
+  .cta-subheader {
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.89px;
+    color: @orange;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
 
-a {
-  margin: 0;
-  padding: 0;
-}
+  .cta-header-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
 
-img {
-  width: 100%;
-  height: auto;
-}
+  .cta-header {
+    width: 122px;
+  }
+
+  .cta-text h2 {
+    height: 24px;
+    font-size: 18px;
+    font-weight: normal;
+    letter-spacing: .53px;
+  }
+
+  .categories {
+    margin-bottom: 37px;
+
+    .VueCarousel-arrow-icon path {
+      fill: @darkBlue
+    }
+  }
+
+  .image-container {
+    margin-bottom: 20px;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  .category-container {
+    background-color: @darkBlue;
+    display: flex;
+    justify-content: center;
+  }
+
+  .category-container-inner {
+    padding: 12px;
+  }
+
+  .category-details-container {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+
+  .category-name h1 {
+    letter-spacing: 1.3px;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 10px;
+  }
+
+  .category-description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 63px;
+    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.29;
+    text-align: center;
+    color: #ffffff;
+  }
+
+  .category-select {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 0.26px;
+    text-align: center;
+    color: @darkBlue;
+    background-color: #ffffff;
+    text-transform: uppercase;
+  }
 </style>
