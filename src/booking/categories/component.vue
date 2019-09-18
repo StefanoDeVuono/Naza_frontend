@@ -157,7 +157,7 @@ export default {
   }
 
   .categories {
-    margin-bottom: 62px;
+    margin-bottom: 37px;
 
     .VueCarousel-arrow-icon path {
       fill: @darkBlue
