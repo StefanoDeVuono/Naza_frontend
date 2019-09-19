@@ -47,15 +47,15 @@
                 style='background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAUBJREFUOBGVVE2ORUAQLvIS4gwzEysHkHgnkMiEc4zEJXCMNwtWTmDh3UGcYoaFhZUFCzFVnu4wIaiE+vvq6+6qTgthGH6O4/jA7x1OiCAIPwj7CoLgSXDxSjEVzAt9k01CBKdWfsFf/2WNuEwc2YqigKZpK9glAlVVwTTNbQJZlnlCkiTAZnF/mePB2biRdhwHdF2HJEmgaRrwPA+qqoI4jle5/8XkXzrCFoHg+/5ICdpm13UTho7Q9/0WnsfwiL/ouHwHrJgQR8WEwVG+oXpMPaDAkdzvd7AsC8qyhCiKJjiRnCKwbRsMw9hcQ5zv9maSBeu6hjRNYRgGFuKaCNwjkjzPoSiK1d1gDDecQobOBwswzabD/D3Np7AHOIrvNpHmPI+Kc2RZBm3bcp8wuwSIot7QQ0PznoR6wYSK0Xb/AGVLcWwc7Ng3AAAAAElFTkSuQmCC"); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;'
               />
 
-              <p><a href="#" @click.prevent.stop="openForgotPasswordModal">Forgot your password?</a></p>
+              <p>
+                <a href="#" @click.prevent.stop="openForgotPasswordModal"
+                  >Forgot your password?</a
+                >
+              </p>
             </div>
           </div>
 
-          <input
-            class="submit-button"
-            type="submit"
-            value="Login"
-          />
+          <input class="submit-button" type="submit" value="Login" />
         </form>
       </div>
     </div>
@@ -132,8 +132,8 @@ export default {
   },
 
   components: {
-    ForgotPasswordModal
-  }
+    ForgotPasswordModal,
+  },
 }
 </script>
 
@@ -162,5 +162,4 @@ export default {
   font-weight: bold;
   margin: 0;
 }
-
 </style>
