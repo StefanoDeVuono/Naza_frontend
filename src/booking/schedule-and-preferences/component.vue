@@ -15,6 +15,8 @@
         ctaText="Select a day &amp; time below and insert your personal details to confirm your reservation."
       />
 
+      <div>Errors: {{ errors }}</div>
+
       <div class="sections">
         <AppointmentSummary />
 
@@ -60,6 +62,7 @@ import { mockProductIfDevelopment } from 'common/utils'
 export default {
   data: function() {
     return {
+      errors: [],
       isPaymentSaved: false,
       isLoading: false,
 
@@ -207,6 +210,7 @@ export default {
 
     createOrUpdateUser() {
       const loggedIn = Storage.loggedIn()
+      console.log('this.errors', this.errors)
 
       const updateData = {
         'spree/user_email': Storage.sharedState.customerEmail,
@@ -262,6 +266,9 @@ export default {
         .then(json => {
           this.isLoading = false
           if (json.errors) {
+            this.errors = this.errors.concat(json.errors)
+            console.log('this.errors', this.errors)
+
             throw join(', ', json.errors)
           }
           this.shared.spreeUserId = json.data.id
