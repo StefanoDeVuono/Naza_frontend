@@ -68,3 +68,7 @@ This will update the production Squarespace.
 A hair style can have a color option type, which lets you create variants based on hair color. But option types can't have images associated with them. Project Curl gets around this by maintaining a list of hair color images in the Squarespace repo, underneath `assets/hair-colors`. 
 
 You can add additional colors by adding a new Option Value underneath the Hair Color Option Type. Then you must add a corresponding image underneath `assets/hair-colors`, named the exact same string as the presentation field of the option value, with all non-alphabet characters replaced with underscores. So for example, "Honey Brown w/5 Highlights" becomes "Honey_Brown_w___Highlights.jpeg".
+
+## How it Works Images
+
+These are stored on Amazon S3 in the `projectcurl-assets` bucket. They are named: Step1.jpeg, Step2.jpeg, Step3.jpeg, Step4.jpeg and Step5.jpeg, with each image corresponding to each step.
