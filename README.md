@@ -12,11 +12,9 @@ Maintain a separate staging branch in Git and push that to a separate Squarespac
 
 ## Implementation
 
-The Squarespace Git repository has three main branches:
+The Squarespace Git repository has one main branch:
 
 - master: Represents the code that will be deployed to the production Squarespace
-- staging: Represents the code that will be deployed to the staging Squarespace
-- develop: Represents code suitable for local development
 
 ### Development
 
@@ -24,7 +22,7 @@ Requirements:
 * [Yarn](https://yarnpkg.com/en/docs/getting-started)
 * [Squarespace-server](https://developers.squarespace.com/local-development)
 
-You should branch off develop and merge back into develop.
+You should branch off master and merge back into master.
 
 This app uses Webpack + Vue to build most of the functionality. You will need to run `yarn build` to compile all the scripts. You can also run `yarn prettier` to run the Javascript prettier.
 
@@ -35,6 +33,14 @@ To run the Squarespace template locally:
 
 If the site is password protected, append `--auth` to the above command.
 
+### Authentication
+
+In order to access the Squarespace Git repository, you will need to obtain an app secret. This is accessible here:
+
+https://account.squarespace.com/settings/security
+
+Under App Passwords. You will use this to authenticate your Git requests.
+
 ### Deploying to Staging
 
 If this is your first time deploying to staging, you will need to add the instance to your Git remotes:
@@ -43,23 +49,27 @@ If this is your first time deploying to staging, you will need to add the instan
 
 When you are ready to deploy to staging:
 
-    # you will get merge conflicts on scripts/bundle.js
-    git merge develop
+    # you may get merge conflicts on scripts/bundle.js
+    git merge feature/my-feature-branch
 
     # overwrites scripts/bundle.js with the release version
     yarn release
 
     git add scripts/bundle.js
     git commit -a
-    git push staging staging:master
+    git push staging master
 
-This will update the staging Squarespace. You have to push to the remote master branch because Squarespace will only use whatever templates are in master.
+This will update the staging Squarespace.
 
 ### Deploying to production
 
+If this is your first time deploying to production, you will need to add the instance to your Git remotes:
+
+    git remote add production https://blue-scarlet-dba3.squarespace.com/template.git
+
 When you are ready to deploy to master, merge staging into master and run:
 
-    git push origin head
+    git push production master
 
 This will update the production Squarespace.
 
