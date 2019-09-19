@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="content">
-      <img class="border-top" src="assets/content/border-top.svg">
+      <div class="border-top">
+        <img src="assets/content/border-top.svg">
+      </div>
       <div class="progress-bar">
         <VueStepper :steps="steps" v-model="step"></VueStepper>
       </div>
@@ -57,27 +59,23 @@ export default {
   margin-bottom: 30px;
   margin-right: 54px;
   margin-left: 54px;
-  font-family: Moret;
-  font-size: 18px;
-  font-weight: 600;
 }
 
 .content {
-  display: flex;
-  flex-direction: column;
-  padding-bottom: @contentPadding;
-  .ignore-parent-padding();
   background-color: @lightGray;
 }
 
 .border-top {
-  width: 100%;
+  .ignore-parent-padding();
   height: auto;
   margin-bottom: 30px;
 }
 
 .v-stepper {
+  margin-top: 30px;
+
   .v-step {
+    font-family: 'Moret', serif;
     margin-right: 0;
     flex-basis: 24%;
 
@@ -99,10 +97,10 @@ export default {
       width: 30px;
       height: 30px;
       box-shadow: none;
-      font-size: 20px;
+      font-size: 16px;
       border: 2px solid @darkBlue;
       color: @darkBlue;
-      padding-bottom: 0.1em;
+      padding-top: 2px;
       margin-right: 0;
     }
 
