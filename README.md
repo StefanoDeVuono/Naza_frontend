@@ -67,11 +67,13 @@ If this is your first time deploying to production, you will need to add the ins
 
     git remote add production https://blue-scarlet-dba3.squarespace.com/template.git
 
-When you are ready to deploy to master, merge staging into master and run:
+When you are ready to deploy to master, run:
 
     git push production master
 
 This will update the production Squarespace.
+
+This workflow means that master may not contain the code currently deployed to production.
 
 ## Hair Colors
 
