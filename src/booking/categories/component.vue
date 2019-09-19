@@ -33,8 +33,9 @@
               <div class="category-container-inner">
                 <div class="image-container">
                     <img
-                            :alt="categories[0].name"
-                            :src="`assets/categories/group-6@3x.png`"
+                            :alt="category.name"
+                            :data-src="CURL_ASSET_ROOT + getImageUrl(category)"
+                            v-bind:src="CURL_ASSET_ROOT + getImageUrl(category)"
                     />
                 </div>
                 <div class="category-details-container">
