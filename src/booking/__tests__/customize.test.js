@@ -61,6 +61,7 @@ describe('Customize', () => {
   it('initializes the product', async () => {
     await flushPromises()
     expect(Storage.sharedState.product).toBeDefined()
+    expect(Object.keys(Storage.sharedState.customizations)).toHaveLength(6)
   })
 
   it('displays the style', async () => {
