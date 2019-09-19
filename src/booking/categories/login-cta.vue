@@ -17,7 +17,7 @@ import Storage from 'common/storage'
 export default {
   data() {
     return {
-      shared: Storage.sharedState
+      shared: Storage.sharedState,
     }
   },
 }

@@ -19,7 +19,7 @@
         aria-label="Previous"
         v-on:click="goToPrevious()"
       >
-        <ChevronIcon class="VueCarousel-arrow-icon"/>
+        <ChevronIcon class="VueCarousel-arrow-icon" />
       </button>
       <button
         v-for="(page, index) in paginationCount"
@@ -43,7 +43,7 @@
         aria-label="Next"
         v-on:click="goToNext()"
       >
-      <ChevronIcon class="VueCarousel-arrow-icon" />
+        <ChevronIcon class="VueCarousel-arrow-icon" />
       </button>
     </div>
   </div>
