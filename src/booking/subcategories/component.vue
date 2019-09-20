@@ -217,7 +217,7 @@ export default {
     CustomCarouselPaginator,
     SqButton,
     Carousel,
-    Slide
+    Slide,
   },
 }
 </script>

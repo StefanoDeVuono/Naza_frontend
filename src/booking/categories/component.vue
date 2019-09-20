@@ -117,7 +117,7 @@ export default {
     CustomCarouselPaginator,
     StepHeader,
     Carousel,
-    Slide
+    Slide,
   },
 }
 </script>

@@ -33,7 +33,11 @@ export default {
       return color.presentation.replace(/[^a-zA-Z]/g, '_')
     },
     getAssetPath: function(color) {
-      return 'https://projectcurl-assets.s3.amazonaws.com/HairColors/' + window.encodeURIComponent(color.presentation) + '.png'
+      return (
+        'https://projectcurl-assets.s3.amazonaws.com/HairColors/' +
+        window.encodeURIComponent(color.presentation) +
+        '.png'
+      )
     },
   },
 
