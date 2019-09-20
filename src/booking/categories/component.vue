@@ -15,48 +15,49 @@
           <div class="cta-text"><h2>Select one of the options below</h2></div>
         </div>
 
-          <carousel
-              ref="carousel"
-              :perPage="1"
-              :centerMode="true"
-              :paginationPadding="5"
-              paginationColor="rgba(28, 48, 66, 0.4)"
-              paginationActiveColor="#bc4940"
-          >
-            <template v-slot:pagination>
-              <CustomCarouselPaginator
-                  @paginationclick="$refs.carousel.goToPage($event, 'pagination')"
-              />
-            </template>
+        <carousel
+            ref="carousel"
+            :perPage="1"
+            :centerMode="true"
+            :paginationPadding="5"
+            :spacePadding="50"
+            paginationColor="rgba(28, 48, 66, 0.4)"
+            paginationActiveColor="#bc4940"
+        >
+          <template v-slot:pagination>
+            <CustomCarouselPaginator
+                @paginationclick="$refs.carousel.goToPage($event, 'pagination')"
+            />
+          </template>
 
-            <slide class="category-container" v-for="category in categories" v-bind:key="category.id">
-              <div class="category-container-inner">
-                <div class="image-container">
-                    <img
-                            :alt="category.name"
-                            :data-src="CURL_ASSET_ROOT + getImageUrl(category)"
-                            v-bind:src="CURL_ASSET_ROOT + getImageUrl(category)"
-                    />
-                </div>
-                <div class="category-details-container">
-                  <div class="category-name"><h1>{{category.name}}</h1></div>
-                  <div class="category-description"><span>{{category.meta_description}}</span></div>
-                    <router-link
-                            @click.native="$event.stopImmediatePropagation()"
-                            :to="{ name: 'subcategories', params: { categoryId: category.id } }"
-                    >
-                        <div class="category-select">
-                            <span>
-                              Select This Style <span class="select-arrow">&rarr;</span>
-                            </span>
-                        </div>
-                    </router-link>
-
-                </div>
+          <slide class="category-container" v-for="category in categories" v-bind:key="category.id">
+            <div class="category-container-inner">
+              <div class="image-container">
+                  <img
+                          :alt="category.name"
+                          :data-src="CURL_ASSET_ROOT + getImageUrl(category)"
+                          v-bind:src="CURL_ASSET_ROOT + getImageUrl(category)"
+                  />
               </div>
-            </slide>
-          </carousel>
-        </div>
+              <div class="category-details-container">
+                <div class="category-name"><h1>{{category.name}}</h1></div>
+                <div class="category-description"><span>{{category.meta_description}}</span></div>
+                  <router-link
+                          @click.native="$event.stopImmediatePropagation()"
+                          :to="{ name: 'subcategories', params: { categoryId: category.id } }"
+                  >
+                      <div class="category-select">
+                          <span>
+                            Select This Style <span class="select-arrow">&rarr;</span>
+                          </span>
+                      </div>
+                  </router-link>
+
+              </div>
+            </div>
+          </slide>
+        </carousel>
+      </div>
     </Content>
   </div>
 </template>
@@ -176,13 +177,14 @@ export default {
   }
 
   .category-container {
-    background-color: @darkBlue;
     display: flex;
     justify-content: center;
+    padding: 0 10px;
   }
 
   .category-container-inner {
     padding: 12px;
+    background-color: @darkBlue;
   }
 
   .category-details-container {
@@ -221,5 +223,20 @@ export default {
     color: @darkBlue;
     background-color: #ffffff;
     text-transform: uppercase;
+  }
+
+  .VueCarousel {
+    .ignore-parent-padding();
+  }
+
+  .VueCarousel-slide {
+    box-sizing: border-box;
+
+    img {
+      margin: auto;
+      height: 334px;
+      width: 100%;
+      object-fit: cover;
+    }
   }
 </style>
