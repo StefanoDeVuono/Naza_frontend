@@ -17,31 +17,31 @@
 </template>
 
 <script>
-  import { formattedPrice, formattedHours } from 'common/utils'
+import { formattedPrice, formattedHours } from 'common/utils'
 
-  export default {
-    computed: {
-      prettyPrice() {
-        return formattedPrice(this.totalPrice)
-      },
-
-      prettyDuration() {
-        return formattedHours(this.totalDuration)
-      }
+export default {
+  computed: {
+    prettyPrice() {
+      return formattedPrice(this.totalPrice)
     },
 
-    props: {
-      totalDuration: Number,
-      totalPrice: Number,
-      showBackArrow: Boolean
+    prettyDuration() {
+      return formattedHours(this.totalDuration)
     },
+  },
 
-    methods: {
-      goBack() {
-        this.$router.go(-1)
-      }
-    }
-  }
+  props: {
+    totalDuration: Number,
+    totalPrice: Number,
+    showBackArrow: Boolean,
+  },
+
+  methods: {
+    goBack() {
+      this.$router.go(-1)
+    },
+  },
+}
 </script>
 
 <style lang="less" scoped>

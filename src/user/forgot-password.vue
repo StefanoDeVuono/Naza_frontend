@@ -2,7 +2,10 @@
   <modal class="modal" name="forgot-password" width="90%">
     <div v-show="isSubmitted" class="confirm-password">
       <div>
-        <p>You will receive an email shortly with instructions on how to change your password.</p>
+        <p>
+          You will receive an email shortly with instructions on how to change
+          your password.
+        </p>
 
         <input
           class="submit-button"
@@ -49,48 +52,48 @@
 </template>
 
 <script>
-  import { getAppServer } from 'common/constants'
+import { getAppServer } from 'common/constants'
 
-  export default {
-    props: {
-      initialEmail: String
-    },
+export default {
+  props: {
+    initialEmail: String,
+  },
 
-    methods: {
-      submitForm(event) {
-        event.stopPropagation()
-        event.preventDefault()
+  methods: {
+    submitForm(event) {
+      event.stopPropagation()
+      event.preventDefault()
 
-        const data = {
-          spree_user: {
-            email: this.email
-          }
-        }
-
-        fetch(getAppServer() + '/naza/user_passwords.json', {
-          method: 'POST',
-          body: JSON.stringify(data),
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        }).then(() => {
-          this.isSubmitted = true
-        })
-      },
-
-      closeModal() {
-        this.$modal.hide('forgot-password')
-        this.isSubmitted = false
+      const data = {
+        spree_user: {
+          email: this.email,
+        },
       }
+
+      fetch(getAppServer() + '/naza/user_passwords.json', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }).then(() => {
+        this.isSubmitted = true
+      })
     },
 
-    data() {
-      return {
-        email: this.initialEmail,
-        isSubmitted: false,
-      }
+    closeModal() {
+      this.$modal.hide('forgot-password')
+      this.isSubmitted = false
     },
-  }
+  },
+
+  data() {
+    return {
+      email: this.initialEmail,
+      isSubmitted: false,
+    }
+  },
+}
 </script>
 
 <style lang="less">

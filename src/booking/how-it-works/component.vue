@@ -33,8 +33,8 @@
               <img src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/Step1.jpeg" />
               <h2 class="step-title">Select a Style and Customize It</h2>
               <p>
-                Personal your style by choosing color, length, volume, and size of
-                your favorite hairstyle.
+                Personal your style by choosing color, length, volume, and size
+                of your favorite hairstyle.
               </p>
             </Slide>
 
@@ -90,7 +90,7 @@ import Footer from 'common/footer.vue'
 export default {
   data() {
     return {
-      showSkipAndStart: true
+      showSkipAndStart: true,
     }
   },
 
@@ -101,14 +101,14 @@ export default {
       } else {
         this.showSkipAndStart = true
       }
-    }
+    },
   },
   components: {
     Carousel,
     Slide,
     CustomCarouselPaginator,
     FlowerImage,
-    Footer
+    Footer,
   },
 }
 </script>

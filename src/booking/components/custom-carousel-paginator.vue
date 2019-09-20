@@ -19,7 +19,7 @@
         aria-label="Previous"
         v-on:click="goToPrevious()"
       >
-        <ChevronIcon class="VueCarousel-arrow-icon"/>
+        <ChevronIcon class="VueCarousel-arrow-icon" />
       </button>
       <button
         v-for="(page, index) in paginationCount"
@@ -43,7 +43,7 @@
         aria-label="Next"
         v-on:click="goToNext()"
       >
-      <ChevronIcon class="VueCarousel-arrow-icon" />
+        <ChevronIcon class="VueCarousel-arrow-icon" />
       </button>
     </div>
   </div>
@@ -185,7 +185,9 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="less">
+@import '../../common/utils.less';
+
 .VueCarousel-pagination {
   width: 100%;
   text-align: center;
@@ -210,6 +212,10 @@ export default {
 .VueCarousel-arrow {
   margin-top: 10px;
   transform: translateY(2px);
+
+  svg path {
+    fill: @darkBlue;
+  }
 }
 
 .VueCarousel-arrow--prev {
