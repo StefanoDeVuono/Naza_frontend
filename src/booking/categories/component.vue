@@ -71,10 +71,10 @@ import StepHeader from '../components/step-header.vue'
 import Content from '../components/content.vue'
 import { getSpreeServer, getCurlAssetRoot } from 'common/constants'
 import 'whatwg-fetch'
-import { Carousel, Slide } from 'vue-carousel'
 import { parse } from 'jsonapi-parse'
 import { sortBy, reject, prop, compose, path } from 'ramda'
 import LoginCta from './login-cta.vue'
+import { Carousel, Slide } from 'vue-carousel'
 import CustomCarouselPaginator from '../components/custom-carousel-paginator.vue'
 
 export default {
@@ -139,6 +139,7 @@ export default {
 
 .image-container {
   margin-bottom: 20px;
+
 
   img {
     width: 100%;
