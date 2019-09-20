@@ -30,7 +30,7 @@
             </template>
 
             <Slide data-index="0">
-              <img src="assets/images/HowItWorks1.jpeg" />
+              <img src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/Step1.jpeg" />
               <h2 class="step-title">Select a Style and Customize It</h2>
               <p>
                 Personal your style by choosing color, length, volume, and size of
@@ -39,18 +39,22 @@
             </Slide>
 
             <Slide data-index="1">
+               <img src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/Step2.jpeg" />
               <h2 class="step-title">Step 2</h2>
             </Slide>
 
             <Slide data-index="2">
+               <img src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/Step3.jpeg" />
               <h2 class="step-title">Step 3</h2>
             </Slide>
 
             <Slide data-index="3">
+               <img src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/Step4.jpeg" />
               <h2 class="step-title">Step 4</h2>
             </Slide>
 
             <Slide data-index="4">
+               <img src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/Step5.jpeg" />
               <h2 class="step-title">Step 5</h2>
               <p>
                 <router-link
