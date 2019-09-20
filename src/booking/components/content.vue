@@ -75,7 +75,6 @@ export default {
   margin-top: 30px;
 
   .v-step {
-    font-family: 'Moret', serif;
     margin-right: 0;
     flex-basis: 24%;
 
@@ -94,23 +93,26 @@ export default {
     }
 
     .index {
+      font-family: 'Moret', serif;
+      font-size: 16px;
+      background-color: white;
       width: 30px;
       height: 30px;
       box-shadow: none;
-      font-size: 16px;
       border: 2px solid @darkBlue;
       color: @darkBlue;
-      padding-top: 2px;
+      padding: 2px 0;
       margin-right: 0;
+      opacity: 1;
     }
 
-    &.is-visited .index {
-      color: @orange;
+    &.is-disabled .index {
+      opacity: 0.4;
     }
 
     &.is-active .label .index {
       background-color: @darkBlue;
-      border: 2px solid;
+      border: 2px solid @darkBlue;
       color: white;
     }
   }

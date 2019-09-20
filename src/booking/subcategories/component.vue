@@ -1,8 +1,6 @@
 <template>
   <div>
-    <Header
-      title="Our Services"
-      instructions="That though the radiance which was once so bright be now forever taken from my sight."
+    <LightHeader
       :showBackArrow="true"
       :totalPrice="totalPrice"
       :totalDuration="totalDuration"
@@ -77,7 +75,7 @@
 </template>
 
 <script>
-import Header from '../components/header.vue'
+import LightHeader from '../components/light-header.vue'
 import Content from '../components/content.vue'
 import DurationAndPrice from '../components/duration-and-price.vue'
 import { getSpreeServer, getCurlAssetRoot } from 'common/constants'
@@ -208,7 +206,7 @@ export default {
     this.fetchData()
   },
   components: {
-    Header,
+    LightHeader,
     Content,
     DurationAndPrice,
   },
@@ -236,10 +234,6 @@ p.cta {
 .category {
   .ignore-parent-padding();
   .ignore-parent-padding--add-padding(0.5);
-}
-
-.category:nth-child(odd) {
-  background-color: #f7f6f2;
 }
 
 h1.subcategory {
