@@ -48,6 +48,7 @@ export default {
 
   data: function() {
     return {
+      value: this.calculateInitialValue(),
       supplementalPrice: undefined,
       isDescriptionVisible: false,
       description: undefined,
@@ -87,6 +88,18 @@ export default {
   },
 
   methods: {
+    calculateInitialValue() {
+      if (this.options.length === 0) {
+        return null
+      }
+
+      if (this.options.length <= 2) {
+        return this.options[0].presentation
+      }
+
+      return this.options[1].presentation
+    },
+
     expandHelp() {
       this.isDescriptionVisible = true
     },
