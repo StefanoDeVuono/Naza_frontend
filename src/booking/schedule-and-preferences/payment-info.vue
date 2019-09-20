@@ -1,5 +1,9 @@
 <template>
-  <Section title="Payment Information" name="payment-information" :initialVisible="!!shared.userToken">
+  <Section
+    title="Payment Information"
+    name="payment-information"
+    :initialVisible="!!shared.userToken"
+  >
     <Loading :active.sync="isLoading" :is-full-page="true" />
 
     <template v-slot:header-icon>

@@ -4,9 +4,21 @@
       <div class="col sqs-col-5 span-5">
         <h3>NAZA</h3>
         <ul>
-          <li><router-link @click.native="$event.stopImmediatePropagation()" :to="{ name: 'categories' }">Book Appointment</router-link></li>
+          <li>
+            <router-link
+              @click.native="$event.stopImmediatePropagation()"
+              :to="{ name: 'categories' }"
+              >Book Appointment</router-link
+            >
+          </li>
           <li>Our Services</li>
-          <li><router-link @click.native="$event.stopImmediatePropagation()" :to="{ name: 'how-it-works' }">How Naza Works</router-link></li>
+          <li>
+            <router-link
+              @click.native="$event.stopImmediatePropagation()"
+              :to="{ name: 'how-it-works' }"
+              >How Naza Works</router-link
+            >
+          </li>
           <li>Our Stylists</li>
         </ul>
       </div>
@@ -32,7 +44,9 @@
 
         <h2>Account</h2>
         <ul>
-          <li v-if="shared.userToken"><a @click.prevent.stop="logOut">Log Out</a></li>
+          <li v-if="shared.userToken">
+            <a @click.prevent.stop="logOut">Log Out</a>
+          </li>
         </ul>
       </div>
     </div>
@@ -45,7 +59,7 @@ import Storage from 'common/storage'
 export default {
   data() {
     return {
-      shared: Storage.sharedState
+      shared: Storage.sharedState,
     }
   },
 
@@ -53,8 +67,8 @@ export default {
     logOut() {
       this.$session.remove('userToken')
       this.shared.userToken = null
-    }
-  }
+    },
+  },
 }
 </script>
 

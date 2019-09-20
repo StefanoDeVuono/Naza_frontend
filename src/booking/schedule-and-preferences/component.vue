@@ -67,7 +67,10 @@ export default {
 
   computed: {
     isDisabled: function() {
-      return !this.isLoading && (!this.isPaymentSaved || !this.shared.canReceiveSmsReminders)
+      return (
+        !this.isLoading &&
+        (!this.isPaymentSaved || !this.shared.canReceiveSmsReminders)
+      )
     },
   },
 

@@ -151,6 +151,21 @@ export default {
   },
 
   methods: {
+    initializeCustomizations() {
+      this.shared.product.option_types.forEach(optionType => {
+        const values = optionType.option_values
+        if (values.length <= 2) {
+          Storage.setCustomization(
+            optionType.name,
+            optionType.name,
+            values[0].presentation
+          )
+        } else if (values.length > 2) {
+          Storage.setCustomization(optionType.name, values[1].presentation)
+        }
+      })
+    },
+
     fetchStyles() {
       var productId = this.$route.params.productId
       if (!productId) {
@@ -165,6 +180,7 @@ export default {
         .then(json => {
           Storage.setProduct(parse(json).data)
           Storage.setTaxonName(this.findTaxonName())
+          this.initializeCustomizations()
         })
     },
 

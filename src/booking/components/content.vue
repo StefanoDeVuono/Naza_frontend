@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="content">
-      <img class="border-top" src="assets/content/border-top.svg">
+      <img class="border-top" src="assets/content/border-top.svg" />
       <div class="progress-bar">
         <VueStepper :steps="steps" v-model="step"></VueStepper>
       </div>
