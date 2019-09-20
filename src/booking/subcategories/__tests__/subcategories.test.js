@@ -7,6 +7,11 @@ import flushPromises from 'flush-promises'
 import Storage from 'common/storage'
 import { mockFetch, restoreFetch } from 'common/testHelper'
 
+jest.mock('../../images/chevron.svg', () => {
+  return {
+  }
+})
+
 describe('Subcategories', () => {
   let oldFetch
   let wrapper
@@ -38,24 +43,6 @@ describe('Subcategories', () => {
 
   afterEach(() => {
     restoreFetch()
-  })
-
-  it('shows the full description after clicking more', async () => {
-    const more = wrapper.find('.expand-desc')
-    more.trigger('click')
-    await flushPromises()
-    const truncDesc = wrapper.find('.trunc-desc')
-    const fullDesc = wrapper.find('.full-desc')
-    expect(truncDesc.isVisible()).toBe(false)
-    expect(fullDesc.isVisible()).toBe(true)
-  })
-
-  it('shows the button after clicking on a style', async () => {
-    const style = wrapper.find('.option')
-    style.trigger('click')
-    await flushPromises()
-    const button = wrapper.find('.select-this-style')
-    expect(button.isVisible()).toBe(true)
   })
 
   it('initializes the subcategories', async () => {

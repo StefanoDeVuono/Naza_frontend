@@ -18,7 +18,7 @@
         v-for="(styles, subcategory) in stylesBySubcategory"
       >
         <h1 class="subcategory">{{ subcategory }}</h1>
-        <carousel
+        <Carousel
           :ref="'carousel' + subcategory"
           :perPage="1"
           :centerMode="true"
@@ -33,7 +33,7 @@
             />
           </template>
 
-          <slide :key="style.name" v-for="style in styles">
+          <Slide :key="style.name" v-for="style in styles">
             <div class="container">
               <div class="slide">
                 <img
@@ -63,8 +63,8 @@
                 </router-link>
               </div>
             </div>
-          </slide>
-        </carousel>
+          </Slide>
+        </Carousel>
       </div>
     </Content>
   </div>
@@ -97,6 +97,7 @@ import {
   forEach,
   flatten,
 } from 'ramda'
+import { Slide, Carousel } from 'vue-carousel'
 
 // TODO: update json files
 
@@ -215,6 +216,8 @@ export default {
     StepHeader,
     CustomCarouselPaginator,
     SqButton,
+    Carousel,
+    Slide
   },
 }
 </script>

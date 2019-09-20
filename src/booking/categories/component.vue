@@ -8,7 +8,7 @@
           imageUrl="assets/categories/cta-header@3x.png"
           ctaText="Select one of the options below"
         />
-        <carousel
+        <Carousel
           ref="carousel"
           :perPage="1"
           :centerMode="true"
@@ -23,7 +23,7 @@
             />
           </template>
 
-          <slide
+          <Slide
             class="category-container"
             v-for="category in categories"
             v-bind:key="category.id"
@@ -58,8 +58,8 @@
                 </router-link>
               </div>
             </div>
-          </slide>
-        </carousel>
+          </Slide>
+        </Carousel>
       </div>
     </Content>
   </div>
@@ -71,6 +71,7 @@ import StepHeader from '../components/step-header.vue'
 import Content from '../components/content.vue'
 import { getSpreeServer, getCurlAssetRoot } from 'common/constants'
 import 'whatwg-fetch'
+import { Carousel, Slide } from 'vue-carousel'
 import { parse } from 'jsonapi-parse'
 import { sortBy, reject, prop, compose, path } from 'ramda'
 import LoginCta from './login-cta.vue'
@@ -115,6 +116,8 @@ export default {
     LoginCta,
     CustomCarouselPaginator,
     StepHeader,
+    Carousel,
+    Slide
   },
 }
 </script>
