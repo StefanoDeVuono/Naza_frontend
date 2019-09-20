@@ -223,6 +223,7 @@ export default {
     color: @darkBlue;
     background-color: #ffffff;
     text-transform: uppercase;
+    line-height: normal;
   }
 
   .VueCarousel {

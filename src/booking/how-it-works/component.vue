@@ -152,20 +152,6 @@ export default {
     }
   }
 
-  @font-face {
-    font-family: 'ttcommons';
-    src: url('../../fonts/TTCommons-Medium.otf');
-    font-weight: normal;
-    font-style: normal;
-  }
-
-  @font-face {
-    font-family: 'ttcommons';
-    src: url('../../fonts/TTCommons-DemiBold.otf');
-    font-weight: bold;
-    font-style: normal;
-  }
-
   .how-it-works {
     color: white;
     background-color: @brown;
