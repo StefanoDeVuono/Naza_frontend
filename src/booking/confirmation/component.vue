@@ -6,7 +6,7 @@
         <p>We can&rsquo;t wait to get you styled!</p>
       </div>
 
-      <img src="assets/copy01.jpeg" class="image" />
+      <img src="https://projectcurl-assets.s3.amazonaws.com/Confirmation/Hero.jpeg" class="image" />
     </div>
 
     <div class="check-container">
