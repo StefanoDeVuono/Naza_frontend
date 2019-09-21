@@ -9,13 +9,11 @@ import HowItWorks from './booking/how-it-works/component.vue'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueSessionStorage from 'vue-sessionstorage'
-import VueCarousel from 'vue-carousel'
 import { loadUserFromToken } from 'common/utils'
 import VueModal from 'vue-js-modal'
 
 Vue.use(VueSessionStorage)
 Vue.use(VueRouter)
-Vue.use(VueCarousel)
 Vue.use(VueModal)
 
 var routes = [
