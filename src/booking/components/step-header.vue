@@ -5,7 +5,7 @@
     </div>
     <div class="cta-header-container">
       <div class="cta-header">
-        <img alt="Pick Your Style" :src="imageUrl" />
+        <img :alt="stepTitle" :src="imageUrl" />
       </div>
     </div>
     <div class="cta-text"><h2>Select one of the options below</h2></div>
