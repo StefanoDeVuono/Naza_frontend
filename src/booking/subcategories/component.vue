@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="subcategories">
     <LightHeader
       :showBackArrow="true"
       :totalPrice="totalPrice"
@@ -304,11 +304,19 @@ h1.subcategory {
 </style>
 
 <style lang="less">
-.slide .duration-and-price .container label {
-  color: white;
-}
+@import '../../common/utils.less';
 
-.slide .duration-and-price .divider {
-  border-left: 1px solid white;
+.subcategories {
+  .slide .duration-and-price .container label {
+    color: white;
+  }
+
+  .slide .duration-and-price .divider {
+    border-left: 1px solid white;
+  }
+  
+  .VueCarousel-arrow svg path {
+    fill: @darkBlue;
+  }
 }
 </style>

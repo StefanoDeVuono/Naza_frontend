@@ -196,19 +196,29 @@ export default {
   text-transform: uppercase;
   line-height: normal;
 }
+</style>
 
-.VueCarousel {
-  .ignore-parent-padding();
-}
+<style lang="less">
+@import '../../common/utils.less';
 
-.VueCarousel-slide {
-  box-sizing: border-box;
+.categories {
+  .VueCarousel {
+    .ignore-parent-padding();
+  }
 
-  img {
-    margin: auto;
-    height: 334px;
-    width: 100%;
-    object-fit: cover;
+  .VueCarousel-slide {
+    box-sizing: border-box;
+
+    img {
+      margin: auto;
+      height: 334px;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .VueCarousel-arrow svg path {
+    fill: @darkBlue;
   }
 }
 </style>

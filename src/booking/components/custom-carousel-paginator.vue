@@ -214,7 +214,7 @@ export default {
   transform: translateY(2px);
 
   svg path {
-    fill: @darkBlue;
+    //fill: @darkBlue;
   }
 }
 
