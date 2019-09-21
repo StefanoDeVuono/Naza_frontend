@@ -130,6 +130,7 @@ export default {
 }
 
 .categories {
+  .ignore-parent-padding();
   margin-bottom: 37px;
 
   .VueCarousel-arrow-icon path {
