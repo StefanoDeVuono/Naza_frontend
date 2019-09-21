@@ -7,8 +7,7 @@ import flushPromises from 'flush-promises'
 import Storage from 'common/storage'
 
 jest.mock('../../images/chevron.svg', () => {
-  return {
-  }
+  return {}
 })
 
 const mockFetchResponse = returnObj => {

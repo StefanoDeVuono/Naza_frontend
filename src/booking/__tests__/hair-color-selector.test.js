@@ -29,6 +29,6 @@ describe('HairColorSelector', () => {
   })
 
   it('renders the image', () => {
-    expect(wrapper.html()).toMatch(/assets\/hair-colors\/red\.jpeg/)
+    expect(wrapper.html()).toMatch(/\/red\.png/)
   })
 })

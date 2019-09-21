@@ -30,8 +30,14 @@
             </template>
 
             <Slide data-index="0">
-              <img src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/Step1.jpeg" />
-              <h2 class="step-title">Select a Style and Customize It</h2>
+              <img
+                class="slide-img"
+                src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/Step1.jpeg"
+              />
+              <h2 class="step-title">
+                Select a Style and<br />
+                Customize It
+              </h2>
               <p>
                 Personal your style by choosing color, length, volume, and size
                 of your favorite hairstyle.
@@ -39,22 +45,34 @@
             </Slide>
 
             <Slide data-index="1">
-               <img src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/Step2.jpeg" />
+              <img
+                class="slide-img"
+                src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/Step2.jpeg"
+              />
               <h2 class="step-title">Step 2</h2>
             </Slide>
 
             <Slide data-index="2">
-               <img src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/Step3.jpeg" />
+              <img
+                class="slide-img"
+                src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/Step3.jpeg"
+              />
               <h2 class="step-title">Step 3</h2>
             </Slide>
 
             <Slide data-index="3">
-               <img src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/Step4.jpeg" />
+              <img
+                class="slide-img"
+                src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/Step4.jpeg"
+              />
               <h2 class="step-title">Step 4</h2>
             </Slide>
 
             <Slide data-index="4">
-               <img src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/Step5.jpeg" />
+              <img
+                class="slide-img"
+                src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/Step5.jpeg"
+              />
               <h2 class="step-title">Step 5</h2>
               <p>
                 <router-link
@@ -113,7 +131,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 @import '../../common/utils.less';
 @cornerSize: 10px;
 @cornerBorderWidth: 2px;
@@ -124,6 +142,16 @@ export default {
   .ignore-parent-padding();
   position: relative;
   display: flex;
+
+  img {
+    width: 100%;
+  }
+
+  img.slide-img {
+    height: 360px;
+    object-fit: cover;
+    width: 100%;
+  }
 
   .how-it-works--corner {
     position: absolute;
@@ -152,20 +180,6 @@ export default {
     }
   }
 
-  @font-face {
-    font-family: 'ttcommons';
-    src: url('../../fonts/TTCommons-Medium.otf');
-    font-weight: normal;
-    font-style: normal;
-  }
-
-  @font-face {
-    font-family: 'ttcommons';
-    src: url('../../fonts/TTCommons-DemiBold.otf');
-    font-weight: bold;
-    font-style: normal;
-  }
-
   .how-it-works {
     color: white;
     background-color: @brown;
@@ -189,7 +203,6 @@ export default {
 
         img {
           width: auto;
-          height: auto;
         }
 
         .title {
@@ -215,7 +228,7 @@ export default {
 
       .skip-and-start {
         margin-top: 10px;
-        font-family: 'ttcommons', sans-serif;
+        font-family: 'TTCommons', sans-serif;
         font-weight: bold;
         text-align: center;
         text-transform: uppercase;

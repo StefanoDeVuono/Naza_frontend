@@ -1,14 +1,13 @@
 <template>
-  <div class="sqs-block-button sqs-block button-block">
+  <div class="sqs-block-button sqs-block button-block" :class="{ inverted }">
     <div class="sqs-block-button-content sqs-block-content">
       <div class="sqs-block-button-container--center">
         <div
           class="sqs-block-button-element--medium sqs-block-button-element"
           v-bind:class="{ disabled: disabled }"
           @click="handleClick"
-        >
-          {{ label }}
-        </div>
+          v-html="label"
+        ></div>
       </div>
     </div>
   </div>
@@ -30,6 +29,10 @@ export default {
     label: String,
     disabled: Boolean,
     onClick: Function,
+    inverted: {
+      type: Boolean,
+      default: false,
+    },
   },
 }
 </script>
@@ -46,5 +49,16 @@ export default {
     border: 2px solid @darkBlue;
     font-weight: bold;
   }
+}
+
+.sqs-block-button.inverted .sqs-block-button-element {
+  background-color: white;
+  color: @darkBlue;
+  letter-spacing: normal;
+  font-size: 12px;
+  font-weight: bold;
+  border: 1px solid @darkBlue;
+  padding: 15px;
+  margin: 0 10px;
 }
 </style>

@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="content">
-      <img class="border-top" src="assets/content/border-top.svg" />
+      <div class="border-top">
+        <img src="assets/content/border-top.svg" />
+      </div>
       <div class="progress-bar">
         <VueStepper :steps="steps" v-model="step"></VueStepper>
       </div>
@@ -57,26 +59,26 @@ export default {
   margin-bottom: 30px;
   margin-right: 54px;
   margin-left: 54px;
-  font-family: Moret;
-  font-size: 18px;
-  font-weight: 600;
 }
 
 .content {
-  display: flex;
-  flex-direction: column;
-  padding-bottom: @contentPadding;
-  .ignore-parent-padding();
   background-color: @lightGray;
+  padding-bottom: 50px;
 }
 
 .border-top {
-  width: 100%;
+  .ignore-parent-padding();
   height: auto;
   margin-bottom: 30px;
+
+  img {
+    width: 100%;
+  }
 }
 
 .v-stepper {
+  margin-top: 30px;
+
   .v-step {
     margin-right: 0;
     flex-basis: 24%;
@@ -96,23 +98,26 @@ export default {
     }
 
     .index {
+      font-family: 'Moret', serif;
+      font-size: 16px;
+      background-color: white;
       width: 30px;
       height: 30px;
       box-shadow: none;
-      font-size: 20px;
       border: 2px solid @darkBlue;
       color: @darkBlue;
-      padding-bottom: 0.1em;
+      padding: 2px 0;
       margin-right: 0;
+      opacity: 1;
     }
 
-    &.is-visited .index {
-      color: @orange;
+    &.is-disabled .index {
+      opacity: 0.4;
     }
 
     &.is-active .label .index {
       background-color: @darkBlue;
-      border: 2px solid;
+      border: 2px solid @darkBlue;
       color: white;
     }
   }
