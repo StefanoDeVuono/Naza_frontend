@@ -314,7 +314,7 @@ h1.subcategory {
   .slide .duration-and-price .divider {
     border-left: 1px solid white;
   }
-  
+
   .VueCarousel-arrow svg path {
     fill: @darkBlue;
   }

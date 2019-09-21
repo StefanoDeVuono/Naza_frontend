@@ -140,7 +140,6 @@ export default {
 .image-container {
   margin-bottom: 20px;
 
-
   img {
     width: 100%;
     height: auto;

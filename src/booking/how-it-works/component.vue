@@ -34,7 +34,10 @@
                 class="slide-img"
                 src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/Step1.jpeg"
               />
-              <h2 class="step-title">Select a Style and<br> Customize It</h2>
+              <h2 class="step-title">
+                Select a Style and<br />
+                Customize It
+              </h2>
               <p>
                 Personal your style by choosing color, length, volume, and size
                 of your favorite hairstyle.
@@ -199,7 +202,7 @@ export default {
         padding-bottom: 40px;
 
         img {
-          width: auto;;
+          width: auto;
         }
 
         .title {
