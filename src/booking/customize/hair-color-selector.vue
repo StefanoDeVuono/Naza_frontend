@@ -2,57 +2,60 @@
   <div class="hair-color-selector">
     <h2>Color</h2>
     <div class="colors">
-      <div v-for="color in colors">
-        <input
-          type="radio"
-          :id="color.presentation + '-' + getSafeName(color)"
-          :value="color.presentation"
-          name="color"
-          v-model="localValue"
-        />
-        <label :for="color.presentation + '-' + getSafeName(color)"
-          ><img :src="getAssetPath(color)"
-        /></label>
+      <div
+        v-for="color in colors"
+        class="color-container"
+        @click="handlePress(color)"
+      >
+        <div
+          :class="{
+            color: true,
+            selected: selectedColor === color.presentation,
+          }"
+        >
+          <img :src="getAssetUrl(color)" />
+        </div>
+        <div class="desc"><strong>Color:</strong> {{ color.presentation }}</div>
       </div>
-    </div>
-    <div class="selected-color" v-show="selectedColor">
-      <strong>Your Choice:</strong> {{ selectedColor }}
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  // @param {Color[]} colors List of all the available colors
-  // @param {string} selectedColor The currently selected color
-  // @param {(color: string) => void} A callback to handle selection
-  props: ['colors', 'selectedColor', 'onPress'],
-
-  methods: {
-    getSafeName: function(color) {
-      return color.presentation.replace(/[^a-zA-Z]/g, '_')
-    },
-    getAssetPath: function(color) {
-      return 'https://projectcurl-assets.s3.amazonaws.com/HairColors/' + window.encodeURIComponent(color.presentation) + '.png'
-    },
+  data() {
+    return {
+      selectedColor: undefined,
+    }
   },
 
-  computed: {
-    localValue: {
-      get() {
-        return this.value
-      },
-      set(x) {
-        this.onPress(x)
-      },
+  // @param {Color[]} colors List of all the available colors
+  // @param {(color: string) => void} A callback to handle selection
+  props: ['colors', 'onPress'],
+
+  methods: {
+    handlePress(color) {
+      this.selectedColor = color.presentation
+      this.onPress(color)
+    },
+
+    getSafeName(color) {
+      return color.presentation.replace(/[^a-zA-Z]/g, '_')
+    },
+
+    getAssetUrl(color) {
+      return (
+        'https://projectcurl-assets.s3.amazonaws.com/HairColors/' +
+        window.encodeURIComponent(color.presentation) +
+        '.png'
+      )
     },
   },
 }
 </script>
 
-<style lang="less">
-@darkBlue: #1c3042;
-@selection: #bc5940;
+<style lang="less" scoped>
+@import '../../common/utils.less';
 
 .hair-color-selector {
   h2 {
@@ -66,33 +69,42 @@ export default {
 
   .colors {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 15px;
-    margin-top: 25px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5px;
+    margin-top: 10px;
 
     img {
-      width: 43px;
-      height: 43px;
-      border-radius: 50%;
-      border: 3px solid transparent;
-    }
-
-    input[type='radio'] {
-      opacity: 0;
-      position: fixed;
-      width: 0;
-
-      &:checked + label img,
-      &:focus + label img {
-        border: 3px solid @selection;
-      }
+      width: 100%;
+      height: auto;
     }
   }
 
-  .selected-color {
+  .color {
+    box-sizing: border-box;
+    border: 3px solid transparent;
+    line-height: 0;
+
+    img {
+      box-sizing: border-box;
+      width: 100%;
+      height: auto;
+      border: 2px solid @lightGray;
+    }
+
+    &.selected {
+      border: 3px solid @darkBlue;
+    }
+  }
+
+  .color-container .desc {
+    strong {
+      color: @darkBlue;
+    }
+
+    font-family: 'TTCommons', sans-serif;
     font-size: 14px;
-    color: @darkBlue;
-    text-align: center;
+    line-height: normal;
+    margin: 0 3px;
   }
 }
 </style>
