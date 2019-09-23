@@ -7,6 +7,10 @@ import { shallowMount, createLocalVue } from '@vue/test-utils'
 import flushPromises from 'flush-promises'
 import Storage from 'common/storage'
 
+jest.mock('../../images/chevron.svg', () => {
+  return {}
+})
+
 const mockFetchResponse = returnObj => {
   const productFetchResponse = {
     json: jest.fn(() => Promise.resolve(productFetchResponseJson)),

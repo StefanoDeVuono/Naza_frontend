@@ -13,7 +13,7 @@
           :perPage="1"
           :centerMode="true"
           :paginationPadding="5"
-          :spacePadding="50"
+          :spacePadding="40"
           paginationColor="rgba(28, 48, 66, 0.4)"
           paginationActiveColor="#bc4940"
         >
@@ -202,10 +202,6 @@ export default {
 @import '../../common/utils.less';
 
 .categories {
-  .VueCarousel {
-    .ignore-parent-padding();
-  }
-
   .VueCarousel-slide {
     box-sizing: border-box;
 

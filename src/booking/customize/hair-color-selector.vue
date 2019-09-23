@@ -1,6 +1,6 @@
 <template>
   <div class="hair-color-selector">
-    <h2>Color</h2>
+    <h3>Select Hair Color</h3>
     <div class="colors">
       <div
         v-for="color in colors"
@@ -58,13 +58,14 @@ export default {
 @import '../../common/utils.less';
 
 .hair-color-selector {
-  h2 {
-    font-size: 22px;
+  h3 {
+    font-size: 16px;
     font-weight: bold;
+    font-family: 'TTCommons', sans-serif;
     text-align: center;
     color: @darkBlue;
     margin-bottom: 10px;
-    text-transform: none;
+    text-transform: uppercase;
   }
 
   .colors {

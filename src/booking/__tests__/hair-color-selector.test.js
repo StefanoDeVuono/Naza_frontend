@@ -24,10 +24,6 @@ describe('HairColorSelector', () => {
     })
   })
 
-  it('shows the selected color', () => {
-    expect(wrapper.text()).toMatch(/Your Choice: blue/)
-  })
-
   it('renders the image', () => {
     expect(wrapper.html()).toMatch(/\/red\.png/)
   })

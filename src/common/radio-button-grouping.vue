@@ -121,12 +121,14 @@ export default {
 
     h2 {
       grid-column-start: 2;
-      font-size: 22px;
+      font-family: 'TTCommons', sans-serif;
+      font-size: 16px;
       font-weight: bold;
       text-align: center;
       color: @darkBlue;
       margin-bottom: 10px;
-      text-transform: none;
+      text-transform: uppercase;
+      font-weight: bold;
     }
 
     .supplemental-price {
@@ -139,7 +141,7 @@ export default {
 
     .material-design-icon.help-circle-outline-icon
       > .material-design-icon__svg {
-      transform: translate(3px, 3px);
+      transform: translate(0, 5px);
       height: 20px;
       width: 20px;
     }

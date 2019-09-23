@@ -42,7 +42,7 @@
           <li>Stylists</li>
         </ul>
 
-        <h2>Account</h2>
+        <h3>Account</h3>
         <ul>
           <li v-if="shared.userToken">
             <a @click.prevent.stop="logOut">Log Out</a>

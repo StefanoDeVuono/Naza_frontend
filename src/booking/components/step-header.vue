@@ -1,14 +1,14 @@
 <template>
-  <div class="cta">
-    <div class="cta-subheader">
+  <div class="step-header">
+    <div class="subheader">
       <span>{{ stepTitle }}</span>
     </div>
-    <div class="cta-header-container">
-      <div class="cta-header">
+    <div class="header-container">
+      <div class="header">
         <img :alt="stepTitle" :src="imageUrl" />
       </div>
     </div>
-    <div class="cta-text"><h2>Select one of the options below</h2></div>
+    <div class="text"><h2 v-html="ctaText"></h2></div>
   </div>
 </template>
 
@@ -22,46 +22,46 @@ export default {
 }
 </script>
 
-<style lang="less" scoped>
+<style lang="less">
 @import '../../common/utils.less';
 
-.cta {
+.step-header {
   text-align: center;
   margin-right: 20px;
   margin-left: 20px;
   margin-bottom: 40px;
   line-height: 24px;
+  height: 100%;
   color: @darkBlue;
-}
 
-.cta-subheader {
-  font-size: 14px;
-  font-weight: bold;
-  letter-spacing: 0.89px;
-  color: @orange;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-
-.cta-header-container {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.cta-header {
-  width: 122px;
-
-  img {
-    width: 100%;
-    height: auto;
+  .subheader {
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.89px;
+    color: @orange;
+    text-transform: uppercase;
+    margin-bottom: 10px;
   }
-}
 
-.cta-text h2 {
-  height: 24px;
-  font-size: 18px;
-  font-weight: normal;
-  letter-spacing: 0.53px;
+  .header-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .header {
+    width: 122px;
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .text h2 {
+    font-size: 18px;
+    font-weight: normal;
+    letter-spacing: 0.53px;
+  }
 }
 </style>
