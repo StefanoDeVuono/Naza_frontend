@@ -5,7 +5,7 @@
       <div v-cloak class="categories">
         <StepHeader
           stepTitle="Step One"
-          imageUrl="assets/categories/cta-header@3x.png"
+          imageUrl="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/step1.png"
           ctaText="Select one of the options below"
         />
         <Carousel

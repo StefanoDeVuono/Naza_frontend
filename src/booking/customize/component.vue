@@ -11,7 +11,7 @@
     <Content :progress-step="3">
       <StepHeader
         stepTitle="Step Three"
-        imageUrl="assets/categories/cta-header@3x.png"
+        imageUrl="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/step3.png"
         ctaText="Adjust the style, such as volume and hair color, by selecting your preferences below"
         :price="shared.price"
         :duration="shared.duration"

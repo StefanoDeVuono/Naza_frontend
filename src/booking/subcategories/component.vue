@@ -9,7 +9,7 @@
     <Content :progress-step="2">
       <StepHeader
         stepTitle="Step Two"
-        imageUrl="assets/categories/cta-header@3x.png"
+        imageUrl="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/step2.png"
         ctaText="Select one of the options below"
       />
 
