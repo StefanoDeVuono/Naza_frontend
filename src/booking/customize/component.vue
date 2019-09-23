@@ -4,8 +4,8 @@
 
     <LightHeader
       :showBackArrow="true"
-      :totalPrice="shared.price"
-      :totalDuration="shared.duration"
+      :totalPrice="parseInt(shared.price)"
+      :totalDuration="parseInt(shared.duration)"
     />
 
     <Content :progress-step="3">

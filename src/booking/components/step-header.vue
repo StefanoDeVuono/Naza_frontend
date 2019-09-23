@@ -59,6 +59,9 @@ export default {
   }
 
   .text h2 {
+    .ignore-parent-padding();
+
+    word-wrap: break-word;
     font-size: 18px;
     font-weight: normal;
     letter-spacing: 0.53px;
