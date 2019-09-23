@@ -5,7 +5,7 @@
         <img src="assets/content/border-top.svg" />
       </div>
       <div class="progress-bar">
-        <VueStepper :steps="steps" v-model="step"></VueStepper>
+        <VueStepper :steps="5" v-model="step"></VueStepper>
       </div>
       <slot></slot>
     </div>
@@ -21,11 +21,7 @@ export default {
   props: {
     progressStep: Number,
   },
-  data: function() {
-    return {
-      steps: 5,
-    }
-  },
+  
   computed: {
     step: {
       get() {

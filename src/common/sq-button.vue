@@ -42,6 +42,8 @@ export default {
 
 .sqs-block-button .sqs-block-button-element {
   display: block;
+  padding: 20px 5px;
+  letter-spacing: 0.5px;
 
   &.disabled {
     background-color: white;
@@ -58,7 +60,7 @@ export default {
   font-size: 12px;
   font-weight: bold;
   border: 1px solid @darkBlue;
-  padding: 15px;
   margin: 0 10px;
+  padding: 15px 5px;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <LoginCta />
-    <Content :progress-step="1">
+    <Content :progressStep="1">
       <div v-cloak class="categories">
         <StepHeader
           stepTitle="Step One"
@@ -43,19 +43,7 @@
                 <div class="category-description">
                   <span>{{ category.meta_description }}</span>
                 </div>
-                <router-link
-                  @click.native="$event.stopImmediatePropagation()"
-                  :to="{
-                    name: 'subcategories',
-                    params: { categoryId: category.id },
-                  }"
-                >
-                  <div class="category-select">
-                    <span>
-                      Select This Style <span class="select-arrow">&rarr;</span>
-                    </span>
-                  </div>
-                </router-link>
+                <SqButton :inverted="true" label="Select This Style <span class='select-arrow'>&rarr;</span>" :onClick="() => { handleClick(category.id) }" />
               </div>
             </div>
           </Slide>
@@ -76,6 +64,7 @@ import { sortBy, reject, prop, compose, path } from 'ramda'
 import LoginCta from './login-cta.vue'
 import { Carousel, Slide } from 'vue-carousel'
 import CustomCarouselPaginator from '../components/custom-carousel-paginator.vue'
+import SqButton from 'common/sq-button.vue'
 
 export default {
   data: () => {
@@ -106,6 +95,14 @@ export default {
           )(json)
         })
     },
+    handleClick(categoryId) {
+      this.$router.push(
+        {
+          name: 'subcategories',
+          params: { categoryId },
+        }
+      )
+    }
   },
   created: function() {
     this.fetchData()
@@ -118,6 +115,7 @@ export default {
     StepHeader,
     Carousel,
     Slide,
+    SqButton,
   },
 }
 </script>

@@ -6,7 +6,7 @@
       :totalDuration="totalDuration"
     />
 
-    <Content :progress-step="2">
+    <Content :progressStep="2">
       <StepHeader
         stepTitle="Step Two"
         imageUrl="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/step2.png"
@@ -56,17 +56,12 @@
                     :price="totalPrice"
                   />
                 </div>
-                <router-link
-                  @click.native="$event.stopImmediatePropagation()"
-                  :to="{
-                    name: 'customize',
-                    params: { productId: style.id },
-                    query: { categoryId: $route.params.categoryId },
-                  }"
+                <SqButton 
+                  :inverted="true" 
+                  label="Select This Style &rarr;"
+                  :onClick="() => { handleClick(style) }"
                 >
-                  <SqButton :inverted="true" label="Select This Style &rarr;">
-                  </SqButton>
-                </router-link>
+                </SqButton>
               </div>
             </div>
           </Slide>
@@ -219,6 +214,16 @@ export default {
         !this.closedSections[subcategoryId]
       )
     },
+
+    handleClick(style) {
+      this.$router.push(
+        {
+          name: 'customize',
+          params: { productId: style.id },
+          query: { categoryId: this.$route.params.categoryId },
+        }
+      )
+    }
   },
   watch: {
     $route: 'fetchData',

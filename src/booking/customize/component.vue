@@ -8,7 +8,7 @@
       :totalDuration="parseInt(shared.duration)"
     />
 
-    <Content :progress-step="3">
+    <Content :progressStep="3">
       <StepHeader
         stepTitle="Step Three"
         imageUrl="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/step3.png"
@@ -69,7 +69,7 @@
         <SqButton
           label="Next Step, Please!"
           :onClick="submit"
-          :disabled="disableSubmit"
+          :disabled="!isSubmitActive"
         />
       </div>
     </Content>
@@ -113,10 +113,8 @@ export default {
     return {
       CURL_ASSET_ROOT: getCurlAssetRoot(),
 
-      // we need to store this separately so vue can
-      // track updates
-      customizationCount: 0,
       isLoading: false,
+      isSubmitActive: false,
 
       shared: Storage.sharedState,
     }
@@ -126,10 +124,6 @@ export default {
   props: ['categoryId'],
 
   computed: {
-    disableSubmit: function() {
-      return this.customizationCount !== this.shared.product.option_types.length
-    },
-
     availableOptions: function() {
       return filter(x => x.name !== 'Color', this.shared.product.option_types)
     },
@@ -172,6 +166,12 @@ export default {
           Storage.setCustomization(optionType.name, values[1].presentation)
         }
       })
+
+      if (this.shared.product.option_types.length === 0) {
+        this.isSubmitActive = true
+      } else if (this.colorOptions.length === 0) {
+        this.isSubmitActive = true
+      }
     },
 
     fetchStyles() {
@@ -271,13 +271,11 @@ export default {
       Storage.setCustomization(optionType, value)
 
       this.findVariant()
-
-      this.customizationCount = Object.keys(this.shared.customizations).length
     },
 
     handleColorChange(color) {
       Storage.setCustomization('Color', color)
-      this.customizationCount = Object.keys(this.shared.customizations).length
+      this.isSubmitActive = true
     },
   },
 

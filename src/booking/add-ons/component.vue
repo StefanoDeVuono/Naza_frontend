@@ -1,37 +1,17 @@
 <template>
-  <div>
-    <Header title="Add-ons" :showBackArrow="true" />
-
-    <RunningTotals />
+  <div class="add-ons">
+    <LightHeader
+      :showBackArrow="true"
+      :totalPrice="parseInt(shared.price)"
+      :totalDuration="parseInt(shared.duration)"
+    />
 
     <Content :progress-step="4">
-      <h2 class="cta">Anything You'd Like To Add?</h2>
-
-      <p class="cta">
-        We will grieve not, rather find Strength in what remains behind; In the
-        primal sympathy Which having been must ever be
-      </p>
-
-      <div class="img-container">
-        <img
-          :data-url="CURL_ASSET_ROOT + largeImageUrl"
-          :src="CURL_ASSET_ROOT + largeImageUrl"
-        />
-      </div>
-
-      <AppointmentSummaryContent />
-
-      <Group
-        testID="premium-add-ons"
-        title="Premium Add-ons"
-        :products="premiumAddOns"
-        :onSelect="selectPremiumAddOn"
-        :isActive="isPremiumAddOnActive"
-      >
-        <template v-slot:icon>
-          <DrinkIcon />
-        </template>
-      </Group>
+      <StepHeader
+        stepTitle="Step Four"
+        imageUrl="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/step4.png"
+        ctaText="Select as many add-ons as you'd like!"
+      />
 
       <Group
         testID="free-add-ons"
@@ -39,6 +19,18 @@
         :products="freeAddOns"
         :onSelect="selectFreeAddOn"
         :isActive="isFreeAddOnActive"
+      >
+        <template v-slot:icon>
+          <DrinkIcon />
+        </template>
+      </Group>
+
+      <Group
+        testID="premium-add-ons"
+        title="Premium Add-ons"
+        :products="premiumAddOns"
+        :onSelect="selectPremiumAddOn"
+        :isActive="isPremiumAddOnActive"
       >
         <template v-slot:icon>
           <DrinkIcon />
@@ -82,6 +74,8 @@ import { mockProductIfDevelopment } from 'common/utils'
 import DrinkIcon from 'images/noun_drinks_2776386.svg'
 import SqButton from 'common/sq-button.vue'
 import Vue from 'vue'
+import LightHeader from '../components/light-header.vue'
+import StepHeader from '../components/step-header.vue'
 
 export default {
   data() {
@@ -182,13 +176,12 @@ export default {
     $route: 'fetchData',
   },
   components: {
-    Header,
     Content,
-    RunningTotals,
-    AppointmentSummaryContent,
     DrinkIcon,
     SqButton,
     Group,
+    LightHeader,
+    StepHeader,
   },
   created() {
     mockProductIfDevelopment()
