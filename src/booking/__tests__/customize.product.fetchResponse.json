@@ -1,128 +1,165 @@
 {
   "data": {
-    "id": "18",
+    "id": "2",
     "type": "product",
     "attributes": {
-      "name": "Box Braids",
+      "name": "Deep Twist",
       "description": "Wow!",
-      "price": "245.0",
+      "price": "220.0",
       "currency": "USD",
-      "display_price": "$245.00",
-      "available_on": "2019-08-22T22:34:34.983Z",
-      "slug": "box-braids",
+      "display_price": "$220.00",
+      "available_on": "2019-09-10T20:57:48.780Z",
+      "slug": "deep-twist",
       "meta_description": null,
       "meta_keywords": null,
-      "updated_at": "2019-08-22T22:34:41.015Z",
+      "updated_at": "2019-09-20T23:14:18.621Z",
       "purchasable": true,
       "in_stock": false,
       "backorderable": true,
-      "duration": 240
+      "duration": 150
     },
     "relationships": {
-      "variants": {
-        "data": [
-          { "id": "51", "type": "variant" },
-          { "id": "52", "type": "variant" },
-          { "id": "53", "type": "variant" },
-          { "id": "54", "type": "variant" },
-          { "id": "55", "type": "variant" },
-          { "id": "56", "type": "variant" },
-          { "id": "57", "type": "variant" },
-          { "id": "58", "type": "variant" },
-          { "id": "59", "type": "variant" }
-        ]
-      },
+      "variants": { "data": [{ "id": "42", "type": "variant" }] },
       "option_types": {
         "data": [
-          { "id": "1", "type": "option_type" },
           { "id": "2", "type": "option_type" },
           { "id": "3", "type": "option_type" },
-          { "id": "4", "type": "option_type" },
-          { "id": "6", "type": "option_type" },
-          { "id": "7", "type": "option_type" }
+          { "id": "4", "type": "option_type" }
         ]
       },
       "product_properties": { "data": [] },
       "taxons": {
+        "data": [{ "id": "5", "type": "taxon" }, { "id": "6", "type": "taxon" }]
+      },
+      "images": {
         "data": [
-          { "id": "11", "type": "taxon" },
-          { "id": "12", "type": "taxon" }
+          { "id": "2", "type": "image" },
+          { "id": "48", "type": "image" },
+          { "id": "49", "type": "image" }
         ]
       },
-      "images": { "data": [{ "id": "18", "type": "image" }] },
-      "default_variant": { "data": { "id": "51", "type": "variant" } }
+      "default_variant": { "data": { "id": "42", "type": "variant" } }
     }
   },
   "included": [
     {
-      "id": "18",
-      "type": "image",
+      "id": "42",
+      "type": "variant",
       "attributes": {
-        "viewable_type": "Spree::Variant",
-        "viewable_id": 18,
-        "styles": [
-          {
-            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBGdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1e685b74e2bb113de8f8898001347a4695b4d257/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lMTkRoNE5EZytCam9HUlZRPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--6c526e6335453ae1b12c1cec76e092ae660f63f1/Box_Braids.jpeg",
-            "width": "48",
-            "height": "48"
-          },
-          {
-            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBGdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1e685b74e2bb113de8f8898001347a4695b4d257/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTVRBd2VERXdNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--4fcf9c15e87600b986f46013093bef468325f574/Box_Braids.jpeg",
-            "width": "100",
-            "height": "100"
-          },
-          {
-            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBGdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1e685b74e2bb113de8f8898001347a4695b4d257/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTWpRd2VESTBNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--8ee0aa62ac866afdd71afe35c4cf7b866457a721/Box_Braids.jpeg",
-            "width": "240",
-            "height": "240"
-          },
-          {
-            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBGdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1e685b74e2bb113de8f8898001347a4695b4d257/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTmpBd2VEWXdNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--0ad03d61523648403b37e889f47a3d7b78145004/Box_Braids.jpeg",
-            "width": "600",
-            "height": "600"
-          }
-        ]
-      }
-    },
-    {
-      "id": "1",
-      "type": "option_value",
-      "attributes": {
-        "name": "Size:Medium",
-        "presentation": "Medium",
-        "position": 1,
-        "supplemental_price": 25,
-        "supplemental_duration": 0
+        "name": "Deep Twist",
+        "sku": "",
+        "price": "295.0",
+        "currency": "USD",
+        "display_price": "$295.00",
+        "weight": "0.0",
+        "height": null,
+        "width": null,
+        "depth": null,
+        "is_master": false,
+        "options_text": "Volume: Biggest",
+        "slug": "deep-twist",
+        "description": "Wow!",
+        "purchasable": true,
+        "in_stock": false,
+        "backorderable": true
       },
       "relationships": {
-        "option_type": { "data": { "id": "1", "type": "option_type" } }
+        "product": { "data": { "id": "2", "type": "product" } },
+        "images": { "data": [] },
+        "option_values": { "data": [{ "id": "8", "type": "option_value" }] }
       }
     },
     {
       "id": "2",
-      "type": "option_value",
+      "type": "image",
       "attributes": {
-        "name": "Size:Jumbo",
-        "presentation": "Jumbo",
-        "position": 2,
-        "supplemental_price": 0,
-        "supplemental_duration": 0
-      },
-      "relationships": {
-        "option_type": { "data": { "id": "1", "type": "option_type" } }
+        "viewable_type": "Spree::Variant",
+        "viewable_id": 2,
+        "styles": [
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0d730a95b7422d9e5d34430e140fe59e6ddada68/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lMTkRoNE5EZytCam9HUlZRPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--6c526e6335453ae1b12c1cec76e092ae660f63f1/Deep_Twist.jpeg",
+            "width": "48",
+            "height": "48"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0d730a95b7422d9e5d34430e140fe59e6ddada68/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTVRBd2VERXdNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--4fcf9c15e87600b986f46013093bef468325f574/Deep_Twist.jpeg",
+            "width": "100",
+            "height": "100"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0d730a95b7422d9e5d34430e140fe59e6ddada68/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTWpRd2VESTBNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--8ee0aa62ac866afdd71afe35c4cf7b866457a721/Deep_Twist.jpeg",
+            "width": "240",
+            "height": "240"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--0d730a95b7422d9e5d34430e140fe59e6ddada68/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTmpBd2VEWXdNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--0ad03d61523648403b37e889f47a3d7b78145004/Deep_Twist.jpeg",
+            "width": "600",
+            "height": "600"
+          }
+        ],
+        "alt": "Front View"
       }
     },
     {
-      "id": "1",
-      "type": "option_type",
-      "attributes": { "name": "Size", "presentation": "Size", "position": 1 },
-      "relationships": {
-        "option_values": {
-          "data": [
-            { "id": "1", "type": "option_value" },
-            { "id": "2", "type": "option_value" }
-          ]
-        }
+      "id": "48",
+      "type": "image",
+      "attributes": {
+        "viewable_type": "Spree::Variant",
+        "viewable_id": 2,
+        "styles": [
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBOUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--75e8a60d9b5b25bb41bdbc861318c08a38955103/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lMTkRoNE5EZytCam9HUlZRPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--6c526e6335453ae1b12c1cec76e092ae660f63f1/Sparkling_Rose%CC%81.jpeg",
+            "width": "48",
+            "height": "48"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBOUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--75e8a60d9b5b25bb41bdbc861318c08a38955103/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTVRBd2VERXdNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--4fcf9c15e87600b986f46013093bef468325f574/Sparkling_Rose%CC%81.jpeg",
+            "width": "100",
+            "height": "100"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBOUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--75e8a60d9b5b25bb41bdbc861318c08a38955103/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTWpRd2VESTBNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--8ee0aa62ac866afdd71afe35c4cf7b866457a721/Sparkling_Rose%CC%81.jpeg",
+            "width": "240",
+            "height": "240"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBOUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--75e8a60d9b5b25bb41bdbc861318c08a38955103/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTmpBd2VEWXdNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--0ad03d61523648403b37e889f47a3d7b78145004/Sparkling_Rose%CC%81.jpeg",
+            "width": "600",
+            "height": "600"
+          }
+        ],
+        "alt": "Side View"
+      }
+    },
+    {
+      "id": "49",
+      "type": "image",
+      "attributes": {
+        "viewable_type": "Spree::Variant",
+        "viewable_id": 2,
+        "styles": [
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBOZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a8dda09222890d0eea7e50a6f7c47519f6bc1cdb/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lMTkRoNE5EZytCam9HUlZRPSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--6c526e6335453ae1b12c1cec76e092ae660f63f1/Beads.jpeg",
+            "width": "48",
+            "height": "48"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBOZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a8dda09222890d0eea7e50a6f7c47519f6bc1cdb/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTVRBd2VERXdNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--4fcf9c15e87600b986f46013093bef468325f574/Beads.jpeg",
+            "width": "100",
+            "height": "100"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBOZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a8dda09222890d0eea7e50a6f7c47519f6bc1cdb/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTWpRd2VESTBNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--8ee0aa62ac866afdd71afe35c4cf7b866457a721/Beads.jpeg",
+            "width": "240",
+            "height": "240"
+          },
+          {
+            "url": "/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBOZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a8dda09222890d0eea7e50a6f7c47519f6bc1cdb/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lOTmpBd2VEWXdNRDRHT2daRlZBPT0iLCJleHAiOm51bGwsInB1ciI6InZhcmlhdGlvbiJ9fQ==--0ad03d61523648403b37e889f47a3d7b78145004/Beads.jpeg",
+            "width": "600",
+            "height": "600"
+          }
+        ],
+        "alt": "Back View"
       }
     },
     {
@@ -133,7 +170,9 @@
         "presentation": "Short",
         "position": 1,
         "supplemental_price": 0,
-        "supplemental_duration": 0
+        "supplemental_duration": 0,
+        "description": null,
+        "image_url": null
       },
       "relationships": {
         "option_type": { "data": { "id": "2", "type": "option_type" } }
@@ -147,7 +186,9 @@
         "presentation": "Medium",
         "position": 2,
         "supplemental_price": 25,
-        "supplemental_duration": 0
+        "supplemental_duration": 0,
+        "description": null,
+        "image_url": null
       },
       "relationships": {
         "option_type": { "data": { "id": "2", "type": "option_type" } }
@@ -161,7 +202,9 @@
         "presentation": "Long",
         "position": 3,
         "supplemental_price": 50,
-        "supplemental_duration": 0
+        "supplemental_duration": 0,
+        "description": null,
+        "image_url": null
       },
       "relationships": {
         "option_type": { "data": { "id": "2", "type": "option_type" } }
@@ -193,7 +236,9 @@
         "presentation": "Big",
         "position": 1,
         "supplemental_price": 0,
-        "supplemental_duration": 0
+        "supplemental_duration": 0,
+        "description": null,
+        "image_url": null
       },
       "relationships": {
         "option_type": { "data": { "id": "3", "type": "option_type" } }
@@ -207,7 +252,9 @@
         "presentation": "Bigger",
         "position": 2,
         "supplemental_price": 0,
-        "supplemental_duration": 0
+        "supplemental_duration": 0,
+        "description": null,
+        "image_url": null
       },
       "relationships": {
         "option_type": { "data": { "id": "3", "type": "option_type" } }
@@ -221,7 +268,9 @@
         "presentation": "Biggest",
         "position": 3,
         "supplemental_price": 75,
-        "supplemental_duration": 0
+        "supplemental_duration": 0,
+        "description": null,
+        "image_url": null
       },
       "relationships": {
         "option_type": { "data": { "id": "3", "type": "option_type" } }
@@ -253,7 +302,9 @@
         "presentation": "Black",
         "position": 1,
         "supplemental_price": 0,
-        "supplemental_duration": 0
+        "supplemental_duration": 0,
+        "description": null,
+        "image_url": null
       },
       "relationships": {
         "option_type": { "data": { "id": "4", "type": "option_type" } }
@@ -267,7 +318,9 @@
         "presentation": "Brown",
         "position": 2,
         "supplemental_price": 0,
-        "supplemental_duration": 0
+        "supplemental_duration": 0,
+        "description": null,
+        "image_url": null
       },
       "relationships": {
         "option_type": { "data": { "id": "4", "type": "option_type" } }
@@ -281,7 +334,9 @@
         "presentation": "Blonde",
         "position": 3,
         "supplemental_price": 0,
-        "supplemental_duration": 0
+        "supplemental_duration": 0,
+        "description": null,
+        "image_url": null
       },
       "relationships": {
         "option_type": { "data": { "id": "4", "type": "option_type" } }
@@ -295,7 +350,9 @@
         "presentation": "Burgundy",
         "position": 4,
         "supplemental_price": 0,
-        "supplemental_duration": 0
+        "supplemental_duration": 0,
+        "description": null,
+        "image_url": null
       },
       "relationships": {
         "option_type": { "data": { "id": "4", "type": "option_type" } }
@@ -309,7 +366,9 @@
         "presentation": "Black with Brown Highlights",
         "position": 5,
         "supplemental_price": 0,
-        "supplemental_duration": 0
+        "supplemental_duration": 0,
+        "description": null,
+        "image_url": null
       },
       "relationships": {
         "option_type": { "data": { "id": "4", "type": "option_type" } }
@@ -323,7 +382,9 @@
         "presentation": "Black with Burgundy Highlights",
         "position": 6,
         "supplemental_price": 0,
-        "supplemental_duration": 0
+        "supplemental_duration": 0,
+        "description": null,
+        "image_url": null
       },
       "relationships": {
         "option_type": { "data": { "id": "4", "type": "option_type" } }
@@ -337,7 +398,9 @@
         "presentation": "Black with Blonde Highlights",
         "position": 7,
         "supplemental_price": 0,
-        "supplemental_duration": 0
+        "supplemental_duration": 0,
+        "description": null,
+        "image_url": null
       },
       "relationships": {
         "option_type": { "data": { "id": "4", "type": "option_type" } }
@@ -351,7 +414,9 @@
         "presentation": "Brown with Blonde Highlights",
         "position": 8,
         "supplemental_price": 0,
-        "supplemental_duration": 0
+        "supplemental_duration": 0,
+        "description": null,
+        "image_url": null
       },
       "relationships": {
         "option_type": { "data": { "id": "4", "type": "option_type" } }
@@ -365,7 +430,9 @@
         "presentation": "Black with Honey Brown Ombre",
         "position": 9,
         "supplemental_price": 0,
-        "supplemental_duration": 0
+        "supplemental_duration": 0,
+        "description": null,
+        "image_url": null
       },
       "relationships": {
         "option_type": { "data": { "id": "4", "type": "option_type" } }
@@ -379,7 +446,9 @@
         "presentation": "Black with Burgundy Ombre",
         "position": 10,
         "supplemental_price": 0,
-        "supplemental_duration": 0
+        "supplemental_duration": 0,
+        "description": null,
+        "image_url": null
       },
       "relationships": {
         "option_type": { "data": { "id": "4", "type": "option_type" } }
@@ -407,126 +476,21 @@
       }
     },
     {
-      "id": "22",
-      "type": "option_value",
-      "attributes": {
-        "name": "RootType:Knotted",
-        "presentation": "Knotted",
-        "position": 1,
-        "supplemental_price": 0,
-        "supplemental_duration": 0
-      },
-      "relationships": {
-        "option_type": { "data": { "id": "6", "type": "option_type" } }
-      }
-    },
-    {
-      "id": "23",
-      "type": "option_value",
-      "attributes": {
-        "name": "RootType:Knotless",
-        "presentation": "Knotless",
-        "position": 2,
-        "supplemental_price": 25,
-        "supplemental_duration": 0
-      },
-      "relationships": {
-        "option_type": { "data": { "id": "6", "type": "option_type" } }
-      }
-    },
-    {
-      "id": "6",
-      "type": "option_type",
-      "attributes": {
-        "name": "Root Type",
-        "presentation": "Root Type",
-        "position": 6
-      },
-      "relationships": {
-        "option_values": {
-          "data": [
-            { "id": "22", "type": "option_value" },
-            { "id": "23", "type": "option_value" }
-          ]
-        }
-      }
-    },
-    {
-      "id": "24",
-      "type": "option_value",
-      "attributes": {
-        "name": "EndFinishType:Straight",
-        "presentation": "Straight",
-        "position": 1,
-        "supplemental_price": 0,
-        "supplemental_duration": 0
-      },
-      "relationships": {
-        "option_type": { "data": { "id": "7", "type": "option_type" } }
-      }
-    },
-    {
-      "id": "25",
-      "type": "option_value",
-      "attributes": {
-        "name": "EndFinishType:Curly",
-        "presentation": "Curly",
-        "position": 2,
-        "supplemental_price": 0,
-        "supplemental_duration": 0
-      },
-      "relationships": {
-        "option_type": { "data": { "id": "7", "type": "option_type" } }
-      }
-    },
-    {
-      "id": "26",
-      "type": "option_value",
-      "attributes": {
-        "name": "EndFinishType:Burned",
-        "presentation": "Burned",
-        "position": 3,
-        "supplemental_price": 0,
-        "supplemental_duration": 0
-      },
-      "relationships": {
-        "option_type": { "data": { "id": "7", "type": "option_type" } }
-      }
-    },
-    {
-      "id": "7",
-      "type": "option_type",
-      "attributes": {
-        "name": "End Finish Type",
-        "presentation": "End Finish Type",
-        "position": 7
-      },
-      "relationships": {
-        "option_values": {
-          "data": [
-            { "id": "24", "type": "option_value" },
-            { "id": "25", "type": "option_value" },
-            { "id": "26", "type": "option_value" }
-          ]
-        }
-      }
-    },
-    {
-      "id": "11",
+      "id": "5",
       "type": "taxon",
       "attributes": {
-        "name": "Box Braids/Twists",
-        "pretty_name": "Hair Styles -\u003e Box Braids/Twists",
-        "permalink": "box-braids-slash-twists",
-        "seo_title": "Hair Styles - Box Braids/Twists",
-        "meta_title": null,
-        "meta_description": null,
-        "meta_keywords": null,
-        "left": 18,
-        "right": 23,
-        "position": 3,
+        "name": "Crochet Braids",
+        "pretty_name": "Hair Styles -\u003e Crochet Braids",
+        "permalink": "crochet-braids",
+        "seo_title": "Hair Styles - Crochet Braids",
+        "meta_title": "",
+        "meta_description": "Earth has not anything to show more fair: Dull would he be of soul who could pass by A sight so touching in its majesty: This City now doth, like a garment, wear",
+        "meta_keywords": "",
+        "left": 2,
+        "right": 9,
+        "position": 0,
         "depth": 1,
-        "updated_at": "2019-08-22T22:34:41.868Z",
+        "updated_at": "2019-09-20T23:14:18.626Z",
         "is_root": false,
         "is_child": true,
         "is_leaf": false
@@ -536,316 +500,60 @@
         "taxonomy": { "data": { "id": "1", "type": "taxonomy" } },
         "children": {
           "data": [
-            { "id": "12", "type": "taxon" },
-            { "id": "13", "type": "taxon" }
+            { "id": "6", "type": "taxon" },
+            { "id": "7", "type": "taxon" },
+            { "id": "8", "type": "taxon" }
           ]
         },
         "products": {
           "data": [
-            { "id": "20", "type": "product" },
-            { "id": "19", "type": "product" },
-            { "id": "18", "type": "product" }
+            { "id": "1", "type": "product" },
+            { "id": "2", "type": "product" },
+            { "id": "3", "type": "product" },
+            { "id": "4", "type": "product" },
+            { "id": "5", "type": "product" },
+            { "id": "6", "type": "product" },
+            { "id": "7", "type": "product" },
+            { "id": "8", "type": "product" },
+            { "id": "9", "type": "product" },
+            { "id": "10", "type": "product" }
           ]
         },
-        "image": { "data": { "id": "36", "type": "taxon_image" } }
+        "image": { "data": { "id": "41", "type": "taxon_image" } }
       }
     },
     {
-      "id": "12",
+      "id": "6",
       "type": "taxon",
       "attributes": {
-        "name": "Box Braids",
-        "pretty_name": "Hair Styles -\u003e Box Braids/Twists -\u003e Box Braids",
-        "permalink": "box-braids",
-        "seo_title": "Hair Styles - Box Braids",
+        "name": "Curly",
+        "pretty_name": "Hair Styles -\u003e Crochet Braids -\u003e Curly",
+        "permalink": "crochet-braids-curly",
+        "seo_title": "Hair Styles - Curly",
         "meta_title": null,
         "meta_description": null,
         "meta_keywords": null,
-        "left": 19,
-        "right": 20,
+        "left": 3,
+        "right": 4,
         "position": 0,
         "depth": 2,
-        "updated_at": "2019-08-22T22:34:41.052Z",
+        "updated_at": "2019-09-20T23:14:18.626Z",
         "is_root": false,
         "is_child": true,
         "is_leaf": true
       },
       "relationships": {
-        "parent": { "data": { "id": "11", "type": "taxon" } },
+        "parent": { "data": { "id": "5", "type": "taxon" } },
         "taxonomy": { "data": { "id": "1", "type": "taxonomy" } },
         "children": { "data": [] },
-        "products": { "data": [{ "id": "18", "type": "product" }] },
-        "image": { "data": { "id": "37", "type": "taxon_image" } }
-      }
-    },
-    {
-      "id": "51",
-      "type": "variant",
-      "attributes": {
-        "name": "Box Braids",
-        "sku": "",
-        "price": "345.0",
-        "currency": "USD",
-        "display_price": "$345.00",
-        "weight": "0.0",
-        "height": null,
-        "width": null,
-        "depth": null,
-        "is_master": false,
-        "options_text": "Size: Medium, Length: Long, and Root Type: Knotless",
-        "slug": "box-braids",
-        "description": "Wow!",
-        "purchasable": true,
-        "in_stock": false,
-        "backorderable": true
-      },
-      "relationships": {
-        "product": { "data": { "id": "18", "type": "product" } },
-        "images": { "data": [] },
-        "option_values": {
+        "products": {
           "data": [
-            { "id": "1", "type": "option_value" },
-            { "id": "5", "type": "option_value" },
-            { "id": "23", "type": "option_value" }
+            { "id": "1", "type": "product" },
+            { "id": "2", "type": "product" },
+            { "id": "3", "type": "product" }
           ]
-        }
-      }
-    },
-    {
-      "id": "52",
-      "type": "variant",
-      "attributes": {
-        "name": "Box Braids",
-        "sku": "",
-        "price": "320.0",
-        "currency": "USD",
-        "display_price": "$320.00",
-        "weight": "0.0",
-        "height": null,
-        "width": null,
-        "depth": null,
-        "is_master": false,
-        "options_text": "Size: Medium, Length: Medium, and Root Type: Knotless",
-        "slug": "box-braids",
-        "description": "Wow!",
-        "purchasable": true,
-        "in_stock": false,
-        "backorderable": true
-      },
-      "relationships": {
-        "product": { "data": { "id": "18", "type": "product" } },
-        "images": { "data": [] },
-        "option_values": {
-          "data": [
-            { "id": "1", "type": "option_value" },
-            { "id": "4", "type": "option_value" },
-            { "id": "23", "type": "option_value" }
-          ]
-        }
-      }
-    },
-    {
-      "id": "53",
-      "type": "variant",
-      "attributes": {
-        "name": "Box Braids",
-        "sku": "",
-        "price": "320.0",
-        "currency": "USD",
-        "display_price": "$320.00",
-        "weight": "0.0",
-        "height": null,
-        "width": null,
-        "depth": null,
-        "is_master": false,
-        "options_text": "Size: Medium, Length: Long",
-        "slug": "box-braids",
-        "description": "Wow!",
-        "purchasable": true,
-        "in_stock": false,
-        "backorderable": true
-      },
-      "relationships": {
-        "product": { "data": { "id": "18", "type": "product" } },
-        "images": { "data": [] },
-        "option_values": {
-          "data": [
-            { "id": "5", "type": "option_value" },
-            { "id": "1", "type": "option_value" }
-          ]
-        }
-      }
-    },
-    {
-      "id": "54",
-      "type": "variant",
-      "attributes": {
-        "name": "Box Braids",
-        "sku": "",
-        "price": "295.0",
-        "currency": "USD",
-        "display_price": "$295.00",
-        "weight": "0.0",
-        "height": null,
-        "width": null,
-        "depth": null,
-        "is_master": false,
-        "options_text": "Size: Medium, Length: Medium",
-        "slug": "box-braids",
-        "description": "Wow!",
-        "purchasable": true,
-        "in_stock": false,
-        "backorderable": true
-      },
-      "relationships": {
-        "product": { "data": { "id": "18", "type": "product" } },
-        "images": { "data": [] },
-        "option_values": {
-          "data": [
-            { "id": "4", "type": "option_value" },
-            { "id": "1", "type": "option_value" }
-          ]
-        }
-      }
-    },
-    {
-      "id": "55",
-      "type": "variant",
-      "attributes": {
-        "name": "Box Braids",
-        "sku": "",
-        "price": "295.0",
-        "currency": "USD",
-        "display_price": "$295.00",
-        "weight": "0.0",
-        "height": null,
-        "width": null,
-        "depth": null,
-        "is_master": false,
-        "options_text": "Size: Medium, Root Type: Knotless",
-        "slug": "box-braids",
-        "description": "Wow!",
-        "purchasable": true,
-        "in_stock": false,
-        "backorderable": true
-      },
-      "relationships": {
-        "product": { "data": { "id": "18", "type": "product" } },
-        "images": { "data": [] },
-        "option_values": {
-          "data": [
-            { "id": "1", "type": "option_value" },
-            { "id": "23", "type": "option_value" }
-          ]
-        }
-      }
-    },
-    {
-      "id": "56",
-      "type": "variant",
-      "attributes": {
-        "name": "Box Braids",
-        "sku": "",
-        "price": "295.0",
-        "currency": "USD",
-        "display_price": "$295.00",
-        "weight": "0.0",
-        "height": null,
-        "width": null,
-        "depth": null,
-        "is_master": false,
-        "options_text": "Length: Long",
-        "slug": "box-braids",
-        "description": "Wow!",
-        "purchasable": true,
-        "in_stock": false,
-        "backorderable": true
-      },
-      "relationships": {
-        "product": { "data": { "id": "18", "type": "product" } },
-        "images": { "data": [] },
-        "option_values": { "data": [{ "id": "5", "type": "option_value" }] }
-      }
-    },
-    {
-      "id": "57",
-      "type": "variant",
-      "attributes": {
-        "name": "Box Braids",
-        "sku": "",
-        "price": "270.0",
-        "currency": "USD",
-        "display_price": "$270.00",
-        "weight": "0.0",
-        "height": null,
-        "width": null,
-        "depth": null,
-        "is_master": false,
-        "options_text": "Length: Medium",
-        "slug": "box-braids",
-        "description": "Wow!",
-        "purchasable": true,
-        "in_stock": false,
-        "backorderable": true
-      },
-      "relationships": {
-        "product": { "data": { "id": "18", "type": "product" } },
-        "images": { "data": [] },
-        "option_values": { "data": [{ "id": "4", "type": "option_value" }] }
-      }
-    },
-    {
-      "id": "58",
-      "type": "variant",
-      "attributes": {
-        "name": "Box Braids",
-        "sku": "",
-        "price": "270.0",
-        "currency": "USD",
-        "display_price": "$270.00",
-        "weight": "0.0",
-        "height": null,
-        "width": null,
-        "depth": null,
-        "is_master": false,
-        "options_text": "Size: Medium",
-        "slug": "box-braids",
-        "description": "Wow!",
-        "purchasable": true,
-        "in_stock": false,
-        "backorderable": true
-      },
-      "relationships": {
-        "product": { "data": { "id": "18", "type": "product" } },
-        "images": { "data": [] },
-        "option_values": { "data": [{ "id": "1", "type": "option_value" }] }
-      }
-    },
-    {
-      "id": "59",
-      "type": "variant",
-      "attributes": {
-        "name": "Box Braids",
-        "sku": "",
-        "price": "270.0",
-        "currency": "USD",
-        "display_price": "$270.00",
-        "weight": "0.0",
-        "height": null,
-        "width": null,
-        "depth": null,
-        "is_master": false,
-        "options_text": "Root Type: Knotless",
-        "slug": "box-braids",
-        "description": "Wow!",
-        "purchasable": true,
-        "in_stock": false,
-        "backorderable": true
-      },
-      "relationships": {
-        "product": { "data": { "id": "18", "type": "product" } },
-        "images": { "data": [] },
-        "option_values": { "data": [{ "id": "23", "type": "option_value" }] }
+        },
+        "image": { "data": null }
       }
     }
   ]

@@ -65,16 +65,21 @@ describe('Customize', () => {
   it('initializes the product', async () => {
     await flushPromises()
     expect(Storage.sharedState.product).toBeDefined()
-    expect(Object.keys(Storage.sharedState.customizations)).toHaveLength(6)
+    expect(Object.keys(Storage.sharedState.customizations)).toHaveLength(3)
   })
 
   it('displays the style', async () => {
     await flushPromises()
-    expect(wrapper.text()).toMatch(/Box Braids\/Twists/)
+    expect(wrapper.text()).toMatch(/Deep Twist/)
   })
 
   it('displays the customizations', async () => {
     await flushPromises()
-    expect(wrapper.findAll('div.customization')).toHaveLength(6)
+    expect(wrapper.findAll('div.customization')).toHaveLength(3)
+  })
+
+  it('renders a slide for each product image', async () => {
+    await flushPromises()
+    expect(wrapper.findAll('.slide-img')).toHaveLength(3)
   })
 })
