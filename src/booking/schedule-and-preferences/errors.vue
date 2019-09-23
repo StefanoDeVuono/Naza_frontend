@@ -1,31 +1,33 @@
 <template>
-  <div class="errors" v-if="errorMessage">
-    <p>{{ errorMessage }}</p>
+  <div class="scheduling-errors">
+    <span> foo bar </span>
+
+    <div v-for="(error, index) in errors" :key="index">
+      <span>- {{ error }}</span>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      errorMessage: undefined,
-    }
-  },
-
-  created() {
-    this.$root.$on('error', msg => {
-      this.errorMessage = msg
-    })
+  props: {
+    errors: Array
   },
 }
 </script>
 
 <style lang="less">
-.errors {
-  background-color: white;
-  color: red;
-  margin: 10px;
-  padding: 10px;
-  text-align: center;
-}
+  @import '../../common/utils.less';
+
+  .scheduling-errors {
+    .ignore-parent-padding();
+
+    background-color: rgba(147, 32, 4, 0.37);
+    color: @deepRed;
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 1.43;
+    letter-spacing: 0.5px;
+    padding: 20px;
+  }
 </style>

@@ -1,5 +1,7 @@
 <template>
   <div class="schedule-and-preferences">
+    <Errors v-bind:errors="errors" />
+
     <LightHeader
       :showBackArrow="true"
       :totalPrice="parseInt(shared.price)"
@@ -15,14 +17,10 @@
         ctaText="Select a day &amp; time below and insert your personal details to confirm your reservation."
       />
 
-      <div>Errors: {{ errors }}</div>
-
       <div class="sections">
-        <AppointmentSummary />
+        <AppointmentSummary  @availableTimesError="handleAvailableTimesError"/>
 
         <YourInformation />
-
-        <Errors />
 
         <PersonalPreferences />
 
@@ -59,6 +57,8 @@ import StepHeader from '../components/step-header.vue'
 import LightHeader from '../components/light-header.vue'
 import { mockProductIfDevelopment } from 'common/utils'
 
+const CALL_TO_MAKE_APPOINTMENT = "Please call to make an appointment."
+
 export default {
   data: function() {
     return {
@@ -91,6 +91,10 @@ export default {
   },
 
   methods: {
+    handleAvailableTimesError() {
+      this.errors.push(`Could not find available times. ${CALL_TO_MAKE_APPOINTMENT}`)
+    },
+
     async bookAppointment() {
       this.isLoading = true
 
@@ -210,7 +214,6 @@ export default {
 
     createOrUpdateUser() {
       const loggedIn = Storage.loggedIn()
-      console.log('this.errors', this.errors)
 
       const updateData = {
         'spree/user_email': Storage.sharedState.customerEmail,
@@ -267,8 +270,6 @@ export default {
           this.isLoading = false
           if (json.errors) {
             this.errors = this.errors.concat(json.errors)
-            console.log('this.errors', this.errors)
-
             throw join(', ', json.errors)
           }
           this.shared.spreeUserId = json.data.id
