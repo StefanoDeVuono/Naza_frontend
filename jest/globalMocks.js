@@ -1,0 +1,1 @@
+global.Stripe = jest.fn()

@@ -1,7 +1,8 @@
 let oldFetch
 
-export const mockFetch = returnObj => {
+export const mockFetch = (returnObj, status=200) => {
   const fetchResponse = {
+    status: status,
     json: jest.fn(() => Promise.resolve(returnObj)),
   }
   oldFetch = global.fetch
