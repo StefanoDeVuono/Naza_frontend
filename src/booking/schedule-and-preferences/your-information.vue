@@ -196,7 +196,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 @import '../../common/utils.less';
 
 .your-information {
@@ -209,26 +209,37 @@ export default {
     }
   }
 
+  .field-list {
+    .field {
+      margin-bottom: 30px;
+
+      .field-element {
+        border: 2px solid @darkBlue;
+        font-family: sofia-pro;
+        font-size: 16px;
+
+        &[disabled] {
+          color: lighten(greyscale(@darkBlue, 100%), 50%);
+        }
+      }
+    }
+
+    .title {
+      font-family: 'TTCommons', sans-serif;
+      font-size: 16px;
+      font-weight: normal;
+      margin: 0;
+    }
+  }
+
   .form-item.checkbox .option {
     border: none;
 
     label {
+      font-family: 'TTCommons', sans-serif;
+      font-size: 16px;
       font-weight: normal;
       line-height: 1;
-    }
-  }
-
-  .section .form-item label {
-    margin: 0;
-  }
-
-  .field-list .field .field-element {
-    border: 2px solid @darkBlue;
-    font-family: sofia-pro;
-    font-size: 16px;
-
-    &[disabled] {
-      color: lighten(greyscale(@darkBlue, 100%), 50%);
     }
   }
 }
