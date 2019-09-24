@@ -74,9 +74,9 @@ export default {
         .then(json => {
           if (json.errors) {
             this.$emit('availableTimesError' , json.errors)
-            return Promise.reject()
+          } else {
+            this.slotsByDate = json
           }
-          this.slotsByDate = json
         })
     },
 
