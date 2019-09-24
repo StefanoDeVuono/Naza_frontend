@@ -14,8 +14,10 @@
         <img @click="onSelect(product)" :src="getImageUrl(product)" />
         <h3>{{ product.name }}</h3>
         <p>{{ product.description }}</p>
-        <div v-if="parseInt(product.price) > 0" 
-          class="duration-and-price-wrapper">
+        <div
+          v-if="parseInt(product.price) > 0"
+          class="duration-and-price-wrapper"
+        >
           <DurationAndPrice
             :duration="parseInt(product.duration)"
             :price="parseInt(product.price)"

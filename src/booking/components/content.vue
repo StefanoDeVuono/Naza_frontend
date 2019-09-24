@@ -5,7 +5,7 @@
         <img src="assets/content/border-top.svg" />
       </div>
       <div class="progress-bar">
-        <VueStepper :steps="5" v-model="step"></VueStepper>
+        <VueStepper ref="stepper" :steps="5" v-model="step"></VueStepper>
       </div>
       <slot></slot>
     </div>
@@ -16,12 +16,13 @@
 <script>
 import VueStepper from 'vue-stepper-component'
 import Footer from 'common/footer.vue'
+import { range } from 'ramda'
 
 export default {
   props: {
     progressStep: Number,
   },
-  
+
   computed: {
     step: {
       get() {
@@ -29,6 +30,7 @@ export default {
       },
 
       set(step) {
+        this.value = step
         const delta = this.progressStep - step
         if (delta > 0) {
           this.$router.go(-1 * delta)
@@ -37,9 +39,21 @@ export default {
       },
     },
   },
+
   components: {
     VueStepper,
     Footer,
+  },
+
+  mounted() {
+    // we have to do this because the stepper
+    // component is instantiated all at once
+    // on app load, so we have to recalculate
+    // the step status when this component is
+    // mounted
+    range(0, this.progressStep).forEach(i => {
+      this.$refs.stepper.setStep(i, 'disabled', false)
+    })
   },
 }
 </script>

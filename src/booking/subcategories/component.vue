@@ -56,10 +56,14 @@
                     :price="totalPrice"
                   />
                 </div>
-                <SqButton 
-                  :inverted="true" 
+                <SqButton
+                  :inverted="true"
                   label="Select This Style &rarr;"
-                  :onClick="() => { handleClick(style) }"
+                  :onClick="
+                    () => {
+                      handleClick(style)
+                    }
+                  "
                 >
                 </SqButton>
               </div>
@@ -216,14 +220,12 @@ export default {
     },
 
     handleClick(style) {
-      this.$router.push(
-        {
-          name: 'customize',
-          params: { productId: style.id },
-          query: { categoryId: this.$route.params.categoryId },
-        }
-      )
-    }
+      this.$router.push({
+        name: 'customize',
+        params: { productId: style.id },
+        query: { categoryId: this.$route.params.categoryId },
+      })
+    },
   },
   watch: {
     $route: 'fetchData',

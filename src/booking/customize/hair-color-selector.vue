@@ -5,7 +5,11 @@
       <div
         v-for="color in colors"
         class="color-container"
-        @click="() => { handlePress(color) }"
+        @click="
+          () => {
+            handlePress(color)
+          }
+        "
       >
         <div
           :class="{

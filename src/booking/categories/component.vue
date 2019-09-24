@@ -43,7 +43,15 @@
                 <div class="category-description">
                   <span>{{ category.meta_description }}</span>
                 </div>
-                <SqButton :inverted="true" label="Select This Style <span class='select-arrow'>&rarr;</span>" :onClick="() => { handleClick(category.id) }" />
+                <SqButton
+                  :inverted="true"
+                  label="Select This Style <span class='select-arrow'>&rarr;</span>"
+                  :onClick="
+                    () => {
+                      handleClick(category.id)
+                    }
+                  "
+                />
               </div>
             </div>
           </Slide>
@@ -96,13 +104,11 @@ export default {
         })
     },
     handleClick(categoryId) {
-      this.$router.push(
-        {
-          name: 'subcategories',
-          params: { categoryId },
-        }
-      )
-    }
+      this.$router.push({
+        name: 'subcategories',
+        params: { categoryId },
+      })
+    },
   },
   created: function() {
     this.fetchData()

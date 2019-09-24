@@ -202,9 +202,7 @@ export default {
     },
 
     submit(event) {
-      event.stopImmediatePropagation()
-
-      if (this.disableSubmit) {
+      if (!this.isSubmitActive) {
         return
       }
 
