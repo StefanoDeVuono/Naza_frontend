@@ -20,14 +20,12 @@
 
         <YourInformation />
 
-        <PaymentInfo />
-
         <Errors />
 
         <PersonalPreferences />
 
         <div class="cancellation-policy">
-          <h2>Cancellation Policy</h2>
+          <h3>Cancellation Policy</h3>
           <p>
             A 24-hour cancellation notice is required to avoid being fully charged
             for the appointment.
@@ -54,7 +52,6 @@ import Content from '../components/content.vue'
 import Errors from './errors.vue'
 import SqButton from 'common/sq-button.vue'
 import Storage from 'common/storage'
-import PaymentInfo from './payment-info.vue'
 import { getAppServer, getSpreeServer } from 'common/constants'
 import CalendarBlankOutlineIcon from 'vue-material-design-icons/CalendarBlankOutline.vue'
 import Loading from 'vue-loading-overlay'
@@ -250,7 +247,6 @@ export default {
     CalendarBlankOutlineIcon,
     SqButton,
     AppointmentSummary,
-    PaymentInfo,
     YourInformation,
     Loading,
     Errors,
@@ -303,21 +299,24 @@ export default {
   .cancellation-policy {
     margin: 20px 0;
 
-    h2 {
-      font-size: 14px;
+    h3 {
+      .sans-serif();
+      font-size: 16px;
       font-weight: bold;
       text-align: center;
       text-transform: none;
       margin: 0;
       line-height: 1.5;
+      color: @orange;
     }
 
     p {
-      font-size: 14px;
+      font-size: 16px;
       line-height: 21px;
       text-align: center;
       margin: 0;
       line-height: 1.5;
+      color: @orange;
     }
   }
 }

@@ -1,14 +1,8 @@
 <template>
-  <Section
-    title="Payment Information"
-    name="payment-information"
-    :initialVisible="!!shared.userToken"
-  >
+  <div class="payment-info">
     <Loading :active.sync="isLoading" :is-full-page="true" />
 
-    <template v-slot:header-icon>
-      <PaymentIcon />
-    </template>
+    <h2>Payment Information</h2>
 
     <div class="payment-disclaimer">
       <p>
@@ -30,7 +24,7 @@
         <div id="card-errors" role="alert"></div>
       </div>
     </form>
-  </Section>
+  </div>
 </template>
 
 <script>
@@ -132,18 +126,20 @@ export default {
 }
 </script>
 
-<style lang="less">
-.payment-info {
-  margin-bottom: 40px;
+<style lang="less" scoped>
+@import '../../common/utils.less';
 
-  label {
-    margin-bottom: 10px;
-    line-height: 1;
+.payment-info {
+  h2 {
+    .sans-serif();
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: @darkBlue;
   }
 }
 
 .payment-disclaimer p {
-  text-align: center;
   font-size: 14px;
   margin-bottom: 20px;
 
@@ -153,12 +149,17 @@ export default {
   }
 }
 
+#payment-form label {
+  .sans-serif();
+}
+
 .StripeElement {
   box-sizing: border-box;
 
   height: 50px;
 
   padding: 14px 12px;
+  margin: 6px 0;
 
   border: 2px solid #1c3042;
   background-color: white;

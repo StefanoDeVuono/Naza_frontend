@@ -4,7 +4,9 @@
       <ShampooIcon class="header-icon" />
     </template>
 
-    <div class="your-information form-wrapper">
+    <div class="personal-preferences form-wrapper">
+      <p>We want to make sure you get the best service. Please select the following options.</p>
+
       <div class="field-list">
         <div class="form-item">
           <RadioButtonGrouping
@@ -55,29 +57,46 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 @import '../../common/utils.less';
 
-.section {
-  .form-item {
+.personal-preferences {
+  p {
     margin-bottom: 40px;
+  }
 
-    .header {
-      display: block;
+  h2 {
+    margin: 0;
+  }
 
-      h2 {
-        text-align: left;
-        margin: 0;
-        font-size: 18px;
+  .field-list {
+    .form-item {
+      margin-bottom: 40px;
+
+      &:last-child {
+        margin-bottom: 20px;
       }
-    }
 
-    label {
-      margin: 0;
-      font-size: 18px;
-      font-weight: bold;
-      color: @darkBlue;
-      margin-bottom: 15px;
+      .header {
+        display: block;
+
+        h2 {
+          text-align: left;
+          margin: 0;
+          font-size: 18px;
+        }
+      }
+
+      .field-element {
+        border: 2px solid @darkBlue;
+      }
+
+      label {
+        .sans-serif();
+        margin: 0 0 15px 0;
+        font-size: 18px;
+        font-weight: bold;
+      }
     }
   }
 }

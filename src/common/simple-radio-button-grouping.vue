@@ -38,14 +38,14 @@ export default {
 </script>
 
 <style lang="less">
-@darkBlue: #1c3042;
+@import '../common/utils.less';
 
 .simple-radio-button-grouping {
   h2 {
+    .sans-serif();
     font-size: 18px;
     font-weight: bold;
     text-align: left;
-    color: @darkBlue;
     margin-bottom: 10px;
     text-transform: none;
   }

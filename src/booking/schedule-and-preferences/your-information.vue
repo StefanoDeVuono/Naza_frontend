@@ -111,6 +111,8 @@
             </label>
           </div>
         </div>
+
+        <PaymentInfo />
       </div>
     </div>
   </Section>
@@ -123,6 +125,7 @@ import Section from '../components/section.vue'
 import { isNil, isEmpty, find, prop } from 'ramda'
 import { getAppServer } from 'common/constants'
 import SignInForm from '../../user/sign-in-form.vue'
+import PaymentInfo from './payment-info.vue'
 
 export default {
   data() {
@@ -180,6 +183,7 @@ export default {
     HairstyleIcon,
     Section,
     SignInForm,
+    PaymentInfo,
   },
   created() {
     const fields = [
