@@ -5,7 +5,7 @@
       <div v-cloak class="categories">
         <StepHeader
           stepTitle="Step One"
-          imageUrl="assets/categories/cta-header@3x.png"
+          imageUrl="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/step1.png"
           ctaText="Select one of the options below"
         />
         <Carousel
@@ -13,7 +13,7 @@
           :perPage="1"
           :centerMode="true"
           :paginationPadding="5"
-          :spacePadding="50"
+          :spacePadding="40"
           paginationColor="rgba(28, 48, 66, 0.4)"
           paginationActiveColor="#bc4940"
         >
@@ -130,6 +130,7 @@ export default {
 }
 
 .categories {
+  .ignore-parent-padding();
   margin-bottom: 37px;
 
   .VueCarousel-arrow-icon path {
@@ -201,10 +202,6 @@ export default {
 @import '../../common/utils.less';
 
 .categories {
-  .VueCarousel {
-    .ignore-parent-padding();
-  }
-
   .VueCarousel-slide {
     box-sizing: border-box;
 

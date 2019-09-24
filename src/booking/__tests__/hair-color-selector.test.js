@@ -24,8 +24,10 @@ describe('HairColorSelector', () => {
     })
   })
 
-  it('shows the selected color', () => {
-    expect(wrapper.text()).toMatch(/Your Choice: blue/)
+  it('sets the image when selected', () => {
+    const color = wrapper.find('.color-container')
+    color.trigger('click')
+    expect(wrapper.vm.selectedColor).toBe('red')
   })
 
   it('renders the image', () => {
