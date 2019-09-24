@@ -8,16 +8,12 @@
           {{ errorMsg }}
         </div>
 
-        <div class="cta">
-          <h3>Login to Your Account</h3>
-        </div>
-
         <form autocomplete="on" method="POST" @submit.stop.prevent="signIn">
           <div class="field-list clear">
             <div class="form-item field email">
               <label
                 class="title"
-                for="email-yui_3_17_2_1_1568231635626_12630-field"
+                for="email"
                 >Email Address:</label
               >
 
@@ -28,14 +24,13 @@
                 autocomplete="off"
                 v-model="email"
                 spellcheck="false"
-                style='background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAUBJREFUOBGVVE2ORUAQLvIS4gwzEysHkHgnkMiEc4zEJXCMNwtWTmDh3UGcYoaFhZUFCzFVnu4wIaiE+vvq6+6qTgthGH6O4/jA7x1OiCAIPwj7CoLgSXDxSjEVzAt9k01CBKdWfsFf/2WNuEwc2YqigKZpK9glAlVVwTTNbQJZlnlCkiTAZnF/mePB2biRdhwHdF2HJEmgaRrwPA+qqoI4jle5/8XkXzrCFoHg+/5ICdpm13UTho7Q9/0WnsfwiL/ouHwHrJgQR8WEwVG+oXpMPaDAkdzvd7AsC8qyhCiKJjiRnCKwbRsMw9hcQ5zv9maSBeu6hjRNYRgGFuKaCNwjkjzPoSiK1d1gDDecQobOBwswzabD/D3Np7AHOIrvNpHmPI+Kc2RZBm3bcp8wuwSIot7QQ0PznoR6wYSK0Xb/AGVLcWwc7Ng3AAAAAElFTkSuQmCC"); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;'
               />
             </div>
 
             <div class="form-item field password">
               <label
                 class="title"
-                for="password-yui_3_17_2_1_1568231635626_11851-field"
+                for="password"
                 >Password:</label
               >
 
@@ -44,18 +39,17 @@
                 type="password"
                 autocomplete="off"
                 v-model="password"
-                style='background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAUBJREFUOBGVVE2ORUAQLvIS4gwzEysHkHgnkMiEc4zEJXCMNwtWTmDh3UGcYoaFhZUFCzFVnu4wIaiE+vvq6+6qTgthGH6O4/jA7x1OiCAIPwj7CoLgSXDxSjEVzAt9k01CBKdWfsFf/2WNuEwc2YqigKZpK9glAlVVwTTNbQJZlnlCkiTAZnF/mePB2biRdhwHdF2HJEmgaRrwPA+qqoI4jle5/8XkXzrCFoHg+/5ICdpm13UTho7Q9/0WnsfwiL/ouHwHrJgQR8WEwVG+oXpMPaDAkdzvd7AsC8qyhCiKJjiRnCKwbRsMw9hcQ5zv9maSBeu6hjRNYRgGFuKaCNwjkjzPoSiK1d1gDDecQobOBwswzabD/D3Np7AHOIrvNpHmPI+Kc2RZBm3bcp8wuwSIot7QQ0PznoR6wYSK0Xb/AGVLcWwc7Ng3AAAAAElFTkSuQmCC"); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;'
               />
 
-              <p>
+              <p class="forgot-password">
                 <a href="#" @click.prevent.stop="openForgotPasswordModal"
-                  >Forgot your password?</a
+                  >Forgot password?</a
                 >
               </p>
             </div>
           </div>
 
-          <input class="submit-button" type="submit" value="Login" />
+          <SqButton :onClick="signIn" label="Login" />
         </form>
       </div>
     </div>
@@ -69,6 +63,7 @@ import { parse } from 'jsonapi-parse'
 import Storage from 'common/storage'
 import { loadUserFromToken } from 'common/utils'
 import ForgotPasswordModal from './forgot-password.vue'
+import SqButton from 'common/sq-button.vue'
 
 export default {
   data() {
@@ -133,6 +128,7 @@ export default {
 
   components: {
     ForgotPasswordModal,
+    SqButton
   },
 }
 </script>
@@ -140,19 +136,29 @@ export default {
 <style lang="less" scoped>
 @import '../common/utils.less';
 
-.cta {
-  padding-top: 40px;
-
-  h3 {
-    text-align: center;
-  }
-}
-
 .sign-in {
   padding-bottom: 50px;
 
+  label {
+    .sans-serif();
+    font-size: 16px;
+  }
+
+  .field-list .field .field-element {
+    .sans-serif();
+    border: 2px solid @darkBlue;
+    padding: 15px 10px;
+    font-size: 16px;
+  }
+
   a {
     text-decoration: underline;
+    font-weight: bold;
+  }
+
+  .forgot-password {
+    text-align: center;
+    font-size: 16px;
   }
 }
 

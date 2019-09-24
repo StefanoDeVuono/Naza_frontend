@@ -205,8 +205,6 @@ export default {
 
 .your-information {
   p {
-    text-align: center;
-
     a {
       text-decoration: underline;
       font-weight: bold;
