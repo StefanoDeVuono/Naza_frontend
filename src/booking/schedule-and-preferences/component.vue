@@ -35,7 +35,7 @@
         <SqButton
           label="Book Appointment"
           :onClick="bookAppointment"
-          :disabled="isDisabled"
+          :disabled="!isPaymentSaved"
         />
       </div>
     </Content>
@@ -46,14 +46,11 @@
 import AppointmentSummary from './appointment-summary.vue'
 import YourInformation from './your-information.vue'
 import PersonalPreferences from './personal-preferences.vue'
-import Header from '../components/header.vue'
-import RunningTotals from '../components/running-totals.vue'
 import Content from '../components/content.vue'
 import Errors from './errors.vue'
 import SqButton from 'common/sq-button.vue'
 import Storage from 'common/storage'
 import { getAppServer, getSpreeServer } from 'common/constants'
-import CalendarBlankOutlineIcon from 'vue-material-design-icons/CalendarBlankOutline.vue'
 import Loading from 'vue-loading-overlay'
 import { join, filter, reduce, concat } from 'ramda'
 import StepHeader from '../components/step-header.vue'
@@ -244,7 +241,6 @@ export default {
 
   components: {
     Content,
-    CalendarBlankOutlineIcon,
     SqButton,
     AppointmentSummary,
     YourInformation,

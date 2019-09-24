@@ -36,6 +36,7 @@ import { mockProductIfDevelopment } from 'common/utils'
 import 'vue-loading-overlay/dist/vue-loading.css'
 import Section from '../components/section.vue'
 import PaymentIcon from 'images/noun_payment_511229.svg'
+import VueScrollTo from 'vue-scrollto'
 
 export default {
   data() {
@@ -74,6 +75,9 @@ export default {
           this.$root.$emit('payment-information:completed')
           this.$root.$emit('payment-information:hide')
           this.$root.$emit('personal-preferences:show')
+          this.$nextTick(() => {
+            VueScrollTo.scrollTo('#personal-preferences-section')
+          })
         })
     },
 

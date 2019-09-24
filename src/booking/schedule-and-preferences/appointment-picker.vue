@@ -50,6 +50,7 @@ import {
 import Section from '../components/section.vue'
 import { map, find, compose, equals, nth } from 'ramda'
 import CalendarIcon from 'images/noun_Calendar_2804231.svg'
+import VueScrollTo from 'vue-scrollto'
 
 export default {
   data: function() {
@@ -120,8 +121,10 @@ export default {
   created: function() {
     this.$root.$on('appointment-picker:selected', () => {
       this.$root.$emit('appointment-summary:hide')
-      this.$root.$emit('date-and-time:hide')
       this.$root.$emit('your-information:show')
+      this.$nextTick(() => {
+        VueScrollTo.scrollTo('#your-information-section')
+      })
     })
 
     this.fetchSlots()

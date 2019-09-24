@@ -1,5 +1,5 @@
 <template>
-  <div class="section">
+  <div class="section" :id="name + '-section'">
     <div class="header" @click="onToggleBody">
       <slot name="header-icon"></slot>
 
