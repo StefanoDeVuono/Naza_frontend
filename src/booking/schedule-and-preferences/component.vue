@@ -20,7 +20,7 @@
       <div class="sections">
         <AppointmentSummary  @availableTimesError="handleAvailableTimesError"/>
 
-        <YourInformation />
+        <YourInformation @stripeSetupIntentError="handleStripeServerError"/>
 
         <PersonalPreferences />
 
@@ -58,6 +58,7 @@ import LightHeader from '../components/light-header.vue'
 import { mockProductIfDevelopment } from 'common/utils'
 
 const CALL_TO_MAKE_APPOINTMENT = "Please call to make an appointment."
+const GENERIC_SERVER_ERROR = `Your request could be not be completed. ${CALL_TO_MAKE_APPOINTMENT}`
 
 export default {
   data: function() {
@@ -93,6 +94,10 @@ export default {
   methods: {
     handleAvailableTimesError() {
       this.errors.push(`Could not find available times. ${CALL_TO_MAKE_APPOINTMENT}`)
+    },
+
+    handleStripeServerError() {
+      this.errors.push(GENERIC_SERVER_ERROR)
     },
 
     async bookAppointment() {

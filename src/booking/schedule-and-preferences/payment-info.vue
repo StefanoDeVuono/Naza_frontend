@@ -104,7 +104,11 @@ export default {
       method: 'POST',
     })
       .then(resp => {
-        return resp.json()
+        if (resp.status === 200) {
+          return resp.json()
+        }
+        this.$emit('stripeSetupIntentError')
+        return Promise.reject()
       })
       .then(json => {
         this.setupIntentSecret = json.client_secret
