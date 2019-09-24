@@ -30,7 +30,7 @@
           title="Customizations & Add-Ons"
           name="customizations-and-add-ons"
         >
-          <CustomizationsAndAddOns />
+          <!--CustomizationsAndAddOns /-->
         </Section>
       </div>
 
@@ -73,7 +73,6 @@ import { getSpreeServer } from 'common/constants'
 import { mockProductIfDevelopment } from 'common/utils'
 import Storage from 'common/storage'
 import CheckIcon from 'vue-material-design-icons/Check.vue'
-import CustomizationsAndAddOns from '../components/customizations-and-add-ons.vue'
 import Section from '../components/section.vue'
 import { parseISO, format } from 'date-fns'
 import SqButton from 'common/sq-button.vue'
@@ -104,7 +103,6 @@ export default {
 
   components: {
     CheckIcon,
-    CustomizationsAndAddOns,
     Section,
     SqButton,
   },

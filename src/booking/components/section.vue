@@ -3,7 +3,7 @@
     <div class="header" @click="onToggleBody">
       <slot name="header-icon"></slot>
 
-      <h2>{{ title }}</h2>
+      <h3>{{ title }}</h3>
       <ChevronUpIcon v-if="showChevron" v-show="isBodyVisible" />
       <ChevronDownIcon v-if="showChevron" v-show="!isBodyVisible" />
     </div>
@@ -78,22 +78,19 @@ export default {
     justify-content: center;
     margin-bottom: 20px;
 
-    h2 {
+    h3 {
       color: @darkBlue;
       margin: 0 10px 0 20px;
-      font-size: 22px;
+      font-size: 20px;
       font-weight: bold;
+      font-family: 'TTCommons', sans-serif;
       text-align: center;
-      text-transform: none;
+      text-transform: uppercase;
     }
 
     .material-design-icon svg {
       transform: translate(0, 5px);
     }
-  }
-
-  .body {
-    padding: 15px;
   }
 }
 </style>

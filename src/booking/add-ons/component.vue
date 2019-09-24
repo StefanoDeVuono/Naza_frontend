@@ -63,7 +63,6 @@
 import { getSpreeServer, getCurlAssetRoot } from 'common/constants'
 import Header from '../components/header.vue'
 import Content from '../components/content.vue'
-import AppointmentSummaryContent from '../components/appointment-summary-content.vue'
 import RunningTotals from '../components/running-totals.vue'
 import Group from './group.vue'
 import 'whatwg-fetch'

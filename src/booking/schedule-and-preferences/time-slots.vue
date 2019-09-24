@@ -85,6 +85,7 @@ export default {
       padding: 5px;
       margin: 10px 10px;
       border: 2px solid transparent;
+      font-family: 'TTCommons', sans-serif;
 
       &.active {
         border: 2px solid @brown;
