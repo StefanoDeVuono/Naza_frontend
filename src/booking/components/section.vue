@@ -1,5 +1,5 @@
 <template>
-  <div class="section">
+  <div class="section" :class="{ closed: !isBodyVisible }">
     <div class="header" @click="onToggleBody">
       <slot name="header-icon"></slot>
 
@@ -70,6 +70,10 @@ export default {
 
 .section {
   margin-bottom: 20px;
+
+  &.closed {
+    border-bottom: 1px solid @darkBlue;
+  }
 
   .header {
     display: flex;

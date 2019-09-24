@@ -1,6 +1,6 @@
 <template>
   <div class="appointment-picker">
-    <h3>Date &amp; Time</h3>
+    <h2 class="section-header">Date &amp; Time</h2>
     <div class="superheader">
       <h2 v-if="slotsByDate[0] && isTomorrow(slotsByDate[0][0])">
         Tomorrow
@@ -144,6 +144,14 @@ export default {
   margin-top: 40px;
   display: grid;
   grid-template-rows: auto auto auto;
+
+  .section-header {
+    font-family: 'TTCommons', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+  }
 
   .superheader {
     display: grid;
