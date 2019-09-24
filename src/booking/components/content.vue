@@ -45,15 +45,30 @@ export default {
     Footer,
   },
 
+  methods: {
+    disableSteps() {
+      // we have to exit if setStep isn't defined
+      // in the testing environment
+      if (!this.$refs.stepper.setStep) {
+        console.warn(
+          'Skipping disableSteps in content.vue because ref not found'
+        )
+        return
+      }
+
+      // we have to do this because the stepper
+      // component is instantiated all at once
+      // on app load, so we have to recalculate
+      // the step status when this component is
+      // mounted
+      range(0, this.progressStep).forEach(i => {
+        this.$refs.stepper.setStep(i, 'disabled', false)
+      })
+    },
+  },
+
   mounted() {
-    // we have to do this because the stepper
-    // component is instantiated all at once
-    // on app load, so we have to recalculate
-    // the step status when this component is
-    // mounted
-    range(0, this.progressStep).forEach(i => {
-      this.$refs.stepper.setStep(i, 'disabled', false)
-    })
+    this.disableSteps()
   },
 }
 </script>

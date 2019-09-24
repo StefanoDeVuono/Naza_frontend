@@ -190,28 +190,10 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 @import '../../common/utils.less';
 
-h2.cta {
-  color: @darkBlue;
-  font-weight: bold;
-  font-size: 18px;
-  letter-spacing: 0.75px;
-}
-
-p.cta {
-  text-align: center;
-  margin-bottom: 1em;
-}
-
-div.img-container {
-  .ignore-parent-padding();
-  margin: 30px 0;
-  line-height: 0;
-}
-
-.sqs-block-button .sqs-block-button-element {
-  display: block;
+.add-ons {
+  padding: 0 20px;
 }
 </style>
