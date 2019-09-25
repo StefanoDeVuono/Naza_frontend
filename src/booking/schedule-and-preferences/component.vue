@@ -61,6 +61,7 @@ export default {
       isPaymentSaved: false,
       isLoading: false,
 
+      progress: 0,
       shared: Storage.sharedState,
     }
   },
@@ -84,16 +85,40 @@ export default {
     async bookAppointment() {
       this.isLoading = true
 
-      // the ordering of these is important
-      await this.createOrder()
-      await this.addStyleToCart()
-      await this.addAddOnsToCart()
-      await this.createOrUpdateUser()
-      await this.completeCheckout()
+      try {
+        // the ordering of these is important
+        if (this.progress < 1) {
+          await this.createOrder()
+          this.progress = 1
+        }
 
-      this.$router.push({
-        name: 'confirmation',
-      })
+        if (this.progress < 2) {
+          await this.addStyleToCart()
+          this.progress = 2
+        }
+
+        if (this.progress < 3) {
+          await this.addAddOnsToCart()
+          this.progress = 3
+        }
+
+        if (this.progress < 4) {
+          await this.createOrUpdateUser()
+          this.progress = 4
+        }
+
+        if (this.progress < 5) {
+          await this.completeCheckout()
+          this.progress = 0
+        }
+
+        this.$router.push({
+          name: 'confirmation',
+        })
+      } catch (error) {
+        console.error('ERROR:', error)
+        this.isLoading = false
+      }
     },
 
     createOrder() {
