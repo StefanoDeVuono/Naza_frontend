@@ -135,9 +135,22 @@ export default {
         })
       } catch (error) {
         console.error('ERROR:', error)
+        // do nothing
       }
 
       this.isLoading = false
+    },
+
+    async handleSpreeResponse(response) {
+      if (response.status >= 200 && response.status < 300) {
+        return response.json()
+      }
+      return Promise.reject()
+    },
+
+    async handleSpreeError() {
+      this.errors.push(GENERIC_SERVER_ERROR)
+      return Promise.reject()
     },
 
     createOrder() {
@@ -150,12 +163,13 @@ export default {
           email: this.shared.customerEmail,
         }),
       })
-        .then(resp => resp.json())
+        .then(this.handleSpreeResponse)
         .then(json => {
           this.$session.set('orderNumber', json.data.attributes.number)
           this.shared.orderNumber = json.data.attributes.number
           this.shared.orderToken = json.data.attributes.token
         })
+        .catch(this.handleSpreeError)
     },
 
     addStyleToCart() {
