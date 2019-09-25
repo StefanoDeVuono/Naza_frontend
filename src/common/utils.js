@@ -47,6 +47,8 @@ export const loadUserFromToken = (email, userToken) => {
         return
       }
 
+      Storage.sharedState.price = 123
+      Storage.sharedState.duration = 123
       Storage.sharedState.userToken = userToken
       Storage.sharedState.customerEmail = email
       Storage.sharedState.customerFirstName = data.first_name

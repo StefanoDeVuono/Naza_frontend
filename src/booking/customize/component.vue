@@ -2,34 +2,47 @@
   <div class="customize" v-if="shared.product">
     <Loading :active.sync="isLoading" :is-full-page="true" />
 
-    <Header title="Customizations" :showBackArrow="true" />
-
-    <RunningTotals :price="shared.price" :duration="shared.duration" />
+    <LightHeader
+      :showBackArrow="true"
+      :totalPrice="parseInt(shared.price)"
+      :totalDuration="parseInt(shared.duration)"
+    />
 
     <Content :progress-step="3">
-      <h2 class="cta">Make it Your Style</h2>
+      <StepHeader
+        stepTitle="Step Three"
+        imageUrl="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/step3.png"
+        ctaText="Adjust the style, such as volume and hair color, by selecting your preferences below"
+        :price="shared.price"
+        :duration="shared.duration"
+      />
 
-      <p class="cta">
-        We will grieve not, rather find Strength in what remains behind; In the
-        primal sympathy Which having been must ever be
-      </p>
+      <Carousel
+        :perPage="1"
+        :centerMode="true"
+        :paginationPadding="5"
+        :spacePadding="50"
+        paginationColor="rgba(28, 48, 66, 0.4)"
+        paginationActiveColor="#bc4940"
+      >
+        <template v-slot:pagination>
+          <CustomCarouselPaginator
+            @paginationclick="$refs.carousel.goToPage($event, 'pagination')"
+          />
+        </template>
 
-      <ChevronDownIcon />
+        <Slide :key="image.id" v-for="image in shared.product.images">
+          <img class="slide-img" :src="largeImageUrl(image)" :alt="image.alt" />
+          <caption>
+            {{
+              image.alt
+            }}
+          </caption>
+        </Slide>
+      </Carousel>
 
-      <div class="img-container">
-        <img
-          :data-url="CURL_ASSET_ROOT + largeImageUrl"
-          :src="CURL_ASSET_ROOT + largeImageUrl"
-        />
-      </div>
-
-      <div class="taxon">
-        <h2 class="subheader">Style</h2>
+      <div class="desc">
         <h2 class="taxon-name">{{ shared.taxonName }}</h2>
-      </div>
-
-      <div class="style">
-        <h2 class="subheader">Pattern</h2>
         <h2 class="style-name">{{ shared.product.name }}</h2>
         <p class="style-desc">{{ shared.product.description }}</p>
       </div>
@@ -64,22 +77,15 @@
 </template>
 
 <script>
-import {
-  getSpreeServer,
-  getCurlAssetRoot,
-  getAppServer,
-} from 'common/constants'
-import Header from '../components/header.vue'
+import { getSpreeServer, getCurlAssetRoot } from 'common/constants'
+import StepHeader from '../components/step-header.vue'
 import Content from '../components/content.vue'
-import ChevronDownIcon from 'vue-material-design-icons/ChevronDown.vue'
 import 'whatwg-fetch'
 import { parse } from 'jsonapi-parse'
 import HairColorSelector from './hair-color-selector.vue'
 import {
   path,
   compose,
-  prop,
-  nth,
   filter,
   map,
   last,
@@ -95,10 +101,12 @@ import {
 } from 'ramda'
 import RadioButtonGrouping from 'common/radio-button-grouping.vue'
 import FindYourStyle from './find-your-style.vue'
-import RunningTotals from '../components/running-totals.vue'
 import SqButton from 'common/sq-button.vue'
 import Storage from 'common/storage'
 import Loading from 'vue-loading-overlay'
+import LightHeader from '../components/light-header.vue'
+import { Carousel, Slide } from 'vue-carousel'
+import CustomCarouselPaginator from '../components/custom-carousel-paginator.vue'
 
 export default {
   data() {
@@ -122,14 +130,6 @@ export default {
       return this.customizationCount !== this.shared.product.option_types.length
     },
 
-    largeImageUrl: function() {
-      return path(['images', 0, 'styles', 3, 'url'], this.shared.product)
-    },
-
-    smallImageUrl: function() {
-      return path(['images', 0, 'styles', 2, 'url'], this.shared.product)
-    },
-
     availableOptions: function() {
       return filter(x => x.name !== 'Color', this.shared.product.option_types)
     },
@@ -151,6 +151,14 @@ export default {
   },
 
   methods: {
+    largeImageUrl: function(image) {
+      return getCurlAssetRoot() + path(['styles', 3, 'url'], image)
+    },
+
+    smallImageUrl: function(image) {
+      return getCurlAssetRoot() + path(['styles', 2, 'url'], image)
+    },
+
     initializeCustomizations() {
       this.shared.product.option_types.forEach(optionType => {
         const values = optionType.option_values
@@ -282,105 +290,104 @@ export default {
   },
 
   components: {
-    Header,
+    StepHeader,
     Content,
-    ChevronDownIcon,
     RadioButtonGrouping,
     FindYourStyle,
     HairColorSelector,
-    RunningTotals,
     SqButton,
     Loading,
+    LightHeader,
+    Carousel,
+    Slide,
+    CustomCarouselPaginator,
   },
 }
 </script>
+
+<style lang="less" scoped>
+@import '../../common/utils.less';
+
+.customize {
+  .desc {
+    margin-top: 40px;
+
+    .taxon-name {
+      font-family: 'TTCommons', sans-serif;
+      font-size: 14px;
+      font-weight: bold;
+      color: @darkBlue;
+      letter-spacing: 0.3px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .style-name {
+      color: @orange;
+      font-size: 28px;
+      font-weight: bold;
+      letter-spacing: 1.17px;
+      text-align: center;
+    }
+
+    .style-desc {
+      margin-top: 0;
+      font-size: 14px;
+      line-height: 1.5;
+      letter-spacing: normal;
+      text-align: center;
+      color: @darkBlue;
+      margin-bottom: 20px;
+    }
+  }
+
+  .customizations {
+    background-color: @lightGray;
+  }
+
+  .customization {
+    margin-bottom: 40px;
+  }
+}
+</style>
 
 <style lang="less">
 @import '../../common/utils.less';
 
 .customize {
-  .material-design-icon.chevron-down-icon > .material-design-icon__svg {
-    height: 35px;
-    width: 35px;
-    display: block;
-    fill: @orange;
-    margin: 0 auto 0.5em auto;
-  }
-
-  h2.cta {
-    color: @darkBlue;
-    font-weight: bold;
-    font-size: 18px;
-    letter-spacing: 0.75px;
-  }
-
-  p.cta {
-    text-align: center;
-    margin-bottom: 1em;
-  }
-
-  h2.subheader {
-    text-align: center;
-    font-size: 12px;
-    color: @darkBlue;
-    letter-spacing: 0.5px;
-    font-weight: bold;
-  }
-
-  div.taxon {
-    margin-top: 40px;
-    margin-bottom: 20px;
-  }
-
-  h2.taxon-name {
-    font-size: 16px;
-    letter-spacing: 0.67px;
-    color: @orange;
-    text-align: center;
-    font-family: utopia-std;
-    text-transform: none;
-    margin: 0;
-  }
-
-  div.style {
+  .VueCarousel {
+    .ignore-parent-padding();
     margin-top: 20px;
-    margin-bottom: 40px;
+
+    .VueCarousel-dot-container {
+      margin-top: 0 !important;
+    }
+
+    .VueCarousel-arrow {
+      svg path {
+        fill: @darkBlue;
+      }
+    }
   }
 
-  h2.style-name {
-    font-size: 32px;
-    color: @orange;
-    letter-spacing: 1.33px;
-    font-weight: bold;
-    text-align: center;
-    font-family: utopia-std;
-    text-transform: none;
-    margin: 0 auto 20px auto;
-  }
+  .VueCarousel-slide {
+    box-sizing: border-box;
+    padding: 5px;
 
-  p.style-desc {
-    margin-top: 0;
-    font-size: 14px;
-    line-height: 1.5;
-    letter-spacing: normal;
-    text-align: center;
-    color: @darkBlue;
-  }
+    .slide-img {
+      margin: auto;
+      height: 334px;
+      width: 100%;
+      object-fit: cover;
+    }
 
-  div.img-container {
-    .ignore-parent-padding();
-    line-height: 0;
-  }
-
-  div.customizations {
-    .ignore-parent-padding();
-    .ignore-parent-padding--add-padding(2);
-
-    background-color: @lightGray;
-  }
-
-  div.customization {
-    margin-bottom: 40px;
+    caption {
+      display: block;
+      text-align: center;
+      font-family: 'TTCommons', sans-serif;
+      font-size: 16px;
+      font-style: italic;
+    }
   }
 }
 </style>

@@ -1,85 +1,88 @@
 <template>
-  <div>
-    <Header
-      title="Our Services"
-      instructions="That though the radiance which was once so bright be now forever taken from my sight."
+  <div class="subcategories">
+    <LightHeader
       :showBackArrow="true"
       :totalPrice="totalPrice"
       :totalDuration="totalDuration"
     />
 
     <Content :progress-step="2">
-      <div>
-        <h2 class="cta">Be More Specific...</h2>
-
-        <p class="cta">
-          Because the lovely little flower is free down to its root, and in that
-          freedom bold.
-        </p>
-      </div>
+      <StepHeader
+        stepTitle="Step Two"
+        imageUrl="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/step2.png"
+        ctaText="Select one of the options below"
+      />
 
       <div
-        class="category"
+        :class="{ category: true, closed: closedSections[subcategory] }"
         v-for="(styles, subcategory) in stylesBySubcategory"
       >
-        <h1 class="subcategory">{{ subcategory }}</h1>
-        <div
-          class="option"
-          v-for="style in styles"
-          @click="activateSubcategory(style.id)"
+        <h1 class="subcategory" @click="toggleSection(subcategory)">
+          {{ subcategory }}
+          <ChevronDownIcon v-show="!closedSections[subcategory]" :size="24" />
+          <ChevronRightIcon v-show="closedSections[subcategory]" :size="24" />
+        </h1>
+
+        <Carousel
+          v-show="!closedSections[subcategory]"
+          :ref="'carousel' + subcategory"
+          :perPage="1"
+          :centerMode="true"
+          :paginationPadding="5"
+          :spacePadding="40"
+          paginationColor="rgba(28, 48, 66, 0.4)"
+          paginationActiveColor="#bc4940"
         >
-          <img
-            :data-url="CURL_ASSET_ROOT + getImageUrl(style)"
-            :src="CURL_ASSET_ROOT + getImageUrl(style)"
-          />
-          <div class="description">
-            <h2>{{ style.name }}</h2>
-            <p class="trunc-desc" v-show="truncatedDescs[style.id]">
-              {{ truncatedDesc(style.description) }}
-              <span @click="expandDesc(style.id)" class="expand-desc"
-                >more</span
-              >
-            </p>
-            <p class="full-desc" v-show="fullDescs[style.id]">
-              {{ style.description }}
-            </p>
-            <DurationAndPrice :duration="totalDuration" :price="totalPrice" />
-          </div>
-          <div
-            v-show="activeSubcategory === style.id"
-            class="select-this-style"
-          >
-            <div class="sqs-block-button sqs-block button-block">
-              <div class="sqs-block-button-content sqs-block-content">
-                <div class="sqs-block-button-container--center">
-                  <router-link
-                    @click.native="$event.stopImmediatePropagation()"
-                    :to="{
-                      name: 'customize',
-                      params: { productId: style.id },
-                      query: { categoryId: $route.params.categoryId },
-                    }"
-                  >
-                    <div
-                      class="sqs-block-button-element--medium sqs-block-button-element"
-                    >
-                      Select This Style
-                    </div>
-                  </router-link>
+          <template v-slot:pagination>
+            <CustomCarouselPaginator
+              @paginationclick="goToPage(subcategory, $event)"
+            />
+          </template>
+
+          <Slide :key="style.name" v-for="style in styles">
+            <div class="container">
+              <div class="slide">
+                <img
+                  :data-url="CURL_ASSET_ROOT + getImageUrl(style)"
+                  :src="CURL_ASSET_ROOT + getImageUrl(style)"
+                />
+                <div class="description">
+                  <h2>{{ style.name }}</h2>
+                  <p class="full-desc">
+                    {{ style.description }}
+                  </p>
+                  <DurationAndPrice
+                    :duration="totalDuration"
+                    :price="totalPrice"
+                  />
                 </div>
+                <router-link
+                  @click.native="$event.stopImmediatePropagation()"
+                  :to="{
+                    name: 'customize',
+                    params: { productId: style.id },
+                    query: { categoryId: $route.params.categoryId },
+                  }"
+                >
+                  <SqButton :inverted="true" label="Select This Style &rarr;">
+                  </SqButton>
+                </router-link>
               </div>
             </div>
-          </div>
-        </div>
+          </Slide>
+        </Carousel>
       </div>
     </Content>
   </div>
 </template>
 
 <script>
-import Header from '../components/header.vue'
+import StepHeader from '../components/step-header.vue'
+import LightHeader from '../components/light-header.vue'
 import Content from '../components/content.vue'
 import DurationAndPrice from '../components/duration-and-price.vue'
+import CustomCarouselPaginator from '../components/custom-carousel-paginator.vue'
+import SqButton from 'common/sq-button.vue'
 import { getSpreeServer, getCurlAssetRoot } from 'common/constants'
 import 'whatwg-fetch'
 import { parse } from 'jsonapi-parse'
@@ -100,6 +103,9 @@ import {
   forEach,
   flatten,
 } from 'ramda'
+import { Slide, Carousel } from 'vue-carousel'
+import ChevronDownIcon from 'vue-material-design-icons/ChevronDown.vue'
+import ChevronRightIcon from 'vue-material-design-icons/ChevronRight.vue'
 
 // TODO: update json files
 
@@ -113,6 +119,7 @@ export default {
       truncatedDescs: {},
       fullDescs: {},
       activeSubcategory: undefined,
+      closedSections: {},
     }
   },
   methods: {
@@ -200,99 +207,145 @@ export default {
     getImageUrl(style) {
       return path(['images', 0, 'styles', 2, 'url'], style)
     },
+
+    goToPage(subcategory, $event) {
+      this.$refs['carousel' + subcategory][0].goToPage($event, 'pagination')
+    },
+
+    toggleSection(subcategoryId) {
+      this.$set(
+        this.closedSections,
+        subcategoryId,
+        !this.closedSections[subcategoryId]
+      )
+    },
   },
   watch: {
     $route: 'fetchData',
   },
-  created: function() {
+  created() {
     this.fetchData()
   },
   components: {
-    Header,
+    LightHeader,
     Content,
     DurationAndPrice,
+    StepHeader,
+    CustomCarouselPaginator,
+    SqButton,
+    Carousel,
+    Slide,
+    ChevronDownIcon,
+    ChevronRightIcon,
   },
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 @import '../../common/utils.less';
 
 [v-cloak] {
   display: none;
 }
 
-h2.cta {
-  text-transform: uppercase;
-  font-size: 18px;
-  letter-spacing: 0.75px;
-  margin-bottom: 10px;
-}
-
-p.cta {
-  text-align: center;
-}
-
-.category {
-  .ignore-parent-padding();
-  .ignore-parent-padding--add-padding(0.5);
-}
-
-.category:nth-child(odd) {
-  background-color: #f7f6f2;
-}
-
-h1.subcategory {
-  text-align: center;
-  font-size: 32px;
-  line-height: normal;
-  letter-spacing: 0.92px;
-  margin: 20px 0;
-  color: @darkBlue;
-}
-
-div.option {
-  margin-bottom: 60px;
-  line-height: 0;
-  border: 2px solid @darkBlue;
-
-  img {
-    margin-bottom: 10px;
-  }
-
-  .description {
-    padding: 10px;
-  }
-
-  svg {
-    transform: translate(0, 2px);
-  }
-
-  h2 {
+.subcategories {
+  h2.cta {
+    text-transform: uppercase;
     font-size: 18px;
-    line-height: 18px;
     letter-spacing: 0.75px;
-    text-transform: none;
-    text-align: center;
-    color: #bc5940;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-
-  p {
-    font-size: 12px;
-    line-height: normal;
-    letter-spacing: 0.5px;
     margin-bottom: 10px;
+  }
+
+  p.cta {
     text-align: center;
   }
 
-  .expand-desc {
-    color: rgba(28, 48, 66, 0.56);
+  .category {
+    .ignore-parent-padding();
+
+    &.closed {
+      border-bottom: 1px solid @darkBlue;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
   }
 
-  .select-this-style {
-    margin: 10px 20px;
+  .subcategory {
+    text-align: center;
+    font-size: 32px;
+    line-height: normal;
+    letter-spacing: 0.92px;
+    margin: 20px 0;
+  }
+}
+</style>
+
+<style lang="less">
+@import '../../common/utils.less';
+
+.subcategories {
+  .VueCarousel-slide {
+    box-sizing: border-box;
+    color: white;
+
+    img {
+      margin: auto;
+      height: 334px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .container {
+      padding: 5px;
+    }
+
+    .slide {
+      background-color: @brown;
+      padding: 10px;
+
+      img {
+        margin-bottom: 10px;
+      }
+
+      svg {
+        transform: translate(0, 2px);
+      }
+
+      h2 {
+        font-size: 26px;
+        letter-spacing: 0.76px;
+        text-transform: none;
+        text-align: center;
+        margin-bottom: 5px;
+        color: white;
+      }
+
+      p {
+        font-size: 12px;
+        line-height: normal;
+        letter-spacing: 0.5px;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      .select-this-style {
+        margin: 10px 20px;
+      }
+    }
+  }
+
+  .slide .duration-and-price .container label {
+    color: white;
+  }
+
+  .slide .duration-and-price .divider {
+    border-left: 1px solid white;
+  }
+
+  .VueCarousel-arrow svg path {
+    fill: @darkBlue;
   }
 }
 </style>

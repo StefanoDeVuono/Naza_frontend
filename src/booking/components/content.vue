@@ -1,7 +1,9 @@
 <template>
   <div>
     <div class="content">
-      <img class="border-top" src="assets/content/border-top.svg" />
+      <div class="border-top">
+        <img src="assets/content/border-top.svg" />
+      </div>
       <div class="progress-bar">
         <VueStepper :steps="steps" v-model="step"></VueStepper>
       </div>
@@ -55,66 +57,71 @@ export default {
 
 .progress-bar {
   margin-bottom: 30px;
-  margin-right: 54px;
-  margin-left: 54px;
-  font-family: Moret;
-  font-size: 18px;
-  font-weight: 600;
+  margin-left: 10px;
+  margin-right: 10px;
+
+  .v-stepper {
+    margin-top: 30px;
+
+    .v-step {
+      margin-right: 0;
+      flex-basis: 24%;
+
+      .divider {
+        border-bottom: 1px dashed @darkBlue;
+        margin-left: 3px;
+        margin-right: 3px;
+        opacity: 1;
+      }
+
+      &:last-child {
+        flex-basis: 2%;
+
+        .divider {
+          display: none;
+        }
+      }
+
+      .index {
+        font-family: 'Moret', serif;
+        font-size: 16px;
+        background-color: white;
+        width: 30px;
+        height: 30px;
+        box-shadow: none;
+        border: 2px solid @darkBlue;
+        color: @darkBlue;
+        padding: 2px 0;
+        margin-right: 0;
+        opacity: 1;
+      }
+
+      &.is-disabled .index {
+        opacity: 0.4;
+      }
+
+      &.is-disabled.is-active .label .index {
+        opacity: 1;
+        background-color: @darkBlue;
+        border: 2px solid @darkBlue;
+        color: white;
+      }
+    }
+  }
 }
 
 .content {
-  display: flex;
-  flex-direction: column;
-  padding-bottom: @contentPadding;
-  .ignore-parent-padding();
   background-color: @lightGray;
+  padding-bottom: 50px;
 }
 
 .border-top {
-  width: 100%;
+  .ignore-parent-padding();
   height: auto;
   margin-bottom: 30px;
-}
 
-.v-stepper {
-  .v-step {
-    margin-right: 0;
-    flex-basis: 24%;
-
-    .divider {
-      border-bottom: 1px dashed @darkBlue;
-      margin-left: 3px;
-      margin-right: 3px;
-    }
-
-    &:last-child {
-      flex-basis: 2%;
-
-      .divider {
-        display: none;
-      }
-    }
-
-    .index {
-      width: 30px;
-      height: 30px;
-      box-shadow: none;
-      font-size: 20px;
-      border: 2px solid @darkBlue;
-      color: @darkBlue;
-      padding-bottom: 0.1em;
-      margin-right: 0;
-    }
-
-    &.is-visited .index {
-      color: @orange;
-    }
-
-    &.is-active .label .index {
-      background-color: @darkBlue;
-      border: 2px solid;
-      color: white;
-    }
+  img {
+    width: 100%;
   }
 }
 </style>

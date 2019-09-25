@@ -3,24 +3,17 @@
     <LoginCta />
     <Content :progress-step="1">
       <div v-cloak class="categories">
-        <div class="cta">
-          <div class="cta-subheader"><span>Step One</span></div>
-          <div class="cta-header-container">
-            <div class="cta-header">
-              <img
-                alt="Pick Your Style"
-                src="assets/categories/cta-header@3x.png"
-              />
-            </div>
-          </div>
-          <div class="cta-text"><h2>Select one of the options below</h2></div>
-        </div>
-
-        <carousel
+        <StepHeader
+          stepTitle="Step One"
+          imageUrl="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/step1.png"
+          ctaText="Select one of the options below"
+        />
+        <Carousel
           ref="carousel"
           :perPage="1"
           :centerMode="true"
           :paginationPadding="5"
+          :spacePadding="40"
           paginationColor="rgba(28, 48, 66, 0.4)"
           paginationActiveColor="#bc4940"
         >
@@ -30,7 +23,7 @@
             />
           </template>
 
-          <slide
+          <Slide
             class="category-container"
             v-for="category in categories"
             v-bind:key="category.id"
@@ -65,8 +58,8 @@
                 </router-link>
               </div>
             </div>
-          </slide>
-        </carousel>
+          </Slide>
+        </Carousel>
       </div>
     </Content>
   </div>
@@ -74,6 +67,7 @@
 
 <script>
 import Header from '../components/header.vue'
+import StepHeader from '../components/step-header.vue'
 import Content from '../components/content.vue'
 import { getSpreeServer, getCurlAssetRoot } from 'common/constants'
 import 'whatwg-fetch'
@@ -120,56 +114,23 @@ export default {
     Header,
     Content,
     LoginCta,
+    CustomCarouselPaginator,
+    StepHeader,
     Carousel,
     Slide,
-    CustomCarouselPaginator,
   },
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 @import '../../common/utils.less';
 
 [v-cloak] {
   display: none;
 }
 
-.cta {
-  text-align: center;
-  margin-right: 20px;
-  margin-left: 20px;
-  margin-bottom: 40px;
-  line-height: 24px;
-  color: @darkBlue;
-}
-
-.cta-subheader {
-  font-size: 14px;
-  font-weight: bold;
-  letter-spacing: 0.89px;
-  color: @orange;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-
-.cta-header-container {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.cta-header {
-  width: 122px;
-}
-
-.cta-text h2 {
-  height: 24px;
-  font-size: 18px;
-  font-weight: normal;
-  letter-spacing: 0.53px;
-}
-
 .categories {
+  .ignore-parent-padding();
   margin-bottom: 37px;
 
   .VueCarousel-arrow-icon path {
@@ -179,21 +140,22 @@ export default {
 
 .image-container {
   margin-bottom: 20px;
-}
 
-img {
-  width: 100%;
-  height: auto;
+  img {
+    width: 100%;
+    height: auto;
+  }
 }
 
 .category-container {
-  background-color: @darkBlue;
   display: flex;
   justify-content: center;
+  padding: 0 10px;
 }
 
 .category-container-inner {
   padding: 12px;
+  background-color: @darkBlue;
 }
 
 .category-details-container {
@@ -232,5 +194,27 @@ img {
   color: @darkBlue;
   background-color: #ffffff;
   text-transform: uppercase;
+  line-height: normal;
+}
+</style>
+
+<style lang="less">
+@import '../../common/utils.less';
+
+.categories {
+  .VueCarousel-slide {
+    box-sizing: border-box;
+
+    img {
+      margin: auto;
+      height: 334px;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .VueCarousel-arrow svg path {
+    fill: @darkBlue;
+  }
 }
 </style>
