@@ -12,7 +12,7 @@
       <strong>Premium Add-Ons:</strong> {{ premiumAddOns }}
     </li>
 
-    <li v-if="!isNil(shared.selectedDrinkAddOnString)">
+    <li v-if="!!shared.selectedDrinkAddOnString">
       <strong>Drink:</strong> {{ shared.selectedDrinkAddOnString }}
     </li>
   </ul>
