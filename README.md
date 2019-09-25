@@ -73,15 +73,11 @@ When you are ready to deploy to master, run:
 
 This will update the production Squarespace.
 
-<<<<<<< HEAD
 This workflow means that master may not contain the code currently deployed to production.
 
-## Hair Colors
-=======
 ## Hair Color Images
->>>>>>> origin/master
 
-Hair color images are stored on Amazon S3 in the `projectcurl-assets` bucket in the `HairColors` folder. They should have the same name as the presentation field for the option type in Spree.
+Hair color images are stored on Amazon S3 in the `projectcurl-assets` bucket in the `HairColors` folder. They should have the same name as the presentation field for the option type in Spree. One caveat is that if the color is named something like "X w/ Y" then you should upload it named as "X with Y". This is because S3 doesn't support slashes in file names.
 
 You can add additional colors by adding a new Option Value underneath the Hair Color Option Type. Then you must add a corresponding image underneath `assets/hair-colors`, named the exact same string as the presentation field of the option value.
 

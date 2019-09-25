@@ -125,13 +125,16 @@ export const formattedPrice = totalPrice => {
   }
 }
 
-export const formattedHours = totalDuration => {
+export const formattedHours = (totalDuration, { singularLabel, pluralLabel }) => {
+  const singular = singularLabel || 'HR'
+  const plural = pluralLabel || 'HRS'
+
   if (totalDuration === 0) {
-    return '0 HRS'
+    return '0 ' + plural
   } else if (totalDuration <= 60) {
-    return '1 HR'
+    return '1 ' + singular
   } else {
     const hours = Math.round(totalDuration / 60)
-    return `${hours} HRS`
+    return `${hours} ${plural}`
   }
 }

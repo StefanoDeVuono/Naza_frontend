@@ -1,63 +1,98 @@
 <template>
   <div class="confirmation">
     <div class="youre-all-set">
-      <div class="text">
-        <h2>Well, this is exciting...</h2>
+      <h3>Well, this is exciting...</h3>
 
+      <div>
         <img src="https://projectcurl-assets.s3.amazonaws.com/Confirmation/Confirmation+header.png" srcset="https://projectcurl-assets.s3.amazonaws.com/Confirmation/Confirmation+header.png 1x, https://projectcurl-assets.s3.amazonaws.com/Confirmation/Confirmation+header%402x.png 2x" alt="You're all set!" />
-
-        <p>We can&rsquo;t wait to get you styled!</p>
       </div>
 
-      <img
-        src="https://projectcurl-assets.s3.amazonaws.com/Confirmation/Hero.jpeg"
-        class="image"
-      />
-    </div>
-
-    <div class="check-container">
-      <CheckIcon :size="28" fillColor="white" />
+      <p>
+        See below for your appointment confirmation!<br />
+        You will receive a copy via email as well.
+      </p>
     </div>
 
     <div class="appointment-info">
-      <h2>Your Appointment Information:</h2>
+      <h1>
+        Appointment<br />
+        Information
+      </h1>
 
       <div class="section">
-        <h2>Appointment Summary</h2>
-
-        <p class="style-name">
+        <h3>Your Style</h3>
+        <p>
           {{ shared.taxonName }} - {{ shared.product.name }}
         </p>
-
-        <Section
-          title="Customizations & Add-Ons"
-          name="customizations-and-add-ons"
-        >
-          <!--CustomizationsAndAddOns /-->
-        </Section>
       </div>
 
       <div class="section">
-        <h2>Time</h2>
+        <h3>Customizations &amp; Add-ons</h3>
+        <CustomizationsAndAddOns />
+      </div>
+
+      <div class="section">
+        <h3>Appointment</h3>
         <p>{{ formattedTime }}</p>
       </div>
 
       <div class="section">
-        <h2>Our Location</h2>
+        <h3>Our Location</h3>
         <p>985 Valencia St, San Francisco, CA</p>
+      </div>
+
+      <div class="section">
+        <h3>Totals</h3>
+        <p>
+          Time: {{ duration }} -
+          Price: {{ price }}*
+        </p>
+        <p class="charge-disclaimer">
+          *Your card will not be charged until after your appointment is completed. Tips are optional &amp; can be paid via credit card.
+        </p>
+        <p class="cancel-disclaimer">
+          No-shows or cancellations within 24 hours of scheduled appointment will be charged the full price.
+        </p>
+      </div>
+    </div>
+
+    <div class="common-questions">
+      <img alt="Some Common Questions" src="https://projectcurl-assets.s3.amazonaws.com/Confirmation/some+common+questions+header.png" srcset="https://projectcurl-assets.s3.amazonaws.com/Confirmation/some+common+questions+header.png 1x, https://projectcurl-assets.s3.amazonaws.com/Confirmation/some+common+questions+header%402x.png 2x"/>
+
+      <div class="section">
+        <h3>Can I change my appointment?</h3>
+        <p>
+          Absolutely! To change or update your appointment information just give us a call or at (415) 123-4567 or shoot us an email (appointments@nazabeauty.com).
+        </p>
       </div>
 
       <hr />
 
       <div class="section">
-        <p class="to-change-appointment">
-          To change/update your appointment information just give us a call or
-          text:
+        <h3>When will my card be charged?</h3>
+        <p>
+          Your card will not be charged until after your appointment is completed. Tips are option &amp; can be paid via credit card.
         </p>
-        <p><strong>(415) 123-456</strong></p>
       </div>
 
       <hr />
+
+      <div class="section">
+        <h3>Which stylists will I have?</h3>
+      </div>
+
+      <hr />
+
+      <div class="section">
+        <h3>How do I prep for my appointment?</h3>
+      </div>
+
+      <hr />
+
+      <div class="section">
+        <h3>Ahh! I still have more questions?</h3>
+        <p>All good. We got you covered. Check out our <a href="/faq">FAQ</a> page for answers to all your burning questions.</p>
+      </div>
 
       <div class="section">
         <p class="appointment-prep">
@@ -79,6 +114,7 @@ import CheckIcon from 'vue-material-design-icons/Check.vue'
 import Section from '../components/section.vue'
 import { parseISO, format } from 'date-fns'
 import SqButton from 'common/sq-button.vue'
+import { formattedHours, formattedPrice } from 'common/utils'
 
 export default {
   data() {
@@ -98,6 +134,14 @@ export default {
       const timeObj = parseISO(this.shared.selectedTime)
       return format(timeObj, 'LLLL d, h:mm aa')
     },
+
+    duration() {
+      return formattedHours(this.shared.duration, { singularLabel: 'Hour', pluralLabel: 'Hours' })
+    },
+
+    price() {
+      return formattedPrice(this.shared.price)
+    }
   },
 
   created() {
@@ -120,108 +164,62 @@ export default {
 
   .youre-all-set {
     .ignore-parent-padding();
-    background-color: rgba(28, 48, 66, 0.5);
-    color: white;
-    line-height: 0;
-
-    .text {
-      padding: 50px 0 30px 0;
-      text-align: center;
-
-      h1 {
-        margin-bottom: 20px;
-        color: white;
-        letter-spacing: 1.5px;
-      }
-
-      p {
-        font-size: 18px;
-        margin: 0;
-      }
-    }
-
-    image {
-    }
-  }
-
-  .check-container {
-    position: relative;
-    z-index: 10;
-    margin: calc(38px / -2) auto 20px auto;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: @orange;
-    border-radius: 50%;
-    width: 38px;
-    height: 38px;
-    border: 4px solid white;
+    flex-direction: column;
+    background-color: @brown;
+    padding: 50px 0 30px 0;
+    text-align: center;
 
-    .material-design-icon {
-      height: 28px;
-      width: 28px;
+    h3 {
+      .sans-serif();
+      margin-top: 30px;
+      margin-bottom: 30px;
+      color: white;
+      text-transform: uppercase;
+      font-size: 16px;
+      letter-spacing: 1.5px;
+    }
+
+    img {
+      margin-bottom: 30px;
+    }
+
+    p {
+      font-family: 'Moret', serif;
+      font-size: 16px;
+      font-weight: normal;
+      letter-spacing: 1px;
+      color: white;
+      margin-bottom: 40px;
     }
   }
 
   .appointment-info {
-    h2 {
-      margin: 0 auto 10px auto;
-      color: @orange;
+    background-color: @lightGray;
+    padding: 60px 10px;
+
+    h1 {
+      text-align: center;
+      font-size: 40px;
+      font-weight: bold;
       text-transform: uppercase;
-      font-size: 18px;
+    }
+
+    h3 {
+      .sans-serif-header();
       text-align: center;
     }
 
     p {
+      font-family: 'TTCommons', sans-serif;
+      font-weight: 300;
+      font-size: 20px;
       text-align: center;
-      margin: 0;
     }
 
     hr {
       border: none;
       border-bottom: 1px solid @darkBlue;
-    }
-
-    .section {
-      margin: 40px 0;
-
-      h2 {
-        color: @darkBlue;
-        font-size: 22px;
-        text-transform: none;
-      }
-
-      .section {
-        margin: 0;
-
-        header {
-          margin: 0;
-        }
-
-        .body {
-          padding: 0;
-        }
-
-        .customizations {
-          margin: 0;
-        }
-
-        h2 {
-          font-size: 14px;
-          margin: 0;
-          font-weight: normal;
-        }
-      }
-
-      .to-change-appointment {
-        margin: 0 auto;
-        max-width: 90%;
-      }
-
-      .appointment-prep {
-        font-size: 20px;
-        margin-bottom: 30px;
-      }
     }
   }
 }
