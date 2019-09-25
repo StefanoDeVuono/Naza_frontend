@@ -2,8 +2,8 @@
   <div class="schedule-and-preferences">
     <LightHeader
       :showBackArrow="true"
-      :totalPrice="shared.price"
-      :totalDuration="shared.duration"
+      :totalPrice="parseInt(shared.price)"
+      :totalDuration="parseInt(shared.duration)"
     />
 
     <Loading :active.sync="isLoading" :is-full-page="true" />
@@ -55,6 +55,7 @@ import Loading from 'vue-loading-overlay'
 import { join, filter, reduce, concat } from 'ramda'
 import StepHeader from '../components/step-header.vue'
 import LightHeader from '../components/light-header.vue'
+import { mockProductIfDevelopment } from 'common/utils'
 
 export default {
   data: function() {
@@ -79,6 +80,10 @@ export default {
     this.$root.$on('payment-information:completed', () => {
       this.isPaymentSaved = true
     })
+  },
+
+  created() {
+    mockProductIfDevelopment()
   },
 
   methods: {

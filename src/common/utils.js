@@ -47,8 +47,6 @@ export const loadUserFromToken = (email, userToken) => {
         return
       }
 
-      Storage.sharedState.price = 123
-      Storage.sharedState.duration = 123
       Storage.sharedState.userToken = userToken
       Storage.sharedState.customerEmail = email
       Storage.sharedState.customerFirstName = data.first_name
@@ -89,7 +87,11 @@ export const mockProductIfDevelopment = () => {
           ],
         },
       ],
+      option_types: [
+      ]
     }
+    Storage.sharedState.price = '123'
+    Storage.sharedState.duration = '123'
     Storage.sharedState.taxonName = 'Cakes'
     Storage.sharedState.customerFirstName = 'Hibiki'
     Storage.sharedState.customerLastName = 'Sakura'
