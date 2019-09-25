@@ -153,6 +153,14 @@ export default {
       return getCurlAssetRoot() + path(['styles', 2, 'url'], image)
     },
 
+    updateSubmitState() {
+      if (this.shared.product.option_types.length === 0) {
+        this.isSubmitActive = true
+      } else if (this.colorOptions.length === 0) {
+        this.isSubmitActive = true
+      }
+    },
+
     initializeCustomizations() {
       this.shared.product.option_types.forEach(optionType => {
         const values = optionType.option_values
@@ -167,11 +175,7 @@ export default {
         }
       })
 
-      if (this.shared.product.option_types.length === 0) {
-        this.isSubmitActive = true
-      } else if (this.colorOptions.length === 0) {
-        this.isSubmitActive = true
-      }
+      this.updateSubmitState()
     },
 
     fetchStyles() {
