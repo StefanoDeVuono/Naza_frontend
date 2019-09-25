@@ -47,7 +47,7 @@
         <p class="style-desc">{{ shared.product.description }}</p>
       </div>
 
-      <div class="customizations">
+      <div v-if="shared.product" class="customizations">
         <div v-for="optionType in availableOptions" class="customization">
           <RadioButtonGrouping
             :optionValueMap="optionValueMap"

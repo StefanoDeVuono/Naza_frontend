@@ -1,37 +1,41 @@
 <template>
   <div class="schedule-and-preferences">
+    <LightHeader
+      :showBackArrow="true"
+      :totalPrice="parseInt(shared.price)"
+      :totalDuration="parseInt(shared.duration)"
+    />
+
     <Loading :active.sync="isLoading" :is-full-page="true" />
 
-    <Header title="Schedule &amp; Preferences" :showBackArrow="true" />
-
-    <RunningTotals />
-
     <Content :progress-step="5">
-      <div class="cta">
-        <h2>Let&rsquo;s Pick a Time &amp; Date</h2>
-        <p>
-          For oft, when on my couch I lie In vacant or in pensive mood They
-          flash upon that inward eye Which is the bliss of solitude
-        </p>
-      </div>
+      <StepHeader
+        stepTitle="Step Five"
+        imageUrl="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/step5.png"
+        ctaText="Select a day &amp; time below and insert your personal details to confirm your reservation."
+      />
 
       <div class="sections">
         <AppointmentSummary />
 
-        <AppointmentPicker />
-
         <YourInformation />
-
-        <PaymentInfo />
 
         <Errors />
 
         <PersonalPreferences />
 
+        <div class="cancellation-policy">
+          <h3>Cancellation Policy</h3>
+          <p>
+            A 24-hour cancellation notice is required to avoid being fully
+            charged for the appointment.
+          </p>
+        </div>
+
         <SqButton
           label="Book Appointment"
           :onClick="bookAppointment"
-          :disabled="isDisabled"
+          :disabled="!isPaymentSaved"
         />
       </div>
     </Content>
@@ -39,21 +43,19 @@
 </template>
 
 <script>
-import AppointmentPicker from './appointment-picker.vue'
-import AppointmentSummary from '../components/appointment-summary.vue'
+import AppointmentSummary from './appointment-summary.vue'
 import YourInformation from './your-information.vue'
 import PersonalPreferences from './personal-preferences.vue'
-import Header from '../components/header.vue'
-import RunningTotals from '../components/running-totals.vue'
 import Content from '../components/content.vue'
 import Errors from './errors.vue'
 import SqButton from 'common/sq-button.vue'
 import Storage from 'common/storage'
-import PaymentInfo from './payment-info.vue'
 import { getAppServer, getSpreeServer } from 'common/constants'
-import CalendarBlankOutlineIcon from 'vue-material-design-icons/CalendarBlankOutline.vue'
 import Loading from 'vue-loading-overlay'
 import { join, filter, reduce, concat } from 'ramda'
+import StepHeader from '../components/step-header.vue'
+import LightHeader from '../components/light-header.vue'
+import { mockProductIfDevelopment } from 'common/utils'
 
 export default {
   data: function() {
@@ -79,6 +81,10 @@ export default {
     this.$root.$on('payment-information:completed', () => {
       this.isPaymentSaved = true
     })
+  },
+
+  created() {
+    mockProductIfDevelopment()
   },
 
   methods: {
@@ -264,23 +270,20 @@ export default {
   },
 
   components: {
-    AppointmentPicker,
-    Header,
-    RunningTotals,
     Content,
-    CalendarBlankOutlineIcon,
     SqButton,
     AppointmentSummary,
-    PaymentInfo,
     YourInformation,
     Loading,
     Errors,
     PersonalPreferences,
+    StepHeader,
+    LightHeader,
   },
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 @import '../../common/utils.less';
 
 .schedule-and-preferences {
@@ -300,8 +303,6 @@ export default {
   }
 
   .sections {
-    .ignore-parent-padding();
-    .ignore-parent-padding--add-padding(2);
     background-color: @lightGray;
 
     div.section-header {
@@ -318,6 +319,30 @@ export default {
         margin: 0 0 10px 10px;
         text-transform: none;
       }
+    }
+  }
+
+  .cancellation-policy {
+    margin: 20px 0;
+
+    h3 {
+      .sans-serif();
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      text-transform: none;
+      margin: 0;
+      line-height: 1.5;
+      color: @orange;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 21px;
+      text-align: center;
+      margin: 0;
+      line-height: 1.5;
+      color: @orange;
     }
   }
 }

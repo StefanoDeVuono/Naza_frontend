@@ -1,47 +1,37 @@
 <template>
-  <Section
-    title="Date & Time"
-    name="date-and-time"
-    v-if="slotsByDate[0]"
-    :initialVisible="true"
-  >
-    <template v-slot:header-icon>
-      <CalendarIcon />
-    </template>
+  <div class="appointment-picker">
+    <h2 class="section-header">Date &amp; Time</h2>
+    <div class="superheader">
+      <h2 v-if="slotsByDate[0] && isTomorrow(slotsByDate[0][0])">
+        Tomorrow
+      </h2>
 
-    <div class="appointment-picker">
-      <div class="superheader">
-        <h2 v-if="slotsByDate[0] && isTomorrow(slotsByDate[0][0])">
-          Tomorrow
-        </h2>
+      <h2 v-else-if="slotsByDate[0] && weekText(slotsByDate[0][0])">
+        {{ weekText(slotsByDate[0][0]) }}
+      </h2>
 
-        <h2 v-else-if="slotsByDate[0] && weekText(slotsByDate[0][0])">
-          {{ weekText(slotsByDate[0][0]) }}
-        </h2>
+      <h2 v-else>&nbsp;</h2>
+    </div>
 
-        <h2 v-else>&nbsp;</h2>
-      </div>
-
-      <div class="main-header">
-        <div v-for="slotByDate in slotsByDate">
-          <h2>{{ formatHeaderDay(slotByDate[0]) }}</h2>
-          <p>{{ formatHeaderDate(slotByDate[0]) }}</p>
-        </div>
-      </div>
-
-      <TimeSlots :slotsByDate="slotsByDate" />
-
-      <div class="actions">
-        <div class="previous" v-show="days > 3">
-          <ArrowLeftIcon />
-          <span @click="getPrevSlots">Previous</span>
-        </div>
-        <div class="more">
-          <span @click="getNextSlots">More times</span> <ArrowRightIcon />
-        </div>
+    <div class="main-header">
+      <div v-for="slotByDate in slotsByDate">
+        <h2>{{ formatHeaderDay(slotByDate[0]) }}</h2>
+        <p>{{ formatHeaderDate(slotByDate[0]) }}</p>
       </div>
     </div>
-  </Section>
+
+    <TimeSlots :slotsByDate="slotsByDate" />
+
+    <div class="actions">
+      <div class="previous" v-show="days > 3">
+        &larr;
+        <span @click="getPrevSlots">Previous</span>
+      </div>
+      <div class="more">
+        <span @click="getNextSlots">More times</span> &rarr;
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -60,6 +50,7 @@ import {
 import Section from '../components/section.vue'
 import { map, find, compose, equals, nth } from 'ramda'
 import CalendarIcon from 'images/noun_Calendar_2804231.svg'
+import VueScrollTo from 'vue-scrollto'
 
 export default {
   data: function() {
@@ -130,8 +121,10 @@ export default {
   created: function() {
     this.$root.$on('appointment-picker:selected', () => {
       this.$root.$emit('appointment-summary:hide')
-      this.$root.$emit('date-and-time:hide')
       this.$root.$emit('your-information:show')
+      this.$nextTick(() => {
+        VueScrollTo.scrollTo('#your-information-section')
+      })
     })
 
     this.fetchSlots()
@@ -147,14 +140,21 @@ export default {
 }
 </script>
 
-<style lang="less">
-@midGray: #e6e1da;
-@lightGray: #f7f6f2;
-@darkBlue: #1c3042;
+<style lang="less" scoped>
+@import '../../common/utils.less';
 
 .appointment-picker {
+  margin-top: 40px;
   display: grid;
   grid-template-rows: auto auto auto;
+
+  .section-header {
+    font-family: 'TTCommons', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+  }
 
   .superheader {
     display: grid;
@@ -165,6 +165,7 @@ export default {
 
     h2 {
       text-transform: uppercase;
+      font-family: 'TTCommons', sans-serif;
       font-weight: 500;
       font-size: 12px;
       letter-spacing: normal;
@@ -185,6 +186,7 @@ export default {
 
     h2 {
       text-transform: none;
+      font-family: 'TTCommons', sans-serif;
       font-size: 16px;
       font-weight: bold;
       color: @darkBlue;
@@ -233,7 +235,14 @@ export default {
       flex-direction: row;
       justify-content: flex-start;
       align-items: center;
+      text-transform: uppercase;
+      font-weight: bold;
       flex-grow: 1;
+      color: @darkBlue;
+
+      span {
+        margin-left: 0.25em;
+      }
     }
 
     .more {
@@ -242,7 +251,14 @@ export default {
       flex-direction: row;
       justify-content: flex-end;
       align-items: center;
+      text-transform: uppercase;
+      font-weight: bold;
       flex-grow: 1;
+      color: @darkBlue;
+
+      span {
+        margin-right: 0.25em;
+      }
     }
   }
 }

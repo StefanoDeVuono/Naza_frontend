@@ -9,49 +9,53 @@
     </template>
 
     <div class="appointment-summary">
+      <img :src="imageUrl" />
+
       <AppointmentSummaryContent />
 
-      <div class="row">
-        <p class="modify-notice">
-          If something isn't right, you can go back and modify your reservation.
-        </p>
-      </div>
+      <div class="modify-notice">
+        <hr />
 
-      <hr />
+        If something isn't right, you can go back and modify your reservation.
+
+        <hr />
+      </div>
 
       <div class="totals">
         <div class="total total-price">
-          <h2>Total:</h2>
+          <strong>Total:</strong>
           <span>{{ formattedPrice(shared.price) }}</span>
         </div>
 
         <div class="total total-duration">
-          <h2>Duration:</h2>
+          <strong>Duration:</strong>
           <span>{{ formattedHours(shared.duration) }}</span>
         </div>
       </div>
     </div>
 
-    <div class="cancellation-policy">
-      <h2>Cancellation Policy</h2>
-      <p>
-        A 24-hour cancellation notice is required to avoid being fully charged
-        for the appointment.
-      </p>
+    <div class="star-divider">
+      <StarDivider />
     </div>
+
+    <AppointmentPicker />
   </Section>
 </template>
 
 <script>
+import { path } from 'ramda'
 import {
   formattedHours,
   formattedPrice,
   mockProductIfDevelopment,
 } from 'common/utils'
+import { getCurlAssetRoot } from 'common/constants'
 import Storage from 'common/storage'
-import Section from './section.vue'
+import Section from '../components/section.vue'
 import CalendarCheckIcon from 'images/noun_Calendar_1074173.svg'
 import AppointmentSummaryContent from './appointment-summary-content.vue'
+import StarDivider from '../../images/group-5.svg'
+import AppointmentPicker from './appointment-picker.vue'
 
 export default {
   data: function() {
@@ -65,6 +69,15 @@ export default {
     formattedPrice,
   },
 
+  computed: {
+    imageUrl() {
+      return (
+        getCurlAssetRoot() +
+        path(['images', 0, 'styles', 3, 'url'], this.shared.product)
+      )
+    },
+  },
+
   created() {
     mockProductIfDevelopment()
   },
@@ -73,20 +86,22 @@ export default {
     Section,
     CalendarCheckIcon,
     AppointmentSummaryContent,
+    StarDivider,
+    AppointmentPicker,
   },
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 @import '../../common/utils.less';
 
 .appointment-summary {
-  // .ignore-parent-padding();
-  border: 2px solid @darkBlue;
-  padding: 15px;
-  background-color: white;
+  img {
+    width: 100%;
+  }
 
   .modify-notice {
+    color: @orange;
     font-size: 14px;
     font-weight: bold;
     line-height: 1.5;
@@ -97,12 +112,13 @@ export default {
   hr {
     margin: 20px 0;
     height: 1px;
-    border-top: solid 1px @darkBlue;
+    border-top: solid 1px @orange;
   }
 
   .totals {
-    font-size: 12px;
-    font-weight: bold;
+    margin: 40px 0;
+    font-family: 'TTCommons', sans-serif;
+    font-size: 16px;
 
     .total {
       display: flex;
@@ -111,8 +127,7 @@ export default {
       margin: 10px 0;
     }
 
-    h2 {
-      font-size: 12px;
+    strong {
       font-weight: bold;
       text-transform: uppercase;
       margin: 0;
@@ -126,24 +141,9 @@ export default {
   }
 }
 
-.cancellation-policy {
-  margin: 20px 0;
-
-  h2 {
-    font-size: 14px;
-    font-weight: bold;
-    text-align: center;
-    text-transform: none;
-    margin: 0;
-    line-height: 1.5;
-  }
-
-  p {
-    font-size: 14px;
-    line-height: 21px;
-    text-align: center;
-    margin: 0;
-    line-height: 1.5;
-  }
+.star-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 </style>

@@ -60,10 +60,8 @@ export default {
   }
 
   .header {
-    width: 122px;
-
     img {
-      width: 100%;
+      width: auto;
       height: auto;
     }
   }

@@ -111,6 +111,8 @@
             </label>
           </div>
         </div>
+
+        <PaymentInfo />
       </div>
     </div>
   </Section>
@@ -123,6 +125,7 @@ import Section from '../components/section.vue'
 import { isNil, isEmpty, find, prop } from 'ramda'
 import { getAppServer } from 'common/constants'
 import SignInForm from '../../user/sign-in-form.vue'
+import PaymentInfo from './payment-info.vue'
 
 export default {
   data() {
@@ -180,6 +183,7 @@ export default {
     HairstyleIcon,
     Section,
     SignInForm,
+    PaymentInfo,
   },
   created() {
     const fields = [
@@ -196,16 +200,37 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 @import '../../common/utils.less';
 
 .your-information {
   p {
-    text-align: center;
-
     a {
       text-decoration: underline;
       font-weight: bold;
+    }
+  }
+
+  .field-list {
+    .field {
+      margin-bottom: 30px;
+
+      .field-element {
+        border: 2px solid @darkBlue;
+        font-family: sofia-pro;
+        font-size: 16px;
+
+        &[disabled] {
+          color: lighten(greyscale(@darkBlue, 100%), 50%);
+        }
+      }
+    }
+
+    .title {
+      font-family: 'TTCommons', sans-serif;
+      font-size: 16px;
+      font-weight: normal;
+      margin: 0;
     }
   }
 
@@ -213,22 +238,10 @@ export default {
     border: none;
 
     label {
+      font-family: 'TTCommons', sans-serif;
+      font-size: 16px;
       font-weight: normal;
       line-height: 1;
-    }
-  }
-
-  .section .form-item label {
-    margin: 0;
-  }
-
-  .field-list .field .field-element {
-    border: 2px solid @darkBlue;
-    font-family: sofia-pro;
-    font-size: 16px;
-
-    &[disabled] {
-      color: lighten(greyscale(@darkBlue, 100%), 50%);
     }
   }
 }

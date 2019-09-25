@@ -47,8 +47,6 @@ export const loadUserFromToken = (email, userToken) => {
         return
       }
 
-      Storage.sharedState.price = 123
-      Storage.sharedState.duration = 123
       Storage.sharedState.userToken = userToken
       Storage.sharedState.customerEmail = email
       Storage.sharedState.customerFirstName = data.first_name
@@ -59,6 +57,9 @@ export const loadUserFromToken = (email, userToken) => {
         data.can_receive_sms_reminders
       Storage.sharedState.canReceiveEmailReminders =
         data.can_receive_email_reminders
+      Storage.sharedState.selectedFreeAddOns = ['Candy', 'Fruit']
+      Storage.sharedState.selectedPremiumAddOns = ['Chocolate']
+      Storage.sharedState.selectedDrinkAddOnString = 'Lemonade'
     })
 }
 
@@ -86,7 +87,10 @@ export const mockProductIfDevelopment = () => {
           ],
         },
       ],
+      option_types: [],
     }
+    Storage.sharedState.price = '123'
+    Storage.sharedState.duration = '123'
     Storage.sharedState.taxonName = 'Cakes'
     Storage.sharedState.customerFirstName = 'Hibiki'
     Storage.sharedState.customerLastName = 'Sakura'

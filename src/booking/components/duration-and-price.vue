@@ -57,11 +57,10 @@ export default {
     justify-content: center;
 
     label {
-      font-family: 'TTCommons', sans-serif;
+      .sans-serif();
       margin-left: 0.5em;
       font-size: 12px;
       line-height: 1.8;
-      color: #1c3042;
     }
   }
 
@@ -69,7 +68,7 @@ export default {
     border-left: 1px solid @darkBlue;
     width: 1px;
     height: 1em;
-    margin: 0 10px;
+    margin: 0 10px 4px 10px;
   }
 }
 </style>

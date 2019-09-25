@@ -109,14 +109,14 @@ export default {
 
       .index {
         font-family: 'Moret', serif;
-        font-size: 16px;
+        font-size: 18px;
         background-color: white;
         width: 30px;
         height: 30px;
         box-shadow: none;
         border: 2px solid @darkBlue;
         color: @darkBlue;
-        padding: 2px 0;
+        padding: 1px 0 2px 0;
         margin-right: 0;
         opacity: 1;
       }
@@ -125,7 +125,7 @@ export default {
         opacity: 0.4;
       }
 
-      &.is-disabled.is-active .label .index {
+      &.is-active .label .index {
         opacity: 1;
         background-color: @darkBlue;
         border: 2px solid @darkBlue;
