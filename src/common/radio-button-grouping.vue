@@ -112,7 +112,7 @@ export default {
 </script>
 
 <style lang="less">
-@darkBlue: #1c3042;
+@import './utils.less';
 
 .radio-button-grouping {
   .header {
@@ -120,12 +120,11 @@ export default {
     grid-template-columns: 20% 60% 20%;
 
     h2 {
+      .sans-serif();
       grid-column-start: 2;
-      font-family: 'TTCommons', sans-serif;
       font-size: 16px;
       font-weight: bold;
       text-align: center;
-      color: @darkBlue;
       margin-bottom: 10px;
       text-transform: uppercase;
       font-weight: bold;
@@ -188,14 +187,15 @@ export default {
   }
 
   label {
+    .sans-serif();
+    font-size: 14px;
     background-color: white;
     display: block;
     color: @darkBlue;
     border: solid @darkBlue;
     border-width: 2px 2px 2px 0;
     text-align: center;
-    padding: 10px;
-    font-size: 14px;
+    padding: 15px 10px;
     font-weight: bold;
     line-height: normal;
   }
