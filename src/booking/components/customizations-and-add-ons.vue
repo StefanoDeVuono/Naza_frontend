@@ -12,7 +12,7 @@
       <strong>Premium Add-Ons:</strong> {{ premiumAddOns }}
     </li>
 
-    <li v-if="!isNil(shared.selectedDrinkAddOnString)">
+    <li v-if="!!shared.selectedDrinkAddOnString">
       <strong>Drink:</strong> {{ shared.selectedDrinkAddOnString }}
     </li>
   </ul>
@@ -20,7 +20,7 @@
 
 <script>
 import Storage from 'common/storage'
-import { join, isEmpty, isNil } from 'ramda'
+import { join, isEmpty } from 'ramda'
 
 export default {
   data() {
@@ -41,7 +41,6 @@ export default {
 
   methods: {
     isEmpty,
-    isNil,
   },
 }
 </script>
