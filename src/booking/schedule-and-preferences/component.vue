@@ -58,7 +58,7 @@ import LightHeader from '../components/light-header.vue'
 import { mockProductIfDevelopment } from 'common/utils'
 
 const CALL_TO_MAKE_APPOINTMENT = "Please call to make an appointment."
-const GENERIC_SERVER_ERROR = `Your request could be not be completed. ${CALL_TO_MAKE_APPOINTMENT}`
+export const GENERIC_SERVER_ERROR = `Your request could be not be completed. ${CALL_TO_MAKE_APPOINTMENT}`
 
 export default {
   data: function() {
@@ -135,8 +135,9 @@ export default {
         })
       } catch (error) {
         console.error('ERROR:', error)
-        this.isLoading = false
       }
+
+      this.isLoading = false
     },
 
     createOrder() {
@@ -270,15 +271,25 @@ export default {
         },
         body: JSON.stringify(data),
       })
-        .then(resp => resp.json())
-        .then(json => {
-          this.isLoading = false
-          if (json.errors) {
-            this.errors = this.errors.concat(json.errors)
-            throw join(', ', json.errors)
-          }
-          this.shared.spreeUserId = json.data.id
-        })
+      .then(resp => {
+        if (resp.status >= 200 && resp.status < 500) {
+          return resp.json()
+        }
+        return Promise.reject({status: resp.status})
+      })
+      .then(json => {
+        if (json.errors) {
+          this.errors = this.errors.concat(json.errors)
+          return Promise.reject({ status: 400 })
+        }
+        this.shared.spreeUserId = json.data.id
+      })
+      .catch(({status}) => {
+        if (!status || status >= 500) {
+          this.errors.push(GENERIC_SERVER_ERROR)
+        }
+        return Promise.reject()
+      })
     },
   },
 
