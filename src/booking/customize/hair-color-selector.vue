@@ -19,7 +19,7 @@
         >
           <img :src="getAssetUrl(color)" />
         </div>
-        <div class="desc"><strong>Color:</strong> {{ color.presentation }}</div>
+        <div class="desc">{{ color.presentation }}</div>
       </div>
     </div>
   </div>
@@ -48,9 +48,12 @@ export default {
     },
 
     getAssetUrl(color) {
+      const name = color.presentation
+        .replace(/ \(.+?\)$/, '')
+        .replace(/\b w\/ \b/, ' with ')
       return (
         'https://projectcurl-assets.s3.amazonaws.com/HairColors/' +
-        window.encodeURIComponent(color.presentation) +
+        window.encodeURIComponent(name) +
         '.png'
       )
     },
@@ -75,7 +78,7 @@ export default {
   .colors {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 5px;
+    grid-gap: 15px 0;
     margin-top: 10px;
 
     img {
@@ -104,6 +107,7 @@ export default {
   .color-container .desc {
     strong {
       color: @darkBlue;
+      opacity: 1;
     }
 
     font-family: 'TTCommons', sans-serif;
