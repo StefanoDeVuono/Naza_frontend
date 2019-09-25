@@ -5,7 +5,10 @@
     </template>
 
     <div class="personal-preferences form-wrapper">
-      <p>We want to make sure you get the best service. Please select the following options.</p>
+      <p>
+        We want to make sure you get the best service. Please select the
+        following options.
+      </p>
 
       <div class="field-list">
         <div class="form-item">

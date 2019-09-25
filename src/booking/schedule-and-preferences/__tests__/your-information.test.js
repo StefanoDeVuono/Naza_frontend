@@ -10,6 +10,12 @@ jest.mock('images/noun_hairstyle_1105146.svg', () => {
     CalendarIcon: () => null
   }
 })
+jest.mock('vue-loading-overlay/dist/vue-loading.css', () => {
+  return {}
+})
+jest.mock('images/noun_payment_511229.svg', () => {
+  return {}
+})
 
 describe('YourInformation', () => {
   let wrapper

@@ -87,8 +87,7 @@ export const mockProductIfDevelopment = () => {
           ],
         },
       ],
-      option_types: [
-      ]
+      option_types: [],
     }
     Storage.sharedState.price = '123'
     Storage.sharedState.duration = '123'

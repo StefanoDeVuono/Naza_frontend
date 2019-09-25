@@ -27,8 +27,8 @@
         <div class="cancellation-policy">
           <h3>Cancellation Policy</h3>
           <p>
-            A 24-hour cancellation notice is required to avoid being fully charged
-            for the appointment.
+            A 24-hour cancellation notice is required to avoid being fully
+            charged for the appointment.
           </p>
         </div>
 

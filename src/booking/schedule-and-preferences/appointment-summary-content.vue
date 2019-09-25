@@ -9,10 +9,12 @@
       <li><strong>Style:</strong> {{ shared.taxonName }}</li>
       <li><strong>Pattern:</strong> {{ patternName }}</li>
       <li>
-        <strong>Description:</strong> 
+        <strong>Description:</strong>
         <span v-if="showMoreLink">{{ truncatedDescription }}</span>
         <span v-else>{{ description }}</span>
-        <span v-if="showMoreLink" class="more-action" @click="expandDescription">more</span>
+        <span v-if="showMoreLink" class="more-action" @click="expandDescription"
+          >more</span
+        >
       </li>
     </ul>
 
@@ -125,7 +127,7 @@ export default {
   }
 
   ul {
-    padding-left: 1em;    
+    padding-left: 1em;
   }
 
   .style-header {

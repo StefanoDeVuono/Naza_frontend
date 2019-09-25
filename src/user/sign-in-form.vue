@@ -11,11 +11,7 @@
         <form autocomplete="on" method="POST" @submit.stop.prevent="signIn">
           <div class="field-list clear">
             <div class="form-item field email">
-              <label
-                class="title"
-                for="email"
-                >Email Address:</label
-              >
+              <label class="title" for="email">Email Address:</label>
 
               <input
                 class="field-element"
@@ -28,11 +24,7 @@
             </div>
 
             <div class="form-item field password">
-              <label
-                class="title"
-                for="password"
-                >Password:</label
-              >
+              <label class="title" for="password">Password:</label>
 
               <input
                 class="field-element"
@@ -128,7 +120,7 @@ export default {
 
   components: {
     ForgotPasswordModal,
-    SqButton
+    SqButton,
   },
 }
 </script>

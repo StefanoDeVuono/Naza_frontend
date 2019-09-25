@@ -71,8 +71,11 @@ export default {
 
   computed: {
     imageUrl() {
-      return getCurlAssetRoot() + path(['images', 0, 'styles', 3, 'url'], this.shared.product)
-    }
+      return (
+        getCurlAssetRoot() +
+        path(['images', 0, 'styles', 3, 'url'], this.shared.product)
+      )
+    },
   },
 
   created() {
@@ -96,7 +99,7 @@ export default {
   img {
     width: 100%;
   }
-  
+
   .modify-notice {
     color: @orange;
     font-size: 14px;
@@ -143,5 +146,4 @@ export default {
   align-items: center;
   justify-content: center;
 }
-
 </style>
