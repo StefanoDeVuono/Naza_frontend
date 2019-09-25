@@ -20,7 +20,7 @@
 
 <script>
 import Storage from 'common/storage'
-import { join, isEmpty } from 'ramda'
+import { join, isEmpty, isNil } from 'ramda'
 
 export default {
   data() {
@@ -41,6 +41,7 @@ export default {
 
   methods: {
     isEmpty,
+    isNil,
   },
 }
 </script>

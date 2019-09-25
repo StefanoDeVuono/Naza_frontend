@@ -1,14 +1,14 @@
 <template>
   <div class="duration-and-price">
     <div class="container">
-      <ClockOutlineIcon />
+      <ClockOutlineIcon :size="16" />
       <label>{{ formattedHours(duration) }}</label>
     </div>
 
     <div class="divider"></div>
 
     <div class="container">
-      <TagIcon />
+      <TagIcon :size="16" />
       <label>{{ formattedPrice(price) }}</label>
     </div>
   </div>
@@ -45,18 +45,6 @@ export default {
 @import '../../../styles/util.less';
 @import '../../common/utils.less';
 
-.material-design-icon.clock-outline-icon,
-.material-design-icon.clock-outline-icon > .material-design-icon__svg {
-  height: 16px;
-  width: 16px;
-}
-
-.material-design-icon.tag-outline-icon,
-.material-design-icon.tag-outline-icon > .material-design-icon__svg {
-  height: 16px;
-  width: 16px;
-}
-
 .duration-and-price {
   display: flex;
   flex-direction: row;
@@ -67,11 +55,11 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    padding: 0 10px;
 
     label {
+      font-family: 'TTCommons', sans-serif;
       margin-left: 0.5em;
-      font-size: 10px;
+      font-size: 12px;
       line-height: 1.8;
       color: #1c3042;
     }
@@ -80,7 +68,8 @@ export default {
   .divider {
     border-left: 1px solid @darkBlue;
     width: 1px;
-    height: 0.8em;
+    height: 1em;
+    margin: 0 10px;
   }
 }
 </style>

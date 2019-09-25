@@ -5,7 +5,11 @@
     </div>
     <div class="header-container">
       <div class="header">
-        <img :alt="stepTitle" :src="imageUrl" />
+        <img
+          :alt="stepTitle"
+          :src="imageUrl"
+          :srcset="`${imageUrl} 1x, ${highresImageUrl} 2x`"
+        />
       </div>
     </div>
     <div class="text"><h2 v-html="ctaText"></h2></div>
@@ -14,6 +18,12 @@
 
 <script>
 export default {
+  computed: {
+    highresImageUrl() {
+      return this.imageUrl.replace(/\.png$/, '@2x.png')
+    },
+  },
+
   props: {
     stepTitle: String,
     imageUrl: String,

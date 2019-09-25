@@ -2,7 +2,7 @@
   <div class="add-ons">
     <div class="header">
       <slot name="icon"></slot>
-      <h2>{{ title }}</h2>
+      <h3>{{ title }}</h3>
     </div>
 
     <div class="products">
@@ -12,12 +12,15 @@
         v-for="product in products"
       >
         <img @click="onSelect(product)" :src="getImageUrl(product)" />
-        <h2>{{ product.name }}</h2>
+        <h3>{{ product.name }}</h3>
         <p>{{ product.description }}</p>
-        <div class="duration-and-price-wrapper">
+        <div
+          v-if="parseInt(product.price) > 0"
+          class="duration-and-price-wrapper"
+        >
           <DurationAndPrice
-            :duration="parseInt(product.duration || 0)"
-            :price="parseInt(product.price || 0)"
+            :duration="parseInt(product.duration)"
+            :price="parseInt(product.price)"
           />
         </div>
       </div>
@@ -79,11 +82,12 @@ export default {
     justify-content: center;
     align-items: center;
 
-    h2 {
-      font-size: 22px;
+    h3 {
+      font-family: 'TTCommons', sans-serif;
+      font-size: 18px;
       font-weight: bold;
       color: @darkBlue;
-      text-transform: none;
+      text-transform: uppercase;
     }
 
     svg {
@@ -104,7 +108,8 @@ export default {
   .product {
     margin-bottom: 20px;
 
-    h2 {
+    h3 {
+      font-family: 'TTCommons', sans-serif;
       text-align: center;
       color: @orange;
       text-transform: none;
@@ -117,10 +122,6 @@ export default {
       font-size: 12px;
       margin: 0;
       color: @darkBlue;
-    }
-
-    svg {
-      transform: translate(0, -2px);
     }
 
     img {
@@ -136,7 +137,6 @@ export default {
     }
 
     .duration-and-price-wrapper {
-      width: 80%;
       margin: 0 auto;
     }
   }
