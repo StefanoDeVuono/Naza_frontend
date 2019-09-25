@@ -2,7 +2,10 @@
   <div class="confirmation">
     <div class="youre-all-set">
       <div class="text">
-        <h1>You&rsquo;re all set</h1>
+        <h2>Well, this is exciting...</h2>
+
+        <img src="https://projectcurl-assets.s3.amazonaws.com/Confirmation/Confirmation+header.png" srcset="https://projectcurl-assets.s3.amazonaws.com/Confirmation/Confirmation+header.png 1x, https://projectcurl-assets.s3.amazonaws.com/Confirmation/Confirmation+header%402x.png 2x" alt="You're all set!" />
+
         <p>We can&rsquo;t wait to get you styled!</p>
       </div>
 
@@ -109,7 +112,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 @import '../../common/utils.less';
 
 .confirmation {
