@@ -101,6 +101,7 @@ export default {
     },
 
     async bookAppointment() {
+      this.errors = []
       this.isLoading = true
 
       try {

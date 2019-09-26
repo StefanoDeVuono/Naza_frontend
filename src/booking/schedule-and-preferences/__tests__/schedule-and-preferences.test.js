@@ -2,7 +2,7 @@ import ScheduleAndPreferences from '../component.vue'
 import { GENERIC_SERVER_ERROR } from '../component.vue'
 
 import Storage from "common/storage";
-import {createLocalVue, shallowMount} from "@vue/test-utils";
+import {shallowMount} from "@vue/test-utils";
 import {mockFetch, restoreFetch} from "common/testHelper";
 import flushPromises from "flush-promises";
 
