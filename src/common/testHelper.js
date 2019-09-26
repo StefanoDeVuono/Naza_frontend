@@ -1,12 +1,27 @@
 let oldFetch
 
 export const mockFetch = (returnObj, status=200) => {
-  const fetchResponse = {
-    status: status,
-    json: jest.fn(() => Promise.resolve(returnObj)),
+  let fetchResponse
+
+  // Mock JSON parse error
+  if (typeof returnObj === 'object' ) {
+    fetchResponse = jest.fn().mockResolvedValue(
+        {
+          status: status,
+          json: jest.fn().mockResolvedValue(returnObj),
+        }
+    )
+  } else {
+    fetchResponse = jest.fn().mockResolvedValue(
+        {
+          status: status,
+          json: jest.fn().mockRejectedValue({}),
+        }
+    )
   }
+
   oldFetch = global.fetch
-  global.fetch = () => Promise.resolve(fetchResponse)
+  global.fetch = fetchResponse
 }
 
 export const restoreFetch = () => {
