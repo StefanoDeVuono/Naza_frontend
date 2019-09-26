@@ -79,7 +79,7 @@ describe('AppointmentPicker', () => {
 
     it('emits availableTimesError event', async () => {
       await flushPromises()
-      const emitted = wrapper.emitted().availableTimesError
+      const emitted = wrapper.emitted()["available-times-error"]
 
       expect(emitted).toBeTruthy()
       expect(emitted[0][0][0]).toEqual('Mocked Server Error')

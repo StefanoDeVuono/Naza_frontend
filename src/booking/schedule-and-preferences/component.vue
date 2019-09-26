@@ -18,7 +18,7 @@
       />
 
       <div class="sections">
-        <AppointmentSummary  @availableTimesError="handleAvailableTimesError"/>
+        <AppointmentSummary  @available-times-error="handleAvailableTimesError"/>
 
         <YourInformation @stripeSetupIntentError="handleStripeServerError"/>
 
