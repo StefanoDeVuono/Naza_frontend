@@ -41,7 +41,7 @@ describe('ScheduleAndPreferences', () => {
 
       expect(wrapper.vm.shared.spreeUserId).toBeFalsy()
 
-      wrapper.vm.createOrUpdateUser()
+      await wrapper.vm.createOrUpdateUser()
       await flushPromises()
       expect(wrapper.vm.shared.spreeUserId).toEqual(spreeUserIdStub)
     });
@@ -101,15 +101,17 @@ describe('ScheduleAndPreferences', () => {
         name: 'A fake product'
       }
 
-      vm = wrapper = shallowMount(ScheduleAndPreferences, {
+      vm = shallowMount(ScheduleAndPreferences, {
         mocks: { $router }
       }).vm
     })
 
-    it('shows page in a loading state', () => {
+    it('shows page in a loading state', async () => {
+      mockFetch({})
       expect(vm.isLoading).toEqual(false)
       vm.bookAppointment()
       expect(vm.isLoading).toEqual(true)
+      await flushPromises()
     })
 
     it('page stops loading when all requests are successful', async () => {
@@ -288,6 +290,44 @@ describe('ScheduleAndPreferences', () => {
 
       flushPromises()
       .then(() => wrapper.vm.addAddOnToCart())
+      .catch(() => {
+        expect(wrapper.vm.errors[0]).toEqual(GENERIC_SERVER_ERROR)
+        done()
+      })
+    })
+  })
+
+  describe('#completeCheckout', () => {
+    beforeEach(() => {
+      wrapper = shallowMount(ScheduleAndPreferences)
+    })
+
+    it('Returns a resolved promise when successful', async () => {
+      mockFetch({})
+
+      await flushPromises()
+      const result = await wrapper.vm.completeCheckout()
+      expect(result).toBeTruthy()
+    })
+
+    it('Sets a Generic error when there are any API errors', (done) => {
+      mockFetch({}, 422)
+      expect(wrapper.vm.errors.length).toEqual(0)
+
+      flushPromises()
+      .then(() => wrapper.vm.completeCheckout())
+      .catch(() => {
+        expect(wrapper.vm.errors[0]).toEqual(GENERIC_SERVER_ERROR)
+        done()
+      })
+    })
+
+    it('Sets a Generic error when there are JSON parsing errors', (done) => {
+      mockFetch('Not JSON Parsible', 200)
+      expect(wrapper.vm.errors.length).toEqual(0)
+
+      flushPromises()
+      .then(() => wrapper.vm.completeCheckout())
       .catch(() => {
         expect(wrapper.vm.errors[0]).toEqual(GENERIC_SERVER_ERROR)
         done()

@@ -233,6 +233,8 @@ export default {
         },
         body: JSON.stringify(data),
       })
+      .then(this.handleSpreeResponse)
+      .catch(this.handleSpreeError)
     },
 
     createOrUpdateUser() {
