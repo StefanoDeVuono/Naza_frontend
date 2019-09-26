@@ -1,6 +1,8 @@
 <template>
   <div class="confirmation">
     <div class="youre-all-set">
+      <img id="yellowstar" src="assets/images/Burst_Yellow.png" alt="" />
+
       <h3>Well, this is exciting...</h3>
 
       <div>
@@ -21,53 +23,55 @@
     </div>
 
     <div class="appointment-info">
-      <h1>
-        Appointment<br />
-        Information
-      </h1>
+      <div class="inner">
+        <h1>
+          Appointment<br />
+          Information
+        </h1>
 
-      <div>
-        <h3>Your Style</h3>
-        <p>{{ shared.taxonName }} - {{ shared.product.name }}</p>
-      </div>
+        <div>
+          <h3>Your Style</h3>
+          <p>{{ shared.taxonName }} - {{ shared.product.name }}</p>
+        </div>
 
-      <div>
-        <h3>Customizations &amp; Add-ons</h3>
-        <p @click="toggleCustomizations">
-          View Selection
-          <ChevronRightIcon v-show="!showCustomizations" :size="24" />
-          <ChevronUpIcon v-show="showCustomizations" :size="24" />
-        </p>
-        <CustomizationsAndAddOns v-show="showCustomizations" />
-      </div>
+        <div>
+          <h3>Customizations &amp; Add-ons</h3>
+          <p @click="toggleCustomizations">
+            View Selection
+            <ChevronRightIcon v-show="!showCustomizations" :size="24" />
+            <ChevronUpIcon v-show="showCustomizations" :size="24" />
+          </p>
+          <CustomizationsAndAddOns v-show="showCustomizations" />
+        </div>
 
-      <div>
-        <h3>Appointment</h3>
-        <p>{{ formattedTime }}</p>
-      </div>
+        <div>
+          <h3>Appointment</h3>
+          <p>{{ formattedTime }}</p>
+        </div>
 
-      <div>
-        <h3>Our Location</h3>
-        <p>985 Valencia St, San Francisco, CA</p>
-      </div>
+        <div>
+          <h3>Our Location</h3>
+          <p>985 Valencia St<br />San Francisco, CA</p>
+        </div>
 
-      <div>
-        <h3>Totals</h3>
-        <p @click="toggleTotals">
-          View Time &amp; Price
-          <ChevronRightIcon v-show="!showTotals" :size="24" />
-          <ChevronUpIcon v-show="showTotals" :size="24" />
-        </p>
+        <div>
+          <h3>Totals</h3>
+          <p @click="toggleTotals">
+            View Time &amp; Price
+            <ChevronRightIcon v-show="!showTotals" :size="24" />
+            <ChevronUpIcon v-show="showTotals" :size="24" />
+          </p>
 
-        <p v-show="showTotals">Time: {{ duration }} - Price: {{ price }}*</p>
-        <p v-show="showTotals" class="charge-disclaimer">
-          *Your card will not be charged until after your appointment is
-          completed. Tips are optional &amp; can be paid via credit card.
-        </p>
-        <p v-show="showTotals" class="cancel-disclaimer">
-          No-shows or cancellations within 24 hours of scheduled appointment
-          will be charged the full price.
-        </p>
+          <p v-show="showTotals">Time: {{ duration }} - Price: {{ price }}*</p>
+          <p v-show="showTotals" class="charge-disclaimer">
+            *Your card will not be charged until after your appointment is
+            completed. Tips are optional &amp; can be paid via credit card.
+          </p>
+          <p v-show="showTotals" class="cancel-disclaimer">
+            No-shows or cancellations within 24 hours of scheduled appointment
+            will be charged the full price.
+          </p>
+        </div>
       </div>
     </div>
 
@@ -238,11 +242,24 @@ export default {
 
   .youre-all-set {
     .ignore-parent-padding();
+
+    background-image: url('../../images/Burst_Pink_1.png'),
+      url('../../images/Burst_Tan.png');
+    background-position: 0 -50px, right 100px;
+    background-repeat: no-repeat, no-repeat;
+
     display: flex;
+    position: relative;
     flex-direction: column;
     background-color: @brown;
     padding: 50px 0 30px 0;
     text-align: center;
+
+    #yellowstar {
+      position: absolute;
+      bottom: -80px;
+      right: 20%;
+    }
 
     h3 {
       .sans-serif();
@@ -269,11 +286,20 @@ export default {
   }
 
   .appointment-info {
-    background-color: @lightGray;
-    padding: 60px 10px 30px 10px;
+    background-image: url('../../images/Burst_Brown.png'),
+      url('../../images/Burst_Purple.png');
+    background-position: 0 300px, right 400px;
+    background-repeat: no-repeat, no-repeat;
 
-    & > div {
-      margin-bottom: 40px;
+    background-color: @lightGray;
+    .ignore-parent-padding();
+
+    .inner {
+      padding: 60px 10px 30px 10px;
+
+      & > div {
+        margin-bottom: 40px;
+      }
     }
 
     h1 {
@@ -317,6 +343,10 @@ export default {
     .ignore-parent-padding();
     background-color: @darkBlue;
     color: white;
+
+    a {
+      text-decoration: underline;
+    }
 
     .img-container {
       padding-top: 1px;

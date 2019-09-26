@@ -43,6 +43,19 @@ module.exports = {
             loader: 'url-loader'
           }
         ],
+      },
+      {
+        test: /\.(png)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              outputPath: '/assets/images',
+              name: '[name].[ext]',
+              publicPath: '/assets/images/'
+            }
+          }
+        ]
       }
     ],
   },
@@ -55,8 +68,8 @@ module.exports = {
   },
   entry: './src/main.js',
   output: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, 'scripts'),
+    filename: 'scripts/bundle.js',
+    path: path.resolve(__dirname),
   },
   optimization: {
     usedExports: true,
