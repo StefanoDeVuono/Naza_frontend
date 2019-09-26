@@ -72,7 +72,11 @@ export default {
       )
         .then(response => response.json())
         .then(json => {
-          this.slotsByDate = json
+          if (json.errors) {
+            this.$emit('available-times-error', json.errors)
+          } else {
+            this.slotsByDate = json
+          }
         })
     },
 

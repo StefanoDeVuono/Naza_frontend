@@ -5,6 +5,7 @@ import { shallowMount, createLocalVue } from '@vue/test-utils'
 import { mockFetch, restoreFetch } from 'common/testHelper'
 import fetchResponseJson from './appointment-picker.fetchResponse.json'
 import nextFetchResponseJson from './appointment-picker.next.fetchResponse.json'
+import fetchErronResponseJson from './appointment-picker.fetchErrorResponse'
 import flushPromises from 'flush-promises'
 import { map, nth } from 'ramda'
 import Storage from 'common/storage'
@@ -17,19 +18,15 @@ jest.mock('images/noun_Calendar_2804231.svg', () => {
 
 describe('AppointmentPicker', () => {
   let wrapper
-  let handleTimeSelected
+  let localVue
 
   beforeEach(() => {
     Storage.reset()
     jest.spyOn(Date, 'now').mockImplementation(() => 1566933102428)
-    const localVue = createLocalVue()
-    handleTimeSelected = jest.fn()
+    localVue = createLocalVue()
     mockFetch(fetchResponseJson)
 
     wrapper = shallowMount(AppointmentPicker, {
-      propsData: {
-        onTimeSelected: handleTimeSelected,
-      },
       localVue,
     })
   })
@@ -70,5 +67,22 @@ describe('AppointmentPicker', () => {
         '2019-09-02',
       ])
     })
+  })
+
+  describe('When there is an API error', () => {
+    beforeEach(() => {
+      mockFetch(fetchErronResponseJson)
+      wrapper = shallowMount(AppointmentPicker, {
+        localVue,
+      })
+    })
+
+    it('emits availableTimesError event', async () => {
+      await flushPromises()
+      const emitted = wrapper.emitted()["available-times-error"]
+
+      expect(emitted).toBeTruthy()
+      expect(emitted[0][0][0]).toEqual('Mocked Server Error')
+    });
   })
 })

@@ -21,7 +21,7 @@
         </div>
 
         <!-- Used to display form errors. -->
-        <div id="card-errors" role="alert"></div>
+        <div><span id="card-errors" role="alert"></span></div>
       </div>
     </form>
   </div>
@@ -69,30 +69,40 @@ export default {
           },
         })
         .then(result => {
-          Storage.setStripePaymentMethod(result.setupIntent.payment_method)
+          if (!!result.error) {
+            this.handleEventError(result)
+          } else {
+            Storage.setStripePaymentMethod(result.setupIntent.payment_method)
+            this.$root.$emit('payment-information:completed')
+            this.$root.$emit('payment-information:hide')
+            this.$root.$emit('your-information:hide')
+            this.$root.$emit('personal-preferences:show')
+            this.$nextTick(() => {
+              VueScrollTo.scrollTo('#personal-preferences-section')
+            })
+          }
           this.isLoading = false
-          this.$root.$emit('your-information:hide')
-          this.$root.$emit('payment-information:completed')
-          this.$root.$emit('payment-information:hide')
-          this.$root.$emit('personal-preferences:show')
-          this.$nextTick(() => {
-            VueScrollTo.scrollTo('#personal-preferences-section')
-          })
+
         })
     },
 
     handleCardChange(e) {
-      const displayError = document.getElementById('card-errors')
-      if (e.error) {
-        displayError.textContent = e.error.message
-      } else {
-        displayError.textContent = ''
-      }
+      this.handleEventError(e)
 
       if (e.complete) {
         this.handleCardSetup(e)
       }
     },
+
+    handleEventError(stripeEvent) {
+      const displayError = document.getElementById('card-errors')
+
+      if (stripeEvent.error) {
+        displayError.textContent = stripeEvent.error.message
+      } else {
+        displayError.textContent = ''
+      }
+    }
   },
 
   created() {
@@ -104,7 +114,10 @@ export default {
       method: 'POST',
     })
       .then(resp => {
-        return resp.json()
+        if (resp.status === 200) {
+          return resp.json()
+        }
+        return Promise.reject()
       })
       .then(json => {
         this.setupIntentSecret = json.client_secret
@@ -119,6 +132,9 @@ export default {
         this.stripeCard = elements.create('card', { style })
         this.stripeCard.on('change', this.handleCardChange)
         this.stripeCard.mount('#card-element')
+      })
+      .catch(() => {
+        this.$emit('stripe-setup-intent-error')
       })
   },
 
@@ -183,5 +199,14 @@ export default {
 
 .StripeElement--webkit-autofill {
   background-color: #fefde5 !important;
+}
+
+#card-errors {
+  color: @deepRed;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.43;
+  letter-spacing: 0.5px;
+  padding-top: 10px;
 }
 </style>

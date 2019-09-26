@@ -1,5 +1,7 @@
 <template>
   <div class="schedule-and-preferences">
+    <Errors id="errors-section" v-bind:errors="errors" />
+
     <LightHeader
       :showBackArrow="true"
       :totalPrice="parseInt(shared.price)"
@@ -16,11 +18,9 @@
       />
 
       <div class="sections">
-        <AppointmentSummary />
+        <AppointmentSummary  @available-times-error="handleAvailableTimesError"/>
 
-        <YourInformation />
-
-        <Errors />
+        <YourInformation @stripe-setup-intent-error="handleStripeServerError"/>
 
         <PersonalPreferences />
 
@@ -56,10 +56,15 @@ import { join, filter, reduce, concat } from 'ramda'
 import StepHeader from '../components/step-header.vue'
 import LightHeader from '../components/light-header.vue'
 import { mockProductIfDevelopment } from 'common/utils'
+import VueScrollTo from 'vue-scrollto'
+
+const CALL_TO_MAKE_APPOINTMENT = "Please call to make an appointment."
+export const GENERIC_SERVER_ERROR = `Your request could be not be completed. ${CALL_TO_MAKE_APPOINTMENT}`
 
 export default {
   data: function() {
     return {
+      errors: [],
       isPaymentSaved: false,
       isLoading: false,
 
@@ -88,7 +93,16 @@ export default {
   },
 
   methods: {
+    handleAvailableTimesError() {
+      this.errors.push(`Could not find available times. ${CALL_TO_MAKE_APPOINTMENT}`)
+    },
+
+    handleStripeServerError() {
+      this.errors.push(GENERIC_SERVER_ERROR)
+    },
+
     async bookAppointment() {
+      this.errors = []
       this.isLoading = true
 
       try {
@@ -122,9 +136,24 @@ export default {
           name: 'confirmation',
         })
       } catch (error) {
-        console.error('ERROR:', error)
-        this.isLoading = false
+        this.$nextTick(() => {
+          VueScrollTo.scrollTo('#errors-section')
+        })
       }
+
+      this.isLoading = false
+    },
+
+    async handleSpreeResponse(response) {
+      if (response.status >= 200 && response.status < 300) {
+        return response.json()
+      }
+      return Promise.reject()
+    },
+
+    async handleSpreeError() {
+      this.errors.push(GENERIC_SERVER_ERROR)
+      return Promise.reject()
     },
 
     createOrder() {
@@ -137,12 +166,13 @@ export default {
           email: this.shared.customerEmail,
         }),
       })
-        .then(resp => resp.json())
+        .then(this.handleSpreeResponse)
         .then(json => {
           this.$session.set('orderNumber', json.data.attributes.number)
           this.shared.orderNumber = json.data.attributes.number
           this.shared.orderToken = json.data.attributes.token
         })
+        .catch(this.handleSpreeError)
     },
 
     addStyleToCart() {
@@ -159,6 +189,8 @@ export default {
         },
         body: JSON.stringify(data),
       })
+      .then(this.handleSpreeResponse)
+      .catch(this.handleSpreeError)
     },
 
     addAddOnToCart(variantId) {
@@ -173,6 +205,8 @@ export default {
           quantity: 1,
         }),
       })
+      .then(this.handleSpreeResponse)
+      .catch(this.handleSpreeError)
     },
 
     addAddOnsToCart() {
@@ -203,6 +237,8 @@ export default {
         },
         body: JSON.stringify(data),
       })
+      .then(this.handleSpreeResponse)
+      .catch(this.handleSpreeError)
     },
 
     createOrUpdateUser() {
@@ -258,14 +294,25 @@ export default {
         },
         body: JSON.stringify(data),
       })
-        .then(resp => resp.json())
-        .then(json => {
-          this.isLoading = false
-          if (json.errors) {
-            throw join(', ', json.errors)
-          }
-          this.shared.spreeUserId = json.data.id
-        })
+      .then(resp => {
+        if (resp.status >= 200 && resp.status < 500) {
+          return resp.json()
+        }
+        return Promise.reject({status: resp.status})
+      })
+      .then(json => {
+        if (json.errors) {
+          this.errors = this.errors.concat(json.errors)
+          return Promise.reject({ status: 400 })
+        }
+        this.shared.spreeUserId = json.data.id
+      })
+      .catch(({status}) => {
+        if (!status || status >= 500) {
+          this.errors.push(GENERIC_SERVER_ERROR)
+        }
+        return Promise.reject()
+      })
     },
   },
 

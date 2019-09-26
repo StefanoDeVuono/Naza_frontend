@@ -96,7 +96,8 @@ export const mockProductIfDevelopment = () => {
     Storage.sharedState.customerLastName = 'Sakura'
     Storage.sharedState.customerZipCode = '12345'
     Storage.sharedState.customerEmail = 'albert@carbonfive.com'
-    Storage.sharedState.customerPhone = '555-555-5555'
+    // Test number from Twilio:https://www.twilio.com/docs/iam/test-credentials
+    Storage.sharedState.customerPhone = '500-555-0004'
     Storage.sharedState.customerPassword = 'spree123'
     Storage.sharedState.customizations = {
       Size: 'Medium',
