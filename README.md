@@ -89,3 +89,14 @@ These are stored on Amazon S3 in the `projectcurl-assets` bucket in the `HowItWo
 
 This is stored on Amazon S3 in the `projectcurl-assets` bucket in the `Confirmation` folder.
 
+## Adding Fonts to Squarespace
+
+Squarespace allows you to upload OTF font files for use on the site. Presently, this is the best way to use custom fonts in the booking app.
+
+For staging you can go here:
+
+https://amethyst-okra-dblc.squarespace.com/config/design/custom-css
+
+If you haven't already, click the "Manage Custom Files" button and upload your font.
+
+You can then define a new `@font-face` CSS rule using your font. If you click on the font name, the CDN path to your font will be inserted into the text box.
