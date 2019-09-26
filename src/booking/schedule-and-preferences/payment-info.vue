@@ -75,13 +75,14 @@ export default {
             Storage.setStripePaymentMethod(result.setupIntent.payment_method)
             this.$root.$emit('payment-information:completed')
             this.$root.$emit('payment-information:hide')
+            this.$root.$emit('your-information:hide')
+            this.$root.$emit('personal-preferences:show')
+            this.$nextTick(() => {
+              VueScrollTo.scrollTo('#personal-preferences-section')
+            })
           }
           this.isLoading = false
-          this.$root.$emit('your-information:hide')
-          this.$root.$emit('personal-preferences:show')
-          this.$nextTick(() => {
-            VueScrollTo.scrollTo('#personal-preferences-section')
-          })
+
         })
     },
 
