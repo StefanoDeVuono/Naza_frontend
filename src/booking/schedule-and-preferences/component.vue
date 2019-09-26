@@ -134,7 +134,6 @@ export default {
           name: 'confirmation',
         })
       } catch (error) {
-        console.error('ERROR:', error)
         // do nothing
       }
 

@@ -46,32 +46,32 @@ describe('ScheduleAndPreferences', () => {
       expect(wrapper.vm.shared.spreeUserId).toEqual(spreeUserIdStub)
     });
 
-    it('Sets generic error when API response is 500', async () => {
+    it('Sets generic error when API response is 500', (done) => {
       mockFetch({}, 500)
       wrapper = shallowMount(ScheduleAndPreferences)
       expect(wrapper.vm.errors.length).toEqual(0)
 
-      try {
-        await wrapper.vm.createOrUpdateUser()
-        await flushPromises()
-      } catch {
+      flushPromises()
+      .then(() => wrapper.vm.createOrUpdateUser())
+      .catch(() => {
         expect(wrapper.vm.errors[0]).toEqual(GENERIC_SERVER_ERROR)
-      }
-    });
+        done()
+      })
+    })
 
-    it('Sets response errors when API response is 400', async () => {
+    it('Sets response errors when API response is 400', (done) => {
       const responseErrorStub = 'Stubbed client error'
 
-      mockFetch({errors: responseErrorStub}, 400)
+      mockFetch({errors: [responseErrorStub]}, 400)
       wrapper = shallowMount(ScheduleAndPreferences)
       expect(wrapper.vm.errors.length).toEqual(0)
 
-      try {
-        await wrapper.vm.createOrUpdateUser()
-        await flushPromises()
-      } catch {
+      flushPromises()
+      .then(() => wrapper.vm.createOrUpdateUser())
+      .catch(() => {
         expect(wrapper.vm.errors[0]).toEqual(responseErrorStub)
-      }
+        done()
+      })
     })
 
     it('Sets generic error when there is a json parsing issue', (done) => {
@@ -85,13 +85,6 @@ describe('ScheduleAndPreferences', () => {
         expect(wrapper.vm.errors[0]).toEqual(GENERIC_SERVER_ERROR)
         done()
       })
-
-      // try {
-      //   await wrapper.vm.createOrUpdateUser()
-      //   await flushPromises()
-      // } catch {
-      //   expect(wrapper.vm.errors[0]).toEqual(GENERIC_SERVER_ERROR)
-      // }
     })
   })
 
