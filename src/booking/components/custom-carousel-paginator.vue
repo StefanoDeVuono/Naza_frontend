@@ -212,10 +212,8 @@ export default {
 .VueCarousel-arrow {
   margin-top: 10px;
   transform: translateY(2px);
-
-  svg path {
-    //fill: @darkBlue;
-  }
+  border: none;
+  background: none;
 }
 
 .VueCarousel-arrow--prev {

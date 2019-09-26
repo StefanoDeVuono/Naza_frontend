@@ -10,7 +10,7 @@
         />
         <Carousel
           ref="carousel"
-          :perPage="1"
+          :perPageCustom="[[0, 1], [640, 2]]"
           :centerMode="true"
           :paginationPadding="5"
           :spacePadding="40"
@@ -37,12 +37,8 @@
                 />
               </div>
               <div class="category-details-container">
-                <div class="category-name">
-                  <h1>{{ category.name }}</h1>
-                </div>
-                <div class="category-description">
-                  <span>{{ category.meta_description }}</span>
-                </div>
+                <h1 class="category-name">{{ category.name }}</h1>
+                <p class="category-description">{{ category.meta_description }}</p>
                 <SqButton
                   :inverted="true"
                   label="Select This Style <span class='select-arrow'>&rarr;</span>"
@@ -167,23 +163,20 @@ export default {
   margin-left: 10px;
 }
 
-.category-name h1 {
+.category-name {
   letter-spacing: 1.3px;
   text-align: center;
-  color: #ffffff;
+  color: white;
   margin-bottom: 10px;
 }
 
 .category-description {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 63px;
+  height: 6em;
   margin-bottom: 20px;
   font-size: 14px;
-  line-height: 1.29;
+  line-height: normal;
   text-align: center;
-  color: #ffffff;
+  color: white;
 }
 
 .category-select {
@@ -209,10 +202,18 @@ export default {
   .VueCarousel-slide {
     box-sizing: border-box;
 
+    .image-container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     img {
       margin: auto;
       height: 334px;
       width: 100%;
+      max-width: 260px;
       object-fit: cover;
     }
   }
