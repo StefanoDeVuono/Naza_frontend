@@ -81,6 +81,9 @@
       "vue",
       "svg"
     ],
+    "setupFiles": [
+      "<rootDir>/jest/globalMocks.js"
+    ],
     "transformIgnorePatterns": [
       "/node_modules/(?!vue-material-design-icons)"
     ],

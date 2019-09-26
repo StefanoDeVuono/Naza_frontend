@@ -18,6 +18,7 @@
       />
 
       <Carousel
+        ref="carousel"
         :perPage="1"
         :centerMode="true"
         :paginationPadding="5"

@@ -38,7 +38,7 @@
       <StarDivider />
     </div>
 
-    <AppointmentPicker />
+    <AppointmentPicker @available-times-error="handleAvailableTimesError" />
   </Section>
 </template>
 
@@ -67,6 +67,10 @@ export default {
   methods: {
     formattedHours,
     formattedPrice,
+
+    handleAvailableTimesError() {
+      this.$emit('available-times-error')
+    }
   },
 
   computed: {
