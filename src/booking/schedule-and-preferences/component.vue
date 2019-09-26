@@ -1,6 +1,6 @@
 <template>
   <div class="schedule-and-preferences">
-    <Errors v-bind:errors="errors" />
+    <Errors id="errors-section" v-bind:errors="errors" />
 
     <LightHeader
       :showBackArrow="true"
@@ -56,6 +56,7 @@ import { join, filter, reduce, concat } from 'ramda'
 import StepHeader from '../components/step-header.vue'
 import LightHeader from '../components/light-header.vue'
 import { mockProductIfDevelopment } from 'common/utils'
+import VueScrollTo from 'vue-scrollto'
 
 const CALL_TO_MAKE_APPOINTMENT = "Please call to make an appointment."
 export const GENERIC_SERVER_ERROR = `Your request could be not be completed. ${CALL_TO_MAKE_APPOINTMENT}`
@@ -135,7 +136,9 @@ export default {
           name: 'confirmation',
         })
       } catch (error) {
-        // do nothing
+        this.$nextTick(() => {
+          VueScrollTo.scrollTo('#errors-section')
+        })
       }
 
       this.isLoading = false
