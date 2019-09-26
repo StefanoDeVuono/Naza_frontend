@@ -186,6 +186,8 @@ export default {
         },
         body: JSON.stringify(data),
       })
+      .then(this.handleSpreeResponse)
+      .catch(this.handleSpreeError)
     },
 
     addAddOnToCart(variantId) {
@@ -200,6 +202,8 @@ export default {
           quantity: 1,
         }),
       })
+      .then(this.handleSpreeResponse)
+      .catch(this.handleSpreeError)
     },
 
     addAddOnsToCart() {

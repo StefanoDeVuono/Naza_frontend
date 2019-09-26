@@ -74,17 +74,24 @@ describe('ScheduleAndPreferences', () => {
       }
     })
 
-    it('Sets generic error when there is a json parsing issue', async () => {
-      mockFetch('<html>Forbidden!</html>', 403)
+    it('Sets generic error when there is a json parsing issue', (done) => {
+      mockFetch('Not JSON', 403)
       wrapper = shallowMount(ScheduleAndPreferences)
       expect(wrapper.vm.errors.length).toEqual(0)
 
-      try {
-        await wrapper.vm.createOrUpdateUser()
-        await flushPromises()
-      } catch {
+      flushPromises()
+      .then(() => wrapper.vm.createOrUpdateUser())
+      .catch(() => {
         expect(wrapper.vm.errors[0]).toEqual(GENERIC_SERVER_ERROR)
-      }
+        done()
+      })
+
+      // try {
+      //   await wrapper.vm.createOrUpdateUser()
+      //   await flushPromises()
+      // } catch {
+      //   expect(wrapper.vm.errors[0]).toEqual(GENERIC_SERVER_ERROR)
+      // }
     })
   })
 
@@ -184,37 +191,114 @@ describe('ScheduleAndPreferences', () => {
       expect(wrapper.vm.shared.orderNumber).toBeFalsy()
       expect(wrapper.vm.shared.orderToken).toBeFalsy()
 
-      wrapper.vm.createOrder()
+      await wrapper.vm.createOrder()
       await flushPromises()
       expect($session.set).toHaveBeenCalledWith('orderNumber', attributes.number)
       expect(wrapper.vm.shared.orderNumber).toEqual(attributes.number)
       expect(wrapper.vm.shared.orderToken).toEqual(attributes.token)
     })
 
-    it('Sets a Generic error when there are any API errors', async () => {
+    it('Sets a Generic error when there are any API errors', (done) => {
       mockFetch({}, 422)
       wrapper = shallowMount(ScheduleAndPreferences)
       expect(wrapper.vm.errors.length).toEqual(0)
 
-      try {
-        await wrapper.vm.createOrder()
-        await flushPromises()
-      } catch (e) {
+      flushPromises()
+      .then(() => wrapper.vm.createOrder())
+      .catch(() => {
         expect(wrapper.vm.errors[0]).toEqual(GENERIC_SERVER_ERROR)
-      }
+        done()
+      })
     })
 
-    it('Sets a Generic error when there are JSON parsing errors', async () => {
+    it('Sets a Generic error when there are JSON parsing errors', (done) => {
       mockFetch('Not JSON Parsible', 200)
       wrapper = shallowMount(ScheduleAndPreferences)
       expect(wrapper.vm.errors.length).toEqual(0)
 
-      try {
-        await wrapper.vm.createOrder()
-        await flushPromises()
-      } catch (e) {
+      flushPromises()
+      .then(() => wrapper.vm.createOrder())
+      .catch(() => {
         expect(wrapper.vm.errors[0]).toEqual(GENERIC_SERVER_ERROR)
-      }
+        done()
+      })
+    })
+  })
+
+  describe('#addStyleToCart', () => {
+    beforeEach(() => {
+      wrapper = shallowMount(ScheduleAndPreferences)
+      wrapper.vm.shared.variant = { id: 'fake ID'}
+    })
+
+    it('Returns a resolved promise when successful', async () => {
+      mockFetch({})
+
+      const result = await wrapper.vm.addStyleToCart()
+      await flushPromises()
+      expect(result).toBeTruthy()
+    })
+
+    it('Sets a Generic error when there are any API errors', (done) => {
+      mockFetch({}, 422)
+      expect(wrapper.vm.errors.length).toEqual(0)
+
+      flushPromises()
+      .then(() => wrapper.vm.addStyleToCart())
+      .catch(() => {
+        expect(wrapper.vm.errors[0]).toEqual(GENERIC_SERVER_ERROR)
+        done()
+      })
+    })
+
+    it('Sets a Generic error when there are JSON parsing errors', (done) => {
+      mockFetch('Not Json')
+      expect(wrapper.vm.errors.length).toEqual(0)
+
+      flushPromises()
+      .then(() => wrapper.vm.addStyleToCart())
+      .catch(() => {
+        expect(wrapper.vm.errors[0]).toEqual(GENERIC_SERVER_ERROR)
+        done()
+      })
+    })
+  })
+
+  describe('#addAddOnToCart', () => {
+    beforeEach(() => {
+      wrapper = shallowMount(ScheduleAndPreferences)
+    })
+
+    it('Returns a resolved promise when successful', async () => {
+      mockFetch({})
+
+      const result = await wrapper.vm.addAddOnToCart()
+      await flushPromises()
+      expect(result).toBeTruthy()
+    })
+
+    it('Sets a Generic error when there are any API errors', (done) => {
+      mockFetch({}, 422)
+      expect(wrapper.vm.errors.length).toEqual(0)
+
+      flushPromises()
+      .then(() => wrapper.vm.addAddOnToCart())
+      .catch(() => {
+        expect(wrapper.vm.errors[0]).toEqual(GENERIC_SERVER_ERROR)
+        done()
+      })
+    })
+
+    it('Sets a Generic error when there are JSON parsing errors', (done) => {
+      mockFetch('Not JSON Parsible', 200)
+      expect(wrapper.vm.errors.length).toEqual(0)
+
+      flushPromises()
+      .then(() => wrapper.vm.addAddOnToCart())
+      .catch(() => {
+        expect(wrapper.vm.errors[0]).toEqual(GENERIC_SERVER_ERROR)
+        done()
+      })
     })
   })
 })
