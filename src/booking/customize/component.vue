@@ -332,7 +332,8 @@ export default {
 
     .style-desc {
       margin-top: 0;
-      font-size: 14px;
+      font-size: 16px;
+      font-weight: 400;
       line-height: 1.5;
       letter-spacing: normal;
       text-align: center;

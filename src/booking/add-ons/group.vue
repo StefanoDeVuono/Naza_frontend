@@ -119,7 +119,7 @@ export default {
 
     p {
       text-align: center;
-      font-size: 12px;
+      font-size: 14px;
       margin: 0;
       color: @darkBlue;
     }

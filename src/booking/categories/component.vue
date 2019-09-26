@@ -37,12 +37,10 @@
                 />
               </div>
               <div class="category-details-container">
-                <div class="category-name">
-                  <h1>{{ category.name }}</h1>
-                </div>
-                <div class="category-description">
-                  <span>{{ category.meta_description }}</span>
-                </div>
+                <h1 class="category-name">{{ category.name }}</h1>
+                <p class="category-description">
+                  {{ category.meta_description }}
+                </p>
                 <SqButton
                   :inverted="true"
                   label="Select This Style <span class='select-arrow'>&rarr;</span>"
@@ -167,23 +165,20 @@ export default {
   margin-left: 10px;
 }
 
-.category-name h1 {
+.category-name {
+  font-size: 26px;
   letter-spacing: 1.3px;
   text-align: center;
-  color: #ffffff;
+  color: white;
   margin-bottom: 10px;
 }
 
 .category-description {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 63px;
   margin-bottom: 20px;
   font-size: 14px;
-  line-height: 1.29;
   text-align: center;
-  color: #ffffff;
+  color: white;
+  line-height: normal;
 }
 
 .category-select {
@@ -198,7 +193,6 @@ export default {
   color: @darkBlue;
   background-color: #ffffff;
   text-transform: uppercase;
-  line-height: normal;
 }
 </style>
 
