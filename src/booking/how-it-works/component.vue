@@ -91,6 +91,14 @@
               >Skip &amp; Start &rarr;</router-link
             >
           </div>
+
+          <div class="cta-button" v-show="!showSkipAndStart">
+            <SqButton
+                :onClick="navigateToBooking"
+                :inverted="true"
+                label="Start Booking!"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -104,6 +112,7 @@ import { Carousel, Slide } from 'vue-carousel'
 import CustomCarouselPaginator from '../components/custom-carousel-paginator.vue'
 import FlowerImage from './flower.svg'
 import Footer from 'common/footer.vue'
+import SqButton from 'common/sq-button.vue'
 
 export default {
   data() {
@@ -120,6 +129,9 @@ export default {
         this.showSkipAndStart = true
       }
     },
+    navigateToBooking() {
+      this.$router.push({ name: 'categories' })
+    },
   },
   components: {
     Carousel,
@@ -127,6 +139,7 @@ export default {
     CustomCarouselPaginator,
     FlowerImage,
     Footer,
+    SqButton
   },
 }
 </script>
@@ -238,4 +251,26 @@ export default {
     }
   }
 }
+</style>
+
+<style lang="less">
+  @import '../../common/utils.less';
+  .how-it-works--content {
+    .cta-button {
+      .sqs-block-button {
+        padding-bottom: 0;
+      }
+
+      .sqs-block-button-element {
+        color: @orange;
+        border: 0;
+        font-size: 12px;
+        font-family: 'TTCommons', sans-serif;
+        letter-spacing: 0.26px;
+        line-height: 1.5;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    }
+  }
 </style>
