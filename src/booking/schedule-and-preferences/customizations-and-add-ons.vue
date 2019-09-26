@@ -48,25 +48,4 @@ export default {
 
 <style lang="less">
 @import '../../common/utils.less';
-
-.customizations {
-  strong {
-    color: @orange;
-  }
-
-  li {
-    list-style: none;
-    font-size: 14px;
-    line-height: 21px;
-  }
-
-  li::before {
-    content: '\2022';
-    color: @orange;
-    font-weight: bold;
-    display: inline-block;
-    width: 1em;
-    margin-left: -1em;
-  }
-}
 </style>

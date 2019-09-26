@@ -57,9 +57,6 @@ export const loadUserFromToken = (email, userToken) => {
         data.can_receive_sms_reminders
       Storage.sharedState.canReceiveEmailReminders =
         data.can_receive_email_reminders
-      Storage.sharedState.selectedFreeAddOns = ['Candy', 'Fruit']
-      Storage.sharedState.selectedPremiumAddOns = ['Chocolate']
-      Storage.sharedState.selectedDrinkAddOnString = 'Lemonade'
     })
 }
 
@@ -109,6 +106,9 @@ export const mockProductIfDevelopment = () => {
     Storage.sharedState.drinkAddOn = 'Mocktail'
     Storage.sharedState.freeAddOns = 'Air, Water'
     Storage.sharedState.premiumAddOns = 'Shampoo, Wash, Conditioning'
+    Storage.sharedState.selectedFreeAddOns = ['Candy', 'Fruit']
+    Storage.sharedState.selectedPremiumAddOns = ['Chocolate']
+    Storage.sharedState.selectedDrinkAddOnString = 'Lemonade'
   }
 }
 

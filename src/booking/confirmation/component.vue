@@ -33,7 +33,12 @@
 
       <div>
         <h3>Customizations &amp; Add-ons</h3>
-        <CustomizationsAndAddOns />
+        <p @click="toggleCustomizations">
+          View Selection
+          <ChevronRightIcon v-show="!showCustomizations" :size="24" />
+          <ChevronUpIcon v-show="showCustomizations" :size="24" />
+        </p>
+        <CustomizationsAndAddOns v-show="showCustomizations" />
       </div>
 
       <div>
@@ -48,12 +53,18 @@
 
       <div>
         <h3>Totals</h3>
-        <p>Time: {{ duration }} - Price: {{ price }}*</p>
-        <p class="charge-disclaimer">
+        <p @click="toggleTotals">
+          View Time &amp; Price
+          <ChevronRightIcon v-show="!showTotals" :size="24" />
+          <ChevronUpIcon v-show="showTotals" :size="24" />
+        </p>
+
+        <p v-show="showTotals">Time: {{ duration }} - Price: {{ price }}*</p>
+        <p v-show="showTotals" class="charge-disclaimer">
           *Your card will not be charged until after your appointment is
           completed. Tips are optional &amp; can be paid via credit card.
         </p>
-        <p class="cancel-disclaimer">
+        <p v-show="showTotals" class="cancel-disclaimer">
           No-shows or cancellations within 24 hours of scheduled appointment
           will be charged the full price.
         </p>
@@ -153,19 +164,26 @@ import Section from '../components/section.vue'
 import { parseISO, format } from 'date-fns'
 import SqButton from 'common/sq-button.vue'
 import { formattedHours, formattedPrice } from 'common/utils'
-import ChevronDownIcon from 'vue-material-design-icons/ChevronDown.vue'
+import ChevronRightIcon from 'vue-material-design-icons/ChevronRight.vue'
 import ChevronUpIcon from 'vue-material-design-icons/ChevronUp.vue'
+import CustomizationsAndAddOns from './customizations-and-add-ons.vue'
 
 export default {
   data() {
     return {
       shared: Storage.sharedState,
+      showCustomizations: true,
+      showTotals: true,
     }
   },
 
   methods: {
-    visitOurBlock() {
-      window.location = 'http://www.google.com'
+    toggleCustomizations() {
+      this.showCustomizations = !this.showCustomizations
+    },
+
+    toggleTotals() {
+      this.showTotals = !this.showTotals
     },
   },
 
@@ -195,8 +213,9 @@ export default {
     CheckIcon,
     Section,
     SqButton,
-    ChevronDownIcon,
+    ChevronRightIcon,
     ChevronUpIcon,
+    CustomizationsAndAddOns,
   },
 }
 </script>
@@ -211,6 +230,10 @@ export default {
     margin: 0;
     padding: 0;
     line-height: 0;
+
+    img {
+      width: 100%;
+    }
   }
 
   .youre-all-set {
@@ -305,7 +328,7 @@ export default {
     }
 
     .questions {
-      padding: 0 20px;
+      padding: 0 20px 60px 20px;
 
       h3 {
         color: white;
@@ -323,6 +346,14 @@ export default {
         margin: 20px 0;
       }
     }
+  }
+}
+</style>
+
+<style lang="less">
+.confirmation {
+  .material-design-icon svg {
+    transform: translateY(5px);
   }
 }
 </style>
