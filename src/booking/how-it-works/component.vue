@@ -200,7 +200,7 @@ export default {
     .how-it-works--content {
       margin: 20px;
       border: 2px solid white;
-      padding: 20px;
+      padding: 20px 26px;
 
       h2.step-title {
         text-transform: lowercase;
@@ -241,6 +241,7 @@ export default {
 
       .skip-and-start {
         margin-top: 10px;
+        margin-bottom: 20px;
         font-family: 'TTCommons', sans-serif;
         font-weight: bold;
         text-align: center;
@@ -256,6 +257,10 @@ export default {
 <style lang="less">
   @import '../../common/utils.less';
   .how-it-works--content {
+    .VueCarousel-wrapper {
+      margin-bottom: 20px;
+    }
+
     .cta-button {
       .sqs-block-button {
         padding-bottom: 0;
@@ -266,7 +271,8 @@ export default {
         border: 0;
         font-size: 12px;
         font-family: 'TTCommons', sans-serif;
-        letter-spacing: 0.26px;
+        font-weight: 600;
+        letter-spacing: 0.7px;
         line-height: 1.5;
         padding-left: 10px;
         padding-right: 10px;
