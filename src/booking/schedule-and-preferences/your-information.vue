@@ -112,7 +112,7 @@
           </div>
         </div>
 
-        <PaymentInfo />
+        <PaymentInfo @stripe-setup-intent-error="handleStripeServerError"/>
       </div>
     </div>
   </Section>
@@ -142,6 +142,9 @@ export default {
   },
   methods: {
     isNil,
+    handleStripeServerError() {
+      this.$emit('stripe-setup-intent-error')
+    },
     showLogin() {
       this.isLoginVisible = true
     },

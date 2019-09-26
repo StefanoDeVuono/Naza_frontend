@@ -20,7 +20,7 @@
       <div class="sections">
         <AppointmentSummary  @available-times-error="handleAvailableTimesError"/>
 
-        <YourInformation @stripeSetupIntentError="handleStripeServerError"/>
+        <YourInformation @stripe-setup-intent-error="handleStripeServerError"/>
 
         <PersonalPreferences />
 

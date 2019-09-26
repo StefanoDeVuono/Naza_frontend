@@ -133,7 +133,7 @@ export default {
         this.stripeCard.mount('#card-element')
       })
       .catch(() => {
-        this.$emit('stripeSetupIntentError')
+        this.$emit('stripe-setup-intent-error')
       })
   },
 

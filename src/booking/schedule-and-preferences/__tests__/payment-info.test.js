@@ -29,9 +29,9 @@ describe('PaymentInfo', () => {
       })
     })
 
-    it('emits stripeSetupIntentError', async () => {
+    it('emits stripe-setup-intent-error', async () => {
       await flushPromises()
-      expect(wrapper.emitted().stripeSetupIntentError).toBeTruthy()
+      expect(wrapper.emitted()["stripe-setup-intent-error"]).toBeTruthy()
     })
   })
 
