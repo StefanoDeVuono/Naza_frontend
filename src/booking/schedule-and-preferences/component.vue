@@ -67,7 +67,7 @@ export default {
   data: function() {
     return {
       errors: [],
-      isPaymentSaved: true,
+      isPaymentSaved: false,
       isLoading: false,
 
       progress: 0,
