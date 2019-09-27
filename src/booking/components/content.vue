@@ -5,7 +5,7 @@
         <img src="assets/images/decor%20element.png" srcset="assets/images/decor%20element.png 1x, assets/images/decor%20element@2x.png 2x" alt="" />
       </div>
       <div class="progress-bar">
-        <VueStepper ref="stepper" :steps="5" v-model="step"></VueStepper>
+        <VueStepper ref="stepper" :steps="TOTAL_PROGRESS_STEPS" v-model="step"></VueStepper>
       </div>
       <slot></slot>
     </div>
@@ -18,9 +18,17 @@ import VueStepper from 'vue-stepper-component'
 import Footer from 'common/footer.vue'
 import { range } from 'ramda'
 
+const TOTAL_PROGRESS_STEPS = 5
+
 export default {
   props: {
     progressStep: Number,
+  },
+
+  data: () => {
+    return {
+      TOTAL_PROGRESS_STEPS
+    }
   },
 
   computed: {
@@ -61,8 +69,14 @@ export default {
       // on app load, so we have to recalculate
       // the step status when this component is
       // mounted
-      range(0, this.progressStep).forEach(i => {
-        this.$refs.stepper.setStep(i, 'disabled', false)
+      range(0, TOTAL_PROGRESS_STEPS).forEach(i => {
+        let disabled = false
+
+        if (i >= this.progressStep) {
+          disabled = true
+        }
+
+        this.$refs.stepper.setStep(i, 'disabled', disabled)
       })
     },
   },
