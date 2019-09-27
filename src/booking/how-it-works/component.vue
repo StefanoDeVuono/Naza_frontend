@@ -236,7 +236,11 @@ export default {
       }
 
       p {
+        margin: auto;
         text-align: center;
+        font-size: 18px;
+        max-width: 260px;
+        line-height: normal;
       }
 
       .skip-and-start {
