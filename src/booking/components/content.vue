@@ -2,7 +2,7 @@
   <div>
     <div class="content">
       <div class="border-top">
-        <img src="assets/content/border-top.svg" />
+        <img src="assets/images/decor%20element.png" srcset="assets/images/decor%20element.png 1x, assets/images/decor%20element@2x.png 2x" alt="" />
       </div>
       <div class="progress-bar">
         <VueStepper ref="stepper" :steps="5" v-model="step"></VueStepper>
@@ -79,6 +79,12 @@ export default {
 @contentPadding: 25px;
 @darkBlue: #1c3042;
 @orange: #bc5940;
+
+.border-top {
+  img {
+    width: 100%;
+  }
+}
 
 .progress-bar {
   margin-bottom: 30px;

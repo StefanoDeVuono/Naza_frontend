@@ -279,6 +279,34 @@ export default {
         border-bottom: none;
       }
     }
+
+    &:nth-child(3n+0) .slide {
+      background-color: @tan;
+
+      h2, p {
+        color: @darkBlue;
+      }
+
+      .duration-and-price {
+        color: @darkBlue;
+
+        .divider {
+          border-left: 1px solid @darkBlue;
+        }
+
+        svg path {
+          fill: @darkBlue;
+        }
+      }
+    }
+
+    &:nth-child(3n+1) .slide {
+      background-color: @darkBlue;
+    }
+
+    &:nth-child(3n+2) .slide {
+      background-color: @brown;
+    }
   }
 
   .subcategory {
@@ -287,6 +315,7 @@ export default {
     line-height: normal;
     letter-spacing: 0.92px;
     margin: 20px 0;
+    font-weight: 400;
   }
 }
 </style>
@@ -295,6 +324,24 @@ export default {
 @import '../../common/utils.less';
 
 .subcategories {
+  .category {
+    &:nth-child(3n+0) .slide {
+      .duration-and-price {
+        label {
+          color: @darkBlue;
+        }
+        
+        .divider {
+          border-left: 1px solid @darkBlue;
+        }
+
+        svg path {
+          fill: @darkBlue;
+        }
+      }
+    }
+  }
+
   .VueCarousel-slide {
     box-sizing: border-box;
     color: white;
@@ -319,7 +366,6 @@ export default {
     }
 
     .slide {
-      background-color: @brown;
       padding: 10px;
 
       img {
@@ -340,7 +386,7 @@ export default {
       }
 
       p {
-        font-size: 12px;
+        font-size: 14px;
         line-height: normal;
         letter-spacing: 0.5px;
         margin-bottom: 10px;
@@ -350,15 +396,18 @@ export default {
       .select-this-style {
         margin: 10px 20px;
       }
+
+      .duration-and-price {
+        label {
+          color: white;
+          font-weight: 500;
+        }
+
+        .divider {
+          border-left: 1px solid white;
+        }
+      } 
     }
-  }
-
-  .slide .duration-and-price .container label {
-    color: white;
-  }
-
-  .slide .duration-and-price .divider {
-    border-left: 1px solid white;
   }
 
   .VueCarousel-arrow svg path {
