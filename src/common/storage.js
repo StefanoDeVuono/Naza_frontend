@@ -49,6 +49,8 @@ export default {
       this.sharedState[x] = undefined
     })
     this.sharedState.customizations = {}
+    this.sharedState.selectedFreeAddOns = {}
+    this.sharedState.selectedPremiumAddOns = {}
   },
 
   loggedIn() {

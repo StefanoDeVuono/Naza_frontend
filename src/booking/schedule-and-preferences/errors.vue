@@ -1,5 +1,5 @@
 <template>
-  <div v-if="errors.length" class="scheduling-errors">
+  <div v-show="errors.length" class="scheduling-errors">
     <div v-for="(error, index) in errors" :key="index">
       <span>- {{ error }}</span>
     </div>

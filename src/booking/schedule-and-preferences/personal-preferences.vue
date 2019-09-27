@@ -13,6 +13,15 @@
       <div class="field-list">
         <div class="form-item">
           <RadioButtonGrouping
+            name="Chattiness"
+            caption="Choose the level of interaction you're looking for"
+            v-model="shared.prefChattiness"
+            :options="chattinessOptions"
+          />
+        </div>
+
+        <div class="form-item">
+          <RadioButtonGrouping
             name="Scalp Tenderness"
             caption="Choose your scalp tenderness:"
             v-model="shared.prefScalpTenderness"
@@ -50,6 +59,9 @@ export default {
     scalpTendernessOptions() {
       return ['Not Sensitive', 'Sensitive']
     },
+    chattinessOptions() {
+      return ['Chat Away', 'Just a Skosh', 'No Talking']
+    }
   },
   methods: {},
   components: {
