@@ -41,6 +41,9 @@ export default {
 @import '../common/utils.less';
 
 .sqs-block-button .sqs-block-button-element {
+  font-family: 'TTCommons', sans-serif;
+  font-weight: 500;
+  color: white;
   display: block;
   padding: 20px 5px;
   letter-spacing: 0.5px;

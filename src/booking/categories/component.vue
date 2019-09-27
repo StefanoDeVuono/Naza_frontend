@@ -43,7 +43,7 @@
                 </p>
                 <SqButton
                   :inverted="true"
-                  label="Select This Style <span class='select-arrow'>&rarr;</span>"
+                  label="Select This Style &rarr;"
                   :onClick="
                     () => {
                       handleClick(category.id)
