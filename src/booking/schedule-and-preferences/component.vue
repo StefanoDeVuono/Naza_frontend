@@ -198,7 +198,6 @@ export default {
     },
 
     addAddOnToCart(variantId) {
-      console.log("adding add-on", variantId)
       return fetch(getSpreeServer() + '/cart/add_item', {
         method: 'POST',
         headers: {
@@ -215,7 +214,6 @@ export default {
     },
 
     addAddOnsToCart() {
-      console.log('selectedFreeAddOns', this.shared.selectedFreeAddOns)
       const variantIds = filter(
         Boolean,
         reduce(concat, [])([
