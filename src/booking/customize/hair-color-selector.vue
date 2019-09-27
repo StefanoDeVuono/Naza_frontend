@@ -105,12 +105,9 @@ export default {
   }
 
   .color-container .desc {
-    strong {
-      color: @darkBlue;
-      opacity: 1;
-    }
-
+    color: @darkBlue;
     font-family: 'TTCommons', sans-serif;
+    font-weight: 400;
     font-size: 14px;
     line-height: normal;
     margin: 0 3px;

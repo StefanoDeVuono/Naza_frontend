@@ -70,7 +70,7 @@ export default {
 
     handleAvailableTimesError() {
       this.$emit('available-times-error')
-    }
+    },
   },
 
   computed: {

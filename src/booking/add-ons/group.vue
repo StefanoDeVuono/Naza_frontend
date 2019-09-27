@@ -11,7 +11,13 @@
         v-bind:class="{ active: isActive(product.default_variant.id) }"
         v-for="product in products"
       >
-        <img @click="onSelect(product)" :src="getImageUrl(product)" :srcset="`${getImageUrl(product)} 1x, ${getLargeImageUrl(product)} 2x`" />
+        <img
+          @click="onSelect(product)"
+          :src="getImageUrl(product)"
+          :srcset="
+            `${getImageUrl(product)} 1x, ${getLargeImageUrl(product)} 2x`
+          "
+        />
         <h3>{{ product.name }}</h3>
         <p>{{ product.description }}</p>
         <div
@@ -136,7 +142,7 @@ export default {
 
     p {
       text-align: center;
-      font-size: 12px;
+      font-size: 14px;
       margin: 0;
       color: @darkBlue;
     }

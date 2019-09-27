@@ -94,9 +94,9 @@
 
           <div class="cta-button" v-show="!showSkipAndStart">
             <SqButton
-                :onClick="navigateToBooking"
-                :inverted="true"
-                label="Start Booking!"
+              :onClick="navigateToBooking"
+              :inverted="true"
+              label="Start Booking!"
             />
           </div>
         </div>
@@ -139,7 +139,7 @@ export default {
     CustomCarouselPaginator,
     FlowerImage,
     Footer,
-    SqButton
+    SqButton,
   },
 }
 </script>
@@ -255,28 +255,28 @@ export default {
 </style>
 
 <style lang="less">
-  @import '../../common/utils.less';
-  .how-it-works--content {
-    .VueCarousel-wrapper {
-      margin-bottom: 20px;
+@import '../../common/utils.less';
+.how-it-works--content {
+  .VueCarousel-wrapper {
+    margin-bottom: 20px;
+  }
+
+  .cta-button {
+    .sqs-block-button {
+      padding-bottom: 0;
     }
 
-    .cta-button {
-      .sqs-block-button {
-        padding-bottom: 0;
-      }
-
-      .sqs-block-button-element {
-        color: @orange;
-        border: 0;
-        font-size: 12px;
-        font-family: 'TTCommons', sans-serif;
-        font-weight: 600;
-        letter-spacing: 0.7px;
-        line-height: 1.5;
-        padding-left: 10px;
-        padding-right: 10px;
-      }
+    .sqs-block-button-element {
+      color: @orange;
+      border: 0;
+      font-size: 12px;
+      font-family: 'TTCommons', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.7px;
+      line-height: 1.5;
+      padding-left: 10px;
+      padding-right: 10px;
     }
   }
+}
 </style>

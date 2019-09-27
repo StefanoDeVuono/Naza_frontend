@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="375px" height="19px" viewBox="0 0 375 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 55.1 (78136) - https://sketchapp.com -->
-    <title>Group 6</title>
+    <title>decor 1@1.5x</title>
     <desc>Created with Sketch.</desc>
-    <g id="Booking-Flow-revision" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="booking-flow-step-1-mobile-revised" transform="translate(0.000000, -156.000000)" stroke="#1C3042">
-            <g id="Group-6" transform="translate(0.000000, 156.000000)">
+    <g id="Booking-Flow-v.2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Booking-flow---Confirmation-page" transform="translate(0.000000, -1364.000000)" stroke="#FFFFFF">
+            <g id="decor-1" transform="translate(0.000000, 1364.000000)">
                 <path d="M375,0.5 L0,0.5" id="Line" stroke-linecap="square"></path>
                 <path d="M0,4.41821289 L176.181152,4.41821289 C175.291561,5.62301218 174.607398,6.65637806 174.128662,7.51831055 C173.649926,8.38024303 173.079858,9.75320853 172.418457,11.637207 L177.050781,9.6015625 L181.171387,6.80371094 C180.384611,8.47934025 179.901294,9.93645288 179.721436,11.1750488 C179.541577,12.4136448 179.541577,14.2849013 179.721436,16.7888184 L183.169434,12.9973145 L185.712891,9.20947266 C186.055819,11.3166662 186.376294,12.8773758 186.674316,13.8916016 C186.972338,14.9058273 187.544604,16.383285 188.391113,18.3239746 C189.314198,16.2952039 189.922108,14.7090222 190.214844,13.5654297 C190.507579,12.4218372 190.766368,10.6221952 190.991211,8.16650391 L193.674072,12.0998535 L197.913574,16.128418 L197.518066,11.637207 L196.306885,6.80371094 C198.004861,7.99630737 199.374897,8.79822794 200.416992,9.20947266 C201.459087,9.62071737 203.048687,9.98676555 205.185791,10.3076172 L203.72583,7.51831055 L201.48877,4.41821289 L375,4.41821289" id="Path-2"></path>
             </g>

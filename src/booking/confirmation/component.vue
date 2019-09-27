@@ -1,67 +1,158 @@
 <template>
   <div class="confirmation">
     <div class="youre-all-set">
-      <div class="text">
-        <h1>You&rsquo;re all set</h1>
-        <p>We can&rsquo;t wait to get you styled!</p>
+      <img id="yellowstar" src="assets/images/Burst_Yellow.png" alt="" />
+
+      <h3>Well, this is exciting...</h3>
+
+      <div>
+        <img
+          src="https://projectcurl-assets.s3.amazonaws.com/Confirmation/Confirmation+header.png"
+          srcset="
+            https://projectcurl-assets.s3.amazonaws.com/Confirmation/Confirmation+header.png      1x,
+            https://projectcurl-assets.s3.amazonaws.com/Confirmation/Confirmation+header%402x.png 2x
+          "
+          alt="You're all set!"
+        />
       </div>
 
-      <img
-        src="https://projectcurl-assets.s3.amazonaws.com/Confirmation/Hero.jpeg"
-        class="image"
-      />
-    </div>
-
-    <div class="check-container">
-      <CheckIcon :size="28" fillColor="white" />
+      <p>
+        See below for your appointment confirmation!<br />
+        You will receive a copy via email as well.
+      </p>
     </div>
 
     <div class="appointment-info">
-      <h2>Your Appointment Information:</h2>
+      <div class="inner">
+        <h1>
+          Appointment<br />
+          Information
+        </h1>
 
-      <div class="section">
-        <h2>Appointment Summary</h2>
+        <div>
+          <h3>Your Style</h3>
+          <p>{{ shared.taxonName }} - {{ shared.product.name }}</p>
+        </div>
 
-        <p class="style-name">
-          {{ shared.taxonName }} - {{ shared.product.name }}
-        </p>
+        <div>
+          <h3>Customizations &amp; Add-ons</h3>
+          <p @click="toggleCustomizations">
+            View Selection
+            <ChevronRightIcon v-show="!showCustomizations" :size="24" />
+            <ChevronUpIcon v-show="showCustomizations" :size="24" />
+          </p>
+          <CustomizationsAndAddOns v-show="showCustomizations" />
+        </div>
 
-        <Section
-          title="Customizations & Add-Ons"
-          name="customizations-and-add-ons"
-        >
-          <!--CustomizationsAndAddOns /-->
-        </Section>
+        <div>
+          <h3>Appointment</h3>
+          <p>{{ formattedTime }}</p>
+        </div>
+
+        <div>
+          <h3>Our Location</h3>
+          <p>985 Valencia St<br />San Francisco, CA</p>
+        </div>
+
+        <div>
+          <h3>Totals</h3>
+          <p @click="toggleTotals">
+            View Time &amp; Price
+            <ChevronRightIcon v-show="!showTotals" :size="24" />
+            <ChevronUpIcon v-show="showTotals" :size="24" />
+          </p>
+
+          <p v-show="showTotals">Time: {{ duration }} - Price: {{ price }}*</p>
+          <p v-show="showTotals" class="charge-disclaimer">
+            *Your card will not be charged until after your appointment is
+            completed. Tips are optional &amp; can be paid via credit card.
+          </p>
+          <p v-show="showTotals" class="cancel-disclaimer">
+            No-shows or cancellations within 24 hours of scheduled appointment
+            will be charged the full price.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="common-questions">
+      <div class="border">
+        <img
+          alt=""
+          src="assets/images/decor%201.png"
+          srcset="
+            assets/images/decor%201.png    1x,
+            assets/images/decor%201@2x.png 2x
+          "
+        />
       </div>
 
-      <div class="section">
-        <h2>Time</h2>
-        <p>{{ formattedTime }}</p>
+      <div class="img-container">
+        <img
+          alt="Some Common Questions"
+          src="https://projectcurl-assets.s3.amazonaws.com/Confirmation/some+common+questions+header.png"
+          srcset="
+            https://projectcurl-assets.s3.amazonaws.com/Confirmation/some+common+questions+header.png      1x,
+            https://projectcurl-assets.s3.amazonaws.com/Confirmation/some+common+questions+header%402x.png 2x
+          "
+        />
       </div>
 
-      <div class="section">
-        <h2>Our Location</h2>
-        <p>985 Valencia St, San Francisco, CA</p>
+      <div class="questions">
+        <div>
+          <h3>Can I change my appointment?</h3>
+          <p>
+            Absolutely! To change or update your appointment information just
+            give us a call or at (415) 123-4567 or shoot us an email (<a
+              href="mailto:appointments@nazabeauty.com"
+              >appointments@nazabeauty.com</a
+            >).
+          </p>
+        </div>
+
+        <hr />
+
+        <div>
+          <h3>When will my card be charged?</h3>
+          <p>
+            Your card will not be charged until after your appointment is
+            completed. Tips are option &amp; can be paid via credit card.
+          </p>
+        </div>
+
+        <hr />
+
+        <div>
+          <h3>Which stylists will I have?</h3>
+        </div>
+
+        <hr />
+
+        <div>
+          <h3>How do I prep for my appointment?</h3>
+        </div>
+
+        <hr />
+
+        <div>
+          <h3>Ahh! I still have more questions!</h3>
+          <p>
+            All good. We got you covered. Check out our
+            <a href="/faq">FAQ</a> page for answers to all your burning
+            questions.
+          </p>
+        </div>
       </div>
 
-      <hr />
-
-      <div class="section">
-        <p class="to-change-appointment">
-          To change/update your appointment information just give us a call or
-          text:
-        </p>
-        <p><strong>(415) 123-456</strong></p>
-      </div>
-
-      <hr />
-
-      <div class="section">
-        <p class="appointment-prep">
-          Check out the best ways to prep for your appointment:
-        </p>
-
-        <SqButton label="Visit Our Blog" :onClick="visitOurBlock" />
+      <div class="border">
+        <img
+          alt=""
+          src="assets/images/decor%202.png"
+          srcset="
+            assets/images/decor%202.png    1x,
+            assets/images/decor%202@2x.png 2x
+          "
+        />
       </div>
     </div>
   </div>
@@ -76,17 +167,27 @@ import CheckIcon from 'vue-material-design-icons/Check.vue'
 import Section from '../components/section.vue'
 import { parseISO, format } from 'date-fns'
 import SqButton from 'common/sq-button.vue'
+import { formattedHours, formattedPrice } from 'common/utils'
+import ChevronRightIcon from 'vue-material-design-icons/ChevronRight.vue'
+import ChevronUpIcon from 'vue-material-design-icons/ChevronUp.vue'
+import CustomizationsAndAddOns from './customizations-and-add-ons.vue'
 
 export default {
   data() {
     return {
       shared: Storage.sharedState,
+      showCustomizations: true,
+      showTotals: true,
     }
   },
 
   methods: {
-    visitOurBlock() {
-      window.location = 'http://www.google.com'
+    toggleCustomizations() {
+      this.showCustomizations = !this.showCustomizations
+    },
+
+    toggleTotals() {
+      this.showTotals = !this.showTotals
     },
   },
 
@@ -94,6 +195,17 @@ export default {
     formattedTime() {
       const timeObj = parseISO(this.shared.selectedTime)
       return format(timeObj, 'LLLL d, h:mm aa')
+    },
+
+    duration() {
+      return formattedHours(this.shared.duration, {
+        singularLabel: 'Hour',
+        pluralLabel: 'Hours',
+      })
+    },
+
+    price() {
+      return formattedPrice(this.shared.price)
     },
   },
 
@@ -105,121 +217,173 @@ export default {
     CheckIcon,
     Section,
     SqButton,
+    ChevronRightIcon,
+    ChevronUpIcon,
+    CustomizationsAndAddOns,
   },
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 @import '../../common/utils.less';
 
 .confirmation {
   padding-bottom: 30px;
 
-  .youre-all-set {
-    .ignore-parent-padding();
-    background-color: rgba(28, 48, 66, 0.5);
-    color: white;
+  .border {
+    margin: 0;
+    padding: 0;
     line-height: 0;
 
-    .text {
-      padding: 50px 0 30px 0;
-      text-align: center;
-
-      h1 {
-        margin-bottom: 20px;
-        color: white;
-        letter-spacing: 1.5px;
-      }
-
-      p {
-        font-size: 18px;
-        margin: 0;
-      }
-    }
-
-    image {
+    img {
+      width: 100%;
     }
   }
 
-  .check-container {
-    position: relative;
-    z-index: 10;
-    margin: calc(38px / -2) auto 20px auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: @orange;
-    border-radius: 50%;
-    width: 38px;
-    height: 38px;
-    border: 4px solid white;
+  .youre-all-set {
+    .ignore-parent-padding();
 
-    .material-design-icon {
-      height: 28px;
-      width: 28px;
+    background-image: url('../../images/Burst_Pink_1.png'),
+      url('../../images/Burst_Tan.png');
+    background-position: 0 -50px, right 100px;
+    background-repeat: no-repeat, no-repeat;
+
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    background-color: @brown;
+    padding: 50px 0 30px 0;
+    text-align: center;
+
+    #yellowstar {
+      position: absolute;
+      bottom: -80px;
+      right: 20%;
+    }
+
+    h3 {
+      .sans-serif();
+      margin-top: 30px;
+      margin-bottom: 30px;
+      color: white;
+      text-transform: uppercase;
+      font-size: 16px;
+      letter-spacing: 1.5px;
+    }
+
+    img {
+      margin-bottom: 30px;
+    }
+
+    p {
+      font-family: 'Moret', serif;
+      font-size: 16px;
+      font-weight: normal;
+      letter-spacing: 1px;
+      color: white;
+      margin-bottom: 40px;
     }
   }
 
   .appointment-info {
-    h2 {
-      margin: 0 auto 10px auto;
-      color: @orange;
-      text-transform: uppercase;
-      font-size: 18px;
+    background-image: url('../../images/Burst_Brown.png'),
+      url('../../images/Burst_Purple.png');
+    background-position: 0 300px, right 400px;
+    background-repeat: no-repeat, no-repeat;
+
+    background-color: @lightGray;
+    .ignore-parent-padding();
+
+    .inner {
+      padding: 60px 10px 30px 10px;
+
+      & > div {
+        margin-bottom: 40px;
+      }
+    }
+
+    h1 {
       text-align: center;
+      font-size: 40px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      .sans-serif-header();
+      text-align: center;
+      margin: 0 0 10px 0;
     }
 
     p {
+      font-weight: 300;
+      font-size: 20px;
       text-align: center;
       margin: 0;
+    }
+
+    .charge-disclaimer,
+    .cancel-disclaimer {
+      font-size: 14px;
+      line-height: normal;
+      margin: 0.5em 0;
+    }
+
+    .cancel-disclaimer {
+      font-weight: 500;
     }
 
     hr {
       border: none;
       border-bottom: 1px solid @darkBlue;
     }
+  }
 
-    .section {
-      margin: 40px 0;
+  .common-questions {
+    .ignore-parent-padding();
+    background-color: @darkBlue;
+    color: white;
 
-      h2 {
-        color: @darkBlue;
-        font-size: 22px;
-        text-transform: none;
-      }
+    a {
+      text-decoration: underline;
+    }
 
-      .section {
-        margin: 0;
+    .img-container {
+      padding-top: 1px;
 
-        header {
-          margin: 0;
-        }
-
-        .body {
-          padding: 0;
-        }
-
-        .customizations {
-          margin: 0;
-        }
-
-        h2 {
-          font-size: 14px;
-          margin: 0;
-          font-weight: normal;
-        }
-      }
-
-      .to-change-appointment {
-        margin: 0 auto;
-        max-width: 90%;
-      }
-
-      .appointment-prep {
-        font-size: 20px;
-        margin-bottom: 30px;
+      img {
+        margin: 60px auto;
+        display: block;
       }
     }
+
+    .questions {
+      padding: 0 20px 60px 20px;
+
+      h3 {
+        color: white;
+        font-size: 16px;
+        letter-spacing: 1.31px;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+
+      p {
+        line-height: normal;
+      }
+
+      hr {
+        margin: 20px 0;
+      }
+    }
+  }
+}
+</style>
+
+<style lang="less">
+.confirmation {
+  .material-design-icon svg {
+    transform: translateY(5px);
   }
 }
 </style>

@@ -82,7 +82,6 @@ export default {
             })
           }
           this.isLoading = false
-
         })
     },
 
@@ -102,7 +101,7 @@ export default {
       } else {
         displayError.textContent = ''
       }
-    }
+    },
   },
 
   created() {

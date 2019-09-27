@@ -57,9 +57,6 @@ export const loadUserFromToken = (email, userToken) => {
         data.can_receive_sms_reminders
       Storage.sharedState.canReceiveEmailReminders =
         data.can_receive_email_reminders
-      Storage.sharedState.selectedFreeAddOns = ['Candy', 'Fruit']
-      Storage.sharedState.selectedPremiumAddOns = ['Chocolate']
-      Storage.sharedState.selectedDrinkAddOnString = 'Lemonade'
     })
 }
 
@@ -110,6 +107,9 @@ export const mockProductIfDevelopment = () => {
     Storage.sharedState.drinkAddOn = 'Mocktail'
     Storage.sharedState.freeAddOns = 'Air, Water'
     Storage.sharedState.premiumAddOns = 'Shampoo, Wash, Conditioning'
+    Storage.sharedState.selectedFreeAddOns = ['Candy', 'Fruit']
+    Storage.sharedState.selectedPremiumAddOns = ['Chocolate']
+    Storage.sharedState.selectedDrinkAddOnString = 'Lemonade'
   }
 }
 
@@ -126,13 +126,17 @@ export const formattedPrice = totalPrice => {
   }
 }
 
-export const formattedHours = totalDuration => {
+export const formattedHours = (totalDuration, options) => {
+  const { singularLabel, pluralLabel } = options || {}
+  const singular = singularLabel || 'HR'
+  const plural = pluralLabel || 'HRS'
+
   if (totalDuration === 0) {
-    return '0 HRS'
+    return '0 ' + plural
   } else if (totalDuration <= 60) {
-    return '1 HR'
+    return '1 ' + singular
   } else {
     const hours = Math.round(totalDuration / 60)
-    return `${hours} HRS`
+    return `${hours} ${plural}`
   }
 }

@@ -73,15 +73,11 @@ When you are ready to deploy to master, run:
 
 This will update the production Squarespace.
 
-<<<<<<< HEAD
 This workflow means that master may not contain the code currently deployed to production.
 
-## Hair Colors
-=======
 ## Hair Color Images
->>>>>>> origin/master
 
-Hair color images are stored on Amazon S3 in the `projectcurl-assets` bucket in the `HairColors` folder. They should have the same name as the presentation field for the option type in Spree.
+Hair color images are stored on Amazon S3 in the `projectcurl-assets` bucket in the `HairColors` folder. They should have the same name as the presentation field for the option type in Spree. One caveat is that if the color is named something like "X w/ Y" then you should upload it named as "X with Y". This is because S3 doesn't support slashes in file names.
 
 You can add additional colors by adding a new Option Value underneath the Hair Color Option Type. Then you must add a corresponding image underneath `assets/hair-colors`, named the exact same string as the presentation field of the option value.
 
@@ -93,3 +89,14 @@ These are stored on Amazon S3 in the `projectcurl-assets` bucket in the `HowItWo
 
 This is stored on Amazon S3 in the `projectcurl-assets` bucket in the `Confirmation` folder.
 
+## Adding Fonts to Squarespace
+
+Squarespace allows you to upload OTF font files for use on the site. Presently, this is the best way to use custom fonts in the booking app.
+
+For staging you can go here:
+
+https://amethyst-okra-dblc.squarespace.com/config/design/custom-css
+
+If you haven't already, click the "Manage Custom Files" button and upload your font.
+
+You can then define a new `@font-face` CSS rule using your font. If you click on the font name, the CDN path to your font will be inserted into the text box.
