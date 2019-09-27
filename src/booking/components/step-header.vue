@@ -1,7 +1,7 @@
 <template>
   <div class="step-header">
-    <div class="subheader">
-      <span>{{ stepTitle }}</span>
+    <div class="subheader-container">
+      <span class="subheader">{{ stepTitle }}</span>
     </div>
     <div class="header-container">
       <div class="header">
@@ -44,13 +44,16 @@ export default {
   height: 100%;
   color: @darkBlue;
 
+  .subheader-container {
+    margin-bottom: 10px;
+  }
+
   .subheader {
     font-size: 14px;
-    font-weight: bold;
+    font-weight: 500;
     letter-spacing: 0.89px;
     color: @orange;
     text-transform: uppercase;
-    margin-bottom: 10px;
   }
 
   .header-container {

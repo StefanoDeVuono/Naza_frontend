@@ -107,8 +107,8 @@ export const mockProductIfDevelopment = () => {
     Storage.sharedState.drinkAddOn = 'Mocktail'
     Storage.sharedState.freeAddOns = 'Air, Water'
     Storage.sharedState.premiumAddOns = 'Shampoo, Wash, Conditioning'
-    Storage.sharedState.selectedFreeAddOns = ['Candy', 'Fruit']
-    Storage.sharedState.selectedPremiumAddOns = ['Chocolate']
+    Storage.sharedState.selectedFreeAddOns = { 2: 'Candy', 3: 'Fruit' }
+    Storage.sharedState.selectedPremiumAddOns = { 1: 'Chocolate' }
     Storage.sharedState.selectedDrinkAddOnString = 'Lemonade'
   }
 }

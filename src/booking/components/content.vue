@@ -90,8 +90,8 @@ export default {
 
 .progress-bar {
   margin-bottom: 30px;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 33px;
+  margin-right: 33px;
 
   .v-stepper {
     margin-top: 30px;
@@ -99,6 +99,7 @@ export default {
     .v-step {
       margin-right: 0;
       flex-basis: 24%;
+      opacity: 1;
 
       .divider {
         border-bottom: 1px dashed @darkBlue;
@@ -115,9 +116,10 @@ export default {
         }
       }
 
-      .index {
+      &.is-disabled .index {
         font-family: 'Moret', serif;
         font-size: 18px;
+        font-weight: bold;
         background-color: white;
         width: 30px;
         height: 30px;
@@ -126,11 +128,21 @@ export default {
         color: @darkBlue;
         padding: 1px 0 2px 0;
         margin-right: 0;
-        opacity: 1;
+        opacity: .4;
       }
 
-      &.is-disabled .index {
-        opacity: 0.4;
+      .index {
+        font-family: 'Moret', serif;
+        font-size: 18px;
+        font-weight: bold;
+        background-color: white;
+        width: 30px;
+        height: 30px;
+        box-shadow: none;
+        border: 2px solid @darkBlue;
+        color: @darkBlue;
+        padding: 1px 0 2px 0;
+        margin-right: 0;
       }
 
       &.is-active .label .index {
