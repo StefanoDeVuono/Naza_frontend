@@ -112,7 +112,7 @@
           </div>
         </div>
 
-        <PaymentInfo @stripe-setup-intent-error="handleStripeServerError"/>
+        <PaymentInfo @stripe-setup-intent-error="handleStripeServerError" />
       </div>
     </div>
   </Section>

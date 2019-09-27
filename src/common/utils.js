@@ -126,10 +126,7 @@ export const formattedPrice = totalPrice => {
   }
 }
 
-export const formattedHours = (
-  totalDuration,
-  options
-) => {
+export const formattedHours = (totalDuration, options) => {
   const { singularLabel, pluralLabel } = options || {}
   const singular = singularLabel || 'HR'
   const plural = pluralLabel || 'HRS'

@@ -26,10 +26,10 @@
         <Carousel
           v-show="!closedSections[subcategory]"
           :ref="'carousel' + subcategory"
-          :perPage="1"
+          :perPageCustom="[[0, 1], [640, 2]]"
           :centerMode="true"
           :paginationPadding="5"
-          :spacePadding="40"
+          :spacePadding="60"
           paginationColor="rgba(28, 48, 66, 0.4)"
           paginationActiveColor="#bc4940"
         >
@@ -42,10 +42,12 @@
           <Slide :key="style.name" v-for="style in styles">
             <div class="container">
               <div class="slide">
-                <img
-                  :data-url="CURL_ASSET_ROOT + getImageUrl(style)"
-                  :src="CURL_ASSET_ROOT + getImageUrl(style)"
-                />
+                <div class="image-container">
+                  <img
+                    :data-url="CURL_ASSET_ROOT + getImageUrl(style)"
+                    :src="CURL_ASSET_ROOT + getImageUrl(style)"
+                  />
+                </div>
                 <div class="description">
                   <h2>{{ style.name }}</h2>
                   <p class="full-desc">
@@ -297,10 +299,18 @@ export default {
     box-sizing: border-box;
     color: white;
 
+    .image-container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     img {
       margin: auto;
       height: 334px;
       width: 100%;
+      max-width: 260px;
       object-fit: cover;
     }
 

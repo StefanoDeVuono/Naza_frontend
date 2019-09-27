@@ -9,23 +9,23 @@
 <script>
 export default {
   props: {
-    errors: Array
+    errors: Array,
   },
 }
 </script>
 
 <style lang="less">
-  @import '../../common/utils.less';
+@import '../../common/utils.less';
 
-  .scheduling-errors {
-    .ignore-parent-padding();
+.scheduling-errors {
+  .ignore-parent-padding();
 
-    background-color: rgba(147, 32, 4, 0.37);
-    color: @deepRed;
-    font-size: 14px;
-    font-weight: bold;
-    line-height: 1.43;
-    letter-spacing: 0.5px;
-    padding: 20px;
-  }
+  background-color: rgba(147, 32, 4, 0.37);
+  color: @deepRed;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 1.43;
+  letter-spacing: 0.5px;
+  padding: 20px;
+}
 </style>

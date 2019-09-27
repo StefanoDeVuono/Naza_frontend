@@ -10,10 +10,10 @@
         />
         <Carousel
           ref="carousel"
-          :perPage="1"
+          :perPageCustom="[[0, 1], [640, 2]]"
           :centerMode="true"
           :paginationPadding="5"
-          :spacePadding="40"
+          :spacePadding="50"
           paginationColor="rgba(28, 48, 66, 0.4)"
           paginationActiveColor="#bc4940"
         >
@@ -203,10 +203,18 @@ export default {
   .VueCarousel-slide {
     box-sizing: border-box;
 
+    .image-container {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     img {
       margin: auto;
       height: 334px;
       width: 100%;
+      max-width: 260px;
       object-fit: cover;
     }
   }

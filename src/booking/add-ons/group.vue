@@ -11,7 +11,13 @@
         v-bind:class="{ active: isActive(product.default_variant.id) }"
         v-for="product in products"
       >
-        <img @click="onSelect(product)" :src="getImageUrl(product)" />
+        <img
+          @click="onSelect(product)"
+          :src="getImageUrl(product)"
+          :srcset="
+            `${getImageUrl(product)} 1x, ${getLargeImageUrl(product)} 2x`
+          "
+        />
         <h3>{{ product.name }}</h3>
         <p>{{ product.description }}</p>
         <div
@@ -55,6 +61,12 @@ export default {
     getImageUrl(product) {
       return (
         this.CURL_ASSET_ROOT + path(['images', 0, 'styles', 1, 'url'], product)
+      )
+    },
+
+    getLargeImageUrl(product) {
+      return (
+        this.CURL_ASSET_ROOT + path(['images', 0, 'styles', 3, 'url'], product)
       )
     },
   },
@@ -105,8 +117,19 @@ export default {
     grid-row-gap: 15px;
   }
 
+  @media screen and (min-width: 600px) {
+    .products {
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+    }
+  }
+
   .product {
     margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
 
     h3 {
       font-family: 'TTCommons', sans-serif;
@@ -125,8 +148,8 @@ export default {
     }
 
     img {
-      width: 100%;
-      height: calc(50vw - 30px);
+      width: 150px;
+      height: 150px;
       object-fit: cover;
       line-height: 0;
       border: 3px solid @darkBlue;
