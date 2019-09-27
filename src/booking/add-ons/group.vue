@@ -11,13 +11,15 @@
         v-bind:class="{ active: isActive(product.default_variant.id) }"
         v-for="product in products"
       >
-        <img
-          @click="onSelect(product)"
-          :src="getImageUrl(product)"
-          :srcset="
+        <div class="image-container">
+          <img
+              @click="onSelect(product)"
+              :src="getImageUrl(product)"
+              :srcset="
             `${getImageUrl(product)} 1x, ${getLargeImageUrl(product)} 2x`
           "
-        />
+          />
+        </div>
         <h3>{{ product.name }}</h3>
         <p>{{ product.description }}</p>
         <div
@@ -147,16 +149,23 @@ export default {
       color: @darkBlue;
     }
 
-    img {
-      width: 150px;
-      height: 150px;
-      object-fit: cover;
+    .image-container {
+      box-sizing: border-box;
+      border: 3px solid transparent;
       line-height: 0;
-      border: 3px solid @darkBlue;
+
+      img {
+        box-sizing: border-box;
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        line-height: 0;
+        border: 2px solid @lightGray;
+      }
     }
 
-    &.active img {
-      border: 3px solid @orange;
+    &.active .image-container {
+      border: 3px solid @darkBlue;
     }
 
     .duration-and-price-wrapper {
