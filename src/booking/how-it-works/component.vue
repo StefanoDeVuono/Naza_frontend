@@ -32,7 +32,7 @@
             <Slide data-index="0">
               <img
                 class="slide-img"
-                src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/Step1.jpeg"
+                src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/StepPhoto1.jpeg"
               />
               <h2 class="step-title">
                 Select a Style and<br />
@@ -47,7 +47,7 @@
             <Slide data-index="1">
               <img
                 class="slide-img"
-                src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/Step2.jpeg"
+                src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/StepPhoto2.jpeg"
               />
               <h2 class="step-title">Step 2</h2>
             </Slide>
@@ -55,7 +55,7 @@
             <Slide data-index="2">
               <img
                 class="slide-img"
-                src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/Step3.jpeg"
+                src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/StepPhoto3.jpeg"
               />
               <h2 class="step-title">Step 3</h2>
             </Slide>
@@ -63,7 +63,7 @@
             <Slide data-index="3">
               <img
                 class="slide-img"
-                src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/Step4.jpeg"
+                src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/StepPhoto4.jpeg"
               />
               <h2 class="step-title">Step 4</h2>
             </Slide>
@@ -71,7 +71,7 @@
             <Slide data-index="4">
               <img
                 class="slide-img"
-                src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/Step5.jpeg"
+                src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/StepPhoto5.jpeg"
               />
               <h2 class="step-title">Step 5</h2>
               <p>
