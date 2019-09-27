@@ -67,7 +67,7 @@ export default {
   data: function() {
     return {
       errors: [],
-      isPaymentSaved: false,
+      isPaymentSaved: true,
       isLoading: false,
 
       progress: 0,
@@ -198,6 +198,7 @@ export default {
     },
 
     addAddOnToCart(variantId) {
+      console.log("adding add-on", variantId)
       return fetch(getSpreeServer() + '/cart/add_item', {
         method: 'POST',
         headers: {
@@ -214,6 +215,7 @@ export default {
     },
 
     addAddOnsToCart() {
+      console.log('selectedFreeAddOns', this.shared.selectedFreeAddOns)
       const variantIds = filter(
         Boolean,
         reduce(concat, [])([
@@ -267,6 +269,7 @@ export default {
           duration: Storage.sharedState.duration,
           note: Storage.sharedState.note,
           prefScalpTenderness: Storage.sharedState.prefScalpTenderness,
+          prefChattiness: Storage.sharedState.prefChattiness,
           taxonName: Storage.sharedState.taxonName,
           styleName: Storage.sharedState.product.name,
           customizations: Storage.sharedState.customizations,
