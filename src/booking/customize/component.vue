@@ -277,7 +277,7 @@ export default {
     },
 
     handleColorChange(color) {
-      Storage.setCustomization('Color', color)
+      Storage.setCustomization('Color', color.presentation)
       this.isSubmitActive = true
     },
   },
