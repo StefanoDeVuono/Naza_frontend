@@ -2,7 +2,7 @@
   <div>
     <div class="content">
       <div class="border-top">
-        <img src="assets/content/border-top.svg" />
+        <BorderTop />
       </div>
       <div class="progress-bar">
         <VueStepper ref="stepper" :steps="5" v-model="step"></VueStepper>
@@ -17,6 +17,7 @@
 import VueStepper from 'vue-stepper-component'
 import Footer from 'common/footer.vue'
 import { range } from 'ramda'
+import BorderTop from '../../images/decor_element.svg'
 
 export default {
   props: {
@@ -43,6 +44,7 @@ export default {
   components: {
     VueStepper,
     Footer,
+    BorderTop
   },
 
   methods: {
@@ -79,6 +81,12 @@ export default {
 @contentPadding: 25px;
 @darkBlue: #1c3042;
 @orange: #bc5940;
+
+.border-top {
+  svg {
+    transform: scale(1.2, 1);
+  }
+}
 
 .progress-bar {
   margin-bottom: 30px;

@@ -279,6 +279,18 @@ export default {
         border-bottom: none;
       }
     }
+
+    &:nth-child(3n+0) .slide {
+      background-color: @tan;
+    }
+
+    &:nth-child(3n+1) .slide {
+      background-color: @darkBlue;
+    }
+
+    &:nth-child(3n+2) .slide {
+      background-color: @brown;
+    }
   }
 
   .subcategory {
@@ -319,7 +331,6 @@ export default {
     }
 
     .slide {
-      background-color: @brown;
       padding: 10px;
 
       img {
