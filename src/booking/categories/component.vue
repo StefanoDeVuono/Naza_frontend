@@ -13,7 +13,7 @@
           :perPageCustom="[[0, 1], [640, 2]]"
           :centerMode="true"
           :paginationPadding="5"
-          :spacePadding="40"
+          :spacePadding="50"
           paginationColor="rgba(28, 48, 66, 0.4)"
           paginationActiveColor="#bc4940"
         >
