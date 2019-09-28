@@ -19,7 +19,7 @@ Vue.use(VueModal)
 var routes = [
   {
     path: '/',
-    redirect: '/categories'
+    redirect: '/how-it-works'
   },
   {
     path: '/categories',
