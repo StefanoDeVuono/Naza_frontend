@@ -29,6 +29,11 @@
           />
         </div>
 
+        <div class="form-item">
+          <label class="title" for="allergies">Allergies &amp; Sensitivities</label>
+          <input type="text" name="allergies" v-model="shared.allergies" class="field-element text" /> 
+        </div>
+
         <div class="form-item field text">
           <label class="title" for="note">Note For Your Stylist</label>
           <textarea
@@ -103,7 +108,10 @@ export default {
       }
 
       .field-element {
+        box-sizing: border-box;
         border: 2px solid @darkBlue;
+        width: 100%;
+        padding: 15px 10px;
       }
 
       label {
