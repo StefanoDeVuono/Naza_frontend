@@ -1,5 +1,17 @@
 <template>
-  <modal class="modal" name="forgot-password" width="90%">
+  <modal class="modal" name="forgot-password" width="100%" height="auto" :pivot-y="1.0">
+    <div class="close-cta-container">
+      <img
+          alt="close"
+          src="assets/images/close-icon.png"
+          srcset="
+            assets/images/close-icon@2x.png,
+            assets/images/close-icon@3x.png
+          "
+          class="close-cta"
+          @click="closeModal"
+      />
+    </div>
     <div v-show="isSubmitted" class="confirm-password">
       <div>
         <p>
@@ -111,10 +123,27 @@ export default {
 }
 
 .forgot-password {
-  padding: 20px;
+  /*padding: 20px;*/
 
   h1 {
     text-align: center;
+  }
+}
+
+.v--modal-overlay {
+  .v--modal-box {
+    padding: 20px;
+    background: @lightGray;
+
+    .close-cta-container {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 28px;
+    }
+
+    .close-cta {
+      width: 11.4px;
+    }
   }
 }
 </style>
