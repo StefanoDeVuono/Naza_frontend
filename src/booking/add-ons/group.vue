@@ -14,10 +14,7 @@
         <div class="image-container">
           <img
               @click="onSelect(product)"
-              :src="getImageUrl(product)"
-              :srcset="
-            `${getImageUrl(product)} 1x, ${getLargeImageUrl(product)} 2x`
-          "
+              :src="getLargeImageUrl(product)"
           />
         </div>
         <h3>{{ product.name }}</h3>
@@ -119,13 +116,6 @@ export default {
     grid-row-gap: 15px;
   }
 
-  @media screen and (min-width: 600px) {
-    .products {
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr;
-    }
-  }
-
   .product {
     margin-bottom: 20px;
     display: flex;
@@ -156,11 +146,18 @@ export default {
 
       img {
         box-sizing: border-box;
-        width: 150px;
-        height: 150px;
+        width: 40vw;
+        height: 40vw;
         object-fit: cover;
         line-height: 0;
         border: 2px solid @lightGray;
+      }
+
+      @media screen and (min-width: 640px) {
+        img {
+          width: 300px;
+          height: 300px;
+        }
       }
     }
 

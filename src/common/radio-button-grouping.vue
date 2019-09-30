@@ -89,6 +89,8 @@ export default {
 
   methods: {
     calculateInitialValue() {
+      console.log('options', this.name, this.options.length)
+
       if (this.options.length === 0) {
         return null
       }

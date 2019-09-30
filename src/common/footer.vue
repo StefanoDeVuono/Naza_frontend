@@ -80,8 +80,7 @@ export default {
 
 .footer {
   .ignore-parent-padding();
-  .ignore-parent-padding--add-padding(2);
-
+  padding: 60px;
   background-color: #e6e1da;
 
   h3 {

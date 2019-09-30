@@ -2,10 +2,13 @@
   <div>
     <div class="content">
       <DecorBorder />
-      <div class="progress-bar">
-        <VueStepper ref="stepper" :steps="TOTAL_PROGRESS_STEPS" v-model="step"></VueStepper>
+      <div class="inner-content">
+        <div class="progress-bar">
+          <VueStepper ref="stepper" :steps="TOTAL_PROGRESS_STEPS" v-model="step"></VueStepper>
+        </div>
+        
+        <slot></slot>
       </div>
-      <slot></slot>
     </div>
     <Footer></Footer>
   </div>
@@ -170,6 +173,11 @@ export default {
 .content {
   background-color: @lightGray;
   padding-bottom: 50px;
+}
+
+.inner-content {
+  margin: 0 auto;
+  max-width: 640px;  
 }
 
 .border-top {
