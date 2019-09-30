@@ -38,7 +38,7 @@
                 Select a Style and<br />
                 Customize It
               </h2>
-              <p>
+              <p class="step-desc">
                 Personal your style by choosing color, length, volume, and size
                 of your favorite hairstyle.
               </p>
@@ -74,7 +74,7 @@
                 src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/StepPhoto5.jpeg"
               />
               <h2 class="step-title">Step 5</h2>
-              <p>
+              <p class="step-desc">
                 <router-link
                   @click.native="$event.stopImmediatePropagation()"
                   :to="{ name: 'categories' }"
@@ -205,6 +205,8 @@ export default {
       h2.step-title {
         text-transform: lowercase;
         font-weight: normal;
+        text-align: center;
+        color: white;
       }
 
       .how-it-works--header {
@@ -227,15 +229,7 @@ export default {
         }
       }
 
-      h1,
-      h2 {
-        font-weight: normal;
-        color: white;
-        text-align: center;
-        letter-spacing: 0.75px;
-      }
-
-      p {
+      .step-desc {
         margin: auto;
         text-align: center;
         font-size: 18px;
