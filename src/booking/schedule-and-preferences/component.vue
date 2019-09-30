@@ -268,6 +268,7 @@ export default {
           note: Storage.sharedState.note,
           prefScalpTenderness: Storage.sharedState.prefScalpTenderness,
           prefChattiness: Storage.sharedState.prefChattiness,
+          allergies: Storage.sharedState.allergies,
           taxonName: Storage.sharedState.taxonName,
           styleName: Storage.sharedState.product.name,
           customizations: Storage.sharedState.customizations,
