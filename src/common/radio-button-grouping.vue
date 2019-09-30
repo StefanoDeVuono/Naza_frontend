@@ -2,7 +2,7 @@
   <div class="radio-button-grouping">
     <div class="header">
       <h2>
-        {{ name }} <HelpCircleOutlineIcon v-if="showHelp" @click="expandHelp" />
+        Select {{ name }} <HelpCircleOutlineIcon v-if="showHelp" @click="expandHelp" />
       </h2>
       <div class="supplemental-price" v-show="supplementalPrice">
         + {{ supplementalPrice }}
@@ -141,6 +141,7 @@ export default {
     .material-design-icon.help-circle-outline-icon
       > .material-design-icon__svg {
       transform: translate(0, 5px);
+      margin-left: 10px;
       height: 20px;
       width: 20px;
     }
