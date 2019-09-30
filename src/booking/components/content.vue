@@ -1,9 +1,7 @@
 <template>
   <div>
     <div class="content">
-      <div class="border-top">
-        <img src="assets/images/decor%20element.png" srcset="assets/images/decor%20element.png 1x, assets/images/decor%20element@2x.png 2x" alt="" />
-      </div>
+      <DecorBorder />
       <div class="progress-bar">
         <VueStepper ref="stepper" :steps="TOTAL_PROGRESS_STEPS" v-model="step"></VueStepper>
       </div>
@@ -17,6 +15,7 @@
 import VueStepper from 'vue-stepper-component'
 import Footer from 'common/footer.vue'
 import { range } from 'ramda'
+import DecorBorder from './decor-border.vue'
 
 const TOTAL_PROGRESS_STEPS = 5
 
@@ -51,6 +50,7 @@ export default {
   components: {
     VueStepper,
     Footer,
+    DecorBorder,
   },
 
   methods: {
@@ -179,6 +179,7 @@ export default {
 
   img {
     width: 100%;
+    height: 19px;
   }
 }
 </style>
