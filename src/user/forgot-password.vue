@@ -1,64 +1,86 @@
 <template>
   <modal class="modal" name="forgot-password" width="100%" height="auto" :pivot-y="1.0">
-    <div class="close-cta-container">
+    <div class="border">
       <img
-          alt="close"
-          src="assets/images/close-icon.png"
+          alt=""
+          src="assets/images/decor%20element@3x.png"
           srcset="
-            assets/images/close-icon@2x.png,
-            assets/images/close-icon@3x.png
+            assets/images/decor%20element.png,
+            assets/images/decor%20element@2x.png 2x,
           "
-          class="close-cta"
-          @click="closeModal"
-      />
+       />
     </div>
-    <div v-show="isSubmitted" class="confirm-password">
-      <div>
-        <p>
-          You will receive an email shortly with instructions on how to change
-          your password.
-        </p>
-
-        <input
-          class="submit-button"
-          type="submit"
-          value="Return"
-          @click="closeModal"
+    <div class="content-container">
+      <div class="close-cta-container">
+        <img
+            alt="close"
+            src="assets/images/close-icon3x.png"
+            srcset="
+              assets/images/close-icon.png,
+              assets/images/close-icon@2x.png 2x,
+            "
+            class="close-cta"
+            @click="closeModal"
         />
       </div>
-    </div>
+      <div v-show="isSubmitted" class="confirm-password">
+        <div>
+          <p>
+            You will receive an email shortly with instructions on how to change
+            your password.
+          </p>
 
-    <div v-show="!isSubmitted" class="forgot-password">
-      <h1>Reset Password</h1>
-      <p>Please enter your email address to request a password reset.</p>
-
-      <form autocomplete="on" method="POST" @submit.stop.prevent="submitForm">
-        <div class="field-list clear">
-          <div class="form-item field email">
-            <label
-              class="title"
-              for="email-yui_3_17_2_1_1568231635626_12630-field"
-              >Email Address:</label
-            >
-
-            <input
-              class="field-element"
-              name="email"
-              type="email"
-              autocomplete="off"
-              v-model="email"
-              spellcheck="false"
-              style='background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAUBJREFUOBGVVE2ORUAQLvIS4gwzEysHkHgnkMiEc4zEJXCMNwtWTmDh3UGcYoaFhZUFCzFVnu4wIaiE+vvq6+6qTgthGH6O4/jA7x1OiCAIPwj7CoLgSXDxSjEVzAt9k01CBKdWfsFf/2WNuEwc2YqigKZpK9glAlVVwTTNbQJZlnlCkiTAZnF/mePB2biRdhwHdF2HJEmgaRrwPA+qqoI4jle5/8XkXzrCFoHg+/5ICdpm13UTho7Q9/0WnsfwiL/ouHwHrJgQR8WEwVG+oXpMPaDAkdzvd7AsC8qyhCiKJjiRnCKwbRsMw9hcQ5zv9maSBeu6hjRNYRgGFuKaCNwjkjzPoSiK1d1gDDecQobOBwswzabD/D3Np7AHOIrvNpHmPI+Kc2RZBm3bcp8wuwSIot7QQ0PznoR6wYSK0Xb/AGVLcWwc7Ng3AAAAAElFTkSuQmCC"); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;'
-            />
-          </div>
+          <input
+              class="submit-button"
+              type="submit"
+              value="Return"
+              @click="closeModal"
+          />
         </div>
-        <input
-          class="submit-button"
-          type="submit"
-          value="Reset"
-          @click="submitForm"
-        />
-      </form>
+      </div>
+
+      <div v-show="!isSubmitted" class="forgot-password">
+        <h1>Reset Password</h1>
+        <p>Please enter your email address to request a password reset.</p>
+
+        <form autocomplete="on" method="POST" @submit.stop.prevent="submitForm">
+          <div class="field-list clear">
+            <div class="form-item field email">
+              <label
+                  class="title"
+                  for="email-yui_3_17_2_1_1568231635626_12630-field"
+              >Email Address:</label
+              >
+
+              <input
+                  class="field-element"
+                  name="email"
+                  type="email"
+                  autocomplete="off"
+                  v-model="email"
+                  spellcheck="false"
+                  style='background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAUBJREFUOBGVVE2ORUAQLvIS4gwzEysHkHgnkMiEc4zEJXCMNwtWTmDh3UGcYoaFhZUFCzFVnu4wIaiE+vvq6+6qTgthGH6O4/jA7x1OiCAIPwj7CoLgSXDxSjEVzAt9k01CBKdWfsFf/2WNuEwc2YqigKZpK9glAlVVwTTNbQJZlnlCkiTAZnF/mePB2biRdhwHdF2HJEmgaRrwPA+qqoI4jle5/8XkXzrCFoHg+/5ICdpm13UTho7Q9/0WnsfwiL/ouHwHrJgQR8WEwVG+oXpMPaDAkdzvd7AsC8qyhCiKJjiRnCKwbRsMw9hcQ5zv9maSBeu6hjRNYRgGFuKaCNwjkjzPoSiK1d1gDDecQobOBwswzabD/D3Np7AHOIrvNpHmPI+Kc2RZBm3bcp8wuwSIot7QQ0PznoR6wYSK0Xb/AGVLcWwc7Ng3AAAAAElFTkSuQmCC"); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;'
+              />
+            </div>
+          </div>
+          <input
+              class="submit-button"
+              type="submit"
+              value="Reset"
+              @click="submitForm"
+          />
+        </form>
+      </div>
+    </div>
+    <div class="border">
+      <img
+          alt=""
+          src="assets/images/decor-bottom@3x.png"
+          srcset="
+            assets/images/decor-bottom.png,
+            assets/images/decor-bottom@2x.png 2x,
+          "
+      />
     </div>
   </modal>
 </template>
@@ -132,8 +154,20 @@ export default {
 
 .v--modal-overlay {
   .v--modal-box {
-    padding: 20px;
-    background: @lightGray;
+    .border {
+      background:  @lightGray;
+
+      img {
+        width: 100%;
+      }
+    }
+
+    .content-container{
+      padding-right: 20px;
+      padding-left: 20px;
+      padding-bottom: 20px;
+      background: @lightGray;
+    }
 
     .close-cta-container {
       display: flex;
