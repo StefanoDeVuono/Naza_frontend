@@ -4,8 +4,8 @@
 
     <LightHeader
       :showBackArrow="true"
-      :totalPrice="parseInt(shared.price)"
-      :totalDuration="parseInt(shared.duration)"
+      :totalPrice="parseInt(shared.product.price)"
+      :totalDuration="parseInt(shared.product.duration)"
     />
 
     <Content :progressStep="3">
@@ -13,8 +13,6 @@
         stepTitle="Step Three"
         imageUrl="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/step3.png"
         ctaText="Adjust the style, such as volume and hair color, by selecting your preferences below"
-        :price="shared.price"
-        :duration="shared.duration"
       />
 
       <Carousel
