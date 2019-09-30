@@ -40,17 +40,16 @@
       </div>
 
       <div v-show="!isSubmitted" class="forgot-password">
-        <h1>Reset Password</h1>
-        <p>Please enter your email address to request a password reset.</p>
+        <div class="title-container"><span class="title">Reset Password</span></div>
 
         <form autocomplete="on" method="POST" @submit.stop.prevent="submitForm">
           <div class="field-list clear">
             <div class="form-item field email">
               <label
-                  class="title"
                   for="email-yui_3_17_2_1_1568231635626_12630-field"
-              >Email Address:</label
               >
+                <span class="label-content">Email Address:</span>
+              </label>
 
               <input
                   class="field-element"
@@ -72,7 +71,7 @@
         </form>
       </div>
     </div>
-    <div class="border">
+    <div class="border bottom">
       <img
           alt=""
           src="assets/images/decor-bottom@3x.png"
@@ -145,10 +144,15 @@ export default {
 }
 
 .forgot-password {
-  /*padding: 20px;*/
+  .title-container{
+    margin-bottom: 15px;
+  }
 
-  h1 {
-    text-align: center;
+  .title {
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1;
   }
 }
 
@@ -156,6 +160,11 @@ export default {
   .v--modal-box {
     .border {
       background:  @lightGray;
+      display: flex;
+
+      &.bottom {
+        align-items: flex-end;
+      }
 
       img {
         width: 100%;
@@ -165,7 +174,7 @@ export default {
     .content-container{
       padding-right: 20px;
       padding-left: 20px;
-      padding-bottom: 20px;
+      padding-bottom: 40px;
       background: @lightGray;
     }
 
@@ -178,6 +187,26 @@ export default {
     .close-cta {
       width: 11.4px;
     }
+
+    .submit-button {
+      margin-top: 20px;
+      font-family: 'TTCommons', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.5;
+      letter-spacing: 0.5px;
+    }
+  }
+}
+
+.field-list .form-item.email {
+  .label-content {
+    font-weight: 400;
+    letter-spacing: 0.2px;
+  }
+
+  .field-element {
+    border: solid 2px  @darkBlue;
   }
 }
 </style>
