@@ -5,7 +5,10 @@
       <router-link
         @click.native="$event.stopImmediatePropagation()"
         :to="{ name: 'sign-in' }"
-      ><span class="header-cta">Retrieve your preferences here</span></router-link>
+        ><span class="header-cta"
+          >Retrieve your preferences here</span
+        ></router-link
+      >
     </div>
   </div>
 </template>

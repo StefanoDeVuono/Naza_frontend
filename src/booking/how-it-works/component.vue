@@ -152,7 +152,7 @@ export default {
 @cornerOffset: calc(@pageMargin - @cornerSize - @cornerBorderWidth);
 
 .page {
-  .ignore-parent-padding();  
+  .ignore-parent-padding();
   background-color: @brown;
 }
 

@@ -51,14 +51,14 @@ describe('Content', () => {
       mocks: {
         $router: routerMock,
       },
-      stubs: ['router-link']
+      stubs: ['router-link'],
     })
 
-    const step1 = wrapper.findAll('.v-step').at(0);
-    const step2 = wrapper.findAll('.v-step').at(1);
-    const step3 = wrapper.findAll('.v-step').at(2);
-    const step4 = wrapper.findAll('.v-step').at(3);
-    const step5 = wrapper.findAll('.v-step').at(4);
+    const step1 = wrapper.findAll('.v-step').at(0)
+    const step2 = wrapper.findAll('.v-step').at(1)
+    const step3 = wrapper.findAll('.v-step').at(2)
+    const step4 = wrapper.findAll('.v-step').at(3)
+    const step5 = wrapper.findAll('.v-step').at(4)
 
     expect(step1.props().disabled).toEqual(false)
     expect(step2.props().disabled).toEqual(true)

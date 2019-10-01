@@ -193,6 +193,5 @@ export default {
 @import '../../common/utils.less';
 
 .add-ons {
-
 }
 </style>

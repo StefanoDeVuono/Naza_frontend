@@ -30,8 +30,15 @@
         </div>
 
         <div class="form-item">
-          <label class="title" for="allergies">Allergies &amp; Sensitivities</label>
-          <input type="text" name="allergies" v-model="shared.allergies" class="field-element text" /> 
+          <label class="title" for="allergies"
+            >Allergies &amp; Sensitivities</label
+          >
+          <input
+            type="text"
+            name="allergies"
+            v-model="shared.allergies"
+            class="field-element text"
+          />
         </div>
 
         <div class="form-item field text">
@@ -66,7 +73,7 @@ export default {
     },
     chattinessOptions() {
       return ['Chat Away', 'Just a Skosh', 'No Talking']
-    }
+    },
   },
   methods: {},
   components: {
