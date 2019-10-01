@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page">
     <div class="how-it-works--container">
       <div class="how-it-works--corner ne"></div>
       <div class="how-it-works--corner nw"></div>
@@ -151,10 +151,16 @@ export default {
 @pageMargin: 20px;
 @cornerOffset: calc(@pageMargin - @cornerSize - @cornerBorderWidth);
 
+.page {
+  .ignore-parent-padding();  
+  background-color: @brown;
+}
+
 .how-it-works--container {
-  .ignore-parent-padding();
   position: relative;
   display: flex;
+  max-width: 640px;
+  margin: 0 auto;
 
   img {
     width: 100%;
@@ -195,7 +201,6 @@ export default {
 
   .how-it-works {
     color: white;
-    background-color: @brown;
 
     .how-it-works--content {
       margin: 20px;
