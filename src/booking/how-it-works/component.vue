@@ -1,103 +1,107 @@
 <template>
-  <div class="page">
-    <div class="how-it-works--container">
-      <div class="how-it-works--corner ne"></div>
-      <div class="how-it-works--corner nw"></div>
-      <div class="how-it-works--corner se"></div>
-      <div class="how-it-works--corner sw"></div>
-      <div class="how-it-works">
-        <div class="how-it-works--content">
-          <div class="how-it-works--header">
-            <img
-              alt="How Does Naza Work?"
-              aria-label="How Does Naza Work?"
-              src="assets/images/HowItWorks-header@1x.png"
-            />
-            <FlowerImage class="divider" />
-          </div>
-          <Carousel
-            ref="carousel"
-            :per-page="1"
-            :paginationPadding="5"
-            @page-change="handlePageChange"
-            paginationColor="rgba(28, 48, 66, 0.4)"
-            paginationActiveColor="#ffffff"
-          >
-            <template v-slot:pagination>
-              <CustomCarouselPaginator
-                @paginationclick="$refs.carousel.goToPage($event, 'pagination')"
-              />
-            </template>
-
-            <Slide data-index="0">
+  <div>
+    <div class="page">
+      <div class="how-it-works--container">
+        <div class="how-it-works--corner ne"></div>
+        <div class="how-it-works--corner nw"></div>
+        <div class="how-it-works--corner se"></div>
+        <div class="how-it-works--corner sw"></div>
+        <div class="how-it-works">
+          <div class="how-it-works--content">
+            <div class="how-it-works--header">
               <img
-                class="slide-img"
-                src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/StepPhoto1.jpeg"
+                alt="How Does Naza Work?"
+                aria-label="How Does Naza Work?"
+                src="assets/images/HowItWorks-header@1x.png"
               />
-              <h2 class="step-title">
-                Select a Style and<br />
-                Customize It
-              </h2>
-              <p class="step-desc">
-                Personal your style by choosing color, length, volume, and size
-                of your favorite hairstyle.
-              </p>
-            </Slide>
-
-            <Slide data-index="1">
-              <img
-                class="slide-img"
-                src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/StepPhoto2.jpeg"
-              />
-              <h2 class="step-title">Step 2</h2>
-            </Slide>
-
-            <Slide data-index="2">
-              <img
-                class="slide-img"
-                src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/StepPhoto3.jpeg"
-              />
-              <h2 class="step-title">Step 3</h2>
-            </Slide>
-
-            <Slide data-index="3">
-              <img
-                class="slide-img"
-                src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/StepPhoto4.jpeg"
-              />
-              <h2 class="step-title">Step 4</h2>
-            </Slide>
-
-            <Slide data-index="4">
-              <img
-                class="slide-img"
-                src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/StepPhoto5.jpeg"
-              />
-              <h2 class="step-title">Step 5</h2>
-              <p class="step-desc">
-                <router-link
-                  @click.native="$event.stopImmediatePropagation()"
-                  :to="{ name: 'categories' }"
-                  >Launch booking flow</router-link
-                >
-              </p>
-            </Slide>
-          </Carousel>
-
-          <div class="skip-and-start" v-show="showSkipAndStart">
-            <router-link
-              @click.native="$event.stopImmediatePropagation()"
-              :to="{ name: 'categories' }"
-              >Skip &amp; Start &rarr;</router-link
+              <FlowerImage class="divider" />
+            </div>
+            <Carousel
+              ref="carousel"
+              :per-page="1"
+              :paginationPadding="5"
+              @page-change="handlePageChange"
+              paginationColor="rgba(28, 48, 66, 0.4)"
+              paginationActiveColor="#ffffff"
             >
-          </div>
+              <template v-slot:pagination>
+                <CustomCarouselPaginator
+                  @paginationclick="
+                    $refs.carousel.goToPage($event, 'pagination')
+                  "
+                />
+              </template>
 
-          <div class="cta-button" v-show="!showSkipAndStart">
-            <SqButton
-              :onClick="navigateToBooking"
-              :inverted="true"
-              label="Start Booking!"
-            />
+              <Slide data-index="0">
+                <img
+                  class="slide-img"
+                  src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/StepPhoto1.jpeg"
+                />
+                <h2 class="step-title">
+                  Select a Style and<br />
+                  Customize It
+                </h2>
+                <p class="step-desc">
+                  Personal your style by choosing color, length, volume, and
+                  size of your favorite hairstyle.
+                </p>
+              </Slide>
+
+              <Slide data-index="1">
+                <img
+                  class="slide-img"
+                  src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/StepPhoto2.jpeg"
+                />
+                <h2 class="step-title">Step 2</h2>
+              </Slide>
+
+              <Slide data-index="2">
+                <img
+                  class="slide-img"
+                  src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/StepPhoto3.jpeg"
+                />
+                <h2 class="step-title">Step 3</h2>
+              </Slide>
+
+              <Slide data-index="3">
+                <img
+                  class="slide-img"
+                  src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/StepPhoto4.jpeg"
+                />
+                <h2 class="step-title">Step 4</h2>
+              </Slide>
+
+              <Slide data-index="4">
+                <img
+                  class="slide-img"
+                  src="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/StepPhoto5.jpeg"
+                />
+                <h2 class="step-title">Step 5</h2>
+                <p class="step-desc">
+                  <router-link
+                    @click.native="$event.stopImmediatePropagation()"
+                    :to="{ name: 'categories' }"
+                    >Launch booking flow</router-link
+                  >
+                </p>
+              </Slide>
+            </Carousel>
+
+            <div class="skip-and-start" v-show="showSkipAndStart">
+              <router-link
+                @click.native="$event.stopImmediatePropagation()"
+                :to="{ name: 'categories' }"
+                >Skip &amp; Start &rarr;</router-link
+              >
+            </div>
+
+            <div class="cta-button" v-show="!showSkipAndStart">
+              <SqButton
+                :onClick="navigateToBooking"
+                :inverted="true"
+                label="Start Booking!"
+              />
+            </div>
           </div>
         </div>
       </div>

@@ -171,6 +171,7 @@ import { formattedHours, formattedPrice } from 'common/utils'
 import ChevronRightIcon from 'vue-material-design-icons/ChevronRight.vue'
 import ChevronUpIcon from 'vue-material-design-icons/ChevronUp.vue'
 import CustomizationsAndAddOns from './customizations-and-add-ons.vue'
+import DecorBorder from 'common/decor-border.vue'
 
 export default {
   data() {
@@ -220,6 +221,7 @@ export default {
     ChevronRightIcon,
     ChevronUpIcon,
     CustomizationsAndAddOns,
+    DecorBorder,
   },
 }
 </script>
@@ -234,9 +236,12 @@ export default {
     margin: 0;
     padding: 0;
     line-height: 0;
+    width: 100%;
 
     img {
-      width: 100%;
+      display: block;
+      margin: 0 auto;
+      //width: 100%;
     }
   }
 
@@ -290,12 +295,13 @@ export default {
       url('../../images/Burst_Purple.png');
     background-position: 0 300px, right 400px;
     background-repeat: no-repeat, no-repeat;
-
     background-color: @lightGray;
     .ignore-parent-padding();
 
     .inner {
       padding: 60px 10px 30px 10px;
+      max-width: 540px;
+      margin: 0 auto;
 
       & > div {
         margin-bottom: 40px;
@@ -359,6 +365,8 @@ export default {
 
     .questions {
       padding: 0 20px 60px 20px;
+      max-width: 540px;
+      margin: 0 auto;
 
       h3 {
         color: white;

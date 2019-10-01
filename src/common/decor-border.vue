@@ -23,14 +23,14 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      flip: {
-        type: Boolean,
-        default: false
-      }
-    }
-  }
+export default {
+  props: {
+    flip: {
+      type: Boolean,
+      default: false,
+    },
+  },
+}
 </script>
 
 <style lang="less" scoped>
