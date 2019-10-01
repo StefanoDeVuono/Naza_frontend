@@ -11,6 +11,7 @@
     />
     <img
       class="decor"
+      :class="{ flipped: flip }"
       src="assets/images/decor%20border%20full.png"
       alt=""
       srcset="
@@ -21,8 +22,19 @@
   </div>
 </template>
 
+<script>
+  export default {
+    props: {
+      flip: {
+        type: Boolean,
+        default: false
+      }
+    }
+  }
+</script>
+
 <style lang="less" scoped>
-@import '../../common/utils.less';
+@import './utils.less';
 
 div {
   .ignore-parent-padding();
@@ -42,5 +54,10 @@ div {
   margin: 0 auto;
   top: -5px;
   height: 19px;
+
+  &.flipped {
+    transform: scaleY(-1);
+    top: -19px;
+  }
 }
 </style>
