@@ -6,16 +6,7 @@
     height="auto"
     :pivot-y="1.0"
   >
-    <div class="border">
-      <img
-        alt=""
-        src="assets/images/decor%20element@3x.png"
-        srcset="
-          assets/images/decor%20element.png,
-          assets/images/decor%20element@2x.png 2x
-        "
-      />
-    </div>
+    <DecorBorder />
     <div class="content-container">
       <div class="close-cta-container">
         <img
@@ -77,21 +68,13 @@
         </form>
       </div>
     </div>
-    <div class="border bottom">
-      <img
-        alt=""
-        src="assets/images/decor-bottom@3x.png"
-        srcset="
-          assets/images/decor-bottom.png,
-          assets/images/decor-bottom@2x.png 2x
-        "
-      />
-    </div>
+    <DecorBorder :flip="true" />
   </modal>
 </template>
 
 <script>
 import { getAppServer } from 'common/constants'
+import DecorBorder from 'common/decor-border.vue'
 
 export default {
   props: {
@@ -132,6 +115,10 @@ export default {
       isSubmitted: false,
     }
   },
+
+  components: {
+    DecorBorder
+  }
 }
 </script>
 
@@ -181,7 +168,7 @@ export default {
       padding-right: 20px;
       padding-left: 20px;
       padding-bottom: 40px;
-      background: @lightGray;
+      background: white;
     }
 
     .close-cta-container {
