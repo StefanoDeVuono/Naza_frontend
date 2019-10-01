@@ -2,7 +2,8 @@
   <div class="radio-button-grouping">
     <div class="header">
       <h2>
-        Select {{ name }} <HelpCircleOutlineIcon v-if="showHelp" @click="expandHelp" />
+        Select {{ name }}
+        <HelpCircleOutlineIcon v-if="showHelp" @click="expandHelp" />
       </h2>
       <div class="supplemental-price" v-show="supplementalPrice">
         + {{ supplementalPrice }}

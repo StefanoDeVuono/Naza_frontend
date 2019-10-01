@@ -4,9 +4,13 @@
       <DecorBorder />
       <div class="inner-content">
         <div class="progress-bar">
-          <VueStepper ref="stepper" :steps="TOTAL_PROGRESS_STEPS" v-model="step"></VueStepper>
+          <VueStepper
+            ref="stepper"
+            :steps="TOTAL_PROGRESS_STEPS"
+            v-model="step"
+          ></VueStepper>
         </div>
-        
+
         <slot></slot>
       </div>
     </div>
@@ -29,7 +33,7 @@ export default {
 
   data: () => {
     return {
-      TOTAL_PROGRESS_STEPS
+      TOTAL_PROGRESS_STEPS,
     }
   },
 
@@ -143,7 +147,7 @@ export default {
         color: @darkBlue;
         padding: 1px 0 2px 0;
         margin-right: 0;
-        opacity: .4;
+        opacity: 0.4;
       }
 
       .index {
@@ -177,7 +181,7 @@ export default {
 
 .inner-content {
   margin: 0 auto;
-  max-width: 640px;  
+  max-width: 640px;
 }
 
 .border-top {

@@ -12,10 +12,7 @@
         v-for="product in products"
       >
         <div class="image-container">
-          <img
-              @click="onSelect(product)"
-              :src="getLargeImageUrl(product)"
-          />
+          <img @click="onSelect(product)" :src="getLargeImageUrl(product)" />
         </div>
         <h3>{{ product.name }}</h3>
         <p>{{ product.description }}</p>

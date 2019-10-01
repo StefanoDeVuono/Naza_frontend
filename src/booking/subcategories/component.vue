@@ -280,10 +280,11 @@ export default {
       }
     }
 
-    &:nth-child(3n+0) .slide {
+    &:nth-child(3n + 0) .slide {
       background-color: @tan;
 
-      h2, p {
+      h2,
+      p {
         color: @darkBlue;
       }
 
@@ -300,11 +301,11 @@ export default {
       }
     }
 
-    &:nth-child(3n+1) .slide {
+    &:nth-child(3n + 1) .slide {
       background-color: @darkBlue;
     }
 
-    &:nth-child(3n+2) .slide {
+    &:nth-child(3n + 2) .slide {
       background-color: @brown;
     }
   }
@@ -325,12 +326,12 @@ export default {
 
 .subcategories {
   .category {
-    &:nth-child(3n+0) .slide {
+    &:nth-child(3n + 0) .slide {
       .duration-and-price {
         label {
           color: @darkBlue;
         }
-        
+
         .divider {
           border-left: 1px solid @darkBlue;
         }
@@ -406,7 +407,7 @@ export default {
         .divider {
           border-left: 1px solid white;
         }
-      } 
+      }
     }
   }
 
