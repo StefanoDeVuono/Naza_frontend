@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="375px" height="5px" viewBox="0 0 375 5" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 55.1 (78136) - https://sketchapp.com -->
+    <title>double border@1.5x</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Booking-Flow-v.2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="booking-flow-step-5-login-mobile-revised" transform="translate(0.000000, -138.000000)" stroke="#1C3042">
+            <g id="double-border" transform="translate(0.000000, 138.000000)">
+                <path d="M375,0.5 L0,0.5" id="Line" stroke-linecap="square"></path>
+                <polyline id="Path-2" points="0 4.41821289 176.181152 4.41821289 201.48877 4.41821289 375 4.41821289"></polyline>
+            </g>
+        </g>
+    </g>
+</svg>

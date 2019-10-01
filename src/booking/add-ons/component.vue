@@ -1,5 +1,5 @@
 <template>
-  <div class="add-ons">
+  <div>
     <LightHeader
       :showBackArrow="true"
       :totalPrice="parseInt(shared.price)"
@@ -193,6 +193,6 @@ export default {
 @import '../../common/utils.less';
 
 .add-ons {
-  padding: 0 20px;
+
 }
 </style>

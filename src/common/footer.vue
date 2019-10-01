@@ -42,9 +42,9 @@
           <li>Stylists</li>
         </ul>
 
-        <h3>ACCOUNT</h3>
-        <ul>
-          <li v-if="shared.userToken">
+        <h3 v-if="shared.userToken">ACCOUNT</h3>
+        <ul v-if="shared.userToken">
+          <li>
             <a @click.prevent.stop="logOut">Log Out</a>
           </li>
         </ul>
@@ -80,8 +80,7 @@ export default {
 
 .footer {
   .ignore-parent-padding();
-  .ignore-parent-padding--add-padding(2);
-
+  padding: 60px;
   background-color: #e6e1da;
 
   h3 {
