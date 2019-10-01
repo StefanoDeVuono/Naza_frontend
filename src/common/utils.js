@@ -65,7 +65,7 @@ export const mockProductIfDevelopment = () => {
     return
   }
 
-  if (!Storage.sharedState.userToken) {
+  if (!Storage.sharedState.product) {
     // Storage.sharedState.userToken = 'abc'
 
     Storage.sharedState.product = {
