@@ -117,8 +117,8 @@ export default {
   },
 
   components: {
-    DecorBorder
-  }
+    DecorBorder,
+  },
 }
 </script>
 

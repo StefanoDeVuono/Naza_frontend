@@ -129,7 +129,9 @@ export default {
 @import '../common/utils.less';
 
 .sign-in {
-  padding-bottom: 50px;
+  padding: 50px 0;
+  max-width: 540px;
+  margin: 0 auto;
 
   label {
     .sans-serif();
