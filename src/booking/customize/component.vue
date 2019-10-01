@@ -192,6 +192,7 @@ export default {
           Storage.setProduct(parse(json).data)
           Storage.setTaxonName(this.findTaxonName())
           this.initializeCustomizations()
+          console.log('product', this.shared.product, this.shared.taxonName)
         })
     },
 

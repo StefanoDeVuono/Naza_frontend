@@ -65,8 +65,9 @@ export const mockProductIfDevelopment = () => {
     return
   }
 
-  if (!Storage.sharedState.userToken) {
+  if (!Storage.sharedState.product) {
     // Storage.sharedState.userToken = 'abc'
+    console.log('mocking shared state')
 
     Storage.sharedState.product = {
       name: 'Strawberry Shortcake',
