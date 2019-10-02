@@ -73,7 +73,7 @@ export default {
     },
 
     launchBooking() {
-      this.$router.push({ name: 'categories' })
+      window.location = '/booking/#/categories'
     },
   },
 
@@ -123,6 +123,7 @@ export default {
   width: 100%;
   max-width: 640px;
   margin: 0 auto;
+  padding-bottom: 40px;
 
   .head {
     padding: 50px 0;

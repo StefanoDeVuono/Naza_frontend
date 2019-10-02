@@ -2,21 +2,21 @@
   <div :class="{ flipped: flip }">
     <img
       class="border"
-      src="assets/images/double%20border%20full.png"
+      src="/assets/images/double%20border%20full.png"
       alt=""
       srcset="
-        assets/images/double%20border.png    1x,
-        assets/images/double%20border@2x.png 2x
+        /assets/images/double%20border.png    1x,
+        /assets/images/double%20border@2x.png 2x
       "
     />
     <img
       class="decor"
       :class="{ flipped: flip }"
-      src="assets/images/decor%20border%20full.png"
+      src="/assets/images/decor%20border%20full.png"
       alt=""
       srcset="
-        assets/images/decor%20border%20full.png 1x,
-        assets/images/decor%20border%20full.png 2x
+        /assets/images/decor%20border%20full.png 1x,
+        /assets/images/decor%20border%20full.png 2x
       "
     />
   </div>

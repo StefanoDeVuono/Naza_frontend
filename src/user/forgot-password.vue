@@ -11,10 +11,10 @@
       <div class="close-cta-container">
         <img
           alt="close"
-          src="assets/images/close-icon3x.png"
+          src="/assets/images/close-icon3x.png"
           srcset="
-            assets/images/close-icon.png,
-            assets/images/close-icon@2x.png 2x
+            /assets/images/close-icon.png,
+            /assets/images/close-icon@2x.png 2x
           "
           class="close-cta"
           @click="closeModal"
