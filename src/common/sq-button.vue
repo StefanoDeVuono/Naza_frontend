@@ -21,7 +21,11 @@ export default {
         return
       }
 
-      this.onClick(e)
+      if (this.onClick) {
+        this.onClick(e)
+      }
+
+      this.$emit('click')
     },
   },
 

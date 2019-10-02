@@ -77,6 +77,15 @@ export default {
     }
   },
 
+  setCustomerName(firstName, lastName) {
+    this.sharedState.customerFirstName = firstName
+    this.sharedState.customerLastName = lastName
+
+    if (this.debug) {
+      console.log('setting customer name', firstName, lastName)
+    }
+  },
+
   setCustomization(key, value) {
     Vue.set(this.sharedState.customizations, key, value)
 
