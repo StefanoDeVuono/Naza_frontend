@@ -85,8 +85,24 @@
 
         <div class="form-item field checkbox">
           <div class="option">
-            <img v-show="!shared.canReceiveEmailReminders" src="assets/images/checkbox.png" srcset="assets/images/checkbox.png 1x, assets/images/checkbox@2x.png 2x, assets/images/checkbox@3x.png 3x" />
-            <img v-show="shared.canReceiveEmailReminders" src="assets/images/checkbox+V.png" srcset="assets/images/checkbox+V.png 1x, assets/images/checkbox+V@2x.png 2x, assets/images/checkbox+V@3x.png 3x" />
+            <img
+              v-show="!shared.canReceiveEmailReminders"
+              src="assets/images/checkbox.png"
+              srcset="
+                assets/images/checkbox.png    1x,
+                assets/images/checkbox@2x.png 2x,
+                assets/images/checkbox@3x.png 3x
+              "
+            />
+            <img
+              v-show="shared.canReceiveEmailReminders"
+              src="assets/images/checkbox+V.png"
+              srcset="
+                assets/images/checkbox+V.png    1x,
+                assets/images/checkbox+V@2x.png 2x,
+                assets/images/checkbox+V@3x.png 3x
+              "
+            />
             <label for="email-reminders">
               I would like to receive booking reminders via email
               <input
@@ -101,10 +117,27 @@
 
         <div class="form-item field checkbox">
           <div class="option">
-            <img v-show="!shared.canReceiveSmsReminders" src="assets/images/checkbox.png" srcset="assets/images/checkbox.png 1x, assets/images/checkbox@2x.png 2x, assets/images/checkbox@3x.png 3x" />
-            <img v-show="shared.canReceiveSmsReminders" src="assets/images/checkbox+V.png" srcset="assets/images/checkbox+V.png 1x, assets/images/checkbox+V@2x.png 2x, assets/images/checkbox+V@3x.png 3x" />
+            <img
+              v-show="!shared.canReceiveSmsReminders"
+              src="assets/images/checkbox.png"
+              srcset="
+                assets/images/checkbox.png    1x,
+                assets/images/checkbox@2x.png 2x,
+                assets/images/checkbox@3x.png 3x
+              "
+            />
+            <img
+              v-show="shared.canReceiveSmsReminders"
+              src="assets/images/checkbox+V.png"
+              srcset="
+                assets/images/checkbox+V.png    1x,
+                assets/images/checkbox+V@2x.png 2x,
+                assets/images/checkbox+V@3x.png 3x
+              "
+            />
             <label>
-              I understand I will receive SMS updates about this booking (required)
+              I understand I will receive SMS updates about this booking
+              (required)
               <input
                 v-model="shared.canReceiveSmsReminders"
                 type="checkbox"
