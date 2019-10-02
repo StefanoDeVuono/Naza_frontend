@@ -1,4 +1,4 @@
-import OrderHistory from './appointment-history/component.vue'
+import OrderHistory from './order-history/component.vue'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueSessionStorage from 'vue-sessionstorage'
