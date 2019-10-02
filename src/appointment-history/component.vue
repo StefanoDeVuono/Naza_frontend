@@ -77,10 +77,7 @@ export default {
     },
   },
 
-  created() {
-    this.shared.customerEmail = 'albert@carbonfive.com'
-    this.shared.userToken = 'L-gkbtBpbbXGCCJ2QsQ9'
-
+  mounted() {
     const data = {
       'spree/user_email': this.shared.customerEmail,
       'spree/user_token': this.shared.userToken,
