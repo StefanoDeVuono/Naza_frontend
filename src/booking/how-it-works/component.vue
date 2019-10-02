@@ -12,7 +12,7 @@
               <img
                 alt="How Does Naza Work?"
                 aria-label="How Does Naza Work?"
-                src="assets/images/HowItWorks-header@1x.png"
+                src="/assets/images/HowItWorks-header@1x.png"
               />
               <FlowerImage class="divider" />
             </div>

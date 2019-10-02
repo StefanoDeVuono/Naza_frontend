@@ -1,7 +1,7 @@
 <template>
   <div class="confirmation">
     <div class="youre-all-set">
-      <img id="yellowstar" src="assets/images/Burst_Yellow.png" alt="" />
+      <img id="yellowstar" src="/assets/images/Burst_Yellow.png" alt="" />
 
       <h3>Well, this is exciting...</h3>
 
@@ -79,10 +79,10 @@
       <div class="border">
         <img
           alt=""
-          src="assets/images/decor%201.png"
+          src="/assets/images/decor%201.png"
           srcset="
-            assets/images/decor%201.png    1x,
-            assets/images/decor%201@2x.png 2x
+            /assets/images/decor%201.png    1x,
+            /assets/images/decor%201@2x.png 2x
           "
         />
       </div>
@@ -147,10 +147,10 @@
       <div class="border">
         <img
           alt=""
-          src="assets/images/decor%202.png"
+          src="/assets/images/decor%202.png"
           srcset="
-            assets/images/decor%202.png    1x,
-            assets/images/decor%202@2x.png 2x
+            /assets/images/decor%202.png    1x,
+            /assets/images/decor%202@2x.png 2x
           "
         />
       </div>
