@@ -66,9 +66,12 @@ module.exports = {
       images: path.resolve(__dirname, 'src/images')
     },
   },
-  entry: './src/main.js',
+  entry: {
+    booking: './src/booking.js',
+    orderHistory: './src/order-history.js'
+  },
   output: {
-    filename: 'scripts/bundle.js',
+    filename: 'scripts/[name].js',
     path: path.resolve(__dirname),
   },
   optimization: {
