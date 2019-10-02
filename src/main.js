@@ -80,11 +80,18 @@ var router = new VueRouter({
 export default new Vue({
   router,
 
-  mounted() {
+  created() {
     const userToken = this.$session.get('userToken')
     
     if (userToken) {
       loadUserFromToken(this.$session.get('email'), userToken)
+    }
+  },
+
+  mounted() {
+    const userToken = this.$session.get('userToken')
+
+    if (userToken) {
       this.$root.$emit('payment-information:show')
     }
   }

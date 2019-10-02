@@ -77,25 +77,31 @@ export default {
     },
   },
 
-  created() {
-    this.shared.customerEmail = 'albert@carbonfive.com'
-    this.shared.userToken = 'L-gkbtBpbbXGCCJ2QsQ9'
+  watch: {
+    // we have to wait until userToken gets set
+    // in the main mounted function
+    'shared.userToken': function(val, oldVal) {
+      if (!val) {
+        return
+      }
 
-    const data = {
-      'spree/user_email': this.shared.customerEmail,
-      'spree/user_token': this.shared.userToken,
-    }
-    fetch(
-      getAppServer() +
-        '/naza/appointments.json?spree%2Fuser_email=' +
-        this.shared.customerEmail +
-        '&spree%2Fuser_token=' +
-        this.shared.userToken
-    )
-      .then(response => response.json())
-      .then(json => {
-        this.appointments = parse(json).data
-      })
+      const data = {
+        'spree/user_email': this.shared.customerEmail,
+        'spree/user_token': this.shared.userToken,
+      }
+
+      fetch(
+        getAppServer() +
+          '/naza/appointments.json?spree%2Fuser_email=' +
+          this.shared.customerEmail +
+          '&spree%2Fuser_token=' +
+          this.shared.userToken
+      )
+        .then(response => response.json())
+        .then(json => {
+          this.appointments = parse(json).data
+        })
+    },
   },
 
   components: {
