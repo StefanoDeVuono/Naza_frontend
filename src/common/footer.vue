@@ -5,19 +5,11 @@
         <h3>NAZA</h3>
         <ul>
           <li>
-            <router-link
-              @click.native="$event.stopImmediatePropagation()"
-              :to="{ name: 'categories' }"
-              >Book Appointment</router-link
-            >
+            <a href="/booking/#/categories">Book Appointment</a>
           </li>
           <li>Our Services</li>
           <li>
-            <router-link
-              @click.native="$event.stopImmediatePropagation()"
-              :to="{ name: 'how-it-works' }"
-              >How Naza Works</router-link
-            >
+            <a href="/booking/#/how-it-works">How Naza Works</a>
           </li>
           <li>Our Stylists</li>
         </ul>

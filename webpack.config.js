@@ -67,8 +67,8 @@ module.exports = {
     },
   },
   entry: {
-    booking: './src/booking.js',
-    orderHistory: './src/order-history.js'
+    'booking': './src/booking.js',
+    'order-history': './src/order-history.js'
   },
   output: {
     filename: 'scripts/[name].js',
