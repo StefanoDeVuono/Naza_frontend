@@ -49,8 +49,7 @@ export const loadUserFromToken = (email, userToken) => {
 
       Storage.sharedState.userToken = userToken
       Storage.sharedState.customerEmail = email
-      Storage.sharedState.customerFirstName = data.first_name
-      Storage.sharedState.customerLastName = data.last_name
+      Storage.setCustomerName(data.first_name, data.last_name)
       Storage.sharedState.customerZipCode = data.zip_code
       Storage.sharedState.customerPhone = data.phone_number
       Storage.sharedState.canReceiveSmsReminders =

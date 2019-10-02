@@ -265,6 +265,7 @@ export default {
         appointment: {
           startTime: Storage.sharedState.selectedTime,
           duration: Storage.sharedState.duration,
+          price: Storage.sharedState.price,
           note: Storage.sharedState.note,
           prefScalpTenderness: Storage.sharedState.prefScalpTenderness,
           prefChattiness: Storage.sharedState.prefChattiness,

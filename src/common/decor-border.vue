@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="{ flipped: flip }">
     <img
       class="border"
       src="assets/images/double%20border%20full.png"
@@ -39,6 +39,10 @@ export default {
 div {
   .ignore-parent-padding();
   position: relative;
+
+  &.flipped {
+    height: 0;
+  }
 }
 
 .border {

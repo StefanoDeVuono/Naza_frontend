@@ -6,6 +6,7 @@ import ScheduleAndPreferences from './booking/schedule-and-preferences/component
 import Confirmation from './booking/confirmation/component.vue'
 import SignIn from './user/sign-in.vue'
 import HowItWorks from './booking/how-it-works/component.vue'
+import AppointmentHistory from './appointment-history/component.vue'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueSessionStorage from 'vue-sessionstorage'
@@ -61,6 +62,11 @@ var routes = [
     path: '/how-it-works',
     component: HowItWorks,
     name: 'how-it-works'
+  },
+  {
+    path: '/appointments',
+    component: AppointmentHistory,
+    name: 'appointment-history'
   }
 ]
 
