@@ -155,6 +155,8 @@
         />
       </div>
     </div>
+
+    <Footer />
   </div>
 </template>
 
@@ -172,6 +174,7 @@ import ChevronRightIcon from 'vue-material-design-icons/ChevronRight.vue'
 import ChevronUpIcon from 'vue-material-design-icons/ChevronUp.vue'
 import CustomizationsAndAddOns from './customizations-and-add-ons.vue'
 import DecorBorder from 'common/decor-border.vue'
+import Footer from 'common/footer.vue'
 
 export default {
   data() {
@@ -222,6 +225,7 @@ export default {
     ChevronUpIcon,
     CustomizationsAndAddOns,
     DecorBorder,
+    Footer,
   },
 }
 </script>
@@ -230,8 +234,6 @@ export default {
 @import '../../common/utils.less';
 
 .confirmation {
-  padding-bottom: 30px;
-
   .border {
     margin: 0;
     padding: 0;

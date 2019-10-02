@@ -85,29 +85,32 @@
 
         <div class="form-item field checkbox">
           <div class="option">
+            <img v-show="!shared.canReceiveEmailReminders" src="assets/images/checkbox.png" srcset="assets/images/checkbox.png 1x, assets/images/checkbox@2x.png 2x, assets/images/checkbox@3x.png 3x" />
+            <img v-show="shared.canReceiveEmailReminders" src="assets/images/checkbox+V.png" srcset="assets/images/checkbox+V.png 1x, assets/images/checkbox+V@2x.png 2x, assets/images/checkbox+V@3x.png 3x" />
             <label for="email-reminders">
+              I would like to receive booking reminders via email
               <input
                 v-model="shared.canReceiveEmailReminders"
                 type="checkbox"
                 name="email-reminders"
                 id="email-reminders"
               />
-              I would like to receive booking reminders via email
             </label>
           </div>
         </div>
 
         <div class="form-item field checkbox">
           <div class="option">
+            <img v-show="!shared.canReceiveSmsReminders" src="assets/images/checkbox.png" srcset="assets/images/checkbox.png 1x, assets/images/checkbox@2x.png 2x, assets/images/checkbox@3x.png 3x" />
+            <img v-show="shared.canReceiveSmsReminders" src="assets/images/checkbox+V.png" srcset="assets/images/checkbox+V.png 1x, assets/images/checkbox+V@2x.png 2x, assets/images/checkbox+V@3x.png 3x" />
             <label>
+              I understand I will receive SMS updates about this booking (required)
               <input
                 v-model="shared.canReceiveSmsReminders"
                 type="checkbox"
                 name="sms-reminders"
                 id="sms-reminders"
               />
-              I understand I will receive SMS updates about this booking.
-              (required)
             </label>
           </div>
         </div>
@@ -240,7 +243,21 @@ export default {
   .form-item.checkbox .option {
     border: none;
 
+    input {
+      visibility: hidden;
+      height: 0;
+      width: 0;
+    }
+
+    img {
+      vertical-align: text-top;
+      margin-right: 10px;
+    }
+
     label {
+      vertical-align: text-top;
+      display: inline-block;
+      width: 80%;
       font-family: 'TTCommons', sans-serif;
       font-size: 16px;
       font-weight: normal;

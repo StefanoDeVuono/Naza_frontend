@@ -78,7 +78,7 @@ export default {
 
   .day {
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
 
     .time-slot {
       text-align: center;
