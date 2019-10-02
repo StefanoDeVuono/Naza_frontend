@@ -4,7 +4,10 @@
 
     <div class="content">
       <div class="head">
-        <h1><span class="mini">Your</span> Order<br /> History</h1>
+        <h1>
+          <span class="mini">Your</span> Order<br />
+          History
+        </h1>
       </div>
 
       <div class="appointment" v-for="appointment in appointments">
@@ -16,7 +19,15 @@
         <div class="info-and-button">
           <ul>
             <li>Total: {{ formattedPrice(appointment.price) }}</li>
-            <li>Duration: {{ formattedHours(appointment.duration, { singularLabel: 'Hour', pluralLabel: 'Hours' }) }}</li>
+            <li>
+              Duration:
+              {{
+                formattedHours(appointment.duration, {
+                  singularLabel: 'Hour',
+                  pluralLabel: 'Hours',
+                })
+              }}
+            </li>
           </ul>
         </div>
       </div>
@@ -26,7 +37,6 @@
 
         <SqButton @click="launchBooking" label="Book a New Style" />
       </div>
-
     </div>
 
     <DecorBorder :flip="true" />
@@ -64,7 +74,7 @@ export default {
 
     launchBooking() {
       this.$router.push({ name: 'categories' })
-    }
+    },
   },
 
   created() {
@@ -139,7 +149,7 @@ export default {
     font-weight: 600;
     text-transform: uppercase;
     font-size: 16px;
-    color: @darkBlue;  
+    color: @darkBlue;
     text-align: center;
   }
 
@@ -161,7 +171,8 @@ export default {
   flex-direction: row;
   justify-content: space-between;
 
-  h3, p {
+  h3,
+  p {
     margin: 0;
   }
 
@@ -182,6 +193,4 @@ export default {
     line-height: normal;
   }
 }
-
 </style>
-
