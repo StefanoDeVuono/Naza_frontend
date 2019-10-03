@@ -22,7 +22,7 @@ describe('AppointmentPicker', () => {
 
   beforeEach(() => {
     Storage.reset()
-    jest.spyOn(Date, 'now').mockImplementation(() => 1566933102428)
+    jest.spyOn(Date, 'now').mockImplementation(() => new Date('2019-08-27').valueOf())
     localVue = createLocalVue()
     mockFetch(fetchResponseJson)
 
