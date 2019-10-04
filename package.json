@@ -59,6 +59,7 @@
     "prettier": "./node_modules/.bin/prettier --write src/**/*.{vue,js,json} src/*/**/*.{vue,js,json}"
   },
   "dependencies": {
+    "core-js": "^2.6.5",
     "vue-carousel": "^0.18.0"
   },
   "eslintConfig": {

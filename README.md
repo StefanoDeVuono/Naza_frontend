@@ -28,10 +28,10 @@ This app uses Webpack + Vue to build most of the functionality. You will need to
 
 To run the Squarespace template locally:
  ```
- squarespace-server https://site-name.squarespace.com
- ``` 
+ squarespace-server https://amethyst-okra-dblc.squarespace.com/template.git
+ ```
 
-If the site is password protected, append `--auth` to the above command.
+If the site is password protected (see site settings for that particular squarespace), append `--auth` to the above command.
 
 ### Authentication
 

@@ -6,6 +6,7 @@ import ScheduleAndPreferences from './booking/schedule-and-preferences/component
 import Confirmation from './booking/confirmation/component.vue'
 import SignIn from './user/sign-in.vue'
 import HowItWorks from './booking/how-it-works/component.vue'
+import LandingPage from './booking/landing-page/component.vue'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueSessionStorage from 'vue-sessionstorage'
@@ -19,7 +20,8 @@ Vue.use(VueModal)
 var routes = [
   {
     path: '/',
-    redirect: '/how-it-works'
+    component: LandingPage,
+    name: 'landing-page',
   },
   {
     path: '/categories',
@@ -76,7 +78,7 @@ export default new Vue({
 
   created() {
     const userToken = this.$session.get('userToken')
-    
+
     if (userToken) {
       loadUserFromToken(this.$session.get('email'), userToken)
     }
