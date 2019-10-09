@@ -8,6 +8,7 @@
 @midGray: #e6e1da;
 @deepRed: #892208;
 @tan: #cdae8d;
+@white: #ffffff;
 
 .sans-serif() {
   font-family: 'TTCommons', sans-serif;
@@ -18,7 +19,7 @@
   font-family: 'TTCommons', sans-serif;
   font-weight: 600;
   letter-spacing: 0.5px;
-  color: @darkBlue;  
+  color: @darkBlue;
   text-transform: uppercase;
   font-size: 16px;
 }
@@ -37,6 +38,21 @@
   }
   @media screen and (max-width: 640px) {
     margin: 0 calc(-1 * @paddingS);
+  }
+}
+
+@large:   ~"only screen and (min-width: 769px)";
+@small:   ~"only screen and (max-width: 768px)";
+
+.hide-on-small () {
+  @media @small {
+    display: none;
+  }
+}
+
+.hide-on-large () {
+  @media @large {
+    display: none;
   }
 }
 
