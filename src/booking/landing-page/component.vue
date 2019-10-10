@@ -20,6 +20,7 @@
         </div>
       </div>
     </div>
+    <OurServices></OurServices>
 
     <Footer></Footer>
   </div>
@@ -28,6 +29,7 @@
 <script>
 import Footer from 'common/footer.vue'
 import BookButton from './book-button.vue'
+import OurServices from './our-services.vue'
 
 export default {
   components: {
