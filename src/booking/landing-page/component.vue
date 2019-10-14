@@ -19,6 +19,7 @@
           <BookButton class="hero__button"/>
         </div>
       </div>
+      <OurServices></OurServices>
     </div>
     <OurServices></OurServices>
 
@@ -35,6 +36,7 @@ export default {
   components: {
     Footer,
     BookButton,
+    OurServices,
   },
 }
 </script>
@@ -50,7 +52,7 @@ export default {
 
 .hero {
   position: relative;
-  margin-bottom: -6px;
+  margin-bottom: -7px;
 }
 
 .hero__padding {

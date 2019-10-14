@@ -4,6 +4,7 @@
       <div class="sqs-block-button-container--center">
         <div
           class="sqs-block-button-element--medium sqs-block-button-element"
+          role="button"
           v-bind:class="{ disabled: disabled }"
           @click="handleClick"
           v-html="label"

@@ -1,7 +1,5 @@
 <template>
-  <div class="book-button"
-    @click="handleClick"
-    role="button">
+  <div class="book-button" @click="handleClick" role="button">
     <div class="book-button__inner-border">
       <div class="book-button__text">
         Book an appointment

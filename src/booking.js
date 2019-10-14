@@ -12,6 +12,7 @@ import VueRouter from 'vue-router'
 import VueSessionStorage from 'vue-sessionstorage'
 import { loadUserFromToken } from 'common/utils'
 import VueModal from 'vue-js-modal'
+import { store } from './booking/store'
 
 Vue.use(VueSessionStorage)
 Vue.use(VueRouter)
@@ -67,7 +68,7 @@ var routes = [
 ]
 
 var router = new VueRouter({
-  routes: routes,
+  routes,
   scrollBehavior(to, from, savedPosition) {
     return { x: 0, y: 0 }
   },
@@ -75,7 +76,7 @@ var router = new VueRouter({
 
 export default new Vue({
   router,
-
+  store,
   created() {
     const userToken = this.$session.get('userToken')
 
