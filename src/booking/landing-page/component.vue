@@ -115,11 +115,18 @@ export default {
 .hero__button {
   max-width: 260px;
 
-  @media @small {
+  @media @small and @short {
     position: absolute;
-    top: 65vh;
     left: 50%;
     transform: translate(-50%, 0%);
+    top: 65vh;
+  }
+
+  @media @small and @tall {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    top: 55vh;
   }
 }
 </style>

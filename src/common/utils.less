@@ -43,6 +43,9 @@
 
 @large:   ~"only screen and (min-width: 769px)";
 @small:   ~"only screen and (max-width: 768px)";
+// only use with one of the above
+@short:   ~"(max-height: 750px)";
+@tall:    ~"(min-height: 751px)";
 
 .hide-on-small () {
   @media @small {
