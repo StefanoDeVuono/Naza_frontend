@@ -1,0 +1,61 @@
+[
+  {
+    "title": "Crochet Braids",
+    "image": "https://projectcurl-assets.s3.amazonaws.com/LandingPage/crochet-braids.png",
+    "alt": "crochet braid",
+    "featured": "crochet wave",
+    "description": "To achieve this style, your hair will first be braided into cornrows to minimize volume. Pre-styled extensions as twists, braids, curls, or waves will next be attached via a crochet needle.",
+    "time": "3 hours",
+    "price": "$250-$300",
+    "lasting": "4-6 weeks",
+    "extensions": "\nWe provide and prepare the hair for you. We use brands you love, like Freetress and Kima Ocean Wave. Just select the style and color of your hair extensions during booking. \n\nNo need for beauty supply runs!",
+    "categoryId": "5"
+  },
+  {
+    "title": "Silk Press",
+    "image": "https://projectcurl-assets.s3.amazonaws.com/LandingPage/silk-press.png",
+    "alt": "silk press",
+    "featured": "crochet wave",
+    "description": "To achieve this style, your hair will first be braided into cornrows to minimize volume. Pre-styled extensions as twists, braids, curls, or waves will next be attached via a crochet needle.",
+    "time": "3 hours",
+    "price": "$250-$300",
+    "lasting": "4-6 weeks",
+    "categoryId": "19"
+  },
+  {
+    "title": "Cornrows",
+    "image": "https://projectcurl-assets.s3.amazonaws.com/LandingPage/cornrows.png",
+    "alt": "cornrows",
+    "featured": "crochet wave",
+    "description": "To achieve this style, your hair will first be braided into cornrows to minimize volume. Pre-styled extensions as twists, braids, curls, or waves will next be attached via a crochet needle.",
+    "time": "3 hours",
+    "price": "$250-$300",
+    "lasting": "4-6 weeks",
+    "extensions": "filler text",
+    "categoryId": "16"
+  },
+  {
+    "title": "Box Braids & Twists",
+    "image": "https://projectcurl-assets.s3.amazonaws.com/LandingPage/box-braids.png",
+    "alt": "box braids and twists",
+    "featured": "crochet wave",
+    "description": "To achieve this style, your hair will first be braided into cornrows to minimize volume. Pre-styled extensions as twists, braids, curls, or waves will next be attached via a crochet needle.",
+    "time": "3 hours",
+    "price": "$250-$300",
+    "lasting": "4-6 weeks",
+    "extensions": "filler text",
+    "categoryId": "13"
+  },
+  {
+    "title": "Weave Installs",
+    "image": "https://projectcurl-assets.s3.amazonaws.com/LandingPage/weave-installs.png",
+    "alt": "weave installs",
+    "featured": "crochet wave",
+    "description": "To achieve this style, your hair will first be braided into cornrows to minimize volume. Pre-styled extensions as twists, braids, curls, or waves will next be attached via a crochet needle.",
+    "time": "3 hours",
+    "price": "$250-$300",
+    "lasting": "4-6 weeks",
+    "extensions": "filler text",
+    "categoryId": "9"
+  }
+]

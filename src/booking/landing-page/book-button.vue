@@ -1,7 +1,5 @@
 <template>
-  <div class="book-button"
-    @click="handleClick"
-    role="button">
+  <div class="book-button" @click="handleClick" role="button">
     <div class="book-button__inner-border">
       <div class="book-button__text">
         Book an appointment
@@ -29,6 +27,7 @@ export default {
   background-color: @orange;
   border: 1px solid @white;
   text-align: center;
+  max-width: 260px;
 }
 
 .book-button__inner-border {

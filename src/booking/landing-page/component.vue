@@ -4,21 +4,28 @@
       <div class="hero">
         <div class="hero__image-container">
           <div class="hero__padding"></div>
-          <img class="hero__image--small"
+          <img
+            class="hero__image--small"
             alt="Naza welcome image"
-            src="https://projectcurl-assets.s3.amazonaws.com/LandingPage/hero.png"/>
-          <img class="hero__image--large"
+            src="https://projectcurl-assets.s3.amazonaws.com/LandingPage/hero.png"
+          />
+          <img
+            class="hero__image--large"
             alt="Naza welcome image"
-            src="https://projectcurl-assets.s3.amazonaws.com/LandingPage/hero-large.png"/>
+            src="https://projectcurl-assets.s3.amazonaws.com/LandingPage/hero-large.png"
+          />
         </div>
         <div class="hero__info-container">
           <div class="hero__text">
-            Naza is a modern hair salon that specializes in
-            coily, kinky, curly, and afro-textured hair types.
+            Naza is a modern hair salon that specializes in coily, kinky, curly,
+            and afro-textured hair types.
           </div>
-          <BookButton class="hero__button"/>
+          <div class="hero__button-container">
+            <BookButton />
+          </div>
         </div>
       </div>
+      <OurServices></OurServices>
     </div>
     <OurServices></OurServices>
 
@@ -35,6 +42,7 @@ export default {
   components: {
     Footer,
     BookButton,
+    OurServices,
   },
 }
 </script>
@@ -50,15 +58,23 @@ export default {
 
 .hero {
   position: relative;
-  margin-bottom: -6px;
+  margin-bottom: -7px;
 }
 
 .hero__padding {
   .hide-on-large();
 
   height: calc(3 * @hero-line-height);
-	opacity: 0.87;
-	background: linear-gradient(270deg, #C6BBBF 0%, #CDCCD1 33.27%, #D3D2DB 48.13%, #C3C2C7 58.09%, #B4ACAF 75.02%, #BDA69D 100%);
+  opacity: 0.87;
+  background: linear-gradient(
+    270deg,
+    #c6bbbf 0%,
+    #cdccd1 33.27%,
+    #d3d2db 48.13%,
+    #c3c2c7 58.09%,
+    #b4acaf 75.02%,
+    #bda69d 100%
+  );
 }
 
 .hero__image--small {
@@ -110,14 +126,17 @@ export default {
   }
 }
 
-.hero__button {
-  max-width: 260px;
-
+.hero__button-container {
   @media @small {
-    position: absolute;
-    top: 65vh;
-    left: 50%;
-    transform: translate(-50%, 0%);
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: @darkBlue;
+    padding: 23px 0;
+    border-top: 1px solid @white;
   }
 }
 </style>

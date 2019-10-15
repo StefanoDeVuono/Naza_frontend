@@ -21,10 +21,6 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.json$/,
-        loader: 'json-loader',
-      },
-      {
         test: /\.less$/,
         use: [
           'vue-style-loader',
@@ -79,4 +75,3 @@ module.exports = {
   },
   plugins: [new VueLoaderPlugin()],
 }
-
