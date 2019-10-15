@@ -107,6 +107,12 @@ export default {
 .accordion-item__bullet {
   border: 1px solid @darkBlue;
   margin-right: 5px;
+
+  // placeholder bullet
+  border-radius: 50%;
+  height: 5px;
+  width: 5px;
+  background-color: @darkBlue;
 }
 
 .accordion-item__title {
