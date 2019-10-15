@@ -138,4 +138,11 @@ export default {
     border-top: 1px solid @white;
   }
 }
+
+.footer {
+  @media @small {
+    // for the height of the book appt sticky button + extra spacing
+    padding-bottom: 120px;
+  }
+}
 </style>

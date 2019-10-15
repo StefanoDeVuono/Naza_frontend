@@ -2,6 +2,7 @@
   {
     "title": "Crochet Braids",
     "image": "https://projectcurl-assets.s3.amazonaws.com/LandingPage/crochet-braids.png",
+    "icon": "crochet",
     "alt": "crochet braid",
     "featured": "crochet wave",
     "description": "To achieve this style, your hair will first be braided into cornrows to minimize volume. Pre-styled extensions as twists, braids, curls, or waves will next be attached via a crochet needle.",
@@ -14,6 +15,7 @@
   {
     "title": "Silk Press",
     "image": "https://projectcurl-assets.s3.amazonaws.com/LandingPage/silk-press.png",
+    "icon": "silk-press",
     "alt": "silk press",
     "featured": "crochet wave",
     "description": "To achieve this style, your hair will first be braided into cornrows to minimize volume. Pre-styled extensions as twists, braids, curls, or waves will next be attached via a crochet needle.",
@@ -25,6 +27,7 @@
   {
     "title": "Cornrows",
     "image": "https://projectcurl-assets.s3.amazonaws.com/LandingPage/cornrows.png",
+    "icon": "cornrows",
     "alt": "cornrows",
     "featured": "crochet wave",
     "description": "To achieve this style, your hair will first be braided into cornrows to minimize volume. Pre-styled extensions as twists, braids, curls, or waves will next be attached via a crochet needle.",
@@ -37,6 +40,7 @@
   {
     "title": "Box Braids & Twists",
     "image": "https://projectcurl-assets.s3.amazonaws.com/LandingPage/box-braids.png",
+    "icon": "box-braids",
     "alt": "box braids and twists",
     "featured": "crochet wave",
     "description": "To achieve this style, your hair will first be braided into cornrows to minimize volume. Pre-styled extensions as twists, braids, curls, or waves will next be attached via a crochet needle.",
@@ -49,6 +53,7 @@
   {
     "title": "Weave Installs",
     "image": "https://projectcurl-assets.s3.amazonaws.com/LandingPage/weave-installs.png",
+    "icon": "weave-installs",
     "alt": "weave installs",
     "featured": "crochet wave",
     "description": "To achieve this style, your hair will first be braided into cornrows to minimize volume. Pre-styled extensions as twists, braids, curls, or waves will next be attached via a crochet needle.",
