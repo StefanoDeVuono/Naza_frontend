@@ -46,7 +46,8 @@
     "extensions": "filler text",
     "categoryId": "13"
   },
-  { "title": "Weave Installs",
+  {
+    "title": "Weave Installs",
     "image": "https://projectcurl-assets.s3.amazonaws.com/LandingPage/weave-installs.png",
     "alt": "weave installs",
     "featured": "crochet wave",
@@ -56,5 +57,5 @@
     "lasting": "4-6 weeks",
     "extensions": "filler text",
     "categoryId": "9"
-   }
+  }
 ]

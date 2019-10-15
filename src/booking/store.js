@@ -10,9 +10,9 @@ export const store = new Vuex.Store({
   mutations: {
     changeServiceOpenId(state, serviceOpenId) {
       state.serviceOpenId = serviceOpenId
-    }
+    },
   },
   getters: {
-    serviceOpenId: state => state.serviceOpenId
+    serviceOpenId: state => state.serviceOpenId,
   },
 })

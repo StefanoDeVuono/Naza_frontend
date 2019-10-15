@@ -14,11 +14,11 @@
     <div class="our-services__info-container">
       <div class="our-services__description">
         It’s your hair - you should know what to expect when you get it done.
-        From the very start, we tell you how long your appointment will be,
-        how much it costs, and how long a style will last. Let’s find your next look!
+        From the very start, we tell you how long your appointment will be, how
+        much it costs, and how long a style will last. Let’s find your next
+        look!
       </div>
-      <Accordion
-        v-bind:items="accordionItems" />
+      <Accordion v-bind:items="accordionItems" />
     </div>
   </div>
 </template>
@@ -30,7 +30,7 @@ import accordionItemsJson from './services-list.json'
 export default {
   data() {
     return {
-      accordionItems: accordionItemsJson
+      accordionItems: accordionItemsJson,
     }
   },
   components: {
@@ -77,7 +77,7 @@ export default {
 
 .our-services__image {
   @media @small {
-    width: 100%
+    width: 100%;
   }
 }
 
@@ -87,10 +87,8 @@ export default {
 }
 
 .our-services__description {
-  font-family: "TT Commons", sans-serif;
+  font-family: 'TT Commons', sans-serif;
   font-size: 18px;
   color: @darkBlue;
 }
-
-
 </style>
