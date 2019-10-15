@@ -25,7 +25,7 @@
 
 <script>
 import Accordion from './accordion/component.vue'
-import accordionItemsJson from './accordion-items.json'
+import accordionItemsJson from './services-list.json'
 
 export default {
   data() {

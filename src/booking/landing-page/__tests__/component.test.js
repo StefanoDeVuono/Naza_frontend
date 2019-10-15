@@ -5,6 +5,10 @@ import { shallowMount, createLocalVue } from '@vue/test-utils'
 import LandingPageComponent from '../component.vue'
 import BookButton from '../book-button.vue'
 
+jest.mock('../../images/chevron.svg', () => {
+  return {}
+})
+
 describe('LandingPageComponent', () => {
   let wrapper
   let localVue
