@@ -18,7 +18,7 @@
         much it costs, and how long a style will last. Let’s find your next
         look!
       </div>
-      <Accordion v-bind:items="items" />
+      <Accordion v-bind:items="accordionItems" />
     </div>
   </div>
 </template>
@@ -30,7 +30,7 @@ import servicesList from './services-list.json'
 export default {
   data() {
     return {
-      items: servicesList,
+      accordionItems: servicesList,
     }
   },
   components: {

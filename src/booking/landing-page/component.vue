@@ -27,7 +27,6 @@
       </div>
       <OurServices></OurServices>
     </div>
-    <OurServices></OurServices>
 
     <Footer></Footer>
   </div>
