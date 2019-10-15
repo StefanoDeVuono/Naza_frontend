@@ -27,6 +27,7 @@ export default {
   background-color: @orange;
   border: 1px solid @white;
   text-align: center;
+  max-width: 260px;
 }
 
 .book-button__inner-border {

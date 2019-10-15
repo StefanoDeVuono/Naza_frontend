@@ -101,7 +101,7 @@ export default {
 .accordion-item__summary {
   display: flex;
   align-items: center;
-  padding: 10px 0;
+  padding: 20px 0;
 }
 
 .accordion-item__bullet {

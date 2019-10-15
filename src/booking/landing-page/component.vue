@@ -16,7 +16,9 @@
             Naza is a modern hair salon that specializes in
             coily, kinky, curly, and afro-textured hair types.
           </div>
-          <BookButton class="hero__button"/>
+          <div class="hero__button-container">
+            <BookButton />
+          </div>
         </div>
       </div>
       <OurServices></OurServices>
@@ -112,21 +114,16 @@ export default {
   }
 }
 
-.hero__button {
-  max-width: 260px;
-
-  @media @small and @short {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0%);
-    top: 65vh;
-  }
-
-  @media @small and @tall {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%, 0%);
-    top: 55vh;
+.hero__button-container {
+  @media @small {
+    position: fixed;
+    bottom: 0;
+    z-index: 1;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: @darkBlue;
+    padding: 23px 0;
   }
 }
 </style>
