@@ -18,19 +18,19 @@
         much it costs, and how long a style will last. Let’s find your next
         look!
       </div>
-      <Accordion v-bind:items="accordionItems" />
+      <Accordion v-bind:items="items" />
     </div>
   </div>
 </template>
 
 <script>
 import Accordion from './accordion/component.vue'
-import accordionItemsJson from './services-list.json'
+import servicesList from './services-list.json'
 
 export default {
   data() {
     return {
-      accordionItems: accordionItemsJson,
+      items: servicesList,
     }
   },
   components: {
