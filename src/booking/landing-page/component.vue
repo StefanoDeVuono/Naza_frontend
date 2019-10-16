@@ -25,7 +25,8 @@
           </div>
         </div>
       </div>
-      <OurServices></OurServices>
+      <OurServices />
+      <MeetStylists />
     </div>
 
     <Footer></Footer>
@@ -36,12 +37,14 @@
 import Footer from 'common/footer.vue'
 import BookButton from './book-button.vue'
 import OurServices from './our-services.vue'
+import MeetStylists from './meet-stylists.vue'
 
 export default {
   components: {
     Footer,
     BookButton,
     OurServices,
+    MeetStylists,
   },
 }
 </script>
@@ -136,6 +139,13 @@ export default {
     background-color: @darkBlue;
     padding: 23px 0;
     border-top: 1px solid @white;
+  }
+}
+
+.footer {
+  @media @small {
+    // for the height of the book appt sticky button + extra spacing
+    padding-bottom: 120px;
   }
 }
 </style>

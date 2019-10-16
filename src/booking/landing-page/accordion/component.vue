@@ -3,13 +3,13 @@
     <div
       class="accordion-item"
       v-for="item, i in items">
-      <div class="accordion-item__summary">
-        <div class="accordion-item__bullet" />
+      <div class="accordion-item__summary"
+        @click="toggleOpen(i)"
+        role="button">
+        <div class="accordion-item__bullet" :class="`icon--${item.icon}`" />
         <div class="accordion-item__title">{{item.title}}</div>
         <ChevronIcon
           class="accordion-item__expander"
-          role="button"
-          @click="toggleOpen(i)"
           v-bind:class="{ 'accordion-item__expander--open': $store.getters.serviceOpenId == i }"/>
       </div>
       <div
@@ -105,14 +105,9 @@ export default {
 }
 
 .accordion-item__bullet {
-  border: 1px solid @darkBlue;
   margin-right: 5px;
-
-  // placeholder bullet
-  border-radius: 50%;
-  height: 5px;
-  width: 5px;
-  background-color: @darkBlue;
+  height: 20px;
+  width: 25px;
 }
 
 .accordion-item__title {
