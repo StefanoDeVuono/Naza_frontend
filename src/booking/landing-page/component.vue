@@ -21,6 +21,11 @@
             and afro-textured hair types.
           </div>
           <div class="hero__button-container">
+            <img
+              src="/assets/images/decor%201.svg"
+              class="hero__button-border"
+              alt="border"
+            />
             <BookButton />
           </div>
         </div>
@@ -135,10 +140,19 @@ export default {
     z-index: 1;
     width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     background-color: @darkBlue;
-    padding: 23px 0;
-    border-top: 1px solid @white;
+    padding-bottom: 23px;
+  }
+}
+
+.hero__button-border {
+  .hide-on-large();
+
+  @media @small {
+    width: 100%;
+    margin-bottom: 10px;
   }
 }
 
