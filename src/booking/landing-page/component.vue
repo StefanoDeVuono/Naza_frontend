@@ -21,11 +21,7 @@
             and afro-textured hair types.
           </div>
           <div class="hero__button-container">
-            <img
-              src="/assets/images/decor%201.svg"
-              class="hero__button-border"
-              alt="border"
-            />
+            <DecorBorder class="hero__button-border" />
             <BookButton />
           </div>
         </div>
@@ -43,6 +39,7 @@ import Footer from 'common/footer.vue'
 import BookButton from './book-button.vue'
 import OurServices from './our-services.vue'
 import MeetStylists from './meet-stylists.vue'
+import DecorBorder from './decor-border.vue'
 
 export default {
   components: {
@@ -50,6 +47,7 @@ export default {
     BookButton,
     OurServices,
     MeetStylists,
+    DecorBorder
   },
 }
 </script>
@@ -158,7 +156,7 @@ export default {
 
   @media @small {
     width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 23px;
   }
 }
 

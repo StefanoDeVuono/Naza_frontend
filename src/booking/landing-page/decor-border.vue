@@ -44,13 +44,14 @@ export default {
 
 .sunburst-border__image-container {
   @media @extra-small {
-    width: 100%
+    width: 100%;
+    transform: translate(0, -3px);
   }
 }
 
 .sunburst-border__sunburst {
   @media @extra-small {
-    width: 100%
+    width: 100%;
   }
 }
 
