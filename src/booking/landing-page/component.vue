@@ -56,6 +56,7 @@ export default {
 
 <style lang="less" scoped>
 @import '../../common/utils.less';
+@import './landing.less';
 
 @hero-line-height: 32px;
 
@@ -69,7 +70,7 @@ export default {
 }
 
 .hero__padding {
-  .hide-on-large();
+  .hide-on-medium-and-up();
 
   height: calc(3 * @hero-line-height);
   opacity: 0.87;
@@ -85,7 +86,7 @@ export default {
 }
 
 .hero__image--small {
-  .hide-on-large();
+  .hide-on-medium-and-up();
 
   width: 100%;
   -webkit-transform: scaleX(-1);
@@ -108,7 +109,7 @@ export default {
     height: 100%;
   }
 
-  @media @large {
+  @media @medium-and-up {
     top: 10%;
     width: 34%;
     margin: 4%;
@@ -131,6 +132,11 @@ export default {
     top: 0;
     padding: 20px;
   }
+
+  @media @large-and-up {
+    font-size: 32px;
+    line-height: 40px;
+  }
 }
 
 .hero__button-container {
@@ -148,7 +154,7 @@ export default {
 }
 
 .hero__button-border {
-  .hide-on-large();
+  .hide-on-medium-and-up();
 
   @media @small {
     width: 100%;

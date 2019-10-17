@@ -1,14 +1,10 @@
 <template>
   <div class="meet-stylists">
-    <img
-      src="/assets/images/decor%201.svg"
-      class="meet-stylists__decoration"
-      alt="border"
-    />
-    <div class="meet-stylists__header">
-      <div class="meet-stylists__header-text">meet</div>
-      <div class="meet-stylists__header-text--underline">our</div>
-      <div class="meet-stylists__header-text">stylists</div>
+    <DecorBorder />
+    <div class="meet-stylists__header landing-header">
+      <div class="landing-header__text">meet</div>
+      <div class="landing-header__text--underline">our</div>
+      <div class="landing-header__text">stylists</div>
     </div>
     <Carousel
       ref="carousel"
@@ -45,18 +41,14 @@
     <div class="meet-stylists__button-container">
       <a class="meet-stylists__button" href="/gallery">see our work</a>
     </div>
-    <img
-      src="/assets/images/decor%201.svg"
-      class="meet-stylists__decoration--flipped"
-      alt="border"
-    />
+    <DecorBorder :flip="true"/>
   </div>
 </template>
 
 <script>
 import { Carousel, Slide } from 'vue-carousel'
 import CustomCarouselPaginator from '../components/custom-carousel-paginator.vue'
-import DecorBorder from 'common/decor-border.vue'
+import DecorBorder from './decor-border.vue'
 
 export default {
   data() {
@@ -160,6 +152,7 @@ export default {
 
 <style lang="less" scoped>
 @import '../../common/utils.less';
+@import './landing.less';
 
 .meet-stylists {
   background-color: @darkBlue;
@@ -178,30 +171,9 @@ export default {
 }
 
 .meet-stylists__header {
-  display: flex;
-  justify-content: center;
-  font-family: 'Moret', serif;
-  text-transform: uppercase;
-  font-weight: bold;
-  display: flex;
   padding: 40px 50px;
-  flex-wrap: wrap;
 }
 
-.meet-stylists__header-text {
-  font-size: 44px;
-  line-height: 42px;
-  letter-spacing: 1.2px;
-  margin: 0 5px;
-}
-
-.meet-stylists__header-text--underline {
-  font-size: 26px;
-  line-height: 32px;
-  letter-spacing: .7px;
-  text-decoration: underline;
-  margin: 0 5px;
-}
 
 .meet-stylists__button-container {
   display: flex;
@@ -253,6 +225,8 @@ export default {
   font-size: 16px;
   padding: 0 40px;
   line-height: 24px;
+  max-width: 300px;
+  text-align: center;
 }
 
 .stylist__fun-info--prompt {

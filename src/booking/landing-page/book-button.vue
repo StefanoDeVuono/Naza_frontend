@@ -28,11 +28,19 @@ export default {
   border: 1px solid @white;
   text-align: center;
   max-width: 260px;
+
+  @media @large-and-up {
+    max-width: 320px;
+  }
 }
 
 .book-button__inner-border {
   border: 1px solid @white;
   padding: 11px 46px;
+
+  @media @large-and-up {
+    padding: 15px 0;
+  }
 }
 
 .book-button__text {
@@ -43,5 +51,9 @@ export default {
   white-space: nowrap;
   text-transform: uppercase;
   color: @white;
+
+  @media @large-and-up {
+    font-size: 16px;
+  }
 }
 </style>
