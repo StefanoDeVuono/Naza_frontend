@@ -21,6 +21,11 @@
             and afro-textured hair types.
           </div>
           <div class="hero__button-container">
+            <img
+              src="/assets/images/decor%201.svg"
+              class="hero__button-border"
+              alt="border"
+            />
             <BookButton />
           </div>
         </div>
@@ -51,6 +56,7 @@ export default {
 
 <style lang="less" scoped>
 @import '../../common/utils.less';
+@import './landing.less';
 
 @hero-line-height: 32px;
 
@@ -64,7 +70,7 @@ export default {
 }
 
 .hero__padding {
-  .hide-on-large();
+  .hide-on-medium-and-up();
 
   height: calc(3 * @hero-line-height);
   opacity: 0.87;
@@ -80,7 +86,7 @@ export default {
 }
 
 .hero__image--small {
-  .hide-on-large();
+  .hide-on-medium-and-up();
 
   width: 100%;
   -webkit-transform: scaleX(-1);
@@ -103,7 +109,7 @@ export default {
     height: 100%;
   }
 
-  @media @large {
+  @media @medium-and-up {
     top: 10%;
     width: 34%;
     margin: 4%;
@@ -126,6 +132,11 @@ export default {
     top: 0;
     padding: 20px;
   }
+
+  @media @large-and-up {
+    font-size: 32px;
+    line-height: 40px;
+  }
 }
 
 .hero__button-container {
@@ -135,10 +146,19 @@ export default {
     z-index: 1;
     width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     background-color: @darkBlue;
-    padding: 23px 0;
-    border-top: 1px solid @white;
+    padding-bottom: 23px;
+  }
+}
+
+.hero__button-border {
+  .hide-on-medium-and-up();
+
+  @media @small {
+    width: 100%;
+    margin-bottom: 10px;
   }
 }
 

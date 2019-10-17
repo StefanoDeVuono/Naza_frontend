@@ -41,8 +41,11 @@
   }
 }
 
-@large:   ~"only screen and (min-width: 769px)";
+@large-and-up:   ~"only screen and (min-width: 1081px)";
+@medium-and-up:   ~"only screen and (min-width: 769px)";
 @small:   ~"only screen and (max-width: 768px)";
+@extra-small: ~"only screen and (max-width: 350px)";
+
 // only use with one of the above
 @short:   ~"(max-height: 750px)";
 @tall:    ~"(min-height: 751px)";
@@ -53,8 +56,8 @@
   }
 }
 
-.hide-on-large () {
-  @media @large {
+.hide-on-medium-and-up () {
+  @media @medium-and-up {
     display: none;
   }
 }

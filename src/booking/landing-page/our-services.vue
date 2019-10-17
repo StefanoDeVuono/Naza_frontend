@@ -1,9 +1,9 @@
 <template>
   <div class="our-services">
     <div class="our-services__image-container">
-      <div class="our-services__image-text">
-        <div class="our-services__our">our</div>
-        <div class="our-services__services">services</div>
+      <div class="our-services__image-text landing-header">
+        <div class="landing-header__text--underline">our</div>
+        <div class="landing-header__text">services</div>
       </div>
       <img
         class="our-services__image"
@@ -41,6 +41,7 @@ export default {
 
 <style lang="less" scoped>
 @import '../../common/utils.less';
+@import './landing.less';
 
 .our-services {
 }
@@ -53,26 +54,7 @@ export default {
 .our-services__image-text {
   position: absolute;
   width: 100%;
-  display: flex;
-  justify-content: center;
   padding: 40px 0px;
-  color: @white;
-  font-family: 'Moret', serif;
-  text-transform: uppercase;
-  font-weight: bold;
-}
-
-.our-services__our {
-  font-size: 26px;
-  padding-right: 6px;
-  line-height: 36px;
-  text-decoration: underline;
-}
-
-.our-services__services {
-  font-size: 44px;
-  line-height: 47px;
-  letter-spacing: 1.2px;
 }
 
 .our-services__image {
