@@ -22,13 +22,13 @@
 
       <Slide :key="i" v-for="stylist, i in stylists">
         <div class="stylist">
-          <img class="stylist__img" :src="stylist.imageUrl" :alt="stylist.name" />
+          <img class="stylist__img" :src="stylist.image" :alt="stylist.name" />
           <div class="stylist__name">{{stylist.name}}</div>
-          <div class="stylist__exp">Years of experience: {{stylist.experience}}</div>
+          <div class="stylist__exp">Years of experience: {{stylist.years_of_experience}}</div>
           <br />
           <div class="stylist__fun-info">
             <div class="stylist__fun-info--prompt">Originally from:</div>
-            <div class="stylist__fun-info--answer">{{stylist.from}}</div>
+            <div class="stylist__fun-info--answer">{{stylist.city_from}}</div>
           </div>
           <div class="stylist__fun-info">
             <div class="stylist__fun-info--prompt">Secret Talent:</div>
@@ -46,6 +46,7 @@
 </template>
 
 <script>
+import { getAppServer } from 'common/constants'
 import { Carousel, Slide } from 'vue-carousel'
 import CustomCarouselPaginator from '../components/custom-carousel-paginator.vue'
 import DecorBorder from './decor-border.vue'
@@ -53,93 +54,23 @@ import DecorBorder from './decor-border.vue'
 export default {
   data() {
     return {
-      stylists: [
-        {
-          name: "Shaniece",
-          imageUrl: "/assets/images/stylist-image.png",
-          experience: "7",
-          from: "Los Angeles, CA",
-          talent: "I can put my lipstick on perfectly without looking at a mirror.",
-        },
-        {
-          name: "Shaniece",
-          imageUrl: "/assets/images/stylist-image.png",
-          experience: "7",
-          from: "Los Angeles, CA",
-          talent: "I can put my lipstick on perfectly without looking at a mirror.",
-        },
-        {
-          name: "Shaniece",
-          imageUrl: "/assets/images/stylist-image.png",
-          experience: "7",
-          from: "Los Angeles, CA",
-          talent: "I can put my lipstick on perfectly without looking at a mirror.",
-        },
-        {
-          name: "Shaniece",
-          imageUrl: "/assets/images/stylist-image.png",
-          experience: "7",
-          from: "Los Angeles, CA",
-          talent: "I can put my lipstick on perfectly without looking at a mirror.",
-        },
-        {
-          name: "Shaniece",
-          imageUrl: "/assets/images/stylist-image.png",
-          experience: "7",
-          from: "Los Angeles, CA",
-          talent: "I can put my lipstick on perfectly without looking at a mirror.",
-        },
-        {
-          name: "Shaniece",
-          imageUrl: "/assets/images/stylist-image.png",
-          experience: "7",
-          from: "Los Angeles, CA",
-          talent: "I can put my lipstick on perfectly without looking at a mirror.",
-        },
-        {
-          name: "Shaniece",
-          imageUrl: "/assets/images/stylist-image.png",
-          experience: "7",
-          from: "Los Angeles, CA",
-          talent: "I can put my lipstick on perfectly without looking at a mirror.",
-        },
-        {
-          name: "Shaniece",
-          imageUrl: "/assets/images/stylist-image.png",
-          experience: "7",
-          from: "Los Angeles, CA",
-          talent: "I can put my lipstick on perfectly without looking at a mirror.",
-        },
-        {
-          name: "Shaniece",
-          imageUrl: "/assets/images/stylist-image.png",
-          experience: "7",
-          from: "Los Angeles, CA",
-          talent: "I can put my lipstick on perfectly without looking at a mirror.",
-        },
-        {
-          name: "Shaniece",
-          imageUrl: "/assets/images/stylist-image.png",
-          experience: "7",
-          from: "Los Angeles, CA",
-          talent: "I can put my lipstick on perfectly without looking at a mirror.",
-        },
-        {
-          name: "Shaniece",
-          imageUrl: "/assets/images/stylist-image.png",
-          experience: "7",
-          from: "Los Angeles, CA",
-          talent: "I can put my lipstick on perfectly without looking at a mirror.",
-        },
-        {
-          name: "Shaniece",
-          imageUrl: "/assets/images/stylist-image.png",
-          experience: "7",
-          from: "Los Angeles, CA",
-          talent: "I can put my lipstick on perfectly without looking at a mirror.",
-        },
-      ]
+      stylists: [],
     }
+  },
+  created () {
+    this.fetchStylists()
+  },
+  methods: {
+    fetchStylists() {
+      var path = `${getAppServer()}/stylists`
+      fetch(path)
+        .then(response => {
+          return response.json()
+        })
+        .then(json => {
+          this.stylists = json
+        })
+    },
   },
   components: {
     Carousel,
