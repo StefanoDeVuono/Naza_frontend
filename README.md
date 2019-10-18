@@ -89,6 +89,37 @@ These are stored on Amazon S3 in the `projectcurl-assets` bucket in the `HowItWo
 
 This is stored on Amazon S3 in the `projectcurl-assets` bucket in the `Confirmation` folder.
 
+## Landing images + info
+
+This is stored on Amazon S3 in the `projectcurl-assets` bucket in the `LandingPage` folder.
+
+### Main hero
+
+This image has 2 versions
+hero.png and hero-large.png
+
+### Our Services
+
+This section has a hero and an example picture for each type of service
+
+Hero: our-services-hero.png
+Crochet Braids: crochet.png
+Silk Press: silk-press.png
+Cornrows: cornrows.png
+Box Braids & Twists: box-braids.png
+Weave Installs: weave-installs.png
+
+### Our Stylists
+
+The text in this section can be edited. For editing/adding/deleting go to the heroku app at `/admin/stylists` (you can also go to `/admin/pages` to see a list of custom admin pages)
+
+Images in this section should be uploaded somewhere and then linked in the admin section.
+
+### Naza Experience
+
+This sections hero images are:
+the-playground-hero.png, elevated-design.png, and lets-cheers.png
+
 ## Adding Fonts to Squarespace
 
 Squarespace allows you to upload OTF font files for use on the site. Presently, this is the best way to use custom fonts in the booking app.
