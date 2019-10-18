@@ -28,6 +28,7 @@
       </div>
       <OurServices />
       <MeetStylists />
+      <NazaExperience />
     </div>
 
     <Footer></Footer>
@@ -40,6 +41,7 @@ import BookButton from './book-button.vue'
 import OurServices from './our-services.vue'
 import MeetStylists from './meet-stylists.vue'
 import DecorBorder from './decor-border.vue'
+import NazaExperience from './naza-experience.vue'
 
 export default {
   components: {
@@ -47,7 +49,8 @@ export default {
     BookButton,
     OurServices,
     MeetStylists,
-    DecorBorder
+    DecorBorder,
+    NazaExperience,
   },
 }
 </script>
