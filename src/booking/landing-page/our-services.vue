@@ -1,23 +1,10 @@
 <template>
   <div class="our-services">
-    <div class="our-services__image-container">
-      <div class="our-services__image-text landing-header">
-        <div class="landing-header__text--underline">our</div>
-        <div class="landing-header__text">services</div>
-      </div>
-      <img
-        class="our-services__image"
-        alt="Our Services"
-        src="https://projectcurl-assets.s3.amazonaws.com/LandingPage/our-services-hero.png"
-      />
+    <div class="landing-header--blue">
+      <div class="landing-header__text--underline">our</div>
+      <div class="landing-header__text">services</div>
     </div>
     <div class="our-services__info-container">
-      <div class="our-services__description">
-        It’s your hair - you should know what to expect when you get it done.
-        From the very start, we tell you how long your appointment will be, how
-        much it costs, and how long a style will last. Let’s find your next
-        look!
-      </div>
       <Accordion v-bind:items="accordionItems" />
     </div>
   </div>
@@ -44,11 +31,12 @@ export default {
 @import './landing.less';
 
 .our-services {
-}
+  padding: 40px 0;
+  background-color: @white;
 
-.our-services__image-container {
-  position: relative;
-  margin-bottom: -6px;
+  @media @large-and-up {
+    padding: 40px 50px;
+  }
 }
 
 .our-services__image-text {
@@ -57,15 +45,15 @@ export default {
   padding: 40px 0px;
 }
 
-.our-services__image {
-  @media @small {
-    width: 100%;
-  }
-}
-
 .our-services__info-container {
   background-color: @white;
-  padding: 40px 20px;
+  padding: 0 20px;
+
+  @media @large-and-up {
+    height: 650px;
+    width: 980px;
+    margin: auto;
+  }
 }
 
 .our-services__description {

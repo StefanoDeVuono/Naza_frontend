@@ -7,7 +7,10 @@
         @click="toggleOpen(i)"
         role="button">
         <div class="accordion-item__bullet" :class="`icon--${item.icon}`" />
-        <div class="accordion-item__title">{{item.title}}</div>
+        <div class="accordion-item__title"
+             v-bind:class="{ 'accordion-item__title--open': $store.getters.serviceOpenId == i }">
+          {{item.title}}
+        </div>
         <ChevronIcon
           class="accordion-item__expander"
           v-bind:class="{ 'accordion-item__expander--open': $store.getters.serviceOpenId == i }"/>
@@ -15,33 +18,81 @@
       <div
         class="accordion-content"
         v-bind:class="{ 'accordion-content--open': $store.getters.serviceOpenId == i }">
-        <img class="accordion-content__image" v-bind:src="item.image" v-bind:alt="item.alt" />
-        <div class="accordion-content__featured">style featured in image: {{item.featured}}</div>
-        <div class="accordion-content__description">{{item.description}}</div>
-        <div class="accordion-content__header">style details:</div>
-        <div class="accordion-content__detail">
-          <div class="accordion-content__detail-header">salon time:</div>
-          <div class="accordion-content__detail-text">{{item.time}}</div>
+        <div class="accordion-content__image-container">
+          <img class="accordion-content__image" v-bind:src="item.image" v-bind:alt="item.alt" />
+          <div class="accordion-content__featured">style featured in image: {{item.featured}}</div>
         </div>
-        <div class="accordion-content__detail">
-          <div class="accordion-content__detail-header">price:</div>
-          <div class="accordion-content__detail-text">{{item.price}}</div>
+        <div class="accordion-content__container">
+          <div class="accordion-content__description">{{item.description}}</div>
+          <div class="accordion-content__header">style details:</div>
+          <div class="accordion-content__detail">
+            <div class="accordion-content__detail-header">salon time:</div>
+            <div class="accordion-content__detail-text">{{item.time}}</div>
+          </div>
+          <div class="accordion-content__detail">
+            <div class="accordion-content__detail-header">price:</div>
+            <div class="accordion-content__detail-text">{{item.price}}</div>
+          </div>
+          <div class="accordion-content__detail">
+            <div class="accordion-content__detail-header">style will last for:</div>
+            <div class="accordion-content__detail-text">{{item.lasting}}</div>
+          </div>
+          <div class="accordion-content__detail" v-if="item.extensions">
+            <div class="accordion-content__detail-header">hair extensions:</div>
+            <div class="accordion-content__detail-text">{{item.extensions}}</div>
+          </div>
+          <div class="accordion-content__button">
+            <SqButton
+              label="I want this! Let’s book<div class='accordion-content__arrow'>→</div>"
+              :inverted="true"
+              :onClick="handleClick(item.categoryId)"/>
+          </div>
+          <div class="accordion-content__divider" />
         </div>
-        <div class="accordion-content__detail">
-          <div class="accordion-content__detail-header">style will last for:</div>
-          <div class="accordion-content__detail-text">{{item.lasting}}</div>
+      </div>
+      <div class="accordion-item__summary--large"
+        @click="openHighlighted(i)"
+        role="button">
+        <div class="accordion-item__bullet" :class="`icon--${item.icon}`" />
+        <div class="accordion-item__title"
+             v-bind:class="{ 'accordion-item__title--open': isLargeOpen(i) }">
+          {{item.title}}
         </div>
-        <div class="accordion-content__detail" v-if="item.extensions">
-          <div class="accordion-content__detail-header">hair extensions:</div>
-          <div class="accordion-content__detail-text">{{item.extensions}}</div>
+      </div>
+      <div
+        class="accordion-content"
+        v-bind:class="{ 'accordion-content--open-large': isLargeOpen(i) }">
+        <div class="accordion-content__image-container">
+          <img class="accordion-content__image" v-bind:src="item.image" v-bind:alt="item.alt" />
+          <div class="accordion-content__featured">style featured in image: {{item.featured}}</div>
         </div>
-        <div class="accordion-content__button">
-          <SqButton
-            label="I want this! Let’s book<div class='accordion-content__arrow'>→</div>"
-            :inverted="true"
-            :onClick="handleClick(item.categoryId)"/>
+        <div class="accordion-content__container">
+          <div class="accordion-content__description">{{item.description}}</div>
+          <div class="accordion-content__header">style details:</div>
+          <div class="accordion-content__detail">
+            <div class="accordion-content__detail-header">salon time:</div>
+            <div class="accordion-content__detail-text">{{item.time}}</div>
+          </div>
+          <div class="accordion-content__detail">
+            <div class="accordion-content__detail-header">price:</div>
+            <div class="accordion-content__detail-text">{{item.price}}</div>
+          </div>
+          <div class="accordion-content__detail">
+            <div class="accordion-content__detail-header">style will last for:</div>
+            <div class="accordion-content__detail-text">{{item.lasting}}</div>
+          </div>
+          <div class="accordion-content__detail" v-if="item.extensions">
+            <div class="accordion-content__detail-header">hair extensions:</div>
+            <div class="accordion-content__detail-text">{{item.extensions}}</div>
+          </div>
+          <div class="accordion-content__button">
+            <SqButton
+              label="I want this! Let’s book<div class='accordion-content__arrow'>→</div>"
+              :inverted="true"
+              :onClick="handleClick(item.categoryId)"/>
+          </div>
+          <div class="accordion-content__divider" />
         </div>
-        <div class="accordion-content__divider" />
       </div>
     </div>
   </div>
@@ -62,6 +113,9 @@ export default {
         this.$store.commit('changeServiceOpenId', i)
       }
     },
+    openHighlighted: function(i) {
+      this.$store.commit('changeServiceOpenId', i)
+    },
     handleClick: function(categoryId) {
       return function(e) {
         this.$router.push(
@@ -69,6 +123,10 @@ export default {
         )
       }
     },
+    isLargeOpen: function(i) {
+      return this.$store.getters.serviceOpenId == i ||
+        (i == 0 && this.$store.getters.serviceOpenId == -1)
+    }
   },
   components: {
     ChevronIcon,
@@ -84,6 +142,18 @@ export default {
   background-color: @white;
   color: @darkBlue;
   margin-top: 30px;
+
+  @media @large-and-up {
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+}
+
+.accordion-item {
+  @media @large-and-up {
+    margin-right: 25px;
+  }
 }
 
 .accordion-item__expander path {
@@ -102,12 +172,30 @@ export default {
   display: flex;
   align-items: center;
   padding: 20px 0;
+
+  @media @large-and-up {
+    display: none;
+  }
+}
+
+.accordion-item__summary--large {
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+
+  @media @medium-and-below {
+    display: none;
+  }
 }
 
 .accordion-item__bullet {
   margin-right: 5px;
   height: 20px;
   width: 25px;
+
+  @media @large-and-up {
+    margin-right: 0;
+  }
 }
 
 .accordion-item__title {
@@ -115,21 +203,57 @@ export default {
   font-size: 32px;
   letter-spacing: .8px;
   padding: 0 10px;
+
+  @media @large-and-up {
+    font-size: 22px;
+  }
+}
+
+.accordion-item__title--open {
+  @media @large-and-up {
+    color: @orange;
+  }
 }
 
 .accordion-content {
   display: none;
 }
 
+.accordion-content--open-large {
+  @media @large-and-up {
+    position: absolute;
+    display: flex;
+    left: 0;
+    top: 100px;
+  }
+}
+
 .accordion-content--open {
+  @media @medium-and-below {
+    display: block;
+    margin-top: 40px;
+  }
+}
+
+.accordion-content__image-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
+
+  @media @large-and-up {
+    align-items: flex-start;
+    flex: 1;
+    margin-right: 30px;
+  }
 }
 
 .accordion-content__image {
- align-self: center;
  width: 70%;
- margin: 40px 0;
+
+ @media @large-and-up {
+   width: 100%;
+   margin: 0;
+ }
 }
 
 .accordion-content__featured {
@@ -138,12 +262,26 @@ export default {
   font-size: 14px;
   font-weight: bold;
   text-transform: uppercase;
+  margin-top: 10px;
+}
+
+.accordion-content__container {
+  display: flex;
+  flex-direction: column;
+
+  @media @large-and-up {
+    flex: 1;
+  }
 }
 
 .accordion-content__description {
   font-family: "TT Commons", sans-serif;
   font-size: 18px;
   padding: 10px 0;
+
+  @media @large-and-up {
+    padding: 0;
+  }
 }
 
 .accordion-content__header {
@@ -156,10 +294,9 @@ export default {
 }
 
 .accordion-content__detail {
-  // display: flex;
   font-family: "TT Commons", sans-serif;
   font-size: 18px;
-  padding: 10px 0;
+  padding: 5px 0;
 }
 
 .accordion-content__detail-header {
@@ -178,16 +315,25 @@ export default {
   align-self: center;
   width: 275px;
   margin: 20px 0px;
+
+  @media @large-and-up {
+    align-self: inherit;
+  }
 }
 
 .accordion-content__divider {
   border-top: 1px solid @darkBlue;
   width: 100%;
   margin: 20px 0;
+
+  @media @large-and-up {
+    display: none;
+  }
 }
 </style>
 
 <style lang="less">
+@import '../../../common/utils.less';
 .accordion-content__button {
   // override
   .sqs-block-button.inverted .sqs-block-button-element {
@@ -197,6 +343,14 @@ export default {
     display: flex;
     align-items: center;
     padding: 10px 5px;
+  }
+
+  .sqs-block-button.inverted .sqs-block-button-element {
+    margin: 0;
+  }
+
+  @media @large-and-up {
+    width: 350px;
   }
 }
 
