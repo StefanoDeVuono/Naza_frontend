@@ -152,7 +152,7 @@ export default {
 
 .accordion-item {
   @media @large-and-up {
-    margin-right: 25px;
+    margin-right: 20px;
   }
 }
 
@@ -200,12 +200,13 @@ export default {
 
 .accordion-item__title {
   font-family: "Moret", serif;
-  font-size: 32px;
+  font-size: 30px;
   letter-spacing: .8px;
   padding: 0 10px;
 
   @media @large-and-up {
     font-size: 22px;
+    padding: 0 5px;
   }
 }
 
@@ -278,9 +279,10 @@ export default {
   font-family: "TT Commons", sans-serif;
   font-size: 18px;
   padding: 10px 0;
+  white-space: pre-wrap;
 
   @media @large-and-up {
-    padding: 0;
+    padding: 0 0 15px;
   }
 }
 
