@@ -244,7 +244,7 @@ export default {
   @media @large-and-up {
     align-items: flex-start;
     flex: 1;
-    margin-right: 30px;
+    margin: 0 30px 0 0;
   }
 }
 
