@@ -373,11 +373,13 @@ export default {
   .VueCarousel-slide {
     box-sizing: border-box;
     padding: 5px;
+    display: flex;
+    flex-direction: column;
 
     .slide-img {
       margin: auto;
       height: 334px;
-      width: 100%;
+      max-width: 100%;
       object-fit: cover;
     }
 

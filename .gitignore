@@ -1,5 +1,7 @@
 node_modules/
 tmp/
+scripts/booking.js
+scripts/order-history.js
 .DS_Store
 *~
 yarn-error.log

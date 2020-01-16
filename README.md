@@ -33,9 +33,11 @@ To run the Squarespace template locally:
 
 If the site is password protected (see site settings for that particular squarespace), append `--auth` to the above command.
 
-### Cache-busting
+### Cache-busting Caveat
 
 Low tech cache-busting. After js files are generated `pages/booking.page` and `pages/order-history.page` have to be updated to reflect new cache versions. Old files have to be removed.
+
+In development, no caching used but `pages/booking.page` and `pages/order-history.page` need to use the commented out versions instead of the cached versions.
 
 ### Authentication
 
