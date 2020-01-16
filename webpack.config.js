@@ -67,7 +67,7 @@ module.exports = {
     'order-history': './src/order-history.js'
   },
   output: {
-    filename: 'scripts/[name].js',
+    filename: 'scripts/[name].[chunkhash].js',
     path: path.resolve(__dirname),
   },
   optimization: {

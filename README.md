@@ -33,6 +33,10 @@ To run the Squarespace template locally:
 
 If the site is password protected (see site settings for that particular squarespace), append `--auth` to the above command.
 
+### Cache-busting
+
+Low tech cache-busting. After js files are generated `pages/booking.page` and `pages/order-history.page` have to be updated to reflect new cache versions. Old files have to be removed.
+
 ### Authentication
 
 In order to access the Squarespace Git repository, you will need to obtain an app secret. This is accessible here:
@@ -74,10 +78,6 @@ When you are ready to deploy to master, run:
 This will update the production Squarespace.
 
 This workflow means that master may not contain the code currently deployed to production.
-
-### Deployment issues
-
-Sometimes pushing to Squarespace doesn't show the update. A follow-on 'fake' commit might be needed to force an update.
 
 ## Hair Color Images
 
