@@ -75,6 +75,10 @@ This will update the production Squarespace.
 
 This workflow means that master may not contain the code currently deployed to production.
 
+### Deployment issues
+
+Sometimes pushing to Squarespace doesn't show the update. A follow-on 'fake' commit might be needed to force an update.
+
 ## Hair Color Images
 
 Hair color images are stored on Amazon S3 in the `projectcurl-assets` bucket in the `HairColors` folder. They should have the same name as the presentation field for the option type in Spree. One caveat is that if the color is named something like "X w/ Y" then you should upload it named as "X with Y". This is because S3 doesn't support slashes in file names.
