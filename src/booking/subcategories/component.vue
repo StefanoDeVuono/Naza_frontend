@@ -206,7 +206,7 @@ export default {
     },
 
     getImageUrl(style) {
-      return path(['images', 0, 'styles', 2, 'url'], style)
+      return path(['images', 0, 'styles', 3, 'url'], style)
     },
 
     goToPage(subcategory, $event) {
