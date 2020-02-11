@@ -1,84 +1,31 @@
 <template>
   <div class="meet-stylists">
-    <DecorBorder />
-    <div class="meet-stylists__header landing-header">
-      <div class="landing-header__text">meet</div>
-      <div class="landing-header__text--underline">our</div>
-      <div class="landing-header__text">stylists</div>
+    <div class="meet-stylists__image-container">
+      <img class="meet-stylists__image--small"
+           src="/assets/images/meet-stylists.jpg"
+           alt="stylist styling hair"
+      />
+      <img class="meet-stylists__image--large"
+           src="/assets/images/meet-stylists-large.jpg"
+           alt="stylist styling hair"
+      />
     </div>
-    <Carousel
-      ref="carousel"
-      :perPageCustom="[[0, 1], [750, 2], [1125, 3], [1500, 4], [1875, 5]]"
-      :centerMode="true"
-      :paginationPadding="5"
-      :spacePadding="0"
-      paginationColor="rgba(255, 255, 255, 0.4)"
-      paginationActiveColor="#bc4940">
-      <template v-slot:pagination>
-        <CustomCarouselPaginator
-          @paginationclick="$refs.carousel.goToPage($event, 'pagination')"
-        />
-      </template>
+    <div class="meet-stylists__info-container">
+      <div class="meet-stylists__header landing-header">
+        <div class="landing-header__text">meet</div>
+        <div class="landing-header__text--underline">our</div>
+        <div class="landing-header__text">stylists</div>
+      </div>
 
-      <Slide :key="i" v-for="stylist, i in stylists">
-        <div class="stylist">
-          <img class="stylist__img" :src="stylist.image" :alt="stylist.name" />
-          <div class="stylist__name">{{stylist.name}}</div>
-          <div class="stylist__exp">Years of experience: {{stylist.years_of_experience}}</div>
-          <br />
-          <div class="stylist__fun-info">
-            <div class="stylist__fun-info--prompt">Originally from:</div>
-            <div class="stylist__fun-info--answer">{{stylist.city_from}}</div>
-          </div>
-          <div class="stylist__fun-info">
-            <div class="stylist__fun-info--prompt">Secret Talent:</div>
-            <div class="stylist__fun-info--answer">{{stylist.talent}}</div>
-          </div>
-        </div>
-      </Slide>
-    </Carousel>
-
-    <div class="meet-stylists__button-container">
-      <a class="meet-stylists__button" href="/gallery">see our work</a>
+      <div class="meet-stylists__button-container">
+        <a class="meet-stylists__button" href="/gallery">see our work</a>
+      </div>
     </div>
-    <DecorBorder :flip="true"/>
   </div>
 </template>
 
 <script>
-import { getAppServer } from 'common/constants'
-import { Carousel, Slide } from 'vue-carousel'
-import CustomCarouselPaginator from '../components/custom-carousel-paginator.vue'
-import DecorBorder from './decor-border.vue'
-
-export default {
-  data() {
-    return {
-      stylists: [],
-    }
-  },
-  created () {
-    this.fetchStylists()
-  },
-  methods: {
-    fetchStylists() {
-      var path = `${getAppServer()}/stylists`
-      fetch(path)
-        .then(response => {
-          return response.json()
-        })
-        .then(json => {
-          this.stylists = json
-        })
-    },
-  },
-  components: {
-    Carousel,
-    Slide,
-    CustomCarouselPaginator,
-    DecorBorder,
-  },
-}
+export default {};
 </script>
 
 <style lang="less" scoped>
@@ -86,30 +33,39 @@ export default {
 @import './landing.less';
 
 .meet-stylists {
-  background-color: @darkBlue;
   width: 100%;
   color: @white;
-  padding: 10px 0;
+  position: relative;
 }
 
-.meet-stylists__decoration {
+.meet-stylists__image--small {
+  .hide-on-medium-and-up();
+
   width: 100%;
 }
 
-.meet-stylists__decoration--flipped {
+.meet-stylists__image--large {
+  .hide-on-small();
+
   width: 100%;
-  transform: rotate(180deg);
+  object-fit: cover;
+}
+
+.meet-stylists__info-container {
+  position: absolute;
+  top: 0;
+  width: 100%;
 }
 
 .meet-stylists__header {
   padding: 40px 50px;
 }
 
-
 .meet-stylists__button-container {
   display: flex;
   justify-content: center;
   margin: 40px 0;
+  cursor: pointer;
 }
 
 .meet-stylists__button {
@@ -124,50 +80,4 @@ export default {
   font-size: 14px;
   letter-spacing: 0.6px;
 }
-
-.stylist {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 0 10px;
-  font-family: 'Moret', serif;
-}
-
-.stylist__img {
-  width: 100%;
-  max-width: 335px;
-  margin-bottom: 20px;
-}
-
-.stylist__name {
-  font-size: 32px;
-  line-height: 37px;
-  letter-spacing: 0.9px;
-}
-
-.stylist__exp {
-  font-size: 22px;
-  line-height: 25px;
-  letter-spacing: 0.6px;
-}
-
-.stylist__fun-info {
-  font-family: 'TT Commons', sans-serif;
-  font-size: 16px;
-  padding: 0 40px;
-  line-height: 24px;
-  max-width: 300px;
-  text-align: center;
-}
-
-.stylist__fun-info--prompt {
-  display: inline;
-  font-weight: bold;
-}
-
-.stylist__fun-info--answer {
-  display: inline;
-  margin-left: 3px;
-}
-
 </style>

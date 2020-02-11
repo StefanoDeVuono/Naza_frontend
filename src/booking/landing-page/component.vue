@@ -139,6 +139,7 @@ export default {
     align-items: center;
     background-color: @darkBlue;
     padding-bottom: 23px;
+    cursor: pointer;
   }
 
   @media @large-and-up {
