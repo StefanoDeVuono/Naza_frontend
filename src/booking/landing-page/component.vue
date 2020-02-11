@@ -16,7 +16,8 @@
         </div>
         <div class="hero__info-container">
           <div class="hero__text">
-            Naza is a protective styling salon specializing in coily, kinky, afro-textured hair.
+            Naza is a protective styling salon specializing in coily, kinky,
+            afro-textured hair.
           </div>
           <div class="hero__button-container">
             <DecorBorder class="hero__button-border" />

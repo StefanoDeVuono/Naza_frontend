@@ -1,13 +1,15 @@
 <template>
   <div class="meet-stylists">
     <div class="meet-stylists__image-container">
-      <img class="meet-stylists__image--small"
-           src="/assets/images/meet-stylists.jpg"
-           alt="stylist styling hair"
+      <img
+        class="meet-stylists__image--small"
+        src="/assets/images/meet-stylists.jpg"
+        alt="stylist styling hair"
       />
-      <img class="meet-stylists__image--large"
-           src="/assets/images/meet-stylists-large.jpg"
-           alt="stylist styling hair"
+      <img
+        class="meet-stylists__image--large"
+        src="/assets/images/meet-stylists-large.jpg"
+        alt="stylist styling hair"
       />
     </div>
     <div class="meet-stylists__info-container">
@@ -25,7 +27,7 @@
 </template>
 
 <script>
-export default {};
+export default {}
 </script>
 
 <style lang="less" scoped>
@@ -65,7 +67,6 @@ export default {};
   display: flex;
   justify-content: center;
   margin: 40px 0;
-  cursor: pointer;
 }
 
 .meet-stylists__button {
