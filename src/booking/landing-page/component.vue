@@ -3,22 +3,20 @@
     <div class="page">
       <div class="hero">
         <div class="hero__image-container">
-          <div class="hero__padding"></div>
           <img
             class="hero__image--small"
             alt="Naza welcome image"
-            src="https://projectcurl-assets.s3.amazonaws.com/LandingPage/hero.png"
+            src="https://projectcurl-assets.s3.amazonaws.com/LandingPage/hero.jpg"
           />
           <img
             class="hero__image--large"
             alt="Naza welcome image"
-            src="https://projectcurl-assets.s3.amazonaws.com/LandingPage/hero-large.png"
+            src="https://projectcurl-assets.s3.amazonaws.com/LandingPage/hero-large.jpg"
           />
         </div>
         <div class="hero__info-container">
           <div class="hero__text">
-            Naza is a modern hair salon that specializes in coily, kinky, curly,
-            and afro-textured hair types.
+            Naza is a protective styling salon specializing in coily, kinky, afro-textured hair.
           </div>
           <div class="hero__button-container">
             <DecorBorder class="hero__button-border" />
@@ -59,8 +57,6 @@ export default {
 @import '../../common/utils.less';
 @import './landing.less';
 
-@hero-line-height: 32px;
-
 .page {
   .ignore-parent-padding();
 }
@@ -70,28 +66,10 @@ export default {
   margin-bottom: -7px;
 }
 
-.hero__padding {
-  .hide-on-medium-and-up();
-
-  height: calc(3 * @hero-line-height);
-  opacity: 0.87;
-  background: linear-gradient(
-    270deg,
-    #c6bbbf 0%,
-    #cdccd1 33.27%,
-    #d3d2db 48.13%,
-    #c3c2c7 58.09%,
-    #b4acaf 75.02%,
-    #bda69d 100%
-  );
-}
-
 .hero__image--small {
   .hide-on-medium-and-up();
 
   width: 100%;
-  -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
 }
 
 .hero__image--large {
@@ -103,6 +81,9 @@ export default {
 
 .hero__info-container {
   position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   @media @small {
     top: 0;
@@ -111,31 +92,38 @@ export default {
   }
 
   @media @medium-and-up {
-    top: 10%;
-    width: 34%;
-    margin: 4%;
-    max-width: 480px;
-    height: 25vh;
-    display: flex;
-    flex-direction: column;
+    top: 36%;
+    width: 100%;
+    height: 23vh;
     justify-content: space-between;
   }
 }
 
 .hero__text {
   font-family: 'Moret', serif;
-  font-size: 26px;
-  line-height: @hero-line-height;
-  color: @darkBlue;
+  font-size: 30px;
+  line-height: 36px;
+  color: @white;
+  text-align: center;
 
   @media @small {
     position: absolute;
-    top: 0;
+    top: 42%;
     padding: 20px;
+    max-width: 500px;
+  }
+
+  @media @medium-small {
+    font-size: 26px;
+    line-height: 32px;
+  }
+
+  @media @medium-and-up {
+    width: 600px;
   }
 
   @media @large-and-up {
-    font-size: 32px;
+    font-size: 35px;
     line-height: 40px;
   }
 }
@@ -151,6 +139,10 @@ export default {
     align-items: center;
     background-color: @darkBlue;
     padding-bottom: 23px;
+  }
+
+  @media @large-and-up {
+    width: 330px;
   }
 }
 
