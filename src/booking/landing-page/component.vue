@@ -25,6 +25,7 @@
           </div>
         </div>
       </div>
+      <WhoWeAre />
       <OurServices />
       <MeetStylists />
       <NazaExperience />
@@ -37,6 +38,7 @@
 <script>
 import Footer from 'common/footer.vue'
 import BookButton from './book-button.vue'
+import WhoWeAre from './who-we-are.vue'
 import OurServices from './our-services.vue'
 import MeetStylists from './meet-stylists.vue'
 import DecorBorder from './decor-border.vue'
@@ -46,6 +48,7 @@ export default {
   components: {
     Footer,
     BookButton,
+    WhoWeAre,
     OurServices,
     MeetStylists,
     DecorBorder,

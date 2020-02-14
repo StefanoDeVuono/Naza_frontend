@@ -1,0 +1,111 @@
+<template>
+  <div class="who-we-are">
+    <div class="who-we-are__header landing-header">
+      <div class="landing-header__text">who</div>
+      <div class="landing-header__text--underline">we</div>
+      <div class="landing-header__text">are</div>
+    </div>
+    <div class="who-we-are__container">
+      <div class="who-we-are__video-container">
+        <img
+          class="who-we-are__video"
+          src="/assets/images/meet-stylists-large.jpg"
+          alt="stylist styling hair"
+        />
+      </div>
+      <div class="who-we-are__info-container">
+        <div class="who-we-are__tagline">
+          Naza is a protective styling salon that specializes in coily, kinky,
+          afro-textured hair.
+        </div>
+        <div class="who-we-are__text">
+          First location is now open in San Francisco
+        </div>
+        <div class="who-we-are__button-container">
+          <BookButton />
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import BookButton from './book-button.vue';
+
+export default {
+  components: {
+    BookButton,
+  },
+}
+</script>
+
+<style lang="less" scoped>
+@import '../../common/utils.less';
+@import './landing.less';
+
+.who-we-are {
+  color: @white;
+  background-color: @darkBlue;
+  padding: 50px;
+}
+
+.who-we-are__container {
+  display: flex;
+  padding: 50px 0;
+  width: 980px;
+  margin: auto;
+
+  @media @small {
+    flex-direction: column;
+    width: 100%;
+    padding: 50px 0 0;
+  }
+}
+
+.who-we-are__video-container {
+  flex: 4;
+}
+
+.who-we-are__video {
+ width: 100%;
+ height: 100%;
+ object-fit: contain;
+}
+
+.who-we-are__info-container {
+  flex: 3;
+  margin-left: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  @media @small {
+    margin: 30px 0 0;
+    text-align: center;
+    align-items: center;
+  }
+}
+
+.who-we-are__tagline {
+  font-family: 'Moret', serif;
+  font-size: 35px;
+  line-height: 40px;
+
+  @media @small {
+    margin-bottom: 20px;
+  }
+
+  @media @medium-small {
+    font-size: 32px;
+  }
+}
+
+.who-we-are__text {
+  font-family: "TT Commons", sans-serif;
+  font-size: 18px;
+}
+
+.who-we-are__button-container {
+  .hide-on-small();
+}
+</style>
