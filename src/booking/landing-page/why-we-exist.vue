@@ -1,28 +1,24 @@
 <template>
-  <div class="who-we-are">
-    <div class="who-we-are__header landing-header">
-      <div class="landing-header__text">who</div>
+  <div class="why-we-exist">
+    <div class="why-we-exist__header landing-header">
+      <div class="landing-header__text">why</div>
       <div class="landing-header__text--underline">we</div>
-      <div class="landing-header__text">are</div>
+      <div class="landing-header__text">exist</div>
     </div>
-    <div class="who-we-are__container">
-      <div class="who-we-are__video-container">
+    <div class="why-we-exist__container">
+      <div class="why-we-exist__video-container">
         <img
-          class="who-we-are__video"
-          src="/assets/images/who-we-are.jpg"
+          class="why-we-exist__video"
+          src="/assets/images/why-we-exist.jpg"
           alt="stylist styling hair"
         />
       </div>
-      <div class="who-we-are__info-container">
-        <div class="who-we-are__tagline">
-          Naza is a protective styling salon that specializes in coily, kinky,
-          afro-textured hair.
+      <div class="why-we-exist__info-container">
+        <div class="why-we-exist__tagline">
+          Getting your hair done shouldn’t be so hard and time-consuming
         </div>
-        <div class="who-we-are__text">
-          First location is now open in San Francisco
-        </div>
-        <div class="who-we-are__button-container">
-          <BookButton />
+        <div class="why-we-exist__text">
+          We don’t think your hair is difficult. We don’t support a texture hierarchy. We don’t treat you like just another head. We listen to your needs. We embrace your individuality. We make getting your hair done easy. Naza was built for us, by us, because Black and brown women deserve a place and a brand that not only celebrates our beauty, but actually puts our needs first.
         </div>
       </div>
     </div>
@@ -43,13 +39,13 @@ export default {
 @import '../../common/utils.less';
 @import './landing.less';
 
-.who-we-are {
+.why-we-exist {
   color: @white;
   background-color: @darkBlue;
   padding: 50px;
 }
 
-.who-we-are__container {
+.why-we-exist__container {
   display: flex;
   padding: 50px 0;
   width: 980px;
@@ -62,17 +58,17 @@ export default {
   }
 }
 
-.who-we-are__video-container {
+.why-we-exist__video-container {
   flex: 4;
 }
 
-.who-we-are__video {
+.why-we-exist__video {
  width: 100%;
  height: 100%;
  object-fit: contain;
 }
 
-.who-we-are__info-container {
+.why-we-exist__info-container {
   flex: 3;
   margin-left: 40px;
   display: flex;
@@ -86,7 +82,7 @@ export default {
   }
 }
 
-.who-we-are__tagline {
+.why-we-exist__tagline {
   font-family: 'Moret', serif;
   font-size: 35px;
   line-height: 40px;
@@ -105,16 +101,17 @@ export default {
   }
 }
 
-.who-we-are__text {
+.why-we-exist__text {
   font-family: "TT Commons", sans-serif;
   font-size: 18px;
 
   @media @medium-small {
     font-size: 16px;
+    line-height: 28px;
   }
 }
 
-.who-we-are__button-container {
+.why-we-exist__button-container {
   .hide-on-small();
 }
 </style>

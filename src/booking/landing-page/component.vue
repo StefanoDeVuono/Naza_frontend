@@ -16,8 +16,7 @@
         </div>
         <div class="hero__info-container">
           <div class="hero__text">
-            Naza is a protective styling salon specializing in coily, kinky,
-            afro-textured hair.
+            The salon that puts you first. Finally.
           </div>
           <div class="hero__button-container">
             <DecorBorder class="hero__button-border" />
@@ -27,8 +26,9 @@
       </div>
       <WhoWeAre />
       <OurServices />
-      <MeetStylists />
       <NazaExperience />
+      <WhyWeExist />
+      <NazaLabs />
     </div>
 
     <Footer></Footer>
@@ -40,9 +40,10 @@ import Footer from 'common/footer.vue'
 import BookButton from './book-button.vue'
 import WhoWeAre from './who-we-are.vue'
 import OurServices from './our-services.vue'
-import MeetStylists from './meet-stylists.vue'
 import DecorBorder from './decor-border.vue'
 import NazaExperience from './naza-experience.vue'
+import WhyWeExist from './why-we-exist.vue'
+import NazaLabs from './naza-labs.vue'
 
 export default {
   components: {
@@ -50,9 +51,10 @@ export default {
     BookButton,
     WhoWeAre,
     OurServices,
-    MeetStylists,
     DecorBorder,
     NazaExperience,
+    WhyWeExist,
+    NazaLabs,
   },
 }
 </script>
@@ -105,8 +107,6 @@ export default {
 
 .hero__text {
   font-family: 'Moret', serif;
-  font-size: 30px;
-  line-height: 36px;
   color: @white;
   text-align: center;
 
@@ -117,18 +117,23 @@ export default {
     max-width: 500px;
   }
 
-  @media @medium-small {
-    font-size: 26px;
-    line-height: 32px;
+  @media @medium-and-below {
+    font-size: 65px;
+    line-height: 70px;
   }
 
   @media @medium-and-up {
-    width: 600px;
+    width: 520px;
   }
 
   @media @large-and-up {
-    font-size: 35px;
-    line-height: 40px;
+    font-size: 75px;
+    line-height: 80px;
+  }
+
+  @media @medium-small {
+    font-size: 45px;
+    line-height: 47px;
   }
 }
 
