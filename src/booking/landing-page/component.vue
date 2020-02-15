@@ -129,6 +129,7 @@ export default {
   @media @large-and-up {
     font-size: 75px;
     line-height: 80px;
+    width: 600px;
   }
 
   @media @medium-small {
