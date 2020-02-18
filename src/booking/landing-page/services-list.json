@@ -1,7 +1,7 @@
 [
   {
     "title": "Crochet Braids",
-    "image": "/assets/images/crochet_braid__kinky_curly.jpg",
+    "image": "/assets/images/naza-services-crochet.jpg",
     "icon": "crochet",
     "alt": "crochet braid",
     "featured": "kinky curly",
@@ -14,7 +14,7 @@
   },
   {
     "title": "Blowouts & Silk Press",
-    "image": "/assets/images/silk_press__silk_press.jpg",
+    "image": "/assets/images/naza-services-silk-press.jpg",
     "icon": "silk-press",
     "alt": "blowouts and silk press",
     "featured": "silk press",
@@ -26,7 +26,7 @@
   },
   {
     "title": "Cornrows",
-    "image": "/assets/images/corn_rows__fulani_braids.jpg",
+    "image": "/assets/images/naza-services-braids.jpg",
     "icon": "cornrows",
     "alt": "cornrows",
     "featured": "fulani braids",
@@ -39,7 +39,7 @@
   },
   {
     "title": "Box Braids & Twists",
-    "image": "/assets/images/box_braids__senegalese_twists.jpg",
+    "image": "/assets/images/naza-services-twists.jpg",
     "icon": "box-braids",
     "alt": "box braids and twists",
     "featured": "senegalese twists",
@@ -52,7 +52,7 @@
   },
   {
     "title": "Weave Installs",
-    "image": "/assets/images/weave_installs__kinky_straight_half_weave.jpg",
+    "image": "/assets/images/naza-services-weave.jpg",
     "icon": "weave-installs",
     "alt": "weave installs",
     "featured": "kinky straight half weave",

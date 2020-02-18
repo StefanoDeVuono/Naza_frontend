@@ -76,12 +76,12 @@ export default {
   margin-left: 40px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
 
   @media @small {
     margin: 30px 0 0;
     text-align: center;
     align-items: center;
+    justify-content: space-around;
   }
 }
 
@@ -89,10 +89,7 @@ export default {
   font-family: 'Moret', serif;
   font-size: 32px;
   line-height: 40px;
-
-  @media @small {
-    margin-bottom: 20px;
-  }
+  margin-bottom: 20px;
 
   @media @medium-and-below {
     line-height: 42px;

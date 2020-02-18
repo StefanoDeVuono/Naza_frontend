@@ -7,11 +7,13 @@
     </div>
     <div class="who-we-are__container">
       <div class="who-we-are__video-container">
-        <img
-          class="who-we-are__video"
-          src="/assets/images/who-we-are.jpg"
-          alt="stylist styling hair"
-        />
+        <video class="who-we-are__video"
+               controls
+               preload="none"
+               poster="/assets/images/who-we-are-video-cover.jpg">
+          <source src="/assets/videos/who-we-are.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
       </div>
       <div class="who-we-are__info-container">
         <div class="who-we-are__tagline">
