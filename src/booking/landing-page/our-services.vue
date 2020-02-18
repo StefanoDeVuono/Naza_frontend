@@ -34,7 +34,7 @@ export default {
   padding: 40px 0;
   background-color: @white;
 
-  @media @large-and-up {
+  @media @medium-and-up {
     padding: 40px 50px;
   }
 }
@@ -49,10 +49,13 @@ export default {
   background-color: @white;
   padding: 0 20px;
 
-  @media @large-and-up {
+  @media @medium-and-up {
     height: 650px;
-    width: 980px;
     margin: auto;
+  }
+
+  @media @large-and-up {
+    width: 980px;
   }
 }
 

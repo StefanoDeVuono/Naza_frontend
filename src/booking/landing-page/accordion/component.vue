@@ -143,7 +143,7 @@ export default {
   color: @darkBlue;
   margin-top: 30px;
 
-  @media @large-and-up {
+  @media @medium-and-up {
     display: flex;
     justify-content: center;
     position: relative;
@@ -151,7 +151,7 @@ export default {
 }
 
 .accordion-item {
-  @media @large-and-up {
+  @media @medium-and-up {
     margin-right: 20px;
   }
 }
@@ -173,7 +173,7 @@ export default {
   align-items: center;
   padding: 20px 0;
 
-  @media @large-and-up {
+  @media @medium-and-up {
     display: none;
   }
 }
@@ -183,7 +183,7 @@ export default {
   align-items: center;
   padding: 20px 0;
 
-  @media @medium-and-below {
+  @media @small {
     display: none;
   }
 }
@@ -193,7 +193,7 @@ export default {
   height: 20px;
   width: 25px;
 
-  @media @large-and-up {
+  @media @medium-and-up {
     margin-right: 0;
   }
 }
@@ -204,6 +204,11 @@ export default {
   letter-spacing: .8px;
   padding: 0 10px;
 
+  @media @medium-and-up {
+    font-size: 18px;
+    padding: 0 5px;
+  }
+
   @media @large-and-up {
     font-size: 22px;
     padding: 0 5px;
@@ -211,7 +216,7 @@ export default {
 }
 
 .accordion-item__title--open {
-  @media @large-and-up {
+  @media @medium-and-up {
     color: @orange;
   }
 }
@@ -221,7 +226,7 @@ export default {
 }
 
 .accordion-content--open-large {
-  @media @large-and-up {
+  @media @medium-and-up {
     position: absolute;
     display: flex;
     left: 0;
@@ -230,7 +235,7 @@ export default {
 }
 
 .accordion-content--open {
-  @media @medium-and-below {
+  @media @small {
     display: block;
     margin-top: 40px;
   }
@@ -241,7 +246,7 @@ export default {
   flex-direction: column;
   align-items: center;
 
-  @media @large-and-up {
+  @media @medium-and-up {
     align-items: flex-start;
     flex: 1;
     margin-right: 30px;
@@ -251,7 +256,7 @@ export default {
 .accordion-content__image {
  width: 70%;
 
- @media @large-and-up {
+ @media @medium-and-up {
    width: 100%;
    margin: 0;
  }
@@ -270,7 +275,7 @@ export default {
   display: flex;
   flex-direction: column;
 
-  @media @large-and-up {
+  @media @medium-and-up {
     flex: 1;
   }
 }
@@ -281,7 +286,7 @@ export default {
   padding: 10px 0;
   white-space: pre-wrap;
 
-  @media @large-and-up {
+  @media @medium-and-up {
     padding: 0 0 15px;
   }
 }
@@ -318,7 +323,7 @@ export default {
   width: 275px;
   margin: 20px 0px;
 
-  @media @large-and-up {
+  @media @medium-and-up {
     align-self: inherit;
   }
 }
@@ -328,7 +333,7 @@ export default {
   width: 100%;
   margin: 20px 0;
 
-  @media @large-and-up {
+  @media @medium-and-up {
     display: none;
   }
 }
@@ -351,7 +356,7 @@ export default {
     margin: 0;
   }
 
-  @media @large-and-up {
+  @media @medium-and-up {
     width: 350px;
   }
 }

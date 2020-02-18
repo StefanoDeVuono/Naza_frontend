@@ -51,9 +51,12 @@ export default {
   width: 980px;
   margin: auto;
 
+  @media @medium-and-below {
+    width: 100%;
+  }
+
   @media @small {
     flex-direction: column;
-    width: 100%;
     padding: 50px 0 0;
   }
 }
@@ -84,7 +87,7 @@ export default {
 
 .why-we-exist__tagline {
   font-family: 'Moret', serif;
-  font-size: 35px;
+  font-size: 32px;
   line-height: 40px;
 
   @media @small {

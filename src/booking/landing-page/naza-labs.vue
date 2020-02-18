@@ -73,6 +73,7 @@ export default {}
 }
 
 .naza-labs__text {
+  font-family: 'TT Commons', sans-serif;
   font-size: 18px;
   line-height: 26px;
 }

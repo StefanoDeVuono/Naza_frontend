@@ -70,6 +70,7 @@ export default {
 .hero {
   position: relative;
   margin-bottom: -7px;
+  background-color: @darkBlue;
 }
 
 .hero__image--small {
@@ -100,7 +101,6 @@ export default {
   @media @medium-and-up {
     top: 36%;
     width: 100%;
-    height: 23vh;
     justify-content: space-between;
   }
 }
@@ -124,6 +124,7 @@ export default {
 
   @media @medium-and-up {
     width: 520px;
+    margin-bottom: 70px;
   }
 
   @media @large-and-up {
