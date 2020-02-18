@@ -30,13 +30,10 @@
       <WhyWeExist />
       <NazaLabs />
     </div>
-
-    <Footer></Footer>
   </div>
 </template>
 
 <script>
-import Footer from 'common/footer.vue'
 import BookButton from './book-button.vue'
 import WhoWeAre from './who-we-are.vue'
 import OurServices from './our-services.vue'
@@ -47,7 +44,6 @@ import NazaLabs from './naza-labs.vue'
 
 export default {
   components: {
-    Footer,
     BookButton,
     WhoWeAre,
     OurServices,

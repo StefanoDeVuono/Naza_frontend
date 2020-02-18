@@ -14,13 +14,11 @@
         <slot></slot>
       </div>
     </div>
-    <Footer></Footer>
   </div>
 </template>
 
 <script>
 import VueStepper from 'vue-stepper-component'
-import Footer from 'common/footer.vue'
 import { range } from 'ramda'
 import DecorBorder from 'common/decor-border.vue'
 
@@ -56,7 +54,6 @@ export default {
 
   components: {
     VueStepper,
-    Footer,
     DecorBorder,
   },
 

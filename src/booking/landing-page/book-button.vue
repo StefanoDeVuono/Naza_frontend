@@ -12,7 +12,7 @@
 export default {
   methods: {
     handleClick(e) {
-      this.$router.push({ name: 'how-it-works' })
+      this.$router.push({ name: 'categories' })
     },
   },
 }

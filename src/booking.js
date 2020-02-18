@@ -5,7 +5,6 @@ import AddOns from './booking/add-ons/component.vue'
 import ScheduleAndPreferences from './booking/schedule-and-preferences/component.vue'
 import Confirmation from './booking/confirmation/component.vue'
 import SignIn from './user/sign-in.vue'
-import HowItWorks from './booking/how-it-works/component.vue'
 import LandingPage from './booking/landing-page/component.vue'
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -59,11 +58,6 @@ var routes = [
     path: '/sign-in',
     component: SignIn,
     name: 'sign-in'
-  },
-  {
-    path: '/how-it-works',
-    component: HowItWorks,
-    name: 'how-it-works'
   }
 ]
 
