@@ -21,7 +21,8 @@
           afro-textured hair.
         </div>
         <div class="who-we-are__text">
-          First location is now open in San Francisco
+          First location now open at<br />
+          985 Valencia St, San Francisco, CA 94110
         </div>
         <div class="who-we-are__button-container">
           <BookButton />
