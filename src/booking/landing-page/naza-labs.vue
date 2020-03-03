@@ -7,13 +7,21 @@
         <div class="landing-header__text">labs</div>
       </div>
       <div class="naza-labs__tagline">
-        The most comprehensive community-driven product development for Black women
+        The most comprehensive community-driven product development for Black
+        women
       </div>
       <div class="naza-labs__text">
-        We are much bigger than a salon space. We are changing the dynamic around who gets to try, produce, review, and sell products catered to Black women. We want to hear your voice. We want to build this with you. Sign up to be one of our 10,000 Naza Labs members.
+        We are much bigger than a salon space. We are changing the dynamic
+        around who gets to try, produce, review, and sell products catered to
+        Black women. We want to hear your voice. We want to build this with you.
+        Sign up to be one of our 10,000 Naza Labs members.
       </div>
       <div class="naza-labs__button-container">
-        <a class="naza-labs__button" href="https://www.surveymonkey.com/r/5QQRMJG">join us</a>
+        <a
+          class="naza-labs__button"
+          href="https://www.surveymonkey.com/r/5QQRMJG"
+          >join us</a
+        >
       </div>
     </div>
   </div>

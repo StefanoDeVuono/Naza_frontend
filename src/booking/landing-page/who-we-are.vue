@@ -7,11 +7,13 @@
     </div>
     <div class="who-we-are__container">
       <div class="who-we-are__video-container">
-        <video class="who-we-are__video"
-               controls
-               preload="none"
-               poster="/assets/images/who-we-are-video-cover.jpg">
-          <source src="/assets/videos/who-we-are.mp4" type="video/mp4">
+        <video
+          class="who-we-are__video"
+          controls
+          preload="none"
+          poster="/assets/images/who-we-are-video-cover.jpg"
+        >
+          <source src="/assets/videos/who-we-are.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
@@ -33,7 +35,7 @@
 </template>
 
 <script>
-import BookButton from './book-button.vue';
+import BookButton from './book-button.vue'
 
 export default {
   components: {
@@ -73,9 +75,9 @@ export default {
 }
 
 .who-we-are__video {
- width: 100%;
- height: 100%;
- object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 .who-we-are__info-container {
@@ -113,7 +115,7 @@ export default {
 }
 
 .who-we-are__text {
-  font-family: "TT Commons", sans-serif;
+  font-family: 'TT Commons', sans-serif;
   font-size: 18px;
 
   @media @medium-small {
