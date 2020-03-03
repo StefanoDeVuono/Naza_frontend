@@ -88,7 +88,7 @@ describe('AppointmentPicker', () => {
     })
 
     it('emits availableTimesError event', async () => {
-      const wrapper = shallowMount(AppointmentPicker, {        localVue})
+      const wrapper = shallowMount(AppointmentPicker, { localVue})
 
       await flushPromises()
       const emitted = wrapper.emitted()['available-times-error']
