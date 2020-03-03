@@ -33,6 +33,8 @@ describe('Order History', () => {
       localVue,
       router,
     })
+
+    Storage.sharedState.userToken = 'abcd'
   })
 
   afterEach(() => {
