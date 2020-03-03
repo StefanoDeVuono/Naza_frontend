@@ -6,7 +6,7 @@ import Vue from 'vue'
 import { isNil } from 'ramda'
 
 export default {
-  debug: true,
+  debug: false,
 
   sharedState: {
     userToken: undefined,
