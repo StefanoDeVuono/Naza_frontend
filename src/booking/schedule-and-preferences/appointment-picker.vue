@@ -2,9 +2,7 @@
   <div class="appointment-picker">
     <h2 class="section-header">Date &amp; Time</h2>
     <div class="superheader">
-      <h2 v-if="slotsByDate[0] && isTomorrow(slotsByDate[0][0])">
-        Tomorrow
-      </h2>
+      <h2 v-if="slotsByDate[0] && isTomorrow(slotsByDate[0][0])">Tomorrow</h2>
 
       <h2 v-else-if="slotsByDate[0] && weekText(slotsByDate[0][0])">
         {{ weekText(slotsByDate[0][0]) }}
@@ -51,20 +49,22 @@ import Section from '../components/section.vue'
 import { map, find, compose, equals, nth } from 'ramda'
 import CalendarIcon from 'images/noun_Calendar_2804231.svg'
 import VueScrollTo from 'vue-scrollto'
+import Storage from 'common/storage'
 
 export default {
   data: function() {
     return {
       days: 1,
       slotsByDate: [],
+      shared: Storage.sharedState,
     }
   },
-
   computed: {},
 
   methods: {
     fetchSlots: function() {
-      const duration = 180
+      const { duration } = Storage.sharedState
+
       fetch(
         `${getAppServer()}/schedules/available_times?duration=${duration}&days=${
           this.days
