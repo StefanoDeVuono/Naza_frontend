@@ -17,18 +17,14 @@ jest.mock('images/noun_Calendar_2804231.svg', () => {
 })
 
 describe('AppointmentPicker', () => {
-  let wrapper
   let localVue
 
   beforeEach(() => {
     Storage.reset()
-    jest.spyOn(Date, 'now').mockImplementation(() => new Date('2019-08-27').valueOf())
+    jest.spyOn(Date, 'now').mockImplementation(() => 1566933102428)
     localVue = createLocalVue()
     mockFetch(fetchResponseJson)
-
-    wrapper = shallowMount(AppointmentPicker, {
-      localVue,
-    })
+    Storage.sharedState.duration = 100
   })
 
   afterEach(() => {
@@ -37,7 +33,9 @@ describe('AppointmentPicker', () => {
   })
 
   it('fetches the data', async () => {
+    const wrapper = shallowMount(AppointmentPicker, { localVue })
     await flushPromises()
+
     expect(wrapper.vm.slotsByDate).toBeDefined()
     expect(wrapper.vm.slotsByDate).toHaveLength(3)
     expect(map(nth(0), wrapper.vm.slotsByDate)).toEqual([
@@ -48,18 +46,21 @@ describe('AppointmentPicker', () => {
   })
 
   it('shows tomorrow', async () => {
+    const wrapper = shallowMount(AppointmentPicker, { localVue })
     await flushPromises()
+
     expect(wrapper.text()).toMatch(/Tomorrow/)
   })
 
-  describe('after click More times', () => {
+  describe('after clicking "more"', () => {
     it('fetches the next 3 days', async () => {
+      const wrapper = shallowMount(AppointmentPicker, { localVue })
       await flushPromises()
-
       restoreFetch()
       mockFetch(nextFetchResponseJson)
 
       wrapper.find('.more span').trigger('click')
+
       await flushPromises()
       expect(map(nth(0), wrapper.vm.slotsByDate)).toEqual([
         '2019-08-31',
@@ -69,20 +70,31 @@ describe('AppointmentPicker', () => {
     })
   })
 
+  describe('When a four hour appointment is selected', () => {
+    beforeEach(() => {
+      Storage.sharedState.duration = 4 * 60
+    })
+
+    it('requests four hour slots', () => {
+      shallowMount(AppointmentPicker, { localVue })
+
+      expect(global.fetch.mock.calls[0][0]).toMatch(`duration=${4 * 60}`)
+    })
+  })
+
   describe('When there is an API error', () => {
     beforeEach(() => {
       mockFetch(fetchErronResponseJson)
-      wrapper = shallowMount(AppointmentPicker, {
-        localVue,
-      })
     })
 
     it('emits availableTimesError event', async () => {
+      const wrapper = shallowMount(AppointmentPicker, { localVue})
+
       await flushPromises()
-      const emitted = wrapper.emitted()["available-times-error"]
+      const emitted = wrapper.emitted()['available-times-error']
 
       expect(emitted).toBeTruthy()
       expect(emitted[0][0][0]).toEqual('Mocked Server Error')
-    });
+    })
   })
 })
