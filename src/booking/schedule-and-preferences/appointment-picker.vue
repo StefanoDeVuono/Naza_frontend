@@ -20,6 +20,10 @@
 
     <TimeSlots :slotsByDate="slotsByDate" />
 
+    <div class="key">
+      <span class="key-text unavailable">Unavailable</span>
+      <span class="key-text selected">Selected</span>
+    </div>
     <div class="actions">
       <div class="previous" v-show="days > 3">
         &larr;
@@ -208,6 +212,39 @@ export default {
     }
   }
 
+  .key {
+    display: flex;
+
+    .key-text {
+      color: #4a4a4a;
+      font-family: TTCommons;
+      font-size: 12px;
+      font-weight: 500;
+      margin-right: 15px;
+
+      &:before {
+        content: '';
+        display: inline-block;
+        position: relative;
+        top: 1px;
+        width: 12px;
+        height: 12px;
+        margin-right: 4px;
+        box-sizing: border-box;
+        border-radius: 20px;
+      }
+
+      &.unavailable:before {
+        border: solid 1.5px #e6e1da;
+        background-color: #f8f7f5;
+      }
+
+      &.selected:before {
+        border: solid 1.5px #bc5940;
+        background-color: #e4bdb3;
+      }
+    }
+  }
   .actions {
     margin-top: 20px;
     display: grid;
@@ -233,17 +270,21 @@ export default {
       width: 15px;
     }
 
-    .previous {
-      grid-column-start: 1;
+    .previous,
+    .more {
+      cursor: pointer;
       display: flex;
       flex-direction: row;
-      justify-content: flex-start;
       align-items: center;
       text-transform: uppercase;
       font-weight: bold;
       flex-grow: 1;
       color: @darkBlue;
+    }
 
+    .previous {
+      grid-column-start: 1;
+      justify-content: flex-start;
       span {
         margin-left: 0.25em;
       }
@@ -251,15 +292,7 @@ export default {
 
     .more {
       grid-column-start: 2;
-      display: flex;
-      flex-direction: row;
       justify-content: flex-end;
-      align-items: center;
-      text-transform: uppercase;
-      font-weight: bold;
-      flex-grow: 1;
-      color: @darkBlue;
-
       span {
         margin-right: 0.25em;
       }

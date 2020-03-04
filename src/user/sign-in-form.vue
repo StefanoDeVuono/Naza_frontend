@@ -4,9 +4,7 @@
 
     <div class="sign-in form-wrapper">
       <div class="form-inner-wrapper">
-        <div v-show="errorMsg" class="errors">
-          {{ errorMsg }}
-        </div>
+        <div v-show="errorMsg" class="errors">{{ errorMsg }}</div>
 
         <form autocomplete="on" method="POST" @submit.stop.prevent="signIn">
           <div class="field-list clear">
@@ -63,8 +61,8 @@ export default {
       shared: Storage.sharedState,
       errorMsg: undefined,
 
-      email: 'albert@carbonfive.com',
-      password: 'spree123',
+      email: '',
+      password: '',
     }
   },
 

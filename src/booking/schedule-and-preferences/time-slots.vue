@@ -1,9 +1,10 @@
 <template>
   <div class="time-slots">
-    <div class="day" v-for="slotByDate in slotsByDate">
+    <div class="day" v-for="slotByDate in slotsByDate" :key="slotByDate[0]">
       <div
         v-for="slot in slotByDate[1]"
         class="time-slot"
+        :key="slot.time"
         v-bind:class="[
           getActiveClass(slotByDate[0], slot.position),
           getPositionClass(slot.position),
@@ -12,13 +13,21 @@
       >
         {{ formatTime(slot) }}
       </div>
+      <div
+        v-for="position in bookedPositions(slotByDate[1])"
+        class="time-slot booked"
+        :key="`booked-${position}`"
+        v-bind:class="[getPositionClass(position)]"
+      >
+        {{ time(position, slotByDate[0]) }}
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { lightFormat, parseISO } from 'date-fns'
-import { find } from 'ramda'
+import { lightFormat, parseISO, format } from 'date-fns'
+import { find, includes, pluck } from 'ramda'
 import Storage from 'common/storage'
 
 export default {
@@ -39,6 +48,22 @@ export default {
       this.activePosition = position
       Storage.setSelectedTime(time)
       this.$root.$emit('appointment-picker:selected')
+    },
+
+    bookedPositions: function(slots) {
+      return [1, 2, 3].filter(pos => !includes(pos, pluck('position', slots)))
+    },
+
+    time: function(position, dateString) {
+      if (format(parseISO(dateString), 'eeee') == 'Monday') {
+        return 'Closed'
+      }
+
+      return {
+        '1': '9:00 a.m.',
+        '2': '1:00 p.m.',
+        '3': '5:00 p.m.',
+      }[position]
     },
 
     getActiveClass: function(date, position) {
@@ -86,6 +111,15 @@ export default {
       margin: 10px 10px;
       border: 2px solid transparent;
       font-family: 'TTCommons', sans-serif;
+      cursor: pointer;
+
+      &.booked {
+        cursor: not-allowed;
+        color: #969a9d;
+        border-radius: 25px;
+        border: solid 2px #e6e1da;
+        background-color: rgba(230, 225, 218, 0.6);
+      }
 
       &.active {
         border: 2px solid @brown;
