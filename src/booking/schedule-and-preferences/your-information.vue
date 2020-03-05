@@ -6,7 +6,10 @@
 
     <div class="your-information form-wrapper">
       <div v-show="isLoginVisible">
-        <p>New to Naza Beauty? <a @click.prevent="showInfo">Sign up</a></p>
+        <p>
+          New to Naza Beauty?
+          <a @click.prevent="showInfo">Sign up</a>
+        </p>
         <SignInForm :onSubmit="onSignIn" />
       </div>
 
@@ -256,7 +259,7 @@ export default {
 
       .field-element {
         border: 2px solid @darkBlue;
-        font-family: sofia-pro;
+        font-family: 'TT Commons', sans-serif;
         font-size: 16px;
 
         &[disabled] {
