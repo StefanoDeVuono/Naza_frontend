@@ -1,7 +1,7 @@
 <template>
   <div class="confirmation">
     <div class="youre-all-set">
-      <img id="yellowstar" src="/assets/images/Burst_Yellow.png" alt="" />
+      <img id="yellowstar" src="/assets/images/Burst_Yellow.png" alt />
 
       <h3>Well, this is exciting...</h3>
 
@@ -17,16 +17,16 @@
       </div>
 
       <p>
-        See below for your appointment confirmation!<br />
-        You will receive a copy via email as well.
+        See below for your appointment confirmation!
+        <br />You will receive a copy via email as well.
       </p>
     </div>
 
     <div class="appointment-info">
       <div class="inner">
         <h1>
-          Appointment<br />
-          Information
+          Appointment
+          <br />Information
         </h1>
 
         <div>
@@ -51,7 +51,10 @@
 
         <div>
           <h3>Our Location</h3>
-          <p>985 Valencia St<br />San Francisco, CA</p>
+          <p>
+            985 Valencia St
+            <br />San Francisco, CA
+          </p>
         </div>
 
         <div>
@@ -78,7 +81,7 @@
     <div class="common-questions">
       <div class="border">
         <img
-          alt=""
+          alt
           src="/assets/images/decor%201.png"
           srcset="
             /assets/images/decor%201.png    1x,
@@ -103,10 +106,8 @@
           <h3>Can I change my appointment?</h3>
           <p>
             Absolutely! To change or update your appointment information just
-            give us a call or at (415) 123-4567 or shoot us an email (<a
-              href="mailto:appointments@nazabeauty.com"
-              >appointments@nazabeauty.com</a
-            >).
+            shoot us an email (
+            <a href="mailto:booking@nazabeauty.com">booking@nazabeauty.com</a>).
           </p>
         </div>
 
@@ -116,20 +117,8 @@
           <h3>When will my card be charged?</h3>
           <p>
             Your card will not be charged until after your appointment is
-            completed. Tips are option &amp; can be paid via credit card.
+            completed. Tips are optional &amp; can be paid via credit card.
           </p>
-        </div>
-
-        <hr />
-
-        <div>
-          <h3>Which stylists will I have?</h3>
-        </div>
-
-        <hr />
-
-        <div>
-          <h3>How do I prep for my appointment?</h3>
         </div>
 
         <hr />
@@ -146,7 +135,7 @@
 
       <div class="border">
         <img
-          alt=""
+          alt
           src="/assets/images/decor%202.png"
           srcset="
             /assets/images/decor%202.png    1x,
