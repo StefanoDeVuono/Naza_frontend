@@ -1,9 +1,7 @@
 <template>
   <div class="book-button" @click="handleClick" role="button">
     <div class="book-button__inner-border">
-      <div class="book-button__text">
-        Book an appointment
-      </div>
+      <div class="book-button__text">Book an appointment</div>
     </div>
   </div>
 </template>
@@ -28,6 +26,7 @@ export default {
   border: 1px solid @white;
   text-align: center;
   max-width: 260px;
+  cursor: pointer;
 
   @media @large-and-up {
     max-width: 320px;

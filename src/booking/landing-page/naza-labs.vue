@@ -17,11 +17,7 @@
         Sign up to be one of our 10,000 Naza Labs members.
       </div>
       <div class="naza-labs__button-container">
-        <a
-          class="naza-labs__button"
-          href="https://www.surveymonkey.com/r/5QQRMJG"
-          >join us</a
-        >
+        <a class="naza-labs__button" href="https://www.surveymonkey.com/r/5QQRMJG">join us</a>
       </div>
     </div>
   </div>
@@ -66,6 +62,7 @@ export default {}
 
   @media @medium-and-below {
     width: 100%;
+    padding-bottom: 140px;
   }
 }
 
