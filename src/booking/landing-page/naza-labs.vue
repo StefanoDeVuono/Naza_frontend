@@ -66,7 +66,6 @@ export default {}
 
   @media @medium-and-below {
     width: 100%;
-    padding-bottom: 140px;
   }
 }
 

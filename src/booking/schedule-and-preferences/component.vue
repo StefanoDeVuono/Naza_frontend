@@ -216,7 +216,10 @@ export default {
     addAddOnsToCart() {
       const variantIds = filter(
         Boolean,
-        reduce(concat, [])([
+        reduce(
+          concat,
+          []
+        )([
           [this.shared.selectedDrinkAddOnId],
           Object.keys(this.shared.selectedFreeAddOns),
           Object.keys(this.shared.selectedPremiumAddOns),

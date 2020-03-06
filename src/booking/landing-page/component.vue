@@ -29,6 +29,7 @@
       <NazaExperience />
       <WhyWeExist />
       <NazaLabs />
+      <ContactUs />
     </div>
   </div>
 </template>
@@ -41,6 +42,7 @@ import DecorBorder from './decor-border.vue'
 import NazaExperience from './naza-experience.vue'
 import WhyWeExist from './why-we-exist.vue'
 import NazaLabs from './naza-labs.vue'
+import ContactUs from './contact-us.vue'
 
 export default {
   components: {
@@ -51,6 +53,7 @@ export default {
     NazaExperience,
     WhyWeExist,
     NazaLabs,
+    ContactUs,
   },
 }
 </script>

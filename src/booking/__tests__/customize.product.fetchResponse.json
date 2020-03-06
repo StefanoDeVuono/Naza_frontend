@@ -29,7 +29,10 @@
       },
       "product_properties": { "data": [] },
       "taxons": {
-        "data": [{ "id": "5", "type": "taxon" }, { "id": "6", "type": "taxon" }]
+        "data": [
+          { "id": "5", "type": "taxon" },
+          { "id": "6", "type": "taxon" }
+        ]
       },
       "images": {
         "data": [

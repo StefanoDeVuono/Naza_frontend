@@ -10,7 +10,10 @@
         />
         <Carousel
           ref="carousel"
-          :perPageCustom="[[0, 1], [640, 2]]"
+          :perPageCustom="[
+            [0, 1],
+            [640, 2],
+          ]"
           :centerMode="true"
           :paginationPadding="5"
           :spacePadding="50"

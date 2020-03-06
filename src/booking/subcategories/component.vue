@@ -26,7 +26,10 @@
         <Carousel
           v-show="!closedSections[subcategory]"
           :ref="'carousel' + subcategory"
-          :perPageCustom="[[0, 1], [640, 2]]"
+          :perPageCustom="[
+            [0, 1],
+            [640, 2],
+          ]"
           :centerMode="true"
           :paginationPadding="5"
           :spacePadding="60"
