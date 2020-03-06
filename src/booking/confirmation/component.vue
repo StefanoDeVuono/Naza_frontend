@@ -106,8 +106,10 @@
           <h3>Can I change my appointment?</h3>
           <p>
             Absolutely! To change or update your appointment information just
-            shoot us an email (
-            <a href="mailto:booking@nazabeauty.com">booking@nazabeauty.com</a>).
+            give us a call at
+            <a href="tel:415-854-7111">(415) 854-7111</a>
+            or shoot an email to
+            <a href="mailto:booking@nazabeauty.com">booking@nazabeauty.com</a>.
           </p>
         </div>
 
