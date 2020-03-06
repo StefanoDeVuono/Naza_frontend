@@ -46,7 +46,7 @@ export default {
   font-family: 'TTCommons', sans-serif;
   font-weight: 500;
   font-size: 14px;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
   white-space: nowrap;
   text-transform: uppercase;
   color: @white;
