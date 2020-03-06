@@ -156,7 +156,7 @@ export default {}
 }
 
 .naza-experience__text {
-  font-family: 'TT Commons', sans-serif;
+  font-family: 'TTCommons', sans-serif;
   margin: 20px 0;
 
   @media @medium-and-below {

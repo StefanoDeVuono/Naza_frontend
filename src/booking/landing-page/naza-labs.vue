@@ -81,7 +81,7 @@ export default {}
 }
 
 .naza-labs__text {
-  font-family: 'TT Commons', sans-serif;
+  font-family: 'TTCommons', sans-serif;
   font-size: 18px;
   line-height: 26px;
 }
@@ -95,7 +95,7 @@ export default {}
 .naza-labs__button {
   border: 1px solid @white;
   text-transform: uppercase;
-  font-family: 'TT Commons', sans-serif;
+  font-family: 'TTCommons', sans-serif;
   font-weight: bold;
   padding: 15px;
   text-align: center;

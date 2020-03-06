@@ -259,7 +259,7 @@ export default {
 
       .field-element {
         border: 2px solid @darkBlue;
-        font-family: 'TT Commons', sans-serif;
+        font-family: 'TTCommons', sans-serif;
         font-size: 16px;
 
         &[disabled] {

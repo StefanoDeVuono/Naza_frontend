@@ -107,7 +107,7 @@ export default {
 }
 
 .why-we-exist__text {
-  font-family: 'TT Commons', sans-serif;
+  font-family: 'TTCommons', sans-serif;
   font-size: 18px;
 
   @media @medium-small {

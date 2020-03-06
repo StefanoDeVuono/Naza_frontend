@@ -115,7 +115,7 @@ export default {
 }
 
 .who-we-are__text {
-  font-family: 'TT Commons', sans-serif;
+  font-family: 'TTCommons', sans-serif;
   font-size: 18px;
 
   @media @medium-small {

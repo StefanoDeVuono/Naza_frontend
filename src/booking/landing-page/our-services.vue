@@ -60,7 +60,7 @@ export default {
 }
 
 .our-services__description {
-  font-family: 'TT Commons', sans-serif;
+  font-family: 'TTCommons', sans-serif;
   font-size: 18px;
   color: @darkBlue;
 }

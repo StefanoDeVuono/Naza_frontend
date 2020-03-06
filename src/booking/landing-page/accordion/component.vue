@@ -1,95 +1,132 @@
 <template>
   <div class="landing-accordion">
-    <div
-      class="accordion-item"
-      v-for="item, i in items">
-      <div class="accordion-item__summary"
-        @click="toggleOpen(i)"
-        role="button">
+    <div class="accordion-item" v-for="(item, i) in items">
+      <div class="accordion-item__summary" @click="toggleOpen(i)" role="button">
         <div class="accordion-item__bullet" :class="`icon--${item.icon}`" />
-        <div class="accordion-item__title"
-             v-bind:class="{ 'accordion-item__title--open': $store.getters.serviceOpenId == i }">
-          {{item.title}}
+        <div
+          class="accordion-item__title"
+          v-bind:class="{
+            'accordion-item__title--open': $store.getters.serviceOpenId == i,
+          }"
+        >
+          {{ item.title }}
         </div>
         <ChevronIcon
           class="accordion-item__expander"
-          v-bind:class="{ 'accordion-item__expander--open': $store.getters.serviceOpenId == i }"/>
+          v-bind:class="{
+            'accordion-item__expander--open': $store.getters.serviceOpenId == i,
+          }"
+        />
       </div>
       <div
         class="accordion-content"
-        v-bind:class="{ 'accordion-content--open': $store.getters.serviceOpenId == i }">
+        v-bind:class="{
+          'accordion-content--open': $store.getters.serviceOpenId == i,
+        }"
+      >
         <div class="accordion-content__image-container">
-          <img class="accordion-content__image" v-bind:src="item.image" v-bind:alt="item.alt" />
-          <div class="accordion-content__featured">style featured in image: {{item.featured}}</div>
+          <img
+            class="accordion-content__image"
+            v-bind:src="item.image"
+            v-bind:alt="item.alt"
+          />
+          <div class="accordion-content__featured">
+            style featured in image: {{ item.featured }}
+          </div>
         </div>
         <div class="accordion-content__container">
-          <div class="accordion-content__description">{{item.description}}</div>
+          <div class="accordion-content__description">
+            {{ item.description }}
+          </div>
           <div class="accordion-content__header">style details:</div>
           <div class="accordion-content__detail">
             <div class="accordion-content__detail-header">salon time:</div>
-            <div class="accordion-content__detail-text">{{item.time}}</div>
+            <div class="accordion-content__detail-text">{{ item.time }}</div>
           </div>
           <div class="accordion-content__detail">
             <div class="accordion-content__detail-header">price:</div>
-            <div class="accordion-content__detail-text">{{item.price}}</div>
+            <div class="accordion-content__detail-text">{{ item.price }}</div>
           </div>
           <div class="accordion-content__detail">
-            <div class="accordion-content__detail-header">style will last for:</div>
-            <div class="accordion-content__detail-text">{{item.lasting}}</div>
+            <div class="accordion-content__detail-header">
+              style will last for:
+            </div>
+            <div class="accordion-content__detail-text">{{ item.lasting }}</div>
           </div>
           <div class="accordion-content__detail" v-if="item.extensions">
             <div class="accordion-content__detail-header">hair extensions:</div>
-            <div class="accordion-content__detail-text">{{item.extensions}}</div>
+            <div class="accordion-content__detail-text">
+              {{ item.extensions }}
+            </div>
           </div>
           <div class="accordion-content__button">
             <SqButton
               label="I want this! Let’s book<div class='accordion-content__arrow'>→</div>"
               :inverted="true"
-              :onClick="handleClick(item.categoryId)"/>
+              :onClick="handleClick(item.categoryId)"
+            />
           </div>
           <div class="accordion-content__divider" />
         </div>
       </div>
-      <div class="accordion-item__summary--large"
+      <div
+        class="accordion-item__summary--large"
         @click="openHighlighted(i)"
-        role="button">
+        role="button"
+      >
         <div class="accordion-item__bullet" :class="`icon--${item.icon}`" />
-        <div class="accordion-item__title"
-             v-bind:class="{ 'accordion-item__title--open': isLargeOpen(i) }">
-          {{item.title}}
+        <div
+          class="accordion-item__title"
+          v-bind:class="{ 'accordion-item__title--open': isLargeOpen(i) }"
+        >
+          {{ item.title }}
         </div>
       </div>
       <div
         class="accordion-content"
-        v-bind:class="{ 'accordion-content--open-large': isLargeOpen(i) }">
+        v-bind:class="{ 'accordion-content--open-large': isLargeOpen(i) }"
+      >
         <div class="accordion-content__image-container">
-          <img class="accordion-content__image" v-bind:src="item.image" v-bind:alt="item.alt" />
-          <div class="accordion-content__featured">style featured in image: {{item.featured}}</div>
+          <img
+            class="accordion-content__image"
+            v-bind:src="item.image"
+            v-bind:alt="item.alt"
+          />
+          <div class="accordion-content__featured">
+            style featured in image: {{ item.featured }}
+          </div>
         </div>
         <div class="accordion-content__container">
-          <div class="accordion-content__description">{{item.description}}</div>
+          <div class="accordion-content__description">
+            {{ item.description }}
+          </div>
           <div class="accordion-content__header">style details:</div>
           <div class="accordion-content__detail">
             <div class="accordion-content__detail-header">salon time:</div>
-            <div class="accordion-content__detail-text">{{item.time}}</div>
+            <div class="accordion-content__detail-text">{{ item.time }}</div>
           </div>
           <div class="accordion-content__detail">
             <div class="accordion-content__detail-header">price:</div>
-            <div class="accordion-content__detail-text">{{item.price}}</div>
+            <div class="accordion-content__detail-text">{{ item.price }}</div>
           </div>
           <div class="accordion-content__detail">
-            <div class="accordion-content__detail-header">style will last for:</div>
-            <div class="accordion-content__detail-text">{{item.lasting}}</div>
+            <div class="accordion-content__detail-header">
+              style will last for:
+            </div>
+            <div class="accordion-content__detail-text">{{ item.lasting }}</div>
           </div>
           <div class="accordion-content__detail" v-if="item.extensions">
             <div class="accordion-content__detail-header">hair extensions:</div>
-            <div class="accordion-content__detail-text">{{item.extensions}}</div>
+            <div class="accordion-content__detail-text">
+              {{ item.extensions }}
+            </div>
           </div>
           <div class="accordion-content__button">
             <SqButton
               label="I want this! Let’s book<div class='accordion-content__arrow'>→</div>"
               :inverted="true"
-              :onClick="handleClick(item.categoryId)"/>
+              :onClick="handleClick(item.categoryId)"
+            />
           </div>
           <div class="accordion-content__divider" />
         </div>
@@ -108,8 +145,7 @@ export default {
     toggleOpen: function(i) {
       if (this.$store.getters.serviceOpenId == i) {
         this.$store.commit('changeServiceOpenId', -1)
-      }
-      else {
+      } else {
         this.$store.commit('changeServiceOpenId', i)
       }
     },
@@ -118,15 +154,15 @@ export default {
     },
     handleClick: function(categoryId) {
       return function(e) {
-        this.$router.push(
-          { name: 'subcategories', params: { categoryId }}
-        )
+        this.$router.push({ name: 'subcategories', params: { categoryId } })
       }
     },
     isLargeOpen: function(i) {
-      return this.$store.getters.serviceOpenId == i ||
+      return (
+        this.$store.getters.serviceOpenId == i ||
         (i == 0 && this.$store.getters.serviceOpenId == -1)
-    }
+      )
+    },
   },
   components: {
     ChevronIcon,
@@ -199,9 +235,9 @@ export default {
 }
 
 .accordion-item__title {
-  font-family: "Moret", serif;
+  font-family: 'Moret', serif;
   font-size: 30px;
-  letter-spacing: .8px;
+  letter-spacing: 0.8px;
   padding: 0 10px;
 
   @media @medium-and-up {
@@ -254,17 +290,17 @@ export default {
 }
 
 .accordion-content__image {
- width: 70%;
+  width: 70%;
 
- @media @medium-and-up {
-   width: 100%;
-   margin: 0;
- }
+  @media @medium-and-up {
+    width: 100%;
+    margin: 0;
+  }
 }
 
 .accordion-content__featured {
   color: @orange;
-  font-family: "TT Commons", sans-serif;
+  font-family: 'TTCommons', sans-serif;
   font-size: 14px;
   font-weight: bold;
   text-transform: uppercase;
@@ -281,7 +317,7 @@ export default {
 }
 
 .accordion-content__description {
-  font-family: "TT Commons", sans-serif;
+  font-family: 'TTCommons', sans-serif;
   font-size: 18px;
   padding: 10px 0;
   white-space: pre-wrap;
@@ -301,7 +337,7 @@ export default {
 }
 
 .accordion-content__detail {
-  font-family: "TT Commons", sans-serif;
+  font-family: 'TTCommons', sans-serif;
   font-size: 18px;
   padding: 5px 0;
 }
