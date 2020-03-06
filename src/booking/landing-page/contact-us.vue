@@ -45,6 +45,7 @@ export default {
 @import './landing.less';
 
 .contact-us {
+  font-family: 'TTCommons';
   color: @white;
   background-color: @darkBlue;
   padding: 40px;
