@@ -361,8 +361,8 @@ export default {
       margin: auto;
       height: 334px;
       width: 100%;
-      max-width: 260px;
       object-fit: cover;
+      object-position: top;
     }
 
     .container {
