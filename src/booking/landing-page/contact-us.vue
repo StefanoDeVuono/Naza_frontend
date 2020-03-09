@@ -7,22 +7,31 @@
       </div>
       <div class="contact-us__methods">
         <div class="contact-us__method">
-          <a href="tel:415-854-7111">(415) 854-7111</a>
+          <a href="tel:415-854-7111"
+            ><PhoneIcon class="contact-us__social-icon" />(415) 854-7111</a
+          >
         </div>
         <div class="contact-us__method">
-          <a href="mailto:booking@nazabeauty.com">booking@nazabeauty.com</a>
+          <a href="mailto:booking@nazabeauty.com">
+            <EmailIcon
+              class="contact-us__social-icon"
+            />booking@nazabeauty.com</a
+          >
         </div>
         <div class="contact-us__method">
           <a target="_blank" href="https://twitter.com/naza_beauty"
             ><TwitterIcon class="contact-us__social-icon" />@naza_beauty</a
           >
+        </div>
+        <div class="contact-us__method">
           <a target="_blank" href="https://www.instagram.com/nazabeautysf/"
             ><InstagramIcon class="contact-us__social-icon" />@nazabeautysf</a
           >
         </div>
         <div class="contact-us__method">
           <a target="_blank" href="https://goo.gl/maps/fgU4fpSN1pAjxuAt8"
-            >985 Valencia St, San Francisco, CA 94110</a
+            ><PinIcon class="contact-us__social-icon" />985 Valencia St, San
+            Francisco, CA 94110</a
           >
         </div>
       </div>
@@ -33,11 +42,17 @@
 <script>
 import InstagramIcon from 'images/instagram.svg'
 import TwitterIcon from 'images/twitter.svg'
+import PhoneIcon from 'images/phone.svg'
+import PinIcon from 'images/pin.svg'
+import EmailIcon from 'images/email.svg'
 
 export default {
   components: {
     TwitterIcon,
     InstagramIcon,
+    PhoneIcon,
+    PinIcon,
+    EmailIcon,
   },
 }
 </script>
@@ -51,9 +66,10 @@ export default {
   color: @white;
   background-color: @darkBlue;
   padding: 40px;
+  display: flex;
+  justify-content: center;
 
   .contact-us__methods {
-    text-align: center;
     padding-top: 20px;
   }
 
@@ -63,20 +79,7 @@ export default {
     font-size: 18px;
 
     a {
-      display: inline-block;
       padding: 6px;
-      flex-grow: 1;
-      width: 50%;
-      flex-basis: 1;
-      &:first-of-type {
-        text-align: right;
-      }
-      &:last-of-type {
-        text-align: left;
-      }
-      &:only-of-type {
-        text-align: center;
-      }
     }
   }
 
@@ -85,6 +88,7 @@ export default {
     margin-right: 5px;
     position: relative;
     top: 2px;
+    width: 18px;
   }
 
   @media @small {
