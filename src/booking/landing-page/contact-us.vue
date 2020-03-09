@@ -7,8 +7,10 @@
       </div>
       <div class="contact-us__methods">
         <div class="contact-us__method">
-          <a href="mailto:booking@nazabeauty.com">booking@nazabeauty.com</a>
           <a href="tel:415-854-7111">(415) 854-7111</a>
+        </div>
+        <div class="contact-us__method">
+          <a href="mailto:booking@nazabeauty.com">booking@nazabeauty.com</a>
         </div>
         <div class="contact-us__method">
           <a target="_blank" href="https://twitter.com/naza_beauty"
@@ -57,10 +59,24 @@ export default {
 
   .contact-us__method {
     padding: 1px;
+    display: flex;
+    font-size: 18px;
 
     a {
       display: inline-block;
-      padding: 10px;
+      padding: 6px;
+      flex-grow: 1;
+      width: 50%;
+      flex-basis: 1;
+      &:first-of-type {
+        text-align: right;
+      }
+      &:last-of-type {
+        text-align: left;
+      }
+      &:only-of-type {
+        text-align: center;
+      }
     }
   }
 
