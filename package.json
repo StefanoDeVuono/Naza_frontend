@@ -72,9 +72,9 @@
   },
   "jest": {
     "moduleNameMapper": {
+      "\\.(jpg|jpeg|svg)$": "<rootDir>/src/__mocks__/fileMock.js",
       "common/(.+)": "<rootDir>/src/common/$1",
-      "images/(.+)": "<rootDir>/src/images/$1",
-      "\\.(jpg|jpeg|svg)$": "<rootDir>/src/__mocks__/fileMock.js"
+      "images/(.+)": "<rootDir>/src/images/$1"
     },
     "moduleFileExtensions": [
       "js",

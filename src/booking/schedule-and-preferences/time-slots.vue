@@ -62,7 +62,7 @@ export default {
       return {
         '1': '9:00 a.m.',
         '2': '1:00 p.m.',
-        '3': '5:00 p.m.',
+        '3': '3:00 p.m.',
       }[position]
     },
 
