@@ -6,8 +6,8 @@
     "alt": "crochet braid",
     "featured": "kinky curly",
     "description": "To achieve this style, your hair will first be braided into cornrows. Next, pre-styled synthetic extensions in curls, waves, or locs will be attached via a crochet needle.",
-    "time": "3 hours",
-    "price": "$250-$300 (includes hair)",
+    "time": "4 hours",
+    "price": "$300 (includes hair)",
     "lasting": "4-6 weeks",
     "extensions": "\nWe provide and prepare the hair for you. We use brands you love, like Freetress and Lulutress. Just select the style, color, and fullness during booking.",
     "categoryId": "5"
@@ -19,8 +19,8 @@
     "alt": "blowouts and silk press",
     "featured": "silk press",
     "description": "To achieve this style, we wash and condition your curls, generously apply heat protectant, and stretch your hair using a blowdryer with a comb attachment.\n\nIf you’re looking a bone straight look, we recommend a silk press -- we press the hair with a flat iron to give a shiny, silky end result.",
-    "time": "2 hours",
-    "price": "$75",
+    "time": "3 hours",
+    "price": "$150",
     "lasting": "1-2 weeks",
     "categoryId": "19"
   },
@@ -31,8 +31,8 @@
     "alt": "cornrows",
     "featured": "fulani braids",
     "description": "The beauty of natural hair cornrows is often imitated, but never duplicated. This style is achieved by braiding the hair with or without extensions very close to the scalp.",
-    "time": "3 hours",
-    "price": "$75-200 (includes hair)",
+    "time": "4 hours",
+    "price": "$250-$300 (includes hair)",
     "lasting": "2-3 weeks",
     "extensions": "\nWe provide and prepare the hair for you. We use brands you love like Expressions and wash them before you arrive. Just select the style, color, and fullness that you’d like during booking.",
     "categoryId": "16"
@@ -45,22 +45,9 @@
     "featured": "senegalese twists",
     "description": "To achieve this style, the hair is separated into two or three strands and twisted or braided straight down the back.",
     "time": "4 hours",
-    "price": "$200-$300 (includes hair)",
+    "price": "$250-$350 (includes hair)",
     "lasting": "4-8 weeks",
     "extensions": "\nWe provide and prepare the hair for you. We use brands you love like Expressions and wash them before you arrive. Just select the style, color, and fullness that you’d like during booking.",
     "categoryId": "13"
-  },
-  {
-    "title": "Weave Installs",
-    "image": "/assets/images/naza-services-weave.jpg",
-    "icon": "weave-installs",
-    "alt": "weave installs",
-    "featured": "kinky straight half weave",
-    "description": "To achieve this style, we first braid your hair into cornrows. Using a needle, we sew extensions into the braids. We offer full sew-ins with closures that cover the whole head or half sew-ins which are installed to the bottom half of the head.",
-    "time": "3 hours",
-    "price": "$200-$600 (includes hair)",
-    "lasting": "5-6 weeks",
-    "extensions": "\nWe provide and prepare the hair for you. We use the longest-lasting, most natural brands like Indique Hair. Just select the style, color, and fullness (in bundles) during booking.",
-    "categoryId": "9"
   }
 ]

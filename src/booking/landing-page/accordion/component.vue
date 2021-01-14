@@ -320,7 +320,7 @@ export default {
   font-family: 'TTCommons', sans-serif;
   font-size: 18px;
   padding: 10px 0;
-  white-space: pre-wrap;
+  white-space: pre-line;
 
   @media @medium-and-up {
     padding: 0 0 15px;
