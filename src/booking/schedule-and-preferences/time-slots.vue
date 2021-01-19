@@ -27,6 +27,7 @@
 
 <script>
 import { lightFormat, parseISO, format } from 'date-fns'
+import { utcToZonedTime } from 'date-fns-tz'
 import { find, includes, pluck } from 'ramda'
 import Storage from 'common/storage'
 
@@ -51,7 +52,7 @@ export default {
     },
 
     bookedPositions: function(slots) {
-      return [1, 2, 3].filter(pos => !includes(pos, pluck('position', slots)))
+      return [1, 2].filter(pos => !includes(pos, pluck('position', slots)))
     },
 
     time: function(position, dateString) {
@@ -61,8 +62,7 @@ export default {
 
       return {
         '1': '9:00 a.m.',
-        '2': '1:00 p.m.',
-        '3': '3:00 p.m.',
+        '2': '2:00 p.m.',
       }[position]
     },
 
@@ -84,7 +84,9 @@ export default {
       }
 
       const time = parseISO(slot.time)
-      return lightFormat(time, 'h:mm aaaa')
+      const timeZone = 'America/Los_Angeles'
+      const zonedTime = utcToZonedTime(time, timeZone)
+      return lightFormat(zonedTime, 'h:mm aaaa')
     },
   },
 }
@@ -93,17 +95,19 @@ export default {
 <style lang="less">
 @midGray: #e6e1da;
 @brown: #bc5940;
-
+.main-header {
+  padding: 0 24px 0 24px;
+}
 .time-slots {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   background-color: white;
   border: 2px solid @midGray;
-  padding: 0;
+  padding: 24px;
 
   .day {
     display: grid;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
 
     .time-slot {
       text-align: center;
