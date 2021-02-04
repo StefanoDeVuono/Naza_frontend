@@ -24,12 +24,16 @@ Requirements:
 
 You should branch off master and merge back into master.
 
-This app uses Webpack + Vue to build most of the functionality. You will need to run `yarn build` to compile all the scripts. You can also run `yarn prettier` to run the Javascript prettier.
+This app uses Webpack + Vue to build most of the functionality. 
+* Have `yarn build` running to compile all the scripts and keep them updated as you make changes.
+* You can also run `yarn prettier` to run the Javascript prettier.
 
 To run the Squarespace template locally:
  ```
  squarespace-server https://amethyst-okra-dblc.squarespace.com/template.git
  ```
+
+Ask someone with Squarespace admin privileges to add you to the list of authorized clients there for both production and staging.
 
 If the site is password protected (see site settings for that particular squarespace), append `--auth` to the above command.
 
@@ -61,11 +65,13 @@ When you are ready to deploy to staging:
     # overwrites scripts/bundle.js with the release version
     yarn release
 
-    git add scripts/bundle.js
+    git add scripts/*.js
     git commit -a
-    git push staging master
+    git push origin staging:master
 
-This will update the staging Squarespace.
+Fill in your Squarespace username (the account added for the staging Squarespace) and password (from [App Passwords > Generate](https://account.squarespace.com/settings/security)).
+
+This will update the staging Squarespace. To test on https://staging.nazabeauty.com/, use the password in the 1Password IT vault's credentials file.
 
 ### Deploying to production
 
