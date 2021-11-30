@@ -122,17 +122,6 @@
             completed. Tips are optional &amp; can be paid via credit card.
           </p>
         </div>
-
-        <hr />
-
-        <div>
-          <h3>Ahh! I still have more questions!</h3>
-          <p>
-            All good. We got you covered. Check out our
-            <a href="/faq">FAQ</a> page for answers to all your burning
-            questions.
-          </p>
-        </div>
       </div>
 
       <div class="border">
@@ -146,8 +135,6 @@
         />
       </div>
     </div>
-
-    <Footer />
   </div>
 </template>
 
@@ -165,7 +152,6 @@ import ChevronRightIcon from 'vue-material-design-icons/ChevronRight.vue'
 import ChevronUpIcon from 'vue-material-design-icons/ChevronUp.vue'
 import CustomizationsAndAddOns from './customizations-and-add-ons.vue'
 import DecorBorder from 'common/decor-border.vue'
-import Footer from 'common/footer.vue'
 
 export default {
   data() {
@@ -216,7 +202,6 @@ export default {
     ChevronUpIcon,
     CustomizationsAndAddOns,
     DecorBorder,
-    Footer,
   },
 }
 </script>

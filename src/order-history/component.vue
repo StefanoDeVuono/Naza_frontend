@@ -40,8 +40,6 @@
     </div>
 
     <DecorBorder :flip="true" />
-
-    <Footer />
   </div>
 </template>
 
@@ -52,7 +50,6 @@ import Storage from 'common/storage'
 import { parse } from 'jsonapi-parse'
 import SqButton from 'common/sq-button.vue'
 import DecorBorder from 'common/decor-border.vue'
-import Footer from 'common/footer.vue'
 import { parseISO, format } from 'date-fns'
 import { formattedPrice, formattedHours } from 'common/utils'
 
@@ -107,7 +104,6 @@ export default {
   components: {
     SqButton,
     DecorBorder,
-    Footer,
   },
 }
 </script>
