@@ -1,18 +1,17 @@
 import Categories from './booking/categories/component.vue'
 import Customize from './booking/customize/component.vue'
 import Subcategories from './booking/subcategories/component.vue'
-import AddOns from './booking/add-ons/component.vue'
 import ScheduleAndPreferences from './booking/schedule-and-preferences/component.vue'
 import Confirmation from './booking/confirmation/component.vue'
 import SignIn from './user/sign-in.vue'
 import LandingPage from './booking/landing-page/component.vue'
 import Vue from 'vue'
+Vue.config.devtools = true
 import VueRouter from 'vue-router'
 import VueSessionStorage from 'vue-sessionstorage'
 import { loadUserFromToken } from 'common/utils'
 import VueModal from 'vue-js-modal'
 import { store } from './booking/store'
-
 Vue.use(VueSessionStorage)
 Vue.use(VueRouter)
 Vue.use(VueModal)
@@ -38,11 +37,6 @@ var routes = [
     component: Customize,
     name: 'customize',
     props: true,
-  },
-  {
-    path: '/add-ons',
-    component: AddOns,
-    name: 'add-ons',
   },
   {
     path: '/schedule-and-preferences',

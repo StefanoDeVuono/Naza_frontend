@@ -4,16 +4,8 @@
       <strong>{{ customization }}:</strong> {{ value }}
     </li>
 
-    <li v-if="!isEmpty(shared.selectedFreeAddOns)">
-      <strong>Free Add-Ons:</strong> {{ freeAddOns }}
-    </li>
-
     <li v-if="!isEmpty(shared.selectedPremiumAddOns)">
       <strong>Premium Add-Ons:</strong> {{ premiumAddOns }}
-    </li>
-
-    <li v-if="!!shared.selectedDrinkAddOnString">
-      <strong>Drink:</strong> {{ shared.selectedDrinkAddOnString }}
     </li>
   </ul>
 </template>
@@ -30,10 +22,6 @@ export default {
   },
 
   computed: {
-    freeAddOns() {
-      return join(', ', Object.values(this.shared.selectedFreeAddOns))
-    },
-
     premiumAddOns() {
       return join(', ', Object.values(this.shared.selectedPremiumAddOns))
     },

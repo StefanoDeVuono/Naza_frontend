@@ -28,25 +28,6 @@
         <strong>{{ customization }}:</strong> {{ value }}
       </li>
     </ul>
-
-    <h3 class="style-header" @click="toggleAddOns">
-      Add-ons
-      <ChevronUpIcon :size="20" v-show="!showAddOns" />
-      <ChevronDownIcon :size="20" v-show="showAddOns" />
-    </h3>
-    <ul v-show="showAddOns">
-      <li v-if="!isEmpty(shared.selectedFreeAddOns)">
-        <strong>Free:</strong> {{ freeAddOns }}
-      </li>
-
-      <li v-if="!isEmpty(shared.selectedPremiumAddOns)">
-        <strong>Premium:</strong> {{ premiumAddOns }}
-      </li>
-
-      <li v-if="!isNil(shared.selectedDrinkAddOnString)">
-        <strong>Drink:</strong> {{ shared.selectedDrinkAddOnString }}
-      </li>
-    </ul>
   </div>
 </template>
 
@@ -63,7 +44,6 @@ export default {
       showMoreLink: true,
       showDetails: true,
       showCustomizations: true,
-      showAddOns: true,
       shared: Storage.sharedState,
     }
   },
@@ -77,9 +57,6 @@ export default {
     toggleCustomizations() {
       this.showCustomizations = !this.showCustomizations
     },
-    toggleAddOns() {
-      this.showAddOns = !this.showAddOns
-    },
     expandDescription() {
       this.showMoreLink = false
     },
@@ -88,14 +65,6 @@ export default {
   computed: {
     patternName() {
       return this.shared.product.name
-    },
-
-    freeAddOns() {
-      return join(', ', Object.values(this.shared.selectedFreeAddOns))
-    },
-
-    premiumAddOns() {
-      return join(', ', Object.values(this.shared.selectedPremiumAddOns))
     },
 
     truncatedDescription() {
