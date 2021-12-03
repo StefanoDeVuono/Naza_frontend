@@ -211,7 +211,7 @@ export default {
 
       this.findVariant()
       this.$router.push({
-        name: 'add-ons',
+        name: 'schedule-and-preferences',
       })
     },
 

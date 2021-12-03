@@ -10,9 +10,9 @@
 
     <Loading :active.sync="isLoading" :is-full-page="true" />
 
-    <Content :progress-step="5">
+    <Content :progress-step="4">
       <StepHeader
-        stepTitle="Step Five"
+        stepTitle="Step Four"
         imageUrl="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/step5.png"
         ctaText="Select a day &amp; time below and insert your personal details to confirm your reservation."
       />
@@ -122,16 +122,11 @@ export default {
         }
 
         if (this.progress < 3) {
-          await this.addAddOnsToCart()
+          await this.createOrUpdateUser()
           this.progress = 3
         }
 
         if (this.progress < 4) {
-          await this.createOrUpdateUser()
-          this.progress = 4
-        }
-
-        if (this.progress < 5) {
           await this.completeCheckout()
           this.progress = 0
         }

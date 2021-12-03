@@ -151,7 +151,6 @@ describe('ScheduleAndPreferences', () => {
       vm.addStyleToCart = jest.fn()
         .mockRejectedValueOnce({})
         .mockResolvedValueOnce({})
-      vm.addAddOnsToCart = jest.fn().mockResolvedValue({})
       vm.createOrUpdateUser = jest.fn().mockResolvedValue({})
       vm.completeCheckout = jest.fn().mockResolvedValue({})
 
@@ -160,7 +159,6 @@ describe('ScheduleAndPreferences', () => {
 
       expect(vm.createOrder).toHaveBeenCalledTimes(1)
       expect(vm.addStyleToCart).toHaveBeenCalledTimes(2)
-      expect(vm.addAddOnsToCart).toHaveBeenCalledTimes(1)
       expect(vm.createOrUpdateUser).toHaveBeenCalledTimes(1)
       expect(vm.completeCheckout).toHaveBeenCalledTimes(1)
     })

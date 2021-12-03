@@ -35,7 +35,7 @@
         </div>
 
         <div>
-          <h3>Customizations &amp; Add-ons</h3>
+          <h3>Customizations</h3>
           <p @click="toggleCustomizations">
             View Selection
             <ChevronRightIcon v-show="!showCustomizations" :size="24" />

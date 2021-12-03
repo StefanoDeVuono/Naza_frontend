@@ -22,7 +22,7 @@ import VueStepper from 'vue-stepper-component'
 import { range } from 'ramda'
 import DecorBorder from 'common/decor-border.vue'
 
-const TOTAL_PROGRESS_STEPS = 5
+const TOTAL_PROGRESS_STEPS = 4
 
 export default {
   props: {
