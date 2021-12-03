@@ -50,7 +50,7 @@ export default {
     getAssetUrl(color) {
       const name = color.presentation
         .replace(/ \(.+?\)$/, '')
-        .replace(/\b w\/ \b/, ' with ')
+        .replace(/\b w\/ \b/, ' w ')
       return (
         'https://projectcurl-assets.s3.amazonaws.com/HairColors/' +
         window.encodeURIComponent(name) +
