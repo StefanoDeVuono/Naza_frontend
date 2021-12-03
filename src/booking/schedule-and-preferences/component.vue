@@ -123,7 +123,7 @@ export default {
 
         if (this.progress < 3) {
           await this.createOrUpdateUser()
-          this.progress = 4
+          this.progress = 3
         }
 
         if (this.progress < 4) {

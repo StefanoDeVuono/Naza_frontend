@@ -3,4 +3,5 @@
 </div>
 
 <script src="https://js.stripe.com/v3/"></script>
-<script src="/scripts/booking.js"></script>
+<!-- <script src="/scripts/booking.js"></script> -->
+<script src="scripts/booking.c58612516fee3cf87534.js"></script>
