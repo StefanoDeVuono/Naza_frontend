@@ -1,9 +1,9 @@
 <template>
-  <div class="book-button" @click="handleClick" role="button">
+  <a class="book-button" @click="handleClick" role="button">
     <div class="book-button__inner-border">
-      <div class="book-button__text">Book an appointment</div>
+      <div class="book-button__text">{{buttonText}}</div>
     </div>
-  </div>
+  </a>
 </template>
 
 <script>
@@ -13,11 +13,13 @@ export default {
       this.$router.push({ name: 'categories' })
     },
   },
+  // @param {buttonText: string} buttonText text to show on the button
+  props: ['buttonText'],
 }
 </script>
 
 <style lang="less" scoped>
-@import '../../common/utils.less';
+@import './utils.less';
 
 .book-button {
   display: block;
@@ -28,6 +30,10 @@ export default {
   max-width: 260px;
   cursor: pointer;
 
+  @media @extra-small {
+    max-width: 220px;
+  }
+
   @media @large-and-up {
     max-width: 320px;
   }
@@ -36,6 +42,10 @@ export default {
 .book-button__inner-border {
   border: 1px solid @white;
   padding: 11px 46px;
+
+  @media @extra-small {
+    padding: 11px 26px;
+  }
 
   @media @large-and-up {
     padding: 15px 0;

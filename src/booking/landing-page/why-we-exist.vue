@@ -31,12 +31,7 @@
 </template>
 
 <script>
-import BookButton from './book-button.vue'
-
 export default {
-  components: {
-    BookButton,
-  },
 }
 </script>
 

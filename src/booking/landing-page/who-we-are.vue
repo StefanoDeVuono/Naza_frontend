@@ -27,7 +27,7 @@
           985 Valencia St, San Francisco, CA 94110
         </div>
         <div class="who-we-are__button-container">
-          <BookButton />
+          <BookButton buttonText="Book an appointment"/>
         </div>
       </div>
     </div>
@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import BookButton from './book-button.vue'
+import BookButton from '../../common/book-button.vue'
 
 export default {
   components: {

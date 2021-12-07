@@ -20,7 +20,7 @@
           </div>
           <div class="hero__button-container">
             <DecorBorder class="hero__button-border" />
-            <BookButton />
+            <BookButton buttonText="Book an appointment"/>
           </div>
         </div>
       </div>
@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import BookButton from './book-button.vue'
+import BookButton from '../../common/book-button.vue'
 import WhoWeAre from './who-we-are.vue'
 import OurServices from './our-services.vue'
 import DecorBorder from './decor-border.vue'

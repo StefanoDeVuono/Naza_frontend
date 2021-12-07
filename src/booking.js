@@ -5,6 +5,7 @@ import ScheduleAndPreferences from './booking/schedule-and-preferences/component
 import Confirmation from './booking/confirmation/component.vue'
 import SignIn from './user/sign-in.vue'
 import LandingPage from './booking/landing-page/component.vue'
+import PageNotFound from './common/page-not-found.vue'
 import Vue from 'vue'
 Vue.config.devtools = true
 import VueRouter from 'vue-router'
@@ -52,6 +53,10 @@ var routes = [
     path: '/sign-in',
     component: SignIn,
     name: 'sign-in'
+  },
+  {
+    path: '*',
+    component: PageNotFound
   }
 ]
 
