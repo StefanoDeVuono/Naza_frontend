@@ -124,11 +124,11 @@ export default {
 
   computed: {
     availableOptions: function() {
-      return filter(x => x.name !== 'Color', this.shared.product.option_types)
+      return filter(x => !x.name.match(/Color/), this.shared.product.option_types)
     },
 
     colorOptions: function() {
-      return filter(x => x.name === 'Color', this.shared.product.option_types)
+      return filter(x => x.name.match(/Color/), this.shared.product.option_types)
     },
 
     optionValueMap: function() {
@@ -163,6 +163,10 @@ export default {
     initializeCustomizations() {
       this.shared.product.option_types.forEach(optionType => {
         const values = optionType.option_values
+        // hack to allow more than one set of color options
+        if (optionType.name.match(/Color\s/)) {
+          return
+        }
         if (values.length <= 2) {
           Storage.setCustomization(
             optionType.name,

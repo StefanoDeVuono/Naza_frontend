@@ -43,10 +43,6 @@ export default {
       this.onPress(color)
     },
 
-    getSafeName(color) {
-      return color.presentation.replace(/[^a-zA-Z]/g, '_')
-    },
-
     getAssetUrl(color) {
       const name = color.presentation
         .replace(/ \(.+?\)$/, '')

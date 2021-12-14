@@ -34,7 +34,6 @@
 <script>
 import Storage from 'common/storage'
 import { slice, isEmpty, isNil, join } from 'ramda'
-import CustomizationsAndAddOns from './customizations-and-add-ons.vue'
 import ChevronDownIcon from 'vue-material-design-icons/ChevronDown.vue'
 import ChevronUpIcon from 'vue-material-design-icons/ChevronUp.vue'
 
@@ -77,7 +76,6 @@ export default {
   },
 
   components: {
-    CustomizationsAndAddOns,
     ChevronDownIcon,
     ChevronUpIcon,
   },
