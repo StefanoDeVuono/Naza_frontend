@@ -50,6 +50,17 @@
             name="note"
           ></textarea>
         </div>
+
+        <div class="form-item field text">
+          <label class="title" for="occasion">What’s the occasion?</label>
+          <p class="text__caption">We want to hear it all — Birthdays, Weddings, Upcoming Party, Graduations, Promotions, Traveling, or just because!</p>
+          <textarea
+            class="field-element text"
+            type="text"
+            v-model="shared.occasion"
+            name="occasion"
+          ></textarea>
+        </div>
       </div>
     </div>
   </Section>
@@ -94,6 +105,11 @@ export default {
 
   h2 {
     margin: 0;
+  }
+
+  .text__caption {
+    font-size: 16px;
+    margin-bottom: 20px;
   }
 
   .field-list {
