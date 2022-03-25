@@ -1,15 +1,14 @@
 <template>
-  <div v-if="!shared.userToken" class="login-cta">
-    <span class="header">Already a customer?</span>
-    <div>
-      <router-link
-        @click.native="$event.stopImmediatePropagation()"
-        :to="{ name: 'sign-in' }"
-        ><span class="header-cta"
-          >Retrieve your preferences here</span
-        ></router-link
-      >
-    </div>
+  <div v-if="!shared.userToken" class="info-header">
+    <span class="header">Don’t see the style you’re looking for? We can help!</span>
+    <br />
+    <span class="header">
+      Send an inspo photo &amp; natural hair photo to
+      <a
+        rel="noopener noreferrer"
+        target="_blank"
+        href="mailto:booking@nazabeauty.com">booking@nazabeauty.com</a>
+    </span>
   </div>
 </template>
 
@@ -28,7 +27,7 @@ export default {
 <style lang="less">
 @import '../../common/utils.less';
 
-.login-cta {
+.info-header {
   .ignore-parent-padding();
   padding: 20px;
   background-color: white;
@@ -44,12 +43,6 @@ export default {
 
   a {
     text-decoration: underline;
-
-    .header-cta {
-      text-transform: uppercase;
-      font-weight: 500;
-      font-size: 14px;
-    }
   }
 }
 </style>

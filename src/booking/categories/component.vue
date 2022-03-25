@@ -1,6 +1,6 @@
 <template>
   <div>
-    <LoginCta />
+    <InfoHeader />
     <Content :progressStep="1">
       <div v-cloak class="categories">
         <StepHeader
@@ -70,7 +70,7 @@ import { getSpreeServer, getCurlAssetRoot } from 'common/constants'
 import 'whatwg-fetch'
 import { parse } from 'jsonapi-parse'
 import { sortBy, reject, prop, compose, path } from 'ramda'
-import LoginCta from './login-cta.vue'
+import InfoHeader from './info-header.vue'
 import { Carousel, Slide } from 'vue-carousel'
 import CustomCarouselPaginator from '../components/custom-carousel-paginator.vue'
 import SqButton from 'common/sq-button.vue'
@@ -117,7 +117,7 @@ export default {
   components: {
     Header,
     Content,
-    LoginCta,
+    InfoHeader,
     CustomCarouselPaginator,
     StepHeader,
     Carousel,
