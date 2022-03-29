@@ -30,11 +30,56 @@
         </div>
 
         <div class="form-item">
+          <label class="title" for="hairLength">
+            How would you describe the length of your Natural hair, Stretched + Blown Out?
+          </label>
+          <p class="caption">
+            - Short<br />
+            - Chin Length<br />
+            - Shoulder Length<br />
+            - Long</p>
+          <input
+            type="text"
+            name="hairLength"
+            v-model="shared.hairLength"
+            class="field-element text"
+          />
+        </div>
+
+        <div class="form-item">
+          <label class="title" for="hairTexture">
+            How do you most often refer to your hair texture?
+          </label>
+          <p class="caption">
+            - Loose Waves<br />
+            - Transitioning from relaxer<br />
+            - Tight Coils/Kinky/Coily</p>
+          <input
+            type="text"
+            name="hairTexture"
+            v-model="shared.hairTexture"
+            class="field-element text"
+          />
+        </div>
+
+        <div class="form-item">
+          <label class="title" for="inspirationUrl">
+            We always want to know if there’s something you’ve seen and loved! Do you have a link to an inspiration picture in mind?
+          </label>
+          <input
+            type="text"
+            name="inspirationUrl"
+            placeholder="No link - I want exactly what’s in the picture!"
+            v-model="shared.inspirationUrl"
+            class="field-element text"
+          />
+        </div>
+
+        <div class="form-item">
           <label class="title" for="sensitivities"
             >Are there any areas we should be sensitive to? Do you work with the following?</label
           >
           <p class="caption">Alopecia, Concentrated Thinning/Bald Patch, Thinning or Sensitive Edges, Flaky Scalp</p>
-
           <input
             type="text"
             name="sensitivities"
@@ -99,6 +144,9 @@ export default {
     chattinessOptions() {
       return ['Chat Away', 'Just a Skosh', 'No Talking']
     },
+    hairLengthOptions() {
+      return ['Short', 'Chin', 'Shoulder', 'Long']
+    },
   },
   methods: {},
   components: {
@@ -119,6 +167,10 @@ export default {
 
   h2 {
     margin: 0;
+  }
+
+  .caption {
+    margin-bottom: 20px;
   }
 
   .text__caption {

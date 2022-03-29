@@ -33,6 +33,9 @@ export default {
     allergies: undefined,
     sensitivities: undefined,
     occasion: undefined,
+    inspirationUrl: undefined,
+    hairLength: undefined,
+    hairTexture: undefined,
 
     stripePaymentMethod: undefined,
     stripeCustomerId: undefined,
