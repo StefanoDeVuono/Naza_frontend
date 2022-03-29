@@ -266,6 +266,7 @@ export default {
           price: Storage.sharedState.price,
           note: Storage.sharedState.note,
           occasion: Storage.sharedState.occasion,
+          sensitivities: Storage.sharedState.sensitivities,
           prefScalpTenderness: Storage.sharedState.prefScalpTenderness,
           prefChattiness: Storage.sharedState.prefChattiness,
           allergies: Storage.sharedState.allergies,

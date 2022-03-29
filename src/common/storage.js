@@ -30,6 +30,9 @@ export default {
     selectedDrinkAddOnString: undefined,
     selectedFreeAddOns: {},
     selectedPremiumAddOns: {},
+    allergies: undefined,
+    sensitivities: undefined,
+    occasion: undefined,
 
     stripePaymentMethod: undefined,
     stripeCustomerId: undefined,

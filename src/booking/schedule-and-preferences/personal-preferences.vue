@@ -30,9 +30,23 @@
         </div>
 
         <div class="form-item">
-          <label class="title" for="allergies"
-            >Allergies &amp; Sensitivities</label
+          <label class="title" for="sensitivities"
+            >Are there any areas we should be sensitive to? Do you work with the following?</label
           >
+          <p class="caption">Alopecia, Concentrated Thinning/Bald Patch, Thinning or Sensitive Edges, Flaky Scalp</p>
+
+          <input
+            type="text"
+            name="sensitivities"
+            v-model="shared.sensitivities"
+            class="field-element text"
+          />
+        </div>
+
+        <div class="form-item">
+          <label class="title" for="allergies">
+            Have you ever had (or even suspected) an allergic reaction to any type of braiding hair?
+          </label>
           <input
             type="text"
             name="allergies"
