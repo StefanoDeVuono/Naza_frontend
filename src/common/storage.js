@@ -63,6 +63,14 @@ export default {
     return !isNil(this.sharedState.userToken)
   },
 
+  setBoulevardCartId(boulevardCartId) {
+    this.sharedState.boulevardCartId = boulevardCartId
+  },
+
+  setBoulevardClientId(boulevardClientId) {
+    this.sharedState.boulevardClientId = boulevardClientId
+  },
+
   setStripePaymentMethod(stripePaymentMethod) {
     this.sharedState.stripePaymentMethod = stripePaymentMethod
   },

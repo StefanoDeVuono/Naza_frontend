@@ -16,12 +16,19 @@
       <div class="form-row">
         <label>Billing info:</label>
 
-        <div id="card-element" :data-secret="setupIntentSecret">
-          <!-- A Stripe Element will be inserted here. -->
-        </div>
+        <!--Stripe Element or Boulevard -->
+        <span v-if="boulevardEnabled">
+          <Card @complete="handleBoulevadCardSetup" />
+        </span>
+        <span v-else>
+          <div id="card-element" :data-secret="setupIntentSecret">
+            <!-- A Stripe Element will be inserted here. -->
+          </div>
+        </span>
 
         <!-- Used to display form errors. -->
-        <div><span id="card-errors" role="alert"></span></div>
+        <div><span id=" card-errors" role="alert"></span>
+        </div>
       </div>
     </form>
   </div>
@@ -29,7 +36,7 @@
 
 <script>
 import 'whatwg-fetch'
-import { getStripeKey, getAppServer } from 'common/constants'
+import { getStripeKey, getAppServer, getBoulevardTokenizationUrl, getBoulevardEnabled } from 'common/constants'
 import Storage from 'common/storage'
 import Loading from 'vue-loading-overlay'
 import { mockProductIfDevelopment } from 'common/utils'
@@ -37,10 +44,12 @@ import 'vue-loading-overlay/dist/vue-loading.css'
 import Section from '../components/section.vue'
 import PaymentIcon from 'images/noun_payment_511229.svg'
 import VueScrollTo from 'vue-scrollto'
+import Card from './card.vue'
 
 export default {
   data() {
     return {
+      boulevardEnabled: getBoulevardEnabled(),
       stripe: Stripe(getStripeKey()),
 
       setupIntentSecret: undefined,
@@ -92,7 +101,6 @@ export default {
         this.handleCardSetup(e)
       }
     },
-
     handleEventError(stripeEvent) {
       const displayError = document.getElementById('card-errors')
 
@@ -102,6 +110,83 @@ export default {
         displayError.textContent = ''
       }
     },
+
+    handleBoulevadCardSetup(e) {
+      if (this.isLoading) return
+      debugger
+      this.isLoading = true
+      const boulevardPayload = {
+        card: {
+          name: `${this.shared.customerFirstName} ${this.shared.customerLastName}`,
+          number: e.card.number,
+          cvv: e.card.cvc,
+          exp_month: e.card.expMonth,
+          exp_year: e.card.expYear,
+          address_postal_code: e.card.postalCode
+        }
+      }
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(boulevardPayload)
+      }
+
+      fetch(getBoulevardTokenizationUrl(), options).then(result => {
+        if (!!result.error) {
+          this.handleBoulevadEventError(result.error)
+        } else {
+          return result.json()
+        }
+      }).then(data => {
+        return fetch(getAppServer() + '/cart/update', {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            token: data.token,
+            cart_id: this.shared.boulevardCartId,
+            email: this.shared.customerEmail,
+            first_name: this.shared.customerFirstName,
+            last_name: this.shared.customerLastName,
+            phone_number: this.shared.customerPhone
+          })
+        })
+      }).then(response => {
+        if (response.status === 200) {
+          return response.json()
+        }
+        return Promise.reject()
+      })
+        .then(data => {
+
+          Storage.setBoulevardCartId(data.cart_id)
+          Storage.setBoulevardClientId(data.client_id)
+
+          this.$root.$emit('payment-information:completed')
+          this.$root.$emit('payment-information:hide')
+          this.$root.$emit('your-information:hide')
+          this.$root.$emit('personal-preferences:show')
+          this.$nextTick(() => {
+            VueScrollTo.scrollTo('#personal-preferences-section')
+          })
+          this.isLoading = false
+        })
+    },
+
+    handleBoulevadCardChange(e) {
+      this.handleBoulevadEventError(e)
+
+      if (e.complete) {
+        this.handleBoulevadCardSetup(e)
+      }
+    },
+
+    handleBoulevadEventError(boulevardEvent) {
+      console.error(boulevardEvent)
+    }
   },
 
   created() {
@@ -109,6 +194,25 @@ export default {
   },
 
   mounted() {
+    // set up boulevard cart if we're using boulevard
+    if (getBoulevardEnabled())
+      return fetch(getAppServer() + '/cart/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+        .then(response => {
+          if (response.status === 200) {
+            return response.json()
+          }
+          return Promise.reject()
+        })
+        .then(data => {
+          Storage.setBoulevardCartId(data.cart_id)
+        })
+
+
     fetch(getAppServer() + '/stripe/setup_intent.json', {
       method: 'POST',
     })
@@ -141,6 +245,7 @@ export default {
     Loading,
     Section,
     PaymentIcon,
+    Card
   },
 }
 </script>
