@@ -1,3 +1,4 @@
+import Sync from './admin/sync.vue'
 import Categories from './booking/categories/component.vue'
 import Customize from './booking/customize/component.vue'
 import Subcategories from './booking/subcategories/component.vue'
@@ -53,6 +54,11 @@ var routes = [
     path: '/sign-in',
     component: SignIn,
     name: 'sign-in'
+  },
+  {
+    path: '/sync',
+    component: Sync,
+    name: 'sync'
   },
   {
     path: '*',
