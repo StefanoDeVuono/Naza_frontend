@@ -1,5 +1,6 @@
 const path = require('path')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
+const fs = require('fs').promises
 
 module.exports = {
   module: {
@@ -69,9 +70,40 @@ module.exports = {
   output: {
     filename: 'scripts/[name].[chunkhash].js',
     path: path.resolve(__dirname),
+    clean: {
+      keep: filename => {
+        if (filename.includes('booking') || filename.includes('order-history')) return false
+
+        return true
+      }
+    }
   },
   optimization: {
     usedExports: true,
   },
-  plugins: [new VueLoaderPlugin()],
+  plugins: [
+    new VueLoaderPlugin(),
+    {
+      apply: (compiler) => {
+        compiler.hooks.afterEmit
+        compiler.hooks.afterEmit.tapPromise('AfterEmitPlugin', async ({chunks}) => {
+          for (chunk of chunks) {
+            const filepath = chunk.files.keys().next().value
+            const fileText = makeTemplate(filepath)
+            await fs.writeFile(`./pages/${chunk.name}.page`, fileText)
+          }
+        })
+      }
+    }
+  ],
 }
+
+// TODO: remove stripe from template
+const makeTemplate = basename => 
+`<div id="app">
+  <router-view></router-view>
+</div>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script src="/${basename}"></script>
+`

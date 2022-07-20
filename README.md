@@ -37,11 +37,11 @@ Ask someone with Squarespace admin privileges to add you to the list of authoriz
 
 If the site is password protected (see site settings for that particular squarespace), append `--auth` to the above command.
 
-### Cache-busting Caveat
+### Cache-busting
 
-Low tech cache-busting. After js files are generated `pages/booking.page` and `pages/order-history.page` have to be updated to reflect new cache versions. Old files have to be removed.
+After js files are generated, webpack updates `pages/booking.page` and `pages/order-history.page` to be updated to reflect new cache versions. Old files in `scripts` are removed (except `scripts/site-bundle.js`).
 
-In development, no caching used but `pages/booking.page` and `pages/order-history.page` need to use the commented out versions instead of the cached versions.
+In development, `pages/booking.page` and `pages/order-history.page` will be injected with the correct scripts.
 
 ### Authentication
 
