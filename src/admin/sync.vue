@@ -5,7 +5,7 @@
         <div v-show="errorMsg" class="errors">{{ errorMsg }}</div>
         <div v-show="successMsg" class="success">{{ successMsg }}</div>
 
-        <form autocomplete="on" method="POST" @submit.stop.prevent="signIn">
+        <form autocomplete="on" method="POST" @submit.stop.prevent="syncServices">
           <div class="field-list clear">
             <div class="form-item field password">
               <label class="title" for="password">Password:</label>
@@ -14,7 +14,7 @@
             </div>
           </div>
 
-          <SqButton :onClick="syncServices" label="Sync Services" />
+          <!-- <SqButton :onClick="syncServices" label="Sync Services" /> -->
           <SqButton :onClick="syncStaff" label="Sync Staff" />
           <SqButton :onClick="syncSchedules" label="Sync Schedules" />
 
@@ -26,18 +26,20 @@
 
 <script>
 import 'whatwg-fetch'
-import { getAppServer } from 'common/constants'
+import { getAppServer, getSocketServer } from 'common/constants'
 import Storage from 'common/storage'
 
 import SqButton from 'common/sq-button.vue'
 
-const sync = (type, that) => fetch(getAppServer() + `/homebase-boulevard-sync/${type}`, {
+
+const getToken = (action, password) => fetch(getAppServer() + `/homebase-boulevard-sync/authenticate`, {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
   },
   body: JSON.stringify({
-    password: that.password,
+    password,
+    action
   }),
 })
   .then(response => {
@@ -47,12 +49,47 @@ const sync = (type, that) => fetch(getAppServer() + `/homebase-boulevard-sync/${
       return response.json().then(json => Promise.reject(json))
     }
   })
-  .then(_ => {
-    that.successMsg = `${type} started synching...`
-  })
-  .catch(err => {
-    that.errorMsg = err['message']
-  })
+
+
+const createSocket = async (action, context) => {
+  const { token } = await getToken(action, context.password)
+  const socket = new WebSocket(`${getSocketServer()}/cable?token=${token}`)
+
+  socket.onopen = subscribe(socket, action)
+  socket.onmessage = logSocketMessage(socket, action, context)
+}
+
+const subscribe = (socket, action) => _event => {
+  const subscribe_msg = {
+    command: 'subscribe',
+    identifier: JSON.stringify({
+      channel: 'HomebaseBoulevardSyncChannel',
+      action: `sync_${action}`
+    })
+  }
+  socket.send(JSON.stringify(subscribe_msg))
+}
+
+const logSocketMessage = (socket, action, context) => event => {
+  const incoming_msg = JSON.parse(event.data)
+
+  if (incoming_msg.type === 'ping') return
+
+  if (incoming_msg.type === 'confirm_subscription')
+    return context.successMsg = `Sync ${action} started...`
+
+  context.successMsg = ''
+
+  if (incoming_msg?.message?.success) {
+    socket.close()
+    return context.successMsg = `Synched: ${incoming_msg?.message?.success}`
+  }
+
+  if (incoming_msg?.message?.failure) {
+    socket.close()
+    context.errorMsg = incoming_msg?.message?.failure
+  }
+}
 
 export default {
   data() {
@@ -71,16 +108,16 @@ export default {
   },
 
   methods: {
-    syncServices(e) {
-      sync('services', this)
-    },
+    // syncServices() {
+    //   createSocket('services', this)
+    // },
 
     syncStaff() {
-      sync('staff', this)
+      createSocket('staff', this)
     },
 
     syncSchedules() {
-      sync('schedules', this)
+      createSocket('schedules', this)
     },
 
 

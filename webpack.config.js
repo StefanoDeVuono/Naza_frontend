@@ -86,7 +86,7 @@ module.exports = {
     {
       apply: (compiler) => {
         compiler.hooks.afterEmit
-        compiler.hooks.afterEmit.tapPromise('AfterEmitPlugin', async ({chunks}) => {
+        compiler.hooks.afterEmit.tapPromise('AfterEmitPlugin', async ({ chunks }) => {
           for (chunk of chunks) {
             const filepath = chunk.files.keys().next().value
             const fileText = makeTemplate(filepath)
@@ -99,8 +99,8 @@ module.exports = {
 }
 
 // TODO: remove stripe from template
-const makeTemplate = basename => 
-`<div id="app">
+const makeTemplate = basename =>
+  `<div id="app">
   <router-view></router-view>
 </div>
 
