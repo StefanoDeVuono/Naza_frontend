@@ -2,27 +2,20 @@
   <div class="schedule-and-preferences">
     <Errors id="errors-section" v-bind:errors="errors" />
 
-    <LightHeader
-      :showBackArrow="true"
-      :totalPrice="parseInt(shared.price)"
-      :totalDuration="parseInt(shared.duration)"
-    />
+    <LightHeader :showBackArrow="true" :totalPrice="parseInt(shared.price)"
+      :totalDuration="parseInt(shared.duration)" />
 
     <Loading :active.sync="isLoading" :is-full-page="true" />
 
     <Content :progress-step="4">
-      <StepHeader
-        stepTitle="Step Four"
-        imageUrl="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/step5.png"
-        ctaText="Select a day &amp; time below and insert your personal details to confirm your reservation."
-      />
+      <StepHeader stepTitle="Step Four" imageUrl="https://s3.amazonaws.com/projectcurl-assets/HowItWorks/step5.png"
+        ctaText="Select a day &amp; time below and insert your personal details to confirm your reservation." />
 
       <div class="sections">
-        <AppointmentSummary
-          @available-times-error="handleAvailableTimesError"
-        />
+        <AppointmentSummary @available-times-error="handleAvailableTimesError" />
 
-        <YourInformation @stripe-setup-intent-error="handleStripeServerError" />
+        <YourInformation @stripe-setup-intent-error="handleStripeServerError"
+          @boulevard-token-error="handleBoulevardTokenError" />
 
         <PersonalPreferences />
 
@@ -34,11 +27,7 @@
           </p>
         </div>
 
-        <SqButton
-          label="Book Appointment"
-          :onClick="bookAppointment"
-          :disabled="!isPaymentSaved"
-        />
+        <SqButton label="Book Appointment" :onClick="bookAppointment" :disabled="!isPaymentSaved" />
       </div>
     </Content>
   </div>
@@ -64,7 +53,7 @@ const CALL_TO_MAKE_APPOINTMENT = 'Please call to make an appointment.'
 export const GENERIC_SERVER_ERROR = `Your request could be not be completed. ${CALL_TO_MAKE_APPOINTMENT}`
 
 export default {
-  data: function() {
+  data: function () {
     return {
       errors: [],
       isPaymentSaved: false,
@@ -76,7 +65,7 @@ export default {
   },
 
   computed: {
-    isDisabled: function() {
+    isDisabled: function () {
       return (
         !this.isLoading &&
         (!this.isPaymentSaved || !this.shared.canReceiveSmsReminders)
@@ -102,6 +91,10 @@ export default {
     },
 
     handleStripeServerError() {
+      this.errors.push(GENERIC_SERVER_ERROR)
+    },
+
+    handleBoulevardTokenError() {
       this.errors.push(GENERIC_SERVER_ERROR)
     },
 
@@ -257,10 +250,14 @@ export default {
         order: {
           number: Storage.sharedState.orderNumber,
         },
+        boulevard: {
+          cartId: Storage.sharedState.boulevardCartId,
+          clientId: Storage.sharedState.boulevardClientId
+        },
         stripe: {
           paymentMethod: Storage.sharedState.stripePaymentMethod,
         },
-        appointment: {
+        appointment: { // TODO: here
           startTime: Storage.sharedState.selectedTime,
           duration: Storage.sharedState.duration,
           price: Storage.sharedState.price,

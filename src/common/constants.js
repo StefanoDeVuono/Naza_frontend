@@ -50,3 +50,19 @@ export const getCurlAssetRoot = () => {
 
   return 'http://localhost:3000'
 }
+
+export const getBoulevardTokenizationUrl = () => {
+  if (isProduction()) {
+    return 'https://pci.boulevard.app/cards/tokenize'
+  }
+
+  return 'https://vault-sandbox.joinblvd.com/cards/tokenize'
+}
+
+export const getBoulevardEnabled = () => {
+  if (isProduction()) return false
+
+  if (isStaging()) return true
+
+  return true
+}
