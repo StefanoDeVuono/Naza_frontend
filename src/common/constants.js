@@ -39,6 +39,18 @@ export const getAppServer = () => {
   return 'http://localhost:3000'
 }
 
+export const getSocketServer = () => {
+  if (isStaging()) {
+    return 'wss://api-staging.nazabeauty.com'
+  }
+
+  if (isProduction()) {
+    return 'wss://api-prod.nazabeauty.com'
+  }
+
+  return 'ws://localhost:3000'
+}
+
 export const getCurlAssetRoot = () => {
   if (isStaging()) {
     return 'https://api-staging.nazabeauty.com'
