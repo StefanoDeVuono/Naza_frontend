@@ -18,7 +18,7 @@
 
         <!--Stripe Element or Boulevard -->
         <span v-if="boulevardEnabled">
-          <Card @complete="handleBoulevadCardSetup" />
+          <Card @complete="handleBoulevardCardSetup" />
         </span>
         <span v-else>
           <div id="card-element" :data-secret="setupIntentSecret">
@@ -111,7 +111,8 @@ export default {
       }
     },
 
-    handleBoulevadCardSetup(e) {
+    handleBoulevardCardSetup(e) {
+      return console.log('blvd card setup')
       if (this.isLoading) return
       debugger
       this.isLoading = true
@@ -135,7 +136,7 @@ export default {
 
       fetch(getBoulevardTokenizationUrl(), options).then(result => {
         if (!!result.error) {
-          this.handleBoulevadEventError(result.error)
+          this.handleBoulevardEventError(result.error)
         } else {
           return result.json()
         }
@@ -176,15 +177,7 @@ export default {
         })
     },
 
-    handleBoulevadCardChange(e) {
-      this.handleBoulevadEventError(e)
-
-      if (e.complete) {
-        this.handleBoulevadCardSetup(e)
-      }
-    },
-
-    handleBoulevadEventError(boulevardEvent) {
+    handleBoulevardEventError(boulevardEvent) {
       console.error(boulevardEvent)
     }
   },
@@ -195,22 +188,23 @@ export default {
 
   mounted() {
     // set up boulevard cart if we're using boulevard
-    if (getBoulevardEnabled())
-      return fetch(getAppServer() + '/cart/create', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-        .then(response => {
-          if (response.status === 200) {
-            return response.json()
-          }
-          return Promise.reject()
-        })
-        .then(data => {
-          Storage.setBoulevardCartId(data.cart_id)
-        })
+    if (getBoulevardEnabled()) return console.log('cart create')
+    // if (getBoulevardEnabled())
+    // return fetch(getAppServer() + '/cart/create', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   }
+    // })
+    //   .then(response => {
+    //     if (response.status === 200) {
+    //       return response.json()
+    //     }
+    //     return Promise.reject()
+    //   })
+    //   .then(data => {
+    //     Storage.setBoulevardCartId(data.cart_id)
+    //   })
 
 
     fetch(getAppServer() + '/stripe/setup_intent.json', {

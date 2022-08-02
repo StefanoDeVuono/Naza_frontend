@@ -147,10 +147,11 @@ export default {
         function validate(isValid) {
           vnode.context.validated[binding.arg] = el.value === '' ? false : binding.value && binding.value(el.value);
           vnode.context.$emit(isValid ? 'valid' : 'invalid', vnode.context.getEventPayload(el, isValid));
-
+          console.log('vnode.elm', vnode.elm)
           if (vnode.context.isComplete() &&
             vnode.context.isValid() &&
             vnode.context.hasChanged()) {
+            console.log('copmlete (from validate)')
             vnode.context.$emit('complete', vnode.context.getEventPayload(el, isValid));
           }
         }
