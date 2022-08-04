@@ -82,7 +82,8 @@ const logSocketMessage = (socket, action, context) => event => {
 
   if (incoming_msg?.message?.success) {
     socket.close()
-    return context.successMsg = `Synched: ${incoming_msg?.message?.success}`
+
+    return context.successMsg = `Synched: ${JSON.stringify(incoming_msg.message.success)}`
   }
 
   if (incoming_msg?.message?.failure) {
