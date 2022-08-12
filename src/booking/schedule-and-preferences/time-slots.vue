@@ -9,7 +9,7 @@
           getActiveClass(slotByDate[0], slot.position),
           getPositionClass(slot.position),
         ]"
-        @click="setActive(slotByDate[0], slot.position, slot.time)"
+        @click="setActive(slotByDate[0], slot.position, slot.time, slot.timeId)"
       >
         {{ formatTime(slot) }}
       </div>
@@ -44,7 +44,8 @@ export default {
   },
 
   methods: {
-    setActive: function(date, position, time) {
+    setActive: function(date, position, time, timeId) {
+      Storage.setBoulevardTimeId(timeId)
       this.activeDate = date
       this.activePosition = position
       Storage.setSelectedTime(time)

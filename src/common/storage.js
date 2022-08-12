@@ -48,6 +48,7 @@ export default {
     price: undefined,
     duration: undefined,
     taxonName: undefined,
+    location: "SF"
   },
 
   reset() {
@@ -70,6 +71,9 @@ export default {
   setBoulevardClientId(boulevardClientId) {
     this.sharedState.boulevardClientId = boulevardClientId
   },
+  setBoulevardTimeId(boulevardTimeId) {
+    this.sharedState.boulevardTimeId = boulevardTimeId
+  },
 
   setStripePaymentMethod(stripePaymentMethod) {
     this.sharedState.stripePaymentMethod = stripePaymentMethod
@@ -79,7 +83,7 @@ export default {
     this.sharedState.product = product
 
     if (this.debug) {
-      console.log('setting product')
+      console.log('setting product', product)
     }
   },
 

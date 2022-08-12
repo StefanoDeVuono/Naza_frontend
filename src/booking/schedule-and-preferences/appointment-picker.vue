@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import { getAppServer } from 'common/constants'
+import { getAppServer, getBoulevardEnabled } from 'common/constants'
 import TimeSlots from './time-slots.vue'
 import ArrowRightIcon from 'vue-material-design-icons/ArrowRight.vue'
 import ArrowLeftIcon from 'vue-material-design-icons/ArrowLeft.vue'
@@ -48,6 +48,8 @@ import {
   addDays,
   differenceInWeeks,
   getHours,
+  getDay,
+  isSameDay
 } from 'date-fns'
 import Section from '../components/section.vue'
 import { map, find, compose, equals, nth } from 'ramda'
@@ -55,8 +57,10 @@ import CalendarIcon from 'images/noun_Calendar_2804231.svg'
 import VueScrollTo from 'vue-scrollto'
 import Storage from 'common/storage'
 
+
+
 export default {
-  data: function() {
+  data: function () {
     return {
       days: 1,
       slotsByDate: [],
@@ -66,35 +70,72 @@ export default {
   computed: {},
 
   methods: {
-    fetchSlots: function() {
-      const { duration } = Storage.sharedState
+    fetchSlots: function () {
+      const dayOffset = this.days
+      if (getBoulevardEnabled()) { // if Boulevard is enabled
+        const { boulevardCartId, boulevardClientId } = Storage.sharedState
+        fetch(
+          `${getAppServer()}/cart/available_times?cart_id=${boulevardCartId}&client_id=${boulevardClientId}&day_offset=${dayOffset}`
+        )
+          .then(response => response.json())
+          .then(json => {
+            if (json.errors) {
+              this.$emit('available-times-error', json.errors)
+            } else {
+              const today = new Date()
+              this.slotsByDate = Array.from([dayOffset, dayOffset + 1, dayOffset + 2], offset => {
+                const date = addDays(today, offset)
+                const includedDates = json.times.filter(el => isSameDay(parseISO(el.startTime), date))
+                if (!includedDates) return []
 
-      fetch(
-        `${getAppServer()}/schedules/available_times?duration=${duration}&days=${
-          this.days
-        }`
-      )
-        .then(response => response.json())
-        .then(json => {
-          if (json.errors) {
-            this.$emit('available-times-error', json.errors)
-          } else {
-            this.slotsByDate = json
-          }
-        })
+                const key = lightFormat(date, 'yyyy-MM-dd')
+                const value = includedDates.map(({ startTime: time, id: timeId }) => {
+                  const date = new Date(time)
+                  const hour = getHours(date)
+                  const position = { 9: 1, 14: 2 }[hour]
+                  const day = getDay(date)
+
+                  return {
+                    time,
+                    hour,
+                    position,
+                    slotsAvailable: 1,
+                    timeId,
+                    day
+                  }
+
+                })
+                return [key, value]
+              })
+            }
+          })
+      } else { // if Boulevard not enabled
+        const { duration } = Storage.sharedState
+        fetch(
+          `${getAppServer()}/schedules/available_times?duration=${duration}&days=${dayOffset}`
+        )
+          .then(response => response.json())
+          .then(json => {
+            if (json.errors) {
+              this.$emit('available-times-error', json.errors)
+            } else {
+              this.slotsByDate = json
+            }
+          })
+      }
     },
 
-    getPrevSlots: function() {
+    getPrevSlots: function () {
       this.days = this.days - 3
       this.fetchSlots()
     },
 
-    getNextSlots: function() {
+    getNextSlots: function () {
       this.days = this.days + 3
       this.fetchSlots()
     },
 
-    isTomorrow: function(timeString) {
+    isTomorrow: function (timeString) {
       const tomorrow = lightFormat(
         addDays(new Date(Date.now()), 1),
         'yyyy-MM-dd'
@@ -102,17 +143,17 @@ export default {
       return timeString === tomorrow
     },
 
-    formatHeaderDay: function(dateString) {
+    formatHeaderDay: function (dateString) {
       const date = parseISO(dateString)
       return format(date, 'eeee')
     },
 
-    formatHeaderDate: function(dateString) {
+    formatHeaderDate: function (dateString) {
       const date = parseISO(dateString)
       return format(date, 'MMMM d')
     },
 
-    weekText: function(timeString) {
+    weekText: function (timeString) {
       const visibleDate = parseISO(timeString)
       const delta = differenceInWeeks(visibleDate, new Date(Date.now()))
 
@@ -126,7 +167,7 @@ export default {
     },
   },
 
-  created: function() {
+  created: async function () {
     this.$root.$on('appointment-picker:selected', () => {
       this.$root.$emit('appointment-summary:hide')
       this.$root.$emit('your-information:show')
@@ -134,6 +175,32 @@ export default {
         VueScrollTo.scrollTo('#your-information-section')
       })
     })
+
+    const { product, taxonName, customizations, location } = Storage.sharedState
+    if (getBoulevardEnabled()) {
+      await fetch(getAppServer() + `/cart/create`
+        , {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            taxon_name: taxonName,
+            customizations: customizations,
+            style_name: product.name,
+            location: location
+          }),
+        })
+        .then(response => {
+          if (response.status === 200) {
+            return response.json()
+          }
+          return Promise.reject()
+        })
+        .then(data => {
+          Storage.setBoulevardCartId(data.cart_id)
+        })
+    }
 
     this.fetchSlots()
   },
@@ -188,7 +255,7 @@ export default {
     border: 2px solid @midGray;
     border-bottom: none;
 
-    & > div {
+    &>div {
       padding: 15px 10px;
     }
 
@@ -245,6 +312,7 @@ export default {
       }
     }
   }
+
   .actions {
     margin-top: 20px;
     display: grid;
@@ -260,12 +328,12 @@ export default {
       margin-right: 5px;
     }
 
-    .material-design-icon.arrow-right-icon > .material-design-icon__svg {
+    .material-design-icon.arrow-right-icon>.material-design-icon__svg {
       height: 15px;
       width: 15px;
     }
 
-    .material-design-icon.arrow-left-icon > .material-design-icon__svg {
+    .material-design-icon.arrow-left-icon>.material-design-icon__svg {
       height: 15px;
       width: 15px;
     }
@@ -285,6 +353,7 @@ export default {
     .previous {
       grid-column-start: 1;
       justify-content: flex-start;
+
       span {
         margin-left: 0.25em;
       }
@@ -293,6 +362,7 @@ export default {
     .more {
       grid-column-start: 2;
       justify-content: flex-end;
+
       span {
         margin-right: 0.25em;
       }
