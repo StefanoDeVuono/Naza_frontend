@@ -648,7 +648,7 @@ export default {
         height: 100%;
         width: 2.5em;
         transition: .33s;
-        padding: 0 .5em;
+        // padding: 0 .5em;
         position: absolute;
         top: 0;
         left: 0;

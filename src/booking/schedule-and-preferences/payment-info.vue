@@ -113,7 +113,6 @@ export default {
 
     handleBoulevadCardSetup(e) {
       if (this.isLoading) return
-      debugger
       this.isLoading = true
       const boulevardPayload = {
         card: {
@@ -195,22 +194,7 @@ export default {
 
   mounted() {
     // set up boulevard cart if we're using boulevard
-    if (getBoulevardEnabled())
-      return fetch(getAppServer() + '/cart/create', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-        .then(response => {
-          if (response.status === 200) {
-            return response.json()
-          }
-          return Promise.reject()
-        })
-        .then(data => {
-          Storage.setBoulevardCartId(data.cart_id)
-        })
+    if (getBoulevardEnabled()) return
 
 
     fetch(getAppServer() + '/stripe/setup_intent.json', {

@@ -252,7 +252,9 @@ export default {
         },
         boulevard: {
           cartId: Storage.sharedState.boulevardCartId,
-          clientId: Storage.sharedState.boulevardClientId
+          clientId: Storage.sharedState.boulevardClientId,
+          timeId: Storage.sharedState.boulevardTimeId,
+
         },
         stripe: {
           paymentMethod: Storage.sharedState.stripePaymentMethod,
