@@ -27,7 +27,7 @@
         </span>
 
         <!-- Used to display form errors. -->
-        <div><span id=" card-errors" role="alert"></span>
+        <div><span id="card-errors" role="alert"></span>
         </div>
       </div>
     </form>
