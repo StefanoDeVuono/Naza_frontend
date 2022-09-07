@@ -72,9 +72,10 @@ export const getBoulevardTokenizationUrl = () => {
 }
 
 export const getBoulevardEnabled = () => {
-  if (isProduction()) return false
-
-  if (isStaging()) return true
-
   return true
+}
+
+export const getBoulevardSchedules = () => {
+  return false
+  // return true
 }
