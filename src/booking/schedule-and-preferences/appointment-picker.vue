@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import { getAppServer, getBoulevardEnabled } from 'common/constants'
+import { getAppServer, getBoulevardEnabled, getBoulevardSchedules } from 'common/constants'
 import TimeSlots from './time-slots.vue'
 import ArrowRightIcon from 'vue-material-design-icons/ArrowRight.vue'
 import ArrowLeftIcon from 'vue-material-design-icons/ArrowLeft.vue'
@@ -72,7 +72,7 @@ export default {
   methods: {
     fetchSlots: function () {
       const dayOffset = this.days
-      if (getBoulevardEnabled()) { // if Boulevard is enabled
+      if (getBoulevardSchedules()) { // if Boulevard schedules are enabled
         const { boulevardCartId, boulevardClientId } = Storage.sharedState
         fetch(
           `${getAppServer()}/cart/available_times?cart_id=${boulevardCartId}&client_id=${boulevardClientId}&day_offset=${dayOffset}`
