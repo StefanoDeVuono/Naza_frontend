@@ -78,3 +78,8 @@ export const getBoulevardEnabled = () => {
 
   return true
 }
+
+export const getBoulevardSchedules = () => {
+  return false
+  // return true
+}
