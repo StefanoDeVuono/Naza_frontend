@@ -73,6 +73,7 @@
             name="phone"
             placeholder="123-456-7890"
           />
+          <!-- <div v-if=validPhoneLength> error</div> -->
         </div>
 
         <div v-if="!loggedIn" class="form-item field password required">

@@ -15,7 +15,8 @@
         <AppointmentSummary @available-times-error="handleAvailableTimesError" />
 
         <YourInformation @stripe-setup-intent-error="handleStripeServerError"
-          @boulevard-token-error="handleBoulevardTokenError" />
+          @boulevard-token-error="handleBoulevardTokenError"
+          @boulevard-server-error="handleBoulevardServerError" />
 
         <PersonalPreferences />
 
@@ -98,6 +99,10 @@ export default {
       this.errors.push(GENERIC_SERVER_ERROR)
     },
 
+    handleBoulevardServerError(errorArray) {
+      this.errors.concat(errorArray)
+    },
+
     async bookAppointment() {
       this.errors = []
       this.isLoading = true
@@ -120,7 +125,7 @@ export default {
         }
 
         if (this.progress < 4) {
-          await this.completeCheckout()
+          // await this.completeCheckout()
           this.progress = 0
         }
 

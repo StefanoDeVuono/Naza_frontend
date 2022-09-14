@@ -153,26 +153,29 @@ export default {
             phone_number: this.shared.customerPhone
           })
         })
-      }).then(response => {
+      }).then(async response => {
         if (response.status === 200) {
           return response.json()
         }
-        return Promise.reject()
-      })
-        .then(data => {
+        return Promise.reject(response)
+      }).then(data => {
+        Storage.setBoulevardCartId(data.cart_id)
+        Storage.setBoulevardClientId(data.client_id)
 
-          Storage.setBoulevardCartId(data.cart_id)
-          Storage.setBoulevardClientId(data.client_id)
-
-          this.$root.$emit('payment-information:completed')
-          this.$root.$emit('payment-information:hide')
-          this.$root.$emit('your-information:hide')
-          this.$root.$emit('personal-preferences:show')
-          this.$nextTick(() => {
-            VueScrollTo.scrollTo('#personal-preferences-section')
-          })
-          this.isLoading = false
+        this.$root.$emit('payment-information:completed')
+        this.$root.$emit('payment-information:hide')
+        this.$root.$emit('your-information:hide')
+        this.$root.$emit('personal-preferences:show')
+        this.$nextTick(() => {
+          VueScrollTo.scrollTo('#personal-preferences-section')
         })
+        this.isLoading = false
+      }).catch(async response => {
+        this.isLoading = false
+        const json = await response.json()
+        debugger
+        this.$emit('boulevard-server-error', json.errors)
+      })
     },
 
     handleBoulevadCardChange(e) {
